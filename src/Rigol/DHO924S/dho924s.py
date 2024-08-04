@@ -36,8 +36,10 @@ if __name__ == "__main__":
     try:
         scope = DHO924S()  # Assume DHO924S is a part of the model string returned by *IDN?
         scope.connect()
-        scope.channel[1].label = "Test 5"
-        scope.channel[1].offset = -2
+        scope.channel[1].label = "Test 12"
+        scope.channel[1].label_show = 'ON'
+        scope.channel[1].offset = 3
+        scope.timebase.scale = 0.0000001
         # scope.set_timebase(0.01)
         # scope.set_channel(1, 0.5, 'AC', True)
         # scope.auto_scale()

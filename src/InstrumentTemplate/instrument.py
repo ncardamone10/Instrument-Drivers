@@ -33,7 +33,7 @@ class Instrument:
         """Establish a connection to the instrument."""
         try:
             self.instrument = self.rm.open_resource(self.resource_address)
-            self.instrument.timeout = 5000  # Set timeout to 5000 ms
+            self.instrument.timeout = 50  # Set timeout to 5000 ms
             print(f"Connected to {self.resource_address}")
         except pyvisa.VisaIOError as e:
             print(f"Failed to connect to {self.resource_address}: {e}")
