@@ -45,15 +45,17 @@ class Instrument:
             print(f"Disconnected from {self.resource_address}")
 
     def send_command(self, command):
+        print(f"Trying to send command: {command}")
         """Send a command to the instrument and return its response."""
         if self.instrument is None:
             print("Not connected to any instrument.")
             return None
         try:
             response = self.instrument.query(command)
+            print(f"Command: {command} - Response: {response}")
             return response
         except pyvisa.VisaIOError as e:
-            print(f"Error sending command: {e}")
+            print(f"Error sending command: {e} in instrument.py")
             return None
 
     def __del__(self):
