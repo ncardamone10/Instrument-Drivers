@@ -1,0 +1,778 @@
+# 3.16 :MATHn Commands
+["3.16.1 :MATH<n>:DISPlay"]
+Syntax = ":MATH<n>:DISPlay <bool> :MATH<n>:DISPlay?"
+Description = "Enables or disables the math operation function; or queries the on/off status of the math operation function. 160"
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":MATH1:DISPlay ON    /*Enables the math operation of Math1.*/ :MATH1:DISPlay?      /*The query returns 1.*/"
+Class = "Math"
+Function = "display"
+Command = ":MATH<n>:DISPlay"
+Input_Min = ""
+Input_Max = ""
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.16.2 :MATH<n>:OPERator"]
+Syntax = ":MATH<n>:OPERator <opt> :MATH<n>:OPERator?"
+Description = "Sets or queries the operator of math operation."
+Remarks = "Supported operators include A+B (ADD), A-B (SUBTract), A×B (MULTiply), A÷B (DIVision), A&&B (AND), A||B (OR), A^B (XOR), !A (NOT), FFT, Intg (INTG), Diff (DIFF), Sqrt (SQRT), Lg (Base 10 Exponential) (LG), Ln (LN), Exp (EXP), Abs (ABS), LowPass (LPASs), LighPass (HPASs), BandPass (BPASs), BandStop (BSTop), and AX+B (AXB). For details, refer to Operator. 161"
+"Return Format" = "The query returns ADD, SUBT, MULT, DIV, AND, OR, XOR, NOT, FFT, INTG, DIFF, SQRT, LG, LN, EXP , ABS, LPAS, HPAS, BPAS, BST, or AXB."
+Example = ":MATH1:OPERator INTG /*Sets the math operator of Math1 to Integrate.*/ :MATH1:OPERator? /*The query returns INTG.*/"
+Class = "Math"
+Function = "operator"
+Command = ":MATH<n>:OPERator"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{ADD|SUBTRACT|MULTIPLY|DIVISION|AND|OR|XOR|NOT|FFT|INTG|DIFF|SQRT|LG|LN|EXP|ABS|LPASS|HPASS|BPASS|BSTOP|AXB}"
+Is_Query = "True"
+
+["3.16.3 :MATH<n>:SOURce1"]
+Syntax = ":MATH<n>:SOURce1 <source> :MATH<n>:SOURce1?"
+Description = "Sets or queries the source or Source A of arithmetic operation/function operation/ filter operation."
+Remarks = "• For arithmetic operation, this command is used to set Source A. • For function operation and filter operation, only use this command to set the source. • When n=1, the range of the parameter <source> is {CHANnel1|CHANnel2| CHANnel3|CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10}. When n=2, the range of the parameter <source> is {CHANnel1|CHANnel2| CHANnel3|CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10| MATH1}. 162 When n=3, the range of the parameter <source> is {CHANnel1|CHANnel2| CHANnel3|CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10| MATH1|MATH2}. When n=4, the range of the parameter <source> is {CHANnel1|CHANnel2| CHANnel3|CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10| MATH1|MATH2|MATH3}. • For detailed operations, refer to the descriptions in Operator."
+"Return Format" = "The query returns MATH1, MATH2, MATH3, CHAN1, CHAN2, CHAN3, CHAN4, REF1, REF2, REF3, REF4, REF5, REF6, REF7, REF8, REF9, or REF10."
+Example = ":MATH1:SOURce1 CHANnel3   /*Sets Source A of the arithmetic operation to CHANnel3.*/ :MATH1:SOURce1?           /*The query returns CHAN3.*/"
+Class = "Math"
+Function = "source1"
+Command = ":MATH<n>:SOURce1"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CHANNEL1|CHANNEL2|CHANNEL3|CHANNEL4}"
+Is_Query = "True"
+
+["3.16.4 :MATH<n>:SOURce2"]
+Syntax = ":MATH<n>:SOURce2 <source> :MATH<n>:SOURce2?"
+Description = "Sets or queries Source B of arithmetic operation."
+Remarks = "This command is only available for arithmetic operation (containing two sources). For detailed operations, refer to the descriptions in Operator. When n=1, the range of the parameter <source> is {CHANnel1|CHANnel2|CHANnel3| CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10}. 163 When n=2, the range of the parameter <source> is {CHANnel1|CHANnel2|CHANnel3| CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10|MATH1}. When n=3, the range of the parameter <source> is {CHANnel1|CHANnel2|CHANnel3| CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10|MATH1|MATH2}. When n=4, the range of the parameter <source> is {CHANnel1|CHANnel2|CHANnel3| CHANnel4|REF1|REF2|REF3|REF4|REF5|REF6|REF7|REF8|REF9|REF10|MATH1|MATH2| MATH3}."
+"Return Format" = "The query returns MATH1, MATH2, MATH3, CHAN1, CHAN2, CHAN3, CHAN4, REF1, REF2, REF3, REF4, REF5, REF6, REF7, REF8, REF9, or REF10."
+Example = ":MATH1:SOURce2 CHANnel3   /*Sets Source B of the arithmetic operation to CHANnel3.*/ :MATH1:SOURce2?           /*The query returns CHAN3.*/"
+Class = "Math"
+Function = "source2"
+Command = ":MATH<n>:SOURce2"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CHANNEL1|CHANNEL2|CHANNEL3|CHANNEL4}"
+Is_Query = "True"
+
+["3.16.5 :MATH<n>:LSOurce1"]
+Syntax = ":MATH<n>:LSOurce1 <source> :MATH<n>:LSOurce1?"
+Description = "Sets or queries Source A of the logic operation."
+Remarks = "The logic operations include A&&B, A||B, A^B, and !A. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. 164"
+Example = ":MATH1:LSOurce1 CHANnel3   /*Sets Source A of the logic operation to CHANnel3.*/ :MATH1:LSOurce1?           /*The query returns CHAN3.*/"
+Class = "Math"
+Function = "logic_source1"
+Command = ":MATH<n>:LSOurce1"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|CHANNEL1|CHANNEL2|CHANNEL3|CHANNEL4}"
+Is_Query = "True"
+
+["3.16.6 :MATH<n>:LSOurce2"]
+Syntax = ":MATH<n>:LSOurce2 <source> :MATH<n>:LSOurce2?"
+Description = "Sets or queries Source B of the logic operation."
+Remarks = "• The logic operations include A&&B, A||B, A^B, and !A. • This command is only available for the logic operation that contains two sources. It is used to set Source B. • D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":MATH1:LSOurce2 CHANnel4   /*Sets Source B of the logic operation to CHANnel4.*/ :MATH1:LSOurce2?           /*The query returns CHAN4.*/"
+Class = "Math"
+Function = "logic_source2"
+Command = ":MATH<n>:LSOurce2"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|CHANNEL1|CHANNEL2|CHANNEL3|CHANNEL4}"
+Is_Query = "True"
+
+["3.16.7 :MATH<n>:SCALe"]
+Syntax = ":MATH<n>:SCALe <scale> 165 :MATH<n>:SCALe?"
+Description = "Sets or queries the vertical scale of the operation results. The unit is related to the currently selected operator and the unit selected by the source."
+Remarks = "• The setting range of the vertical scale is related to the currently selected operator and the scale of the source channel. For integration and differentiation operations, the actual range of <scale> is also related to the current horizontal time base. • This command is invalid for logic operation and FFT operation."
+"Return Format" = "The query returns the vertical scale of the current operation results in scientific notation."
+Example = ":MATH1:SCALe 0.2   /*Sets the vertical scale to 200 mV.*/ :MATH1:SCALe?   /*The query returns 2.000000E-1.*/"
+Class = "Math"
+Function = "scale"
+Command = ":MATH<n>:SCALe"
+Input_Min = "0"
+Input_Max = "10000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.8 :MATH<n>:OFFSet"]
+Syntax = ":MATH<n>:OFFSet <offset> :MATH<n>:OFFSet?"
+Description = "Sets or queries the vertical offset of the operation results. The unit is related to the currently selected operator and the unit selected by the source."
+Remarks = "This command is invalid for logic operation and FFT operation."
+"Return Format" = "The query returns the vertical offset of the current operation results in scientific notation."
+Example = ":MATH1:OFFSet 8   /*Sets the vertical offset to 8 V.*/ :MATH1:OFFSet?       /*The query returns 8.000000E0.*/"
+Class = "Math"
+Function = "offset"
+Command = ":MATH<n>:OFFSet"
+Input_Min = "-10000"
+Input_Max = "10000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.9 :MATH<n>:INVert"]
+Syntax = ":MATH<n>:INVert <bool> :MATH<n>:INVert?"
+Description = "Enables or disables the inverted display of the operation results; or queries the on/off status of the inverted display of the operation results."
+Remarks = "This command is invalid for FFT operation and logical operation."
+"Return Format" = "The query returns 1 or 0."
+Example = ":MATH1:INVert ON    /*Enables the inverted display.*/ :MATH1:INVert?      /*The query returns 1.*/ 167"
+Class = "Math"
+Function = "invert"
+Command = ":MATH<n>:INVert"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.16.10 :MATH<n>:RESet"]
+Syntax = ":MATH<n>:RESet"
+Description = "After you send this command, the instrument will adjust the vertical scale of the operation results to an optimal value based on the currently selected operator and the horizontal time base of the source."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = "Math"
+Function = "reset"
+Command = ":MATH<n>:RESet"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.16.11 :MATH<n>:GRID"]
+Syntax = ":MATH<n>:GRID <grid> :MATH<n>:GRID?"
+Description = "Sets or queries the grid type of the math operation display."
+Remarks = "• FULL: turns the background grid and coordinates on. • HALF: turns the background grid off and turns the coordinate on. • NONE: turns the background grid and coordinate off. 168"
+"Return Format" = "The query returns FULL, HALF, or NONE."
+Example = ":MATH1:GRID NONE /*Turns the background grid and coordinates off.*/ :MATH1:GRID? /*The query returns NONE.*/"
+Class = "Math"
+Function = "grid"
+Command = ":MATH<n>:GRID"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{FULL|HALF|NONE}"
+Is_Query = "True"
+
+["3.16.12 :MATH<n>:EXPand"]
+Syntax = ":MATH<n>:EXPand <exp> :MATH<n>:EXPand?"
+Description = "Sets or queries the vertical expansion type of math operation."
+Remarks = "• CENTer: when the vertical scale is changed, the waveform will be expanded or compressed around the screen center. • GND: when the vertical scale is changed, the waveform will be expanded or compressed around the signal ground level position."
+"Return Format" = "The query returns GND or CENTer."
+Example = ":MATH1:EXPand CENTer /*Sets the vertical expansion type of math operation of CH1 to CENTer.*/ :MATH1:EXPand? /*The query returns CENTer.*/"
+Class = "Math"
+Function = "expand"
+Command = ":MATH<n>:EXPand"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CENTer|GND}"
+Is_Query = "True"
+
+["3.16.13 :MATH<n>:WAVetype"]
+Syntax = ":MATH<n>:MATH<n>:WAVetype <type> :MATH<n>:WAVetype? 169"
+Description = "Sets or queries the waveform type of math operation."
+Remarks = "• MAIN: indicates the main time base region. • ZOOM: indicates the zoomed time base region. Only when the zoom function is enabled, can the Zoom waveform type be enabled. Zoom is not supported for the FFT operation."
+"Return Format" = "The query returns MAIN or ZOOM."
+Example = ":MATH1:WAVetype ZOOM  /*Sets the waveform type of math operation to ZOOM.*/ :MATH1:WAVetype?  /*The query returns ZOOM.*/"
+Class = "Math"
+Function = "wavetype"
+Command = ":MATH<n>:WAVetype"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{MAIN|ZOOM}"
+Is_Query = "True"
+
+["3.16.14 :MATH<n>:FFT:SOURce"]
+Syntax = ":MATH<n>:FFT:SOURce <source> :MATH<n>:FFT:SOURce?"
+Description = "Sets or queries the channel source of FFT operation."
+Remarks = "N/A 170"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":MATH1:FFT:SOURce CHANnel3    /*Sets the channel source of FFT operation to CHANnel3.*/ :MATH1:FFT:SOURce?      /*The query returns CHAN3.*/"
+Class = "Math.FFT"
+Function = "source"
+Command = ":MATH<n>:FFT:SOURce"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CHANNEL1|CHANNEL2|CHANNEL3|CHANNEL4}"
+Is_Query = "True"
+
+["3.16.15 :MATH<n>:FFT:WINDow"]
+Syntax = ":MATH<n>:FFT:WINDow <window> :MATH<n>:FFT:WINDow?"
+Description = "Sets or queries the window function of FFT operation."
+Remarks = "• Spectral leakage can be considerably minimized when a window function is used. • Different window functions are applicable to measurements of different waveforms. You need to select the window function according to the different waveforms to be measured and their characteristics. For the characteristics of the window function and its applicable waveforms, refer to Table 3.161 Window Function ."
+"Return Format" = "The query returns RECT, BLAC, HANN, HAMM, FLAT, or TRI."
+Example = ":MATH1:FFT:WINDow BLACkman    /*Sets the window function of FFT operation to Blackman-Harris.*/ :MATH1:FFT:WINDow?             /*The query returns BLAC.*/ 171"
+Class = "Math.FFT"
+Function = "window"
+Command = ":MATH<n>:FFT:WINDow"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{RECTangle|BLACkman|HANNing|HAMMing|FLATtop|TRIangle}"
+Is_Query = "True"
+
+["3.16.16 :MATH<n>:FFT:UNIT"]
+Syntax = ":MATH<n>:FFT:UNIT <unit> :MATH<n>:FFT:UNIT?"
+Description = "Sets or queries the vertical unit of FFT operation results."
+Remarks = "N/A"
+"Return Format" = "The query returns VRMS or DB."
+Example = ":MATH1:FFT:UNIT VRMS      /*Sets the vertical unit of FFT operation results to Vrms.*/ :MATH1:FFT:UNIT?           /*The query returns VRMS.*/"
+Class = "Math.FFT"
+Function = "unit"
+Command = ":MATH<n>:FFT:UNIT"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{VRMS|DB}"
+Is_Query = "TRUE"
+
+["3.16.17 :MATH<n>:FFT:SCALe"]
+Syntax = ":MATH<n>:FFT:SCALe <scale> :MATH<n>:FFT:SCALe?"
+Description = "Sets or queries the vertical unit of FFT operation results."
+Remarks = "• When the unit is set to dB, the range of <scale> is from 1 ndB to 5 GdB. The default value is 20 dB. • When the unit is set to Vrms, the range of <scale> is from 1 nVrms to 5 GVrms. The default value is 10 Vrms. You can run the :MATH<n>:FFT:UNIT command to configure or query the current unit."
+"Return Format" = "The query returns the current vertical scale in scientific notation."
+Example = ":MATH1:FFT:SCALe 0.3    /*Sets the vertical scale of the FFT operation results to 300 mdB.*/ :MATH1:FFT:SCALe?          /*The query returns 3.000000E-1.*/"
+Class = "Math.FFT"
+Function = "scale"
+Command = ":MATH<n>:FFT:SCALe"
+Input_Min = "0"
+Input_Max = "5000000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.18 :MATH<n>:FFT:OFFSet"]
+Syntax = ":MATH<n>:FFT:OFFSet <offset> :MATH<n>:FFT:OFFSet?"
+Description = "Sets or queries the vertical offset of FFT operation results."
+Remarks = "• When the unit is set to dB, the range of <offset> is from -1 GdB to 1 GdB. The default value is 0 dB. • When the unit is set to Vrms,the range of <offset> is from -1 GVrms to 1 GVrms,. The default value is 0 Vrms. You can run the :MATH<n>:FFT:UNIT command to configure or query the current unit. 173"
+"Return Format" = "The query returns the current vertical offset in scientific notation."
+Example = ":MATH1:FFT:OFFSet 0.3    /*Sets the vertical offset of the FFT operation results to 300 mdB.*/ :MATH1:FFT:OFFSet?          /*The query returns 3.000000E-1.*/"
+Class = "Math.FFT"
+Function = "offset"
+Command = ":MATH<n>:FFT:OFFSet"
+Input_Min = "-10000000"
+Input_Max = "10000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.19 :MATH<n>:FFT:HSCale"]
+Syntax = ":MATH<n>:FFT:HSCale <hsc> :MATH<n>:FFT:HSCale?"
+Description = "Sets or queries the frequency range of FFT operation results. The default unit is Hz."
+Remarks = "You can reduce the frequency range to observe the details of the spectrum. Modifying the frequency range of the FFT operation results will affect the value of the center frequency. You can run the :MATH<n>:FFT:HCENter command to query or modify the center frequency."
+"Return Format" = "The query returns the current frequency range in scientific notation."
+Example = ":MATH1:FFT:HSCale 500000    /*Sets the frequency range of the FFT operation results to 500 kHz.*/ :MATH1:FFT:HSCale?          /*The query returns 5.000000E+5.*/"
+Class = "Math.FFT"
+Function = "frequency_scale"
+Command = ":MATH<n>:FFT:HSCale"
+Input_Min = "0"
+Input_Max = "100000000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.20 :MATH<n>:FFT:HCENter"]
+Syntax = ":MATH<n>:FFT:HCENter <cent> :MATH<n>:FFT:HCENter? 174"
+Description = "Sets or queries the center frequency of FFT operation results, that is, the frequency relative to the horizontal center of the screen."
+Remarks = "Modifying the center frequency of the FFT operation results will affect the value of the frequency range. You can run the :MATH<n>:FFT:HSCale command to query or modify the frequency range."
+"Return Format" = "The query returns the current center frequency in scientific notation. The unit is Hz."
+Example = ":MATH1:FFT:HCENter 10000000    /*Sets the center frequency of the FFT operation results to 10 MHz.*/ :MATH1:FFT:HCENter?          /*The query returns 1.000000E+7.*/"
+Class = "Math.FFT"
+Function = "center_frequency"
+Command = ":MATH<n>:FFT:HCENte"
+Input_Min = "0"
+Input_Max = "100000000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.21 :MATH<n>:FFT:FREQuency:STARt"]
+Syntax = ":MATH<n>:FFT:FREQuency:STARt <value> :MATH<n>:FFT:FREQuency:STARt?"
+Description = "Sets or queries the start frequency of FFT operation results."
+Remarks = "The range of the start frequency of FFT operation is related to the stop frequency. You can run the :MATH<n>:FFT:FREQuency:END command to query or configure the stop frequency. 175"
+"Return Format" = "The query returns the start frequency of the operation results in scientific notation. The unit is Hz."
+Example = ":MATH1:FFT:FREQuency:STARt 10000000   /*Sets the start frequency of the FFT operation results to 10 MHz.*/ :MATH1:FFT:FREQuency:STARt?           /*The query returns 1.000000E +7.*/"
+Class = "Math.FFT"
+Function = "start_frequency"
+Command = ":MATH<n>:FFT:FREQuency:STARt"
+Input_Min = "0"
+Input_Max = "100000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.22 :MATH<n>:FFT:FREQuency:END"]
+Syntax = ":MATH<n>:FFT:FREQuency:END <value> :MATH<n>:FFT:FREQuency:END?"
+Description = "Sets or queries the stop frequency of FFT operation results."
+Remarks = "The range of the stop frequency of FFT operation is related to the start frequency. You can run the :MATH<n>:FFT:FREQuency:STARt command to query or configure the start frequency."
+"Return Format" = "The query returns the stop frequency of the operation results in scientific notation. The unit is Hz."
+Example = ":MATH1:FFT:FREQuency:END 10000000    /*Sets the stop frequency of the FFT operation results to 10 MHz.*/ :MATH1:FFT:FREQuency:END?          /*The query returns 1.000000E +7.*/"
+Class = "Math.FFT"
+Function = "stop_frequency"
+Command = ":MATH<n>:FFT:FREQuency:END"
+Input_Min = "0"
+Input_Max = "100000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.23 :MATH<n>:FFT:SEARch:ENABle"]
+Syntax = ":MATH<n>:FFT:SEARch:ENABle <bool> 176 :MATH<n>:FFT:SEARch:ENABle?"
+Description = "Enables or disables the FFT peak search; or queries the on/off status of the FFT peak search function."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":MATH1:FFT:SEARch:ENABle ON      /*Enables the FFT peak search.*/ :MATH1:FFT:SEARch:ENABle?           /*The query returns 1.*/"
+Class = "Math.FFT"
+Function = "peak_search"
+Command = ":MATH<n>:FFT:SEARch:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.16.24 :MATH<n>:FFT:SEARch:NUM"]
+Syntax = ":MATH<n>:FFT:SEARch:NUM <num> :MATH<n>:FFT:SEARch:NUM?"
+Description = "Sets or queries the maximum number of the FFT peak search."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer ranging from 1 to 15. 177"
+Example = ":MATH1:FFT:SEARch:NUM 10         /*Sets the maximum number of the FFT peak search to 10.*/ :MATH1:FFT:SEARch:NUM?           /*The query returns 10.*/"
+Class = "Math.FFT"
+Function = "number_of_peaks"
+Command = ":MATH<n>:FFT:SEARch:NUM"
+Input_Min = "1"
+Input_Max = "15"
+Input_Values = "Integer"
+Is_Query = "True"
+
+["3.16.25 :MATH<n>:FFT:SEARch:THReshold"]
+Syntax = ":MATH<n>:FFT:SEARch:THReshold <thres> :MATH<n>:FFT:SEARch:THReshold?"
+Description = "Sets or queries the threshold of the FFT peak search."
+Remarks = "N/A"
+"Return Format" = "The query returns the threshold in scientific notation."
+Example = ":MATH1:FFT:SEARch:THReshold 0.5         /*Sets the threshold of the FFT peak search to 500 mdB.*/ :MATH1:FFT:SEARch:THReshold?           /*The query returns 5.000000E-1.*/"
+Class = "Math.FFT"
+Function = "peak_threshold"
+Command = ":MATH<n>:FFT:SEARch:THReshold"
+Input_Min = "-100"
+Input_Max = "100"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.26 :MATH<n>:FFT:SEARch:EXCursion"]
+Syntax = ":MATH<n>:FFT:SEARch:EXCursion <excur> :MATH<n>:FFT:SEARch:EXCursion?"
+Description = "Sets or queries the excursion of the FFT peak search. 178"
+Remarks = "VerticalScale indicates the vertical scale of FFT."
+"Return Format" = "The query returns the excursion in scientific notation."
+Example = ":MATH1:FFT:SEARch:EXCursion 0.5         /*Sets the excursion of the FFT peak search to 500 mdB.*/ :MATH1:FFT:SEARch:EXCursion?           /*The query returns 5.000000E-1.*/"
+Class = "Math.FFT"
+Function = "peak_excursion"
+Command = ":MATH<n>:FFT:SEARch:EXCursion"
+Input_Min = "-100"
+Input_Max = "100"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.27 :MATH<n>:FFT:SEARch:ORDer"]
+Syntax = ":MATH<n>:FFT:SEARch:ORDer <order> :MATH<n>:FFT:SEARch:ORDer?"
+Description = "Sets or queries the sequence of the FFT peak search results."
+Remarks = "N/A"
+"Return Format" = "The query returns AMP or FREQ."
+Example = ":MATH1:FFT:SEARch:ORDer AMPorder  /*Sets the sequence of the FFT peak search results to AMPorder.*/ :MATH1:FFT:SEARch:ORDer?           /*The query returns AMP.*/ 179"
+Class = "Math.FFT"
+Function = "peak_ordering"
+Command = ":MATH<n>:FFT:SEARch:ORDer"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{AMP|FREQ}"
+Is_Query = "True"
+
+["3.16.28 :MATH<n>:FFT:SEARch:RES?"]
+Syntax = ":MATH<n>:FFT:SEARch:RES?"
+Description = "Queries the peak search results table."
+Remarks = "N/A"
+"Return Format" = "The query returns the peak search results table in strings."
+Example = ":MATH1:FFT:SEARch:RES?    /*The query returns the peak search results table in strings.*/ 1,2.50000MHz,-24.98dBV 2,3.50000MHz,-27.84dBV 3,4.50000MHz,-30.04dBV 4,5.50125MHz,-31.5dBV 5,6.50125MHz,-32.34dBV"
+Class = "Math.FFT"
+Function = "peaks"
+Command = ":MATH<n>:FFT:SEARch:RES?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.16.29 :MATH<n>:FILTer:TYPE"]
+Syntax = ":MATH<n>:FILTer:TYPE <type> :MATH<n>:FILTer:TYPE?"
+Description = "Sets or queries the filter type."
+Remarks = "The oscilloscope provides 4 practical filters (Low Pass Filter, High Pass Filter, Band Pass Filter, and Band Stop Filter), which can filter the specified frequencies in the signal by setting the bandwidth. You can use the :MATH<n>:FFT:SOURce command to set or query the channel source of the filter. • LPASs: indicates low pass filter, which only allows the signals whose frequencies are smaller than the current cut-off frequency to pass. • HPASs: indicates high pass filter, which only allows the signals whose frequencies are greater than the current cut-off frequency to pass. • BPASs: indicates band pass filter, which only allows the signals whose frequencies are greater than the current cut-off frequency 1 and smaller than the current cut-off frequency 2 to pass. Note: The cut-off frequency 1 must be smaller than the cut-off frequency 2. • BSTop: indicates band stop filter, which only allows the signals whose frequencies are smaller than the current cut-off frequency 1 or greater than the current cut-off frequency 2 to pass. Note: The cut-off frequency 1 must be smaller than the cut-off frequency 2."
+"Return Format" = "The query returns LPAS, HPAS, BPAS, or BST."
+Example = ":MATH1:FILTer:TYPE LPASs    /*Sets the filter type to Low Pass Filter.*/ :MATH1:FILTer:TYPE?         /*The query returns LPAS.*/"
+Class = "Math.Filter"
+Function = "type"
+Command = ":MATH<n>:FILTer:TYPE"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{LPAS|HPAS|BPAS|BST}"
+Is_Query = "True"
+
+["3.16.30 :MATH<n>:FILTer:W1"]
+Syntax = ":MATH<n>:FILTer:W1 <freq1> :MATH<n>:FILTer:W1?"
+Description = "Sets or queries the cut-off frequency of Low Pass Filter/High Pass Filter; or the cut-off frequency 1 of Band Pass Filter/Band Stop Filter. The default unit is Hz. 181"
+Remarks = "• When the filter type is set to LPASs (Low Pass Filter) or HPASs (High Pass Filter), you need to set one cut-off frequency. At this time, the range of <freq1> is from (0.005 x screen sample rate) to (0.1 x screen sample rate), at a step of (0.005 x screen sample rate); wherein, screen sample rate = 100/horizontal time base. • When the filter type is set to BPASs (Band Pass Filter) or BSTop (Band Stop Filter), you need to set two cut-off frequencies. Note: The cut-off frequency 1 must be smaller than the cut-off frequency 2. Run this command to set the cut-off frequency 1, and run the :MATH<n>:FILTer:W2 command to set the cut-off frequency 2. At this time, the range of <freq1> is from (0.005 x screen sample rate) to (0.095 x screen sample rate), at a step of (0.005 x screen sample rate); wherein, screen sample rate = 100/horizontal time base. • The default value of <freq1> is related to the filter type. - When the filter type is set to LPASs (Low Pass Filter), BPASs (Band Pass Filter), or BSTop (Band Stop Filter), the default value is 0.005 x screen sample rate. - When the filter type is set to HPASs (High Pass Filter), the default value is 0.1 x screen sample rate. • You can use :MATH<n>:FILTer:TYPE to set or query the filter type."
+"Return Format" = "The query returns the current cut-off frequency or cut-off frequency 1 in scientific notation. 182"
+Example = ":MATH1:FILTer:W1 1000000      /*Sets the cut-off frequency of Low Pass Filter to 1 MHz.*/ :MATH1:FILTer:W1?             /*The query returns 1.000000E+6.*/"
+Class = "Math.Filter"
+Function = "freq1"
+Command = ":MATH<n>:FILTer:W1"
+Input_Min = "0"
+Input_Max = "100000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.31 :MATH<n>:FILTer:W2"]
+Syntax = ":MATH<n>:FILTer:W2 <freq2> :MATH<n>:FILTer:W2?"
+Description = "Sets or queries the cut-off frequency 2 of Band Pass Filter/Band Stop Filter. The default unit is Hz."
+Remarks = "When the filter type is set to BPASs (Band Pass Filter) or BSTop (Band Stop Filter), you need to set two cut-off frequencies. Note: The cut-off frequency 2 must be smaller than the cut-off frequency 1. Run the :MATH<n>:FILTer:W1 command to set the cut- off frequency 1, and run this command to set the cut-off frequency 2. At this time, the range of <freq2> is from (0.01 x screen sample rate) to (0.1 x screen sample rate), at a step of (0.005 x screen sample rate); wherein, screen sample rate = 100/horizontal time base."
+"Return Format" = "The query returns the current cut-off frequency 2 in scientific notation."
+Example = ":MATH1:FILTer:W2 1500000      /*Sets the cut-off frequency 2 of Band Pass Filter to 1.5 Mhz.*/ :MATH1:FILTer:W2?             /*The query returns 1.500000E+6.*/"
+Class = "Math.Filter"
+Function = "freq2"
+Command = ":MATH<n>:FILTer:W2"
+Input_Min = "0"
+Input_Max = "10000000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.32 :MATH<n>:SENSitivity"]
+Syntax = ":MATH<n>:SENSitivity <sens> :MATH<n>:SENSitivity?"
+Description = "Adjusts the sensitivity of the logic operation. The default unit is div."
+Remarks = "N/A"
+Return_Format = "The query returns the sensitivity in scientific notation."
+Example = ":MATH1:SENSitivity 0.2 /*Adjusts the sensitivity to 0.2 div.*/ :MATH1:SENSitivity? /*The query returns 2.000000E-1.*/"
+Class = "Math"
+Function = "sensitivity"
+Command = ":MATH<n>:SENSitivity"
+Input_Min = "0.01"
+Input_Max = "10"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.33 :MATH<n>:DISTance"]
+Syntax = ":MATH<n>:DISTance <dist> :MATH<n>:DISTance?"
+Description = "Adjusts the smoothing window width of differential operation."
+Remarks = "N/A"
+Return_Format = "The query returns an integer ranging from 1 to 1,000."
+Example = ":MATH1:DISTance 20 /*Adjusts the smoothing window width to 20.*/ :MATH1:DISTance? /*The query returns 20.*/"
+Class = "Math"
+Function = "distance"
+Command = ":MATH<n>:DISTance"
+Input_Min = "1"
+Input_Max = "1000"
+Input_Values = "Integer"
+Is_Query = "True"
+
+["3.16.34 :MATH<n>:THReshold1"]
+Syntax = ":MATH<n>:THReshold1 <thre> :MATH<n>:THReshold1?"
+Description = "Adjusts the threshold level of Analog Channel 1 for logic operations."
+Remarks = "Applicable only for logic operations involving Analog Channel 1."
+Return_Format = "The query returns the threshold level in scientific notation."
+Example = ":MATH1:THReshold1 0.8 /*Adjusts to 800 mV.*/ :MATH1:THReshold1? /*Returns 0.8V.*/"
+Class = "Math"
+Function = "threshold1"
+Command = ":MATH<n>:THReshold1"
+Input_Min = "0.001"
+Input_Max = "1000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.35 :MATH<n>:THReshold2"]
+Syntax = ":MATH<n>:THReshold2 <thre> :MATH<n>:THReshold2?"
+Description = "Adjusts the threshold level of Analog Channel 2 for logic operations."
+Remarks = "Only valid for logic operations on Analog Channel 2."
+Return_Format = "The query returns the threshold level in scientific notation."
+Example = ":MATH1:THReshold2 0.8 /*Adjusts to 800 mV.*/ :MATH1:THReshold2? /*Returns 0.8V.*/"
+Class = "Math"
+Function = "threshold2"
+Command = ":MATH<n>:THReshold2"
+Input_Min = "0.001"
+Input_Max = "1000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.36 :MATH<n>:THReshold3"]
+Syntax = ":MATH<n>:THReshold3 <thre> :MATH<n>:THReshold3?"
+Description = "Adjusts the threshold level of Analog Channel 3 for logic operations."
+Remarks = "Specific to logic operations using Analog Channel 3."
+Return_Format = "The query returns the threshold level in scientific notation."
+Example = ":MATH1:THReshold3 0.8 /*Adjusts to 800 mV.*/ :MATH1:THReshold3? /*Returns 0.8V.*/"
+Class = "Math"
+Function = "threshold3"
+Command = ":MATH<n>:THReshold3"
+Input_Min = "0.001"
+Input_Max = "1000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.37 :MATH<n>:THReshold4"]
+Syntax = ":MATH<n>:THReshold4 <thre> :MATH<n>:THReshold4?"
+Description = "Adjusts the threshold level of Analog Channel 4 for logic operations."
+Remarks = "Used for logic operations involving Analog Channel 4."
+Return_Format = "The query returns the threshold level in scientific notation."
+Example = ":MATH1:THReshold4 0.8 /*Adjusts to 800 mV.*/ :MATH1:THReshold4? /*Returns 0.8V.*/"
+Class = "Math"
+Function = "threshold4"
+Command = ":MATH<n>:THReshold4"
+Input_Min = "0.001"
+Input_Max = "1000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.16.38 :MATH<n>:WINDow:TITLe?"]
+Syntax = ":MATH<n>:WINDow:TITLe?"
+Description = "Queries the title of the specified math operation window."
+Remarks = "N/A"
+Return_Format = "The query returns the window title in strings."
+Example = ":MATH1:WINDow:TITLe? /*Returns 'Math1 CH1*CH1 Scale:0U Sa:2GSa/s.'*/"
+Class = "Math"
+Function = "windowTitle"
+Command = ":MATH<n>:WINDow:TITLe?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.16.39 :MATH<n>:LABel:SHOW"]
+Syntax = ":MATH<n>:LABel:SHOW <bool> :MATH<n>:LABel:SHOW?"
+Description = "Controls the display of the waveform label for the specified operation."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":MATH1:LABel:SHOW ON /*Displays the label.*/ :MATH1:LABel:SHOW? /*Returns 1.*/"
+Class = "Math"
+Function = "labelVisibility"
+Command = ":MATH<n>:LABel:SHOW"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+
+["3.16.1 :MATH<n>:DISPlay".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.16.2 :MATH<n>:OPERator".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "ADD"
+Range = "{1|2|3|4} - <opt> Discrete {ADD|SUBTract|MULTiply| DIVision|AND|OR|XOR|NOT|FFT| INTG|DIFF|SQRT|LG|LN|EXP|ABS| LPASs|HPASs|BPASs|BSTop|AXB}"
+
+["3.16.3 :MATH<n>:SOURce1".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|REF1| REF2|REF3|REF4|REF5|REF6|REF7| REF8|REF9|REF10|MATH1| MATH2|MATH3}"
+
+["3.16.4 :MATH<n>:SOURce2".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|REF1| REF2|REF3|REF4|REF5|REF6|REF7| REF8|REF9|REF10|MATH1| MATH2|MATH3}"
+
+["3.16.5 :MATH<n>:LSOurce1".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|D0|D1|D2| D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15}"
+
+["3.16.6 :MATH<n>:LSOurce2".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|D0|D1|D2| D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15}"
+
+["3.16.7 :MATH<n>:SCALe".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4} - <scale> Real Refer to Remarks"
+
+["3.16.8 :MATH<n>:OFFSet".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "V"
+Range = "{1|2|3|4} - 166 Name Type Range Default <offset> Real -1 GV to +1 GV 0.00"
+
+["3.16.9 :MATH<n>:INVert".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.16.10 :MATH<n>:RESet".Parameter]
+Info = "N/A"
+
+["3.16.11 :MATH<n>:GRID".Parameter]
+Name = "<grid>"
+Type = "Discrete"
+Default = "-"
+Range = "{FULL|HALF|NONE}"
+
+["3.16.12 :MATH<n>:EXPand".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "GND"
+Range = "{1|2|3|4} - <exp> Discrete {GND|CENTer}"
+
+["3.16.13 :MATH<n>:WAVetype".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MAIN"
+Range = "{1|2|3|4} - <type> Discrete {MAIN|ZOOM}"
+
+["3.16.14 :MATH<n>:FFT:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.16.15 :MATH<n>:FFT:WINDow".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "HANNing"
+Range = "{1|2|3|4} - <window> Discrete {RECTangle|BLACkman| HANNing|HAMMing|FLATtop| TRIangle}"
+
+["3.16.16 :MATH<n>:FFT:UNIT".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "DB"
+Range = "{1|2|3|4} - <unit> Discrete {VRMS|DB}"
+
+["3.16.17 :MATH<n>:FFT:SCALe".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "172"
+Range = "{1|2|3|4} - <scale> Real Refer to Remarks -"
+
+["3.16.18 :MATH<n>:FFT:OFFSet".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "dB"
+Range = "{1|2|3|4} - <offset> Real Refer to Remarks 0"
+
+["3.16.19 :MATH<n>:FFT:HSCale".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MHz"
+Range = "{1|2|3|4} - <hsc> Real 10 Hz to 1 GHz 10"
+
+["3.16.20 :MATH<n>:FFT:HCENter".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MHz"
+Range = "{1|2|3|4} - <cent> Real 5 Hz to 1 GHz 5"
+
+["3.16.21 :MATH<n>:FFT:FREQuency:STARt".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "Hz"
+Range = "{1|2|3|4} - <value> Real 0 Hz to (Stop Freq - 10 Hz) 0"
+
+["3.16.22 :MATH<n>:FFT:FREQuency:END".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MHz"
+Range = "{1|2|3|4} - <value> Real (Start Freq + 10 Hz) to 1 GHz 10"
+
+["3.16.23 :MATH<n>:FFT:SEARch:ENABle".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.16.24 :MATH<n>:FFT:SEARch:NUM".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "5"
+Range = "{1|2|3|4} - <num> Integer 1 to 15"
+
+["3.16.25 :MATH<n>:FFT:SEARch:THReshold".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "dB"
+Range = "{1|2|3|4} - <thres> Real Related to the vertical scale and vertical offset of FFT operation 5.5"
+
+["3.16.26 :MATH<n>:FFT:SEARch:EXCursion".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "dB"
+Range = "{1|2|3|4} - <excur> Real 0 to (8 x VerticalScale) 1.8"
+
+["3.16.27 :MATH<n>:FFT:SEARch:ORDer".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "AMPorder"
+Range = "{1|2|3|4} - <order> Discrete {AMPorder|FREQorder}"
+
+["3.16.28 :MATH<n>:FFT:SEARch:RES?".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4}"
+
+["3.16.29 :MATH<n>:FILTer:TYPE".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "180"
+Range = "{1|2|3|4} - <type> Discrete {LPASs|HPASs|BPASs|BSTop} LPASs"
+
+["3.16.30 :MATH<n>:FILTer:W1".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "to"
+Range = "{1|2|3|4} - <freq1> Real Refer to Remarks Refer"
+
+["3.16.31 :MATH<n>:FILTer:W2".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "rate"
+Range = "{1|2|3|4} - <freq2> Real Refer to Remarks 0.1 x screen sample"
+
+["3.16.32 :MATH<n>:SENSitivity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "mdiv"
+Range = "{1|2|3|4} - <sens> Real 100 mdiv to 1 div 300"
+
+["3.16.33 :MATH<n>:DISTance".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4} - <dist> Integer 1 to 1,000"
+
+["3.16.34 :MATH<n>:THReshold1".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "V"
+Range = "{1|2|3|4} - <thre> Real (-4 × VerticalScale - VerticalOffset) to (4 × VerticalScale - VerticalOffset) 0"
+
+["3.16.35 :MATH<n>:THReshold2".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "V"
+Range = "{1|2|3|4} - <thre> Real (-4 × VerticalScale - VerticalOffset) to (4 × VerticalScale - VerticalOffset) 0"
+
+["3.16.36 :MATH<n>:THReshold3".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "V"
+Range = "{1|2|3|4} - <thre> Real (-4 × VerticalScale - VerticalOffset) to (4 × VerticalScale - VerticalOffset) 0"
+
+["3.16.37 :MATH<n>:THReshold4".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "V"
+Range = "{1|2|3|4} - <thre> Real (-4 × VerticalScale - VerticalOffset) to (4 × VerticalScale - VerticalOffset) 0"
+
+["3.16.38 :MATH<n>:WINDow:TITLe?".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4}"
+
+["3.16.39 :MATH<n>:LABel:SHOW".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"

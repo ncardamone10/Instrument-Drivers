@@ -1,0 +1,781 @@
+# SKIP_ME
+# 3.8 :CURSor Commands
+["3.8.1 :CURSor:MODE"]
+Syntax = ":CURSor:MODE <mode> :CURSor:MODE?"
+Description = "Sets or queries the mode of the cursor measurement."
+Remarks = "• OFF: disables the cursor measurement function. • MANual: the manual mode of cursor measurement. 87 • TRACk: the track mode of cursor measurement. • XY: the XY mode of cursor measurement. It is only valid when you select \"XY\" mode. You can use :TIMebase:MODE to query or set the mode. For functions of different cursor measurement modes, refer to Cursor Mode."
+"Return Format" = "The query returns OFF, MAN, TRAC, or XY."
+Example = ":CURSor:MODE MANual /*Selects the manual mode of cursor measurement.*/ :CURSor:MODE? /*The query returns MAN.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.2 :CURSor:MEASure:INDicator"]
+Syntax = ":CURSor:MEASure:INDicator <bool> :CURSor:MEASure:INDicator?"
+Description = "Sets or queries the on/off status of the indicator for the measurement function."
+Remarks = "N/A"
+"Return Format" = "The query returns 0 or 1."
+Example = ":CURSor:MEASure:INDicator? ON   /*Sets the indicator for the measurement function to ON.*/ :CURSor:MEASure:INDicator? /*The query returns 1.*/ 88"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3 :CURSor:MANual"]
+Syntax = ":CURSor:MANual:TYPE <type> :CURSor:MANual:TYPE? :CURSor:MANual:SOURce <source> :CURSor:MANual:SOURce? :CURSor:MANual:CAX <ax> :CURSor:MANual:CAX? :CURSor:MANual:CAY <ay> :CURSor:MANual:CAY? :CURSor:MANual:CBX <bx> :CURSor:MANual:CBX? :CURSor:MANual:CBY <by> :CURSor:MANual:CBY? :CURSor:MANual:AXValue? :CURSor:MANual:AYValue? :CURSor:MANual:BXValue? :CURSor:MANual:BYValue? :CURSor:MANual:XDELta? :CURSor:MANual:IXDelta? :CURSor:MANual:YDELta? :CURSor:TRACk:SOURce1 <source> :CURSor:TRACk:SOURce1? 96 :CURSor:TRACk:SOURce2 <source> :CURSor:TRACk:SOURce2? :CURSor:TRACk:CAX <ax> :CURSor:TRACk:CAX? :CURSor:TRACk:CBX <bx> :CURSor:TRACk:CBX? 98 :CURSor:TRACk:CAY <ay> :CURSor:TRACk:CAY? :CURSor:TRACk:CBY <by> :CURSor:TRACk:CBY? :CURSor:TRACk:AXValue? :CURSor:TRACk:AYValue? :CURSor:TRACk:BXValue? :CURSor:TRACk:BYValue? :CURSor:TRACk:XDELta? :CURSor:TRACk:YDELta? :CURSor:TRACk:IXDelta? :CURSor:TRACk:MODE <mode> :CURSor:TRACk:MODE? :CURSor:XY:AX <x> :CURSor:XY:AX? :CURSor:XY:BX <x> :CURSor:XY:BX? :CURSor:XY:AY <y> :CURSor:XY:AY? :CURSor:XY:BY <y> :CURSor:XY:BY? :CURSor:XY:AXValue? :CURSor:XY:AYValue? :CURSor:XY:BXValue? :CURSor:XY:BYValue? :CURSor:XY:XDELta? :CURSor:XY:YDELta? :DISPlay:CLEar :DISPlay:TYPE <type> :DISPlay:TYPE?"
+Description = "Sets or queries the cursor type in the manual mode of cursor measurement. Sets or queries the channel source of the manual mode of cursor measurement. 89 Sets or queries the horizontal position of Cursor A in the manual mode of cursor measurement. Sets or queries the vertical position of Cursor A in the manual mode of cursor measurement. Sets or queries the horizontal position of Cursor B in the manual mode of cursor measurement. 91 Sets or queries the vertical position of Cursor B in the manual mode of cursor measurement. Queries the X value at Cursor A in the manual mode of cursor measurement. The unit is determined by the horizontal unit selected for the currently corresponding channel. Queries the Y value at Cursor A in the manual mode of cursor measurement. The unit is determined by the currently selected vertical unit. Queries the X value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected horizontal unit. Queries the Y value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected vertical unit. Queries the difference (ΔX) between the X value at Cursor A and the X value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected horizontal unit. Queries the reciprocal (1/ΔX) of the absolute difference between the X value at Cursor A and the X value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected horizontal unit. 95 Queries the difference (ΔY) between the Y value at Cursor A and the Y value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected vertical unit. Sets or queries the channel source of Cursor A in the track mode of cursor measurement. Sets or queries the channel source of Cursor B in the track mode of cursor measurement. Sets or queries the horizontal position of Cursor A in the track mode of cursor measurement. Sets or queries the horizontal position of Cursor B in the track mode of cursor measurement. Sets or queries the vertical position of Cursor A in the track mode of cursor measurement. Sets or queries the vertical position of Cursor B in the track mode of cursor measurement. Queries the X value at Cursor A in the track mode of cursor measurement. The unit is determined by the amplitude unit selected for the currently corresponding channel. Queries the Y value at Cursor A in the track mode of cursor measurement. The unit is the same as that selected for the current channel. Queries the X value at Cursor B in the track mode of cursor measurement. The unit is determined by the amplitude unit selected for the currently corresponding channel. Queries the Y value at Cursor B in the track mode of cursor measurement. The unit is the same as that selected for the current channel. Queries the difference (ΔX) between the X value at Cursor A and the X value at Cursor B in the track mode of cursor measurement. Queries the difference (ΔY) between the Y value at Cursor A and the Y value at Cursor B in the track mode of cursor measurement. The unit is the same as that selected for the current channel. Queries the reciprocal (1/ΔX) of the absolute difference between the X value at Cursor A and the X value at Cursor B in the track mode of cursor measurement. The default unit is Hz. Sets or queries the axis in the track mode of cursor measurement. Sets or queries the horizontal position of Cursor A in the XY cursor measurement mode. 104 Sets or queries the horizontal position of Cursor B in the XY cursor measurement mode. Sets or queries the vertical position of Cursor A in the XY cursor measurement mode. Sets or queries the vertical position of Cursor B in the XY cursor measurement mode. Queries the X value at Cursor A in the XY cursor measurement mode. Queries the X value at Cursor A in the XY cursor measurement mode. Queries the X value at Cursor B in the XY cursor measurement mode. Queries the Y value at Cursor B in the XY cursor measurement mode. Queries the difference (∆X) between the X value at Cursor A and the X value at Cursor B in the XY cursor measurement. Queries the difference (∆Y) between the Y value at Cursor A and the Y value at Cursor B in the XY cursor measurement. The unit is the same as that selected for the current channel. Clears all the waveforms on the screen. Sets or queries the display type of the waveforms on the screen. 110"
+Remarks = "• TIME: indicates X cursor, which is often used to measure the time parameters. • AMPLitude: indicates Y cursor, which is often used to measure the voltage parameters. N/A The range of the horizontal position of Cursor A is determined by the current horizontal scale and position. The range of the vertical position of Cursor A is determined by the current vertical scale and position. The range of the horizontal position of Cursor B is determined by the current horizontal scale and position. The range of the vertical position of Cursor B is determined by the current vertical scale and position. N/A • The returned value is the same as the measurement value in the Cursor interface. Therefore, the unit is related to the vertical unit. When the vertical unit of cursor is set to Source, the unit of the returned value is the same as vertical unit of the channel. • No value is returned when the cursor measurement value is invalid. 93 N/A • The returned value is the same as the measurement value in the Cursor interface. Therefore, the unit is related to the vertical unit. When the vertical 94 unit of cursor is set to Source, the unit of the returned value is the same as vertical unit of the channel. • No value is returned when the cursor measurement value is invalid. N/A N/A N/A When no channel is enabled, sending this command will enable the corresponding channel. When no channel is enabled, sending this command will enable the corresponding channel. 97 The range of the horizontal position of Cursor A is determined by the current horizontal scale and position. The range of the horizontal position of Cursor B is determined by the current horizontal scale and position. The range of the vertical position of Cursor A is determined by the current vertical scale and position. The range of the vertical position of Cursor B is determined by the current vertical scale and position. N/A N/A N/A 101 N/A N/A N/A N/A N/A N/A N/A N/A N/A 106 N/A N/A N/A N/A N/A N/A • If the oscilloscope is in the \"RUN\" state, new waveforms will continue being displayed after being cleared. • You can also send the :CLEar command to clear all the waveforms on the screen. • This command functions the same as the front-panel key ."
+"Return Format" = "The query returns TIME or AMPL. The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE. The query returns the horizontal position of Cursor A scientific notation. The unit is s. 90 The query returns the vertical position of Cursor A in scientific notation. The unit is V. The query returns the horizontal position of Cursor B in scientific notation. The unit is s. The query returns the vertical position of Cursor B in scientific notation. The unit is V. The query returns the X value at Cursor A in scientific notation. The query returns the Y value at Cursor A in scientific notation. The query returns the X value at Cursor B in scientific notation. The query returns the Y value at Cursor B in scientific notation. The query returns the current difference in scientific notation. The query returns 1/ΔX in scientific notation. The query returns the current difference in scientific notation. The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE. The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE. The query returns the horizontal position of Cursor A scientific notation. The unit is s. The query returns the horizontal position of Cursor B in scientific notation. The unit is s. The query returns the vertical position of Cursor A in scientific notation. The unit is V. 99 The query returns the vertical position of Cursor B in scientific notation. The unit is V. The query returns the X value at Cursor A in scientific notation. The query returns the Y value at Cursor A in scientific notation. The query returns the X value at Cursor B in scientific notation. The query returns the Y value at Cursor B in scientific notation. The query returns the current difference in scientific notation. 102 The query returns the current difference in scientific notation. The query returns 1/ΔX in scientific notation. 103 The query returns Y or X. The query returns the horizontal position of Cursor A in scientific notation. The query returns the horizontal position of Cursor B in scientific notation. The query returns the vertical position of Cursor A in scientific notation. The query returns the vertical position of Cursor B in scientific notation. The query returns the X value at Cursor A in scientific notation. The query returns the Y value at Cursor A in scientific notation. 107 The query returns the X value at Cursor B in scientific notation. The query returns the Y value at Cursor B in scientific notation. The query returns the current difference in scientific notation. The query returns the current difference in scientific notation. N/A"
+Example = ":CURSor:MANual:TYPE AMPLitude       /*Sets the cursor type to AMPLitude.*/ :CURSor:MANual:TYPE?                /*The query returns AMPL.*/ 3.8.3.2 :CURSor:MANual:SOURce :CURSor:MANual:SOURce CHANnel2 /*Sets the channel source to CHANnel2.*/ :CURSor:MANual:SOURce? /*The query returns CHAN2.*/ 3.8.3.3 :CURSor:MANual:CAX :CURSor:MANual:CAX 0.00000001    /*Sets the horizontal position of Cursor A to 10 ns.*/ :CURSor:MANual:CAX?       /*The query returns 1.000000E-8.*/ 3.8.3.4 :CURSor:MANual:CAY :CURSor:MANual:CAY 0.1    /*Sets the vertical position of Cursor A to 0.1 V.*/ :CURSor:MANual:CAY?       /*The query returns 1.000000E-1.*/ 3.8.3.5 :CURSor:MANual:CBX :CURSor:MANual:CBX 0.00000001    /*Sets the horizontal position of Cursor B to 10 ns.*/ :CURSor:MANual:CBX?       /*The query returns 1.000000E-8.*/ 3.8.3.6 :CURSor:MANual:CBY :CURSor:MANual:CBY 0.1    /*Sets the vertical position of Cursor B to 0.1 V.*/ :CURSor:MANual:CBY?       /*The query returns 1.000000E-1.*/ 92 3.8.3.7 :CURSor:MANual:AXValue? N/A 3.8.3.8 :CURSor:MANual:AYValue? N/A 3.8.3.9 :CURSor:MANual:BXValue? N/A 3.8.3.10 :CURSor:MANual:BYValue? N/A 3.8.3.11 :CURSor:MANual:XDELta? N/A 3.8.3.12 :CURSor:MANual:IXDelta? N/A 3.8.3.13 :CURSor:MANual:YDELta? N/A 3.8.4 :CURSor:TRACk 3.8.4.1 :CURSor:TRACk:SOURce1 :CURSor:TRACk:SOURce1 CHANnel2    /*Sets the channel source to CHANnel2.*/ :CURSor:TRACk:SOURce1?             /*The query returns CHAN2.*/ 3.8.4.2 :CURSor:TRACk:SOURce2 :CURSor:TRACk:SOURce2 CHANnel2    /*Sets the channel source to CHANnel2.*/ :CURSor:TRACk:SOURce2?             /*The query returns CHAN2.*/ 3.8.4.3 :CURSor:TRACk:CAX :CURSor:TRACk:CAX 1.000000E-8    /*Sets the horizontal position of Cursor A to 10 ns.*/ :CURSor:TRACk:CAX?       /*The query returns 1.000000E-8.*/ 3.8.4.4 :CURSor:TRACk:CBX :CURSor:TRACk:CBX 1.000000E-8    /*Sets the horizontal position of Cursor B 10 ns.*/ :CURSor:TRACk:CBX?       /*The query returns 1.000000E-8.*/ 3.8.4.5 :CURSor:TRACk:CAY :CURSor:TRACk:CAY 0.1    /*Sets the vertical position of Cursor A to 0.1 V.*/ :CURSor:TRACk:CAY?       /*The query returns 1.000000E-1.*/ 3.8.4.6 :CURSor:TRACk:CBY :CURSor:TRACk:CBY 0.1    /*Sets the vertical position of Cursor B to 0.1 V.*/ :CURSor:TRACk:CBY?       /*The query returns 1.000000E-1.*/ 3.8.4.7 :CURSor:TRACk:AXValue? N/A 3.8.4.8 :CURSor:TRACk:AYValue? N/A 3.8.4.9 :CURSor:TRACk:BXValue? N/A 3.8.4.10 :CURSor:TRACk:BYValue? N/A 3.8.4.11 :CURSor:TRACk:XDELta? N/A 3.8.4.12 :CURSor:TRACk:YDELta? N/A 3.8.4.13 :CURSor:TRACk:IXDelta? N/A 3.8.4.14 :CURSor:TRACk:MODE :CURSor:TRACk:MODE X    /*Sets the axis in the track mode of cursor measurement to X-axis.*/ :CURSor:TRACk:MODE?       /*The query returns X.*/ 3.8.5 :CURSor:XY The :CURSor:XY commands are only available when the horizontal time base mode is set to XY. 3.8.5.1 :CURSor:XY:AX :CURSor:XY:AX 0.1    /*Sets the horizontal position of Cursor A to 100 mV.*/ :CURSor:XY:AX?       /*The query returns 1.000000E-1.*/ 3.8.5.2 :CURSor:XY:BX :CURSor:XY:BX 0.1    /*Sets the horizontal position of Cursor B to 100 mV.*/ :CURSor:XY:BX?       /*The query returns 1.000000E-1.*/ 105 3.8.5.3 :CURSor:XY:AY :CURSor:XY:AY 0.1    /*Sets the vertical position of Cursor A to 100 mV.*/ :CURSor:XY:AY?       /*The query returns 1.000000E-1.*/ 3.8.5.4 :CURSor:XY:BY :CURSor:XY:BY 0.1    /*Sets the vertical position of Cursor B to 100 mV.*/ :CURSor:XY:BY?       /*The query returns 1.000000E-1.*/ 3.8.5.5 :CURSor:XY:AXValue? N/A 3.8.5.6 :CURSor:XY:AYValue? N/A 3.8.5.7 :CURSor:XY:BXValue? N/A 3.8.5.8 :CURSor:XY:BYValue? N/A 108 3.8.5.9 :CURSor:XY:XDELta? N/A 3.8.5.10 :CURSor:XY:YDELta? N/A 109 3.9 :DISPlay Commands The :DISPlay commands can be used to set the displayed type of the waveform, persistence time, intensity, grid type, grid brightness, etc. 3.9.1 :DISPlay:CLEar N/A 3.9.2 :DISPlay:TYPE"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.1 :CURSor:MANual:TYPE"]
+Syntax = ":CURSor:MANual:TYPE <type> :CURSor:MANual:TYPE?"
+Description = "Sets or queries the cursor type in the manual mode of cursor measurement."
+Remarks = "• TIME: indicates X cursor, which is often used to measure the time parameters. • AMPLitude: indicates Y cursor, which is often used to measure the voltage parameters."
+"Return Format" = "The query returns TIME or AMPL."
+Example = ":CURSor:MANual:TYPE AMPLitude       /*Sets the cursor type to AMPLitude.*/ :CURSor:MANual:TYPE?                /*The query returns AMPL.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.2 :CURSor:MANual:SOURce"]
+Syntax = ":CURSor:MANual:SOURce <source> :CURSor:MANual:SOURce?"
+Description = "Sets or queries the channel source of the manual mode of cursor measurement. 89"
+Remarks = "N/A"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE."
+Example = ":CURSor:MANual:SOURce CHANnel2 /*Sets the channel source to CHANnel2.*/ :CURSor:MANual:SOURce? /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.3 :CURSor:MANual:CAX"]
+Syntax = ":CURSor:MANual:CAX <ax> :CURSor:MANual:CAX?"
+Description = "Sets or queries the horizontal position of Cursor A in the manual mode of cursor measurement."
+Remarks = "The range of the horizontal position of Cursor A is determined by the current horizontal scale and position."
+"Return Format" = "The query returns the horizontal position of Cursor A scientific notation. The unit is s. 90"
+Example = ":CURSor:MANual:CAX 0.00000001    /*Sets the horizontal position of Cursor A to 10 ns.*/ :CURSor:MANual:CAX?       /*The query returns 1.000000E-8.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.4 :CURSor:MANual:CAY"]
+Syntax = ":CURSor:MANual:CAY <ay> :CURSor:MANual:CAY?"
+Description = "Sets or queries the vertical position of Cursor A in the manual mode of cursor measurement."
+Remarks = "The range of the vertical position of Cursor A is determined by the current vertical scale and position."
+"Return Format" = "The query returns the vertical position of Cursor A in scientific notation. The unit is V."
+Example = ":CURSor:MANual:CAY 0.1    /*Sets the vertical position of Cursor A to 0.1 V.*/ :CURSor:MANual:CAY?       /*The query returns 1.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.5 :CURSor:MANual:CBX"]
+Syntax = ":CURSor:MANual:CBX <bx> :CURSor:MANual:CBX?"
+Description = "Sets or queries the horizontal position of Cursor B in the manual mode of cursor measurement. 91"
+Remarks = "The range of the horizontal position of Cursor B is determined by the current horizontal scale and position."
+"Return Format" = "The query returns the horizontal position of Cursor B in scientific notation. The unit is s."
+Example = ":CURSor:MANual:CBX 0.00000001    /*Sets the horizontal position of Cursor B to 10 ns.*/ :CURSor:MANual:CBX?       /*The query returns 1.000000E-8.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.6 :CURSor:MANual:CBY"]
+Syntax = ":CURSor:MANual:CBY <by> :CURSor:MANual:CBY?"
+Description = "Sets or queries the vertical position of Cursor B in the manual mode of cursor measurement."
+Remarks = "The range of the vertical position of Cursor B is determined by the current vertical scale and position."
+"Return Format" = "The query returns the vertical position of Cursor B in scientific notation. The unit is V."
+Example = ":CURSor:MANual:CBY 0.1    /*Sets the vertical position of Cursor B to 0.1 V.*/ :CURSor:MANual:CBY?       /*The query returns 1.000000E-1.*/ 92"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.7 :CURSor:MANual:AXValue?"]
+Syntax = ":CURSor:MANual:AXValue?"
+Description = "Queries the X value at Cursor A in the manual mode of cursor measurement. The unit is determined by the horizontal unit selected for the currently corresponding channel."
+Remarks = "N/A"
+"Return Format" = "The query returns the X value at Cursor A in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.8 :CURSor:MANual:AYValue?"]
+Syntax = ":CURSor:MANual:AYValue?"
+Description = "Queries the Y value at Cursor A in the manual mode of cursor measurement. The unit is determined by the currently selected vertical unit."
+Remarks = "• The returned value is the same as the measurement value in the Cursor interface. Therefore, the unit is related to the vertical unit. When the vertical unit of cursor is set to Source, the unit of the returned value is the same as vertical unit of the channel. • No value is returned when the cursor measurement value is invalid. 93"
+"Return Format" = "The query returns the Y value at Cursor A in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.9 :CURSor:MANual:BXValue?"]
+Syntax = ":CURSor:MANual:BXValue?"
+Description = "Queries the X value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected horizontal unit."
+Remarks = "N/A"
+"Return Format" = "The query returns the X value at Cursor B in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.10 :CURSor:MANual:BYValue?"]
+Syntax = ":CURSor:MANual:BYValue?"
+Description = "Queries the Y value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected vertical unit."
+Remarks = "• The returned value is the same as the measurement value in the Cursor interface. Therefore, the unit is related to the vertical unit. When the vertical 94 unit of cursor is set to Source, the unit of the returned value is the same as vertical unit of the channel. • No value is returned when the cursor measurement value is invalid."
+"Return Format" = "The query returns the Y value at Cursor B in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.11 :CURSor:MANual:XDELta?"]
+Syntax = ":CURSor:MANual:XDELta?"
+Description = "Queries the difference (ΔX) between the X value at Cursor A and the X value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected horizontal unit."
+Remarks = "N/A"
+"Return Format" = "The query returns the current difference in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.12 :CURSor:MANual:IXDelta?"]
+Syntax = ":CURSor:MANual:IXDelta?"
+Description = "Queries the reciprocal (1/ΔX) of the absolute difference between the X value at Cursor A and the X value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected horizontal unit. 95"
+Remarks = "N/A"
+"Return Format" = "The query returns 1/ΔX in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.3.13 :CURSor:MANual:YDELta?"]
+Syntax = ":CURSor:MANual:YDELta?"
+Description = "Queries the difference (ΔY) between the Y value at Cursor A and the Y value at Cursor B in the manual mode of cursor measurement. The unit is determined by the currently selected vertical unit."
+Remarks = "N/A"
+"Return Format" = "The query returns the current difference in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4 :CURSor:TRACk"]
+Syntax = ":CURSor:TRACk:SOURce1 <source> :CURSor:TRACk:SOURce1? 96 :CURSor:TRACk:SOURce2 <source> :CURSor:TRACk:SOURce2? :CURSor:TRACk:CAX <ax> :CURSor:TRACk:CAX? :CURSor:TRACk:CBX <bx> :CURSor:TRACk:CBX? 98 :CURSor:TRACk:CAY <ay> :CURSor:TRACk:CAY? :CURSor:TRACk:CBY <by> :CURSor:TRACk:CBY? :CURSor:TRACk:AXValue? :CURSor:TRACk:AYValue? :CURSor:TRACk:BXValue? :CURSor:TRACk:BYValue? :CURSor:TRACk:XDELta? :CURSor:TRACk:YDELta? :CURSor:TRACk:IXDelta? :CURSor:TRACk:MODE <mode> :CURSor:TRACk:MODE? :CURSor:XY:AX <x> :CURSor:XY:AX? :CURSor:XY:BX <x> :CURSor:XY:BX? :CURSor:XY:AY <y> :CURSor:XY:AY? :CURSor:XY:BY <y> :CURSor:XY:BY? :CURSor:XY:AXValue? :CURSor:XY:AYValue? :CURSor:XY:BXValue? :CURSor:XY:BYValue? :CURSor:XY:XDELta? :CURSor:XY:YDELta? :DISPlay:CLEar :DISPlay:TYPE <type> :DISPlay:TYPE?"
+Description = "Sets or queries the channel source of Cursor A in the track mode of cursor measurement. Sets or queries the channel source of Cursor B in the track mode of cursor measurement. Sets or queries the horizontal position of Cursor A in the track mode of cursor measurement. Sets or queries the horizontal position of Cursor B in the track mode of cursor measurement. Sets or queries the vertical position of Cursor A in the track mode of cursor measurement. Sets or queries the vertical position of Cursor B in the track mode of cursor measurement. Queries the X value at Cursor A in the track mode of cursor measurement. The unit is determined by the amplitude unit selected for the currently corresponding channel. Queries the Y value at Cursor A in the track mode of cursor measurement. The unit is the same as that selected for the current channel. Queries the X value at Cursor B in the track mode of cursor measurement. The unit is determined by the amplitude unit selected for the currently corresponding channel. Queries the Y value at Cursor B in the track mode of cursor measurement. The unit is the same as that selected for the current channel. Queries the difference (ΔX) between the X value at Cursor A and the X value at Cursor B in the track mode of cursor measurement. Queries the difference (ΔY) between the Y value at Cursor A and the Y value at Cursor B in the track mode of cursor measurement. The unit is the same as that selected for the current channel. Queries the reciprocal (1/ΔX) of the absolute difference between the X value at Cursor A and the X value at Cursor B in the track mode of cursor measurement. The default unit is Hz. Sets or queries the axis in the track mode of cursor measurement. Sets or queries the horizontal position of Cursor A in the XY cursor measurement mode. 104 Sets or queries the horizontal position of Cursor B in the XY cursor measurement mode. Sets or queries the vertical position of Cursor A in the XY cursor measurement mode. Sets or queries the vertical position of Cursor B in the XY cursor measurement mode. Queries the X value at Cursor A in the XY cursor measurement mode. Queries the X value at Cursor A in the XY cursor measurement mode. Queries the X value at Cursor B in the XY cursor measurement mode. Queries the Y value at Cursor B in the XY cursor measurement mode. Queries the difference (∆X) between the X value at Cursor A and the X value at Cursor B in the XY cursor measurement. Queries the difference (∆Y) between the Y value at Cursor A and the Y value at Cursor B in the XY cursor measurement. The unit is the same as that selected for the current channel. Clears all the waveforms on the screen. Sets or queries the display type of the waveforms on the screen. 110"
+Remarks = "When no channel is enabled, sending this command will enable the corresponding channel. When no channel is enabled, sending this command will enable the corresponding channel. 97 The range of the horizontal position of Cursor A is determined by the current horizontal scale and position. The range of the horizontal position of Cursor B is determined by the current horizontal scale and position. The range of the vertical position of Cursor A is determined by the current vertical scale and position. The range of the vertical position of Cursor B is determined by the current vertical scale and position. N/A N/A N/A 101 N/A N/A N/A N/A N/A N/A N/A N/A N/A 106 N/A N/A N/A N/A N/A N/A • If the oscilloscope is in the \"RUN\" state, new waveforms will continue being displayed after being cleared. • You can also send the :CLEar command to clear all the waveforms on the screen. • This command functions the same as the front-panel key ."
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE. The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE. The query returns the horizontal position of Cursor A scientific notation. The unit is s. The query returns the horizontal position of Cursor B in scientific notation. The unit is s. The query returns the vertical position of Cursor A in scientific notation. The unit is V. 99 The query returns the vertical position of Cursor B in scientific notation. The unit is V. The query returns the X value at Cursor A in scientific notation. The query returns the Y value at Cursor A in scientific notation. The query returns the X value at Cursor B in scientific notation. The query returns the Y value at Cursor B in scientific notation. The query returns the current difference in scientific notation. 102 The query returns the current difference in scientific notation. The query returns 1/ΔX in scientific notation. 103 The query returns Y or X. The query returns the horizontal position of Cursor A in scientific notation. The query returns the horizontal position of Cursor B in scientific notation. The query returns the vertical position of Cursor A in scientific notation. The query returns the vertical position of Cursor B in scientific notation. The query returns the X value at Cursor A in scientific notation. The query returns the Y value at Cursor A in scientific notation. 107 The query returns the X value at Cursor B in scientific notation. The query returns the Y value at Cursor B in scientific notation. The query returns the current difference in scientific notation. The query returns the current difference in scientific notation. N/A"
+Example = ":CURSor:TRACk:SOURce1 CHANnel2    /*Sets the channel source to CHANnel2.*/ :CURSor:TRACk:SOURce1?             /*The query returns CHAN2.*/ 3.8.4.2 :CURSor:TRACk:SOURce2 :CURSor:TRACk:SOURce2 CHANnel2    /*Sets the channel source to CHANnel2.*/ :CURSor:TRACk:SOURce2?             /*The query returns CHAN2.*/ 3.8.4.3 :CURSor:TRACk:CAX :CURSor:TRACk:CAX 1.000000E-8    /*Sets the horizontal position of Cursor A to 10 ns.*/ :CURSor:TRACk:CAX?       /*The query returns 1.000000E-8.*/ 3.8.4.4 :CURSor:TRACk:CBX :CURSor:TRACk:CBX 1.000000E-8    /*Sets the horizontal position of Cursor B 10 ns.*/ :CURSor:TRACk:CBX?       /*The query returns 1.000000E-8.*/ 3.8.4.5 :CURSor:TRACk:CAY :CURSor:TRACk:CAY 0.1    /*Sets the vertical position of Cursor A to 0.1 V.*/ :CURSor:TRACk:CAY?       /*The query returns 1.000000E-1.*/ 3.8.4.6 :CURSor:TRACk:CBY :CURSor:TRACk:CBY 0.1    /*Sets the vertical position of Cursor B to 0.1 V.*/ :CURSor:TRACk:CBY?       /*The query returns 1.000000E-1.*/ 3.8.4.7 :CURSor:TRACk:AXValue? N/A 3.8.4.8 :CURSor:TRACk:AYValue? N/A 3.8.4.9 :CURSor:TRACk:BXValue? N/A 3.8.4.10 :CURSor:TRACk:BYValue? N/A 3.8.4.11 :CURSor:TRACk:XDELta? N/A 3.8.4.12 :CURSor:TRACk:YDELta? N/A 3.8.4.13 :CURSor:TRACk:IXDelta? N/A 3.8.4.14 :CURSor:TRACk:MODE :CURSor:TRACk:MODE X    /*Sets the axis in the track mode of cursor measurement to X-axis.*/ :CURSor:TRACk:MODE?       /*The query returns X.*/ 3.8.5 :CURSor:XY The :CURSor:XY commands are only available when the horizontal time base mode is set to XY. 3.8.5.1 :CURSor:XY:AX :CURSor:XY:AX 0.1    /*Sets the horizontal position of Cursor A to 100 mV.*/ :CURSor:XY:AX?       /*The query returns 1.000000E-1.*/ 3.8.5.2 :CURSor:XY:BX :CURSor:XY:BX 0.1    /*Sets the horizontal position of Cursor B to 100 mV.*/ :CURSor:XY:BX?       /*The query returns 1.000000E-1.*/ 105 3.8.5.3 :CURSor:XY:AY :CURSor:XY:AY 0.1    /*Sets the vertical position of Cursor A to 100 mV.*/ :CURSor:XY:AY?       /*The query returns 1.000000E-1.*/ 3.8.5.4 :CURSor:XY:BY :CURSor:XY:BY 0.1    /*Sets the vertical position of Cursor B to 100 mV.*/ :CURSor:XY:BY?       /*The query returns 1.000000E-1.*/ 3.8.5.5 :CURSor:XY:AXValue? N/A 3.8.5.6 :CURSor:XY:AYValue? N/A 3.8.5.7 :CURSor:XY:BXValue? N/A 3.8.5.8 :CURSor:XY:BYValue? N/A 108 3.8.5.9 :CURSor:XY:XDELta? N/A 3.8.5.10 :CURSor:XY:YDELta? N/A 109 3.9 :DISPlay Commands The :DISPlay commands can be used to set the displayed type of the waveform, persistence time, intensity, grid type, grid brightness, etc. 3.9.1 :DISPlay:CLEar N/A 3.9.2 :DISPlay:TYPE"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.1 :CURSor:TRACk:SOURce1"]
+Syntax = ":CURSor:TRACk:SOURce1 <source> :CURSor:TRACk:SOURce1? 96"
+Description = "Sets or queries the channel source of Cursor A in the track mode of cursor measurement."
+Remarks = "When no channel is enabled, sending this command will enable the corresponding channel."
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE."
+Example = ":CURSor:TRACk:SOURce1 CHANnel2    /*Sets the channel source to CHANnel2.*/ :CURSor:TRACk:SOURce1?             /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.2 :CURSor:TRACk:SOURce2"]
+Syntax = ":CURSor:TRACk:SOURce2 <source> :CURSor:TRACk:SOURce2?"
+Description = "Sets or queries the channel source of Cursor B in the track mode of cursor measurement."
+Remarks = "When no channel is enabled, sending this command will enable the corresponding channel. 97"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, MATH4, or NONE."
+Example = ":CURSor:TRACk:SOURce2 CHANnel2    /*Sets the channel source to CHANnel2.*/ :CURSor:TRACk:SOURce2?             /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.3 :CURSor:TRACk:CAX"]
+Syntax = ":CURSor:TRACk:CAX <ax> :CURSor:TRACk:CAX?"
+Description = "Sets or queries the horizontal position of Cursor A in the track mode of cursor measurement."
+Remarks = "The range of the horizontal position of Cursor A is determined by the current horizontal scale and position."
+"Return Format" = "The query returns the horizontal position of Cursor A scientific notation. The unit is s."
+Example = ":CURSor:TRACk:CAX 1.000000E-8    /*Sets the horizontal position of Cursor A to 10 ns.*/ :CURSor:TRACk:CAX?       /*The query returns 1.000000E-8.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.4 :CURSor:TRACk:CBX"]
+Syntax = ":CURSor:TRACk:CBX <bx> :CURSor:TRACk:CBX? 98"
+Description = "Sets or queries the horizontal position of Cursor B in the track mode of cursor measurement."
+Remarks = "The range of the horizontal position of Cursor B is determined by the current horizontal scale and position."
+"Return Format" = "The query returns the horizontal position of Cursor B in scientific notation. The unit is s."
+Example = ":CURSor:TRACk:CBX 1.000000E-8    /*Sets the horizontal position of Cursor B 10 ns.*/ :CURSor:TRACk:CBX?       /*The query returns 1.000000E-8.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.5 :CURSor:TRACk:CAY"]
+Syntax = ":CURSor:TRACk:CAY <ay> :CURSor:TRACk:CAY?"
+Description = "Sets or queries the vertical position of Cursor A in the track mode of cursor measurement."
+Remarks = "The range of the vertical position of Cursor A is determined by the current vertical scale and position."
+"Return Format" = "The query returns the vertical position of Cursor A in scientific notation. The unit is V. 99"
+Example = ":CURSor:TRACk:CAY 0.1    /*Sets the vertical position of Cursor A to 0.1 V.*/ :CURSor:TRACk:CAY?       /*The query returns 1.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.6 :CURSor:TRACk:CBY"]
+Syntax = ":CURSor:TRACk:CBY <by> :CURSor:TRACk:CBY?"
+Description = "Sets or queries the vertical position of Cursor B in the track mode of cursor measurement."
+Remarks = "The range of the vertical position of Cursor B is determined by the current vertical scale and position."
+"Return Format" = "The query returns the vertical position of Cursor B in scientific notation. The unit is V."
+Example = ":CURSor:TRACk:CBY 0.1    /*Sets the vertical position of Cursor B to 0.1 V.*/ :CURSor:TRACk:CBY?       /*The query returns 1.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.7 :CURSor:TRACk:AXValue?"]
+Syntax = ":CURSor:TRACk:AXValue?"
+Description = "Queries the X value at Cursor A in the track mode of cursor measurement. The unit is determined by the amplitude unit selected for the currently corresponding channel."
+Remarks = "N/A"
+"Return Format" = "The query returns the X value at Cursor A in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.8 :CURSor:TRACk:AYValue?"]
+Syntax = ":CURSor:TRACk:AYValue?"
+Description = "Queries the Y value at Cursor A in the track mode of cursor measurement. The unit is the same as that selected for the current channel."
+Remarks = "N/A"
+"Return Format" = "The query returns the Y value at Cursor A in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.9 :CURSor:TRACk:BXValue?"]
+Syntax = ":CURSor:TRACk:BXValue?"
+Description = "Queries the X value at Cursor B in the track mode of cursor measurement. The unit is determined by the amplitude unit selected for the currently corresponding channel."
+Remarks = "N/A 101"
+"Return Format" = "The query returns the X value at Cursor B in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.10 :CURSor:TRACk:BYValue?"]
+Syntax = ":CURSor:TRACk:BYValue?"
+Description = "Queries the Y value at Cursor B in the track mode of cursor measurement. The unit is the same as that selected for the current channel."
+Remarks = "N/A"
+"Return Format" = "The query returns the Y value at Cursor B in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.11 :CURSor:TRACk:XDELta?"]
+Syntax = ":CURSor:TRACk:XDELta?"
+Description = "Queries the difference (ΔX) between the X value at Cursor A and the X value at Cursor B in the track mode of cursor measurement."
+Remarks = "N/A"
+"Return Format" = "The query returns the current difference in scientific notation. 102"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.12 :CURSor:TRACk:YDELta?"]
+Syntax = ":CURSor:TRACk:YDELta?"
+Description = "Queries the difference (ΔY) between the Y value at Cursor A and the Y value at Cursor B in the track mode of cursor measurement. The unit is the same as that selected for the current channel."
+Remarks = "N/A"
+"Return Format" = "The query returns the current difference in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.13 :CURSor:TRACk:IXDelta?"]
+Syntax = ":CURSor:TRACk:IXDelta?"
+Description = "Queries the reciprocal (1/ΔX) of the absolute difference between the X value at Cursor A and the X value at Cursor B in the track mode of cursor measurement. The default unit is Hz."
+Remarks = "N/A"
+"Return Format" = "The query returns 1/ΔX in scientific notation. 103"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.4.14 :CURSor:TRACk:MODE"]
+Syntax = ":CURSor:TRACk:MODE <mode> :CURSor:TRACk:MODE?"
+Description = "Sets or queries the axis in the track mode of cursor measurement."
+Remarks = "N/A"
+"Return Format" = "The query returns Y or X."
+Example = ":CURSor:TRACk:MODE X    /*Sets the axis in the track mode of cursor measurement to X-axis.*/ :CURSor:TRACk:MODE?       /*The query returns X.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5 :CURSor:XY"]
+Syntax = ":CURSor:XY:AX <x> :CURSor:XY:AX? :CURSor:XY:BX <x> :CURSor:XY:BX? :CURSor:XY:AY <y> :CURSor:XY:AY? :CURSor:XY:BY <y> :CURSor:XY:BY? :CURSor:XY:AXValue? :CURSor:XY:AYValue? :CURSor:XY:BXValue? :CURSor:XY:BYValue? :CURSor:XY:XDELta? :CURSor:XY:YDELta? :DISPlay:CLEar :DISPlay:TYPE <type> :DISPlay:TYPE?"
+Description = "Sets or queries the horizontal position of Cursor A in the XY cursor measurement mode. 104 Sets or queries the horizontal position of Cursor B in the XY cursor measurement mode. Sets or queries the vertical position of Cursor A in the XY cursor measurement mode. Sets or queries the vertical position of Cursor B in the XY cursor measurement mode. Queries the X value at Cursor A in the XY cursor measurement mode. Queries the X value at Cursor A in the XY cursor measurement mode. Queries the X value at Cursor B in the XY cursor measurement mode. Queries the Y value at Cursor B in the XY cursor measurement mode. Queries the difference (∆X) between the X value at Cursor A and the X value at Cursor B in the XY cursor measurement. Queries the difference (∆Y) between the Y value at Cursor A and the Y value at Cursor B in the XY cursor measurement. The unit is the same as that selected for the current channel. Clears all the waveforms on the screen. Sets or queries the display type of the waveforms on the screen. 110"
+Remarks = "N/A N/A N/A N/A 106 N/A N/A N/A N/A N/A N/A • If the oscilloscope is in the \"RUN\" state, new waveforms will continue being displayed after being cleared. • You can also send the :CLEar command to clear all the waveforms on the screen. • This command functions the same as the front-panel key ."
+"Return Format" = "The query returns the horizontal position of Cursor A in scientific notation. The query returns the horizontal position of Cursor B in scientific notation. The query returns the vertical position of Cursor A in scientific notation. The query returns the vertical position of Cursor B in scientific notation. The query returns the X value at Cursor A in scientific notation. The query returns the Y value at Cursor A in scientific notation. 107 The query returns the X value at Cursor B in scientific notation. The query returns the Y value at Cursor B in scientific notation. The query returns the current difference in scientific notation. The query returns the current difference in scientific notation. N/A"
+Example = ":CURSor:XY:AX 0.1    /*Sets the horizontal position of Cursor A to 100 mV.*/ :CURSor:XY:AX?       /*The query returns 1.000000E-1.*/ 3.8.5.2 :CURSor:XY:BX :CURSor:XY:BX 0.1    /*Sets the horizontal position of Cursor B to 100 mV.*/ :CURSor:XY:BX?       /*The query returns 1.000000E-1.*/ 105 3.8.5.3 :CURSor:XY:AY :CURSor:XY:AY 0.1    /*Sets the vertical position of Cursor A to 100 mV.*/ :CURSor:XY:AY?       /*The query returns 1.000000E-1.*/ 3.8.5.4 :CURSor:XY:BY :CURSor:XY:BY 0.1    /*Sets the vertical position of Cursor B to 100 mV.*/ :CURSor:XY:BY?       /*The query returns 1.000000E-1.*/ 3.8.5.5 :CURSor:XY:AXValue? N/A 3.8.5.6 :CURSor:XY:AYValue? N/A 3.8.5.7 :CURSor:XY:BXValue? N/A 3.8.5.8 :CURSor:XY:BYValue? N/A 108 3.8.5.9 :CURSor:XY:XDELta? N/A 3.8.5.10 :CURSor:XY:YDELta? N/A 109 3.9 :DISPlay Commands The :DISPlay commands can be used to set the displayed type of the waveform, persistence time, intensity, grid type, grid brightness, etc. 3.9.1 :DISPlay:CLEar N/A 3.9.2 :DISPlay:TYPE"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.1 :CURSor:XY:AX"]
+Syntax = ":CURSor:XY:AX <x> :CURSor:XY:AX?"
+Description = "Sets or queries the horizontal position of Cursor A in the XY cursor measurement mode. 104"
+Remarks = "N/A"
+"Return Format" = "The query returns the horizontal position of Cursor A in scientific notation."
+Example = ":CURSor:XY:AX 0.1    /*Sets the horizontal position of Cursor A to 100 mV.*/ :CURSor:XY:AX?       /*The query returns 1.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.2 :CURSor:XY:BX"]
+Syntax = ":CURSor:XY:BX <x> :CURSor:XY:BX?"
+Description = "Sets or queries the horizontal position of Cursor B in the XY cursor measurement mode."
+Remarks = "N/A"
+"Return Format" = "The query returns the horizontal position of Cursor B in scientific notation."
+Example = ":CURSor:XY:BX 0.1    /*Sets the horizontal position of Cursor B to 100 mV.*/ :CURSor:XY:BX?       /*The query returns 1.000000E-1.*/ 105"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.3 :CURSor:XY:AY"]
+Syntax = ":CURSor:XY:AY <y> :CURSor:XY:AY?"
+Description = "Sets or queries the vertical position of Cursor A in the XY cursor measurement mode."
+Remarks = "N/A"
+"Return Format" = "The query returns the vertical position of Cursor A in scientific notation."
+Example = ":CURSor:XY:AY 0.1    /*Sets the vertical position of Cursor A to 100 mV.*/ :CURSor:XY:AY?       /*The query returns 1.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.4 :CURSor:XY:BY"]
+Syntax = ":CURSor:XY:BY <y> :CURSor:XY:BY?"
+Description = "Sets or queries the vertical position of Cursor B in the XY cursor measurement mode."
+Remarks = "N/A 106"
+"Return Format" = "The query returns the vertical position of Cursor B in scientific notation."
+Example = ":CURSor:XY:BY 0.1    /*Sets the vertical position of Cursor B to 100 mV.*/ :CURSor:XY:BY?       /*The query returns 1.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.5 :CURSor:XY:AXValue?"]
+Syntax = ":CURSor:XY:AXValue?"
+Description = "Queries the X value at Cursor A in the XY cursor measurement mode."
+Remarks = "N/A"
+"Return Format" = "The query returns the X value at Cursor A in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.6 :CURSor:XY:AYValue?"]
+Syntax = ":CURSor:XY:AYValue?"
+Description = "Queries the X value at Cursor A in the XY cursor measurement mode."
+Remarks = "N/A"
+"Return Format" = "The query returns the Y value at Cursor A in scientific notation. 107"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.7 :CURSor:XY:BXValue?"]
+Syntax = ":CURSor:XY:BXValue?"
+Description = "Queries the X value at Cursor B in the XY cursor measurement mode."
+Remarks = "N/A"
+"Return Format" = "The query returns the X value at Cursor B in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.8 :CURSor:XY:BYValue?"]
+Syntax = ":CURSor:XY:BYValue?"
+Description = "Queries the Y value at Cursor B in the XY cursor measurement mode."
+Remarks = "N/A"
+"Return Format" = "The query returns the Y value at Cursor B in scientific notation."
+Example = "N/A 108"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.9 :CURSor:XY:XDELta?"]
+Syntax = ":CURSor:XY:XDELta?"
+Description = "Queries the difference (∆X) between the X value at Cursor A and the X value at Cursor B in the XY cursor measurement."
+Remarks = "N/A"
+"Return Format" = "The query returns the current difference in scientific notation."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.5.10 :CURSor:XY:YDELta?"]
+Syntax = ":CURSor:XY:YDELta? :DISPlay:CLEar :DISPlay:TYPE <type> :DISPlay:TYPE?"
+Description = "Queries the difference (∆Y) between the Y value at Cursor A and the Y value at Cursor B in the XY cursor measurement. The unit is the same as that selected for the current channel. Clears all the waveforms on the screen. Sets or queries the display type of the waveforms on the screen. 110"
+Remarks = "N/A • If the oscilloscope is in the \"RUN\" state, new waveforms will continue being displayed after being cleared. • You can also send the :CLEar command to clear all the waveforms on the screen. • This command functions the same as the front-panel key ."
+"Return Format" = "The query returns the current difference in scientific notation. N/A"
+Example = "N/A 109 3.9 :DISPlay Commands The :DISPlay commands can be used to set the displayed type of the waveform, persistence time, intensity, grid type, grid brightness, etc. 3.9.1 :DISPlay:CLEar N/A 3.9.2 :DISPlay:TYPE"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.8.1 :CURSor:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "OFF"
+Range = "{OFF|MANual|TRACk|XY}"
+
+["3.8.2 :CURSor:MEASure:INDicator".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.8.3 :CURSor:MANual".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "N/A"
+Range = "{TIME|AMPLitude} TIME Name Type Range Default <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE} CHANnel1 Name Type Range Default <ax> Real Refer to Remarks - Name Type Range Default <ay> Real Refer to Remarks - Name Type Range Default <bx> Real Refer to Remarks - Name Type Range Default <by> Real Refer to Remarks - N/A N/A N/A N/A N/A N/A N/A Name Type Range Default <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE} CHANnel1 Name Type Range Default <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE} CHANnel1 Name Type Range Default <ax> Real Refer to Remarks - Name Type Range Default <bx> Real Refer to Remarks - Name Type Range Default <ay> Real Refer to Remarks - Name Type Range Default <by> Real Refer to Remarks - N/A 100 N/A N/A N/A N/A N/A N/A Name Type Range Default <mode> Discrete {Y|X} - Name Type Range Default <x> Real Related to the current vertical scale and position - Name Type Range Default <x> Real Related to the current vertical scale and position - Name Type Range Default <y> Real Related to the current vertical scale and position - Name Type Range Default <y> Real Related to the current vertical scale and position - N/A N/A N/A N/A N/A N/A"
+
+["3.8.3.1 :CURSor:MANual:TYPE".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "TIME"
+Range = "{TIME|AMPLitude}"
+
+["3.8.3.2 :CURSor:MANual:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE}"
+
+["3.8.3.3 :CURSor:MANual:CAX".Parameter]
+Name = "<ax>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.3.4 :CURSor:MANual:CAY".Parameter]
+Name = "<ay>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.3.5 :CURSor:MANual:CBX".Parameter]
+Name = "<bx>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.3.6 :CURSor:MANual:CBY".Parameter]
+Name = "<by>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.3.7 :CURSor:MANual:AXValue?".Parameter]
+Info = "N/A"
+
+["3.8.3.8 :CURSor:MANual:AYValue?".Parameter]
+Info = "N/A"
+
+["3.8.3.9 :CURSor:MANual:BXValue?".Parameter]
+Info = "N/A"
+
+["3.8.3.10 :CURSor:MANual:BYValue?".Parameter]
+Info = "N/A"
+
+["3.8.3.11 :CURSor:MANual:XDELta?".Parameter]
+Info = "N/A"
+
+["3.8.3.12 :CURSor:MANual:IXDelta?".Parameter]
+Info = "N/A"
+
+["3.8.3.13 :CURSor:MANual:YDELta?".Parameter]
+Info = "N/A"
+
+["3.8.4 :CURSor:TRACk".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "N/A"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE} CHANnel1 Name Type Range Default <source> Discrete {CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE} CHANnel1 Name Type Range Default <ax> Real Refer to Remarks - Name Type Range Default <bx> Real Refer to Remarks - Name Type Range Default <ay> Real Refer to Remarks - Name Type Range Default <by> Real Refer to Remarks - N/A 100 N/A N/A N/A N/A N/A N/A Name Type Range Default <mode> Discrete {Y|X} - Name Type Range Default <x> Real Related to the current vertical scale and position - Name Type Range Default <x> Real Related to the current vertical scale and position - Name Type Range Default <y> Real Related to the current vertical scale and position - Name Type Range Default <y> Real Related to the current vertical scale and position - N/A N/A N/A N/A N/A N/A"
+
+["3.8.4.1 :CURSor:TRACk:SOURce1".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE}"
+
+["3.8.4.2 :CURSor:TRACk:SOURce2".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4|NONE}"
+
+["3.8.4.3 :CURSor:TRACk:CAX".Parameter]
+Name = "<ax>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.4.4 :CURSor:TRACk:CBX".Parameter]
+Name = "<bx>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.4.5 :CURSor:TRACk:CAY".Parameter]
+Name = "<ay>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.4.6 :CURSor:TRACk:CBY".Parameter]
+Name = "<by>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.8.4.7 :CURSor:TRACk:AXValue?".Parameter]
+Info = "Data incomplete or malformed"
+
+["3.8.4.8 :CURSor:TRACk:AYValue?".Parameter]
+Info = "N/A"
+
+["3.8.4.9 :CURSor:TRACk:BXValue?".Parameter]
+Info = "N/A"
+
+["3.8.4.10 :CURSor:TRACk:BYValue?".Parameter]
+Info = "N/A"
+
+["3.8.4.11 :CURSor:TRACk:XDELta?".Parameter]
+Info = "N/A"
+
+["3.8.4.12 :CURSor:TRACk:YDELta?".Parameter]
+Info = "N/A"
+
+["3.8.4.13 :CURSor:TRACk:IXDelta?".Parameter]
+Info = "N/A"
+
+["3.8.4.14 :CURSor:TRACk:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "-"
+Range = "{Y|X}"
+
+["3.8.5 :CURSor:XY".Parameter]
+Name = "<x>"
+Type = "Real"
+Default = "N/A"
+Range = "Related to the current vertical scale and position - Name Type Range Default <x> Real Related to the current vertical scale and position - Name Type Range Default <y> Real Related to the current vertical scale and position - Name Type Range Default <y> Real Related to the current vertical scale and position - N/A N/A N/A N/A N/A N/A"
+
+["3.8.5.1 :CURSor:XY:AX".Parameter]
+Name = "<x>"
+Type = "Real"
+Default = "-"
+Range = "Related to the current vertical scale and position"
+
+["3.8.5.2 :CURSor:XY:BX".Parameter]
+Name = "<x>"
+Type = "Real"
+Default = "-"
+Range = "Related to the current vertical scale and position"
+
+["3.8.5.3 :CURSor:XY:AY".Parameter]
+Name = "<y>"
+Type = "Real"
+Default = "-"
+Range = "Related to the current vertical scale and position"
+
+["3.8.5.4 :CURSor:XY:BY".Parameter]
+Name = "<y>"
+Type = "Real"
+Default = "-"
+Range = "Related to the current vertical scale and position"
+
+["3.8.5.5 :CURSor:XY:AXValue?".Parameter]
+Info = "N/A"
+
+["3.8.5.6 :CURSor:XY:AYValue?".Parameter]
+Info = "N/A"
+
+["3.8.5.7 :CURSor:XY:BXValue?".Parameter]
+Info = "N/A"
+
+["3.8.5.8 :CURSor:XY:BYValue?".Parameter]
+Info = "N/A"
+
+["3.8.5.9 :CURSor:XY:XDELta?".Parameter]
+Info = "N/A"
+
+["3.8.5.10 :CURSor:XY:YDELta?".Parameter]
+Info = "Data incomplete or malformed"

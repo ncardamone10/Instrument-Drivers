@@ -1,0 +1,77 @@
+# 3.10 :DVM Commands
+
+["3.10.1 :DVM:CURRent?"]
+Syntax = ":DVM:CURRent?"
+Description = "Queries the current voltage value under test."
+Remarks = "N/A"
+Return_Format = "N/A"
+Example = "N/A"
+Class = "DVM"
+Function = "getCurrentVoltage"
+Command = ":DVM:CURRent?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.10.2 :DVM:ENABle"]
+Syntax = ":DVM:ENABle <bool> :DVM:ENABle?"
+Description = "Enables or disables the digital voltmeter; or queries the on/off status of the digital voltmeter."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":DVM:ENABle ON    /*Enables the digital voltmeter.*/ :DVM:ENABle?      /*The query returns 1.*/"
+Class = "DVM"
+Function = "toggleDVM"
+Command = ":DVM:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.10.3 :DVM:SOURce"]
+Syntax = ":DVM:SOURce <source> :DVM:SOURce?"
+Description = "Sets or queries the source of the digital voltmeter."
+Remarks = "N/A"
+Return_Format = "The query returns CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":DVM:SOURce CHANnel1    /*Sets the source of DVM to CHANnel1.*/ :DVM:SOURce?            /*The query returns CHAN1.*/"
+Class = "DVM"
+Function = "setDVMSource"
+Command = ":DVM:SOURce"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CHANnel1|CHANnel2|CHANnel3|CHANnel4}"
+Is_Query = "True"
+
+["3.10.4 :DVM:MODE"]
+Syntax = ":DVM:MODE <mode> :DVM:MODE?"
+Description = "Sets or queries the mode of the digital voltmeter."
+Remarks = "• ACRMs: displays the root-mean-square value of the acquired data, with the DC component removed. • DC: displays the root-average-square value of the acquired data. • DCRMs: displays the root-mean-square value of the acquired data."
+Return_Format = "The query returns ACRM, DC, or DCRM."
+Example = ":DVM:MODE DC     /*Sets the mode of the digital voltmeter to DC.*/ :DVM:MODE?           /*The query returns DC.*/"
+Class = "DVM"
+Function = "setDVMMode"
+Command = ":DVM:MODE"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{ACRMs|DC|DCRMs}"
+Is_Query = "True"
+["3.10.1 :DVM:CURRent?".Parameter]
+Info = "Data incomplete or malformed"
+
+["3.10.2 :DVM:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.10.3 :DVM:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.10.4 :DVM:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "ACRMs"
+Range = "{ACRMs|DC|DCRMs}"

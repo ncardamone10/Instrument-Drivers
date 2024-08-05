@@ -1,0 +1,462 @@
+# 3.19 :RECord Commands
+["3.19.1 :RECord:WRECord:ENABle"]
+Syntax = ":RECord:WRECord:ENABle <bool> :RECord:WRECord:ENABle?"
+Description = "Enables or disables the waveform recording function; or queries the on/off status of the waveform recording function."
+Remarks = "N/A"
+"Return Format" = "The query returns 0 or 1. 216"
+Example = ":RECord:WRECord:ENABle ON    /*Enables the waveform recording function.*/ :RECord:WRECord:ENABle?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.2 :RECord:ENABle"]
+Syntax = ":RECord:ENABle <bool> :RECord:ENABle?"
+Description = "Enables or disables the waveform recording function; or queries the on/off status of the waveform recording function."
+Remarks = "This command exists for backwards compatibility. Use the command :RECord:WRECord:ENABle."
+"Return Format" = "The query returns 0 or 1."
+Example = ":RECord:ENABle ON    /*Enables the waveform recording function.*/ :RECord:ENABle?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.3 :RECord:WRECord:OPERate"]
+Syntax = ":RECord:WRECord:OPERate <operate> :RECord:WRECord:OPERate?"
+Description = "Sets to start the waveform recording, or queries whether the waveform recording starts or stops. 217"
+Remarks = "N/A"
+"Return Format" = "The query returns RUN or STOP ."
+Example = ":RECord:WRECord:OPERate RUN    /*Sets to start recording waveforms.*/ :RECord:WRECord:OPERate?      /*The query returns RUN.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.4 :RECord:STARt"]
+Syntax = ":RECord:STARt <bool> :RECord:STARt?"
+Description = "Sets to start the waveform recording, or queries whether the waveform recording starts or stops."
+Remarks = "This command exists for backwards compatibility. Use the command :RECord:WRECord:OPERate."
+"Return Format" = "The query returns 1 or 0."
+Example = ":RECord:STARt ON    /*Sets to start recording the waveforms.*/ :RECord:STARt?      /*The query returns 1.*/ 218"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.5 :RECord:WRECord:FRAMes"]
+Syntax = ":RECord:WRECord:FRAMes <value> :RECord:WRECord:FRAMes?"
+Description = "Sets or queries the number of frames for waveform recording."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer ranging from 1 to the maximum number of frames that can be recorded currently."
+Example = ":RECord:WRECord:FRAMes 300    /*Sets the number of recorded frames to 300.*/ :RECord:WRECord:FRAMes?       /*The query returns 300.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.6 :RECord:FRAMes"]
+Syntax = ":RECord:FRAMes <value> :RECord:FRAMes?"
+Description = "Sets or queries the number of frames for waveform recording."
+Remarks = "This command exists for backwards compatibility. Use the command :RECord:WRECord:FRAMes."
+"Return Format" = "The query returns an integer ranging from 1 to the maximum number of frames that can be recorded currently."
+Example = ":RECord:FRAMes 300    /*Sets the number of recorded frames to 300.*/ :RECord:FRAMes?       /*The query returns 300.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.7 :RECord:WRECord:FRAMes:MAX"]
+Syntax = ":RECord:WRECord:FRAMes:MAX"
+Description = "Sets the number of recorded frames to the maximum number of frames."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = ":RECord:WRECord:FRAMes:MAX   /*Sets the number of recorded frames to the maximum number of frames.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.8 :RECord:WRECord: FMAX?"]
+Syntax = ":RECord:WRECord: FMAX?"
+Description = "Queries the maximum number of frames that can be recorded currently."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer. The maximum number of frames that can be recorded currently is determined by the current memory depth."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.9 :RECord:WRECord:FINTerval"]
+Syntax = ":RECord:WRECord:FINTerval <interval> :RECord:WRECord:FINTerval?"
+Description = "Sets or queries the time interval between frames in waveform recording."
+Remarks = "N/A"
+"Return Format" = "The query returns the time interval in scientific notation. The unit is s."
+Example = ":RECord:WRECord:FINTerval 1 /*Sets the time interval between frames in waveform recording to 1 s.*/ :RECord:WRECord:FINTerval? /*The query returns 1.000000E0.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.10 :RECord:WRECord:PROMpt"]
+Syntax = ":RECord:WRECord:PROMpt <bool> :RECord:WRECord:PROMpt?"
+Description = "Sets or queries the on/off status of the beeper when the recording is completed. 221"
+Remarks = "N/A"
+"Return Format" = "The query returns 0 or 1."
+Example = ":RECord:WRECord:PROMpt ON    /*Enables the beeper when the recording is completed.*/ :RECord:WRECord:PROMpt?       /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.11 :RECord:WREPlay:FCURrent"]
+Syntax = ":RECord:WREPlay:FCURrent <value> :RECord:WREPlay:FCURrent?"
+Description = "Sets or queries the current frame in waveform playing."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer."
+Example = ":RECord:WREPlay:FCURrent 300    /*Sets the current frame for waveform playing to 300.*/ :RECord:WREPlay:FCURrent?      /*The query returns 300.*/ 222"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.12 :RECord:CURRent"]
+Syntax = ":RECord:CURRent <value> :RECord:CURRent?"
+Description = "Sets or queries the current frame in waveform playing."
+Remarks = "This command exists for backwards compatibility. Use the command :RECord:WREPlay:FCURrent."
+"Return Format" = "The query returns an integer."
+Example = ":RECord:CURRent 300    /*Sets the current frame for waveform playing to 300.*/ :RECord:CURRent?      /*The query returns 300.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.13 :RECord:WREPlay:FCURrent:TIME?"]
+Syntax = ":RECord:WREPlay:FCURrent:TIME?"
+Description = "Queries the time stamp of the current frame in waveform playing."
+Remarks = "N/A 223"
+"Return Format" = "Queries the time stamp of the current frame in strings in waveform playing."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.14 :RECord:WREPlay:FSTart"]
+Syntax = ":RECord:WREPlay:FSTart <start> :RECord:WREPlay:FSTart?"
+Description = "Sets or queries the start frame in waveform playback."
+Remarks = "N/A"
+"Return Format" = "The query returns the start frame in integer."
+Example = ":RECord:WREPlay:FSTart 10    /*Sets the start frame in waveform playing to 10.*/ :RECord:WREPlay:FSTart?      /*The query returns 10.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.15 :RECord:WREPlay:FEND"]
+Syntax = ":RECord:WREPlay:FEND <end> :RECord:WREPlay:FEND?"
+Description = "Sets or queries the end frame in waveform playback. 224"
+Remarks = "N/A"
+"Return Format" = "The query returns the end frame in integer."
+Example = ":RECord:WREPlay:FEND 346    /*Sets the end frame for waveform playing to 346.*/ :RECord:WREPlay:FEND?      /*The query returns 346.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.16 :RECord:WREPlay:FMAX?"]
+Syntax = ":RECord:WREPlay:FMAX?"
+Description = "Queries the maximum number of frames that can be played back currently."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer ranging from 0 to the number of frames that have been recorded currently."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.17 :RECord:WREPlay:FINTerval"]
+Syntax = ":RECord:WREPlay:FINTerval <interval> :RECord:WREPlay:FINTerval? 225"
+Description = "Sets or queries the time interval between frames in waveform playback."
+Remarks = "N/A"
+"Return Format" = "The query returns the time interval in scientific notation. The unit is s."
+Example = ":RECord WREPlay:FINTerval 1 /*Sets the time interval between frames in waveform playback to 1 s.*/ :RECord:WREPlay:FINTerval? /*The query returns 1.000000E0.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.18 :RECord:WREPlay:MODE"]
+Syntax = ":RECord:WREPlay:MODE <mode> :RECord:WREPlay:MODE?"
+Description = "Sets the waveform playback mode to Repeat or Single; queries the waveform playback mode."
+Remarks = "N/A"
+"Return Format" = "The query returns REP or SING."
+Example = ":RECord:WREPlay:MODE REP    /*Sets the playback mode to REP.*/ :RECord:WREPlay:MODE?      /*The query returns REP.*/ 226"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.19 :RECord:WREPlay:DIRection"]
+Syntax = ":RECord:WREPlay:DIRection <direction> :RECord:WREPlay:DIRection?"
+Description = "Sets or queries the playback direction in waveform playing."
+Remarks = "N/A"
+"Return Format" = "The query returns FORW or BACK."
+Example = ":RECord:WREPlay:DIRection BACK  /*Sets the direction of waveform playback to BACK.*/ :RECord:WREPlay:DIRection?  /*The query returns BACK.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.20 :RECord:WREPlay:OPERate"]
+Syntax = ":RECord:WREPlay:OPERate <operate> :RECord:WREPlay:OPERate?"
+Description = "Enables or disables the waveform playing function; or queries the on/off status of the waveform playing function."
+Remarks = "N/A 227"
+"Return Format" = "The query returns RUN or STOP ."
+Example = ":RECord:WREPlay:OPERate RUN    /*Sets to play the waveforms.*/ :RECord:WREPlay:OPERate?      /*The query returns RUN.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.21 :RECord:PLAY"]
+Syntax = ":RECord:PLAY <bool> :RECord:PLAY?"
+Description = "Enables or disables the waveform playing function; or queries the on/off status of the waveform playing function."
+Remarks = "This command exists for backwards compatibility. Use the command :RECord:WREPlay:OPERate."
+"Return Format" = "The query returns 1 or 0."
+Example = ":RECord:PLAY ON    /*Sets to play the waveforms.*/ :RECord:PLAY?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.22 :RECord:WREPlay:BACK"]
+Syntax = ":RECord:WREPlay:BACK"
+Description = "Plays back the previous frame of waveforms manually."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = ":RECord:WREPlay:BACK /*Plays back the previous frame of waveforms manually.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.23 :RECord:WREPlay:NEXT"]
+Syntax = ":RECord:WREPlay:NEXT"
+Description = "Plays back the next frame of waveforms manually."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = ":RECord:WREPlay:NEXT /*Plays back the next frame of waveforms manually.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.24 :RECord:WREPlay:PLAY"]
+Syntax = ":RECord:WREPlay:PLAY <val> :REFerence:SOURce <ref>,<chan> :REFerence:SOURce? <ref>"
+Description = "Sets to play from the start frame or end frame manually. Sets or queries the source of the specified reference channel."
+Remarks = "• FFIRst: starts from the start frame. • FEND: starts from the end frame. Only the currently enabled channel can be selected as the source of the specified reference channel. D0-D15 are only available for the DHO900 series. 230"
+"Return Format" = "N/A"
+Example = ":RECord:WREPlay: PLAY FEND /*Sets to play from end frame manually.*/ 3.20 :REFerence Commands :REFerence commands are used to set the reference waveform parameters. This series oscilloscope provides 10 reference waveform positions (Ref1-Ref10). In the actual test process, you can compare the signal waveform with the reference waveform to locate the failure. 3.20.1 :REFerence:SOURce"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.19.1 :RECord:WRECord:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.19.2 :RECord:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.19.3 :RECord:WRECord:OPERate".Parameter]
+Name = "<operate>"
+Type = "Discrete"
+Default = "STOP"
+Range = "{RUN|STOP}"
+
+["3.19.4 :RECord:STARt".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.19.5 :RECord:WRECord:FRAMes".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "1,000"
+Range = "1 to the maximum number of frames that can be recorded currently"
+
+["3.19.6 :RECord:FRAMes".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "219"
+Range = "1 to the maximum number of frames that can be recorded currently 1,000"
+
+["3.19.7 :RECord:WRECord:FRAMes:MAX".Parameter]
+Info = "N/A"
+
+["3.19.8 :RECord:WRECord: FMAX?".Parameter]
+Info = "Data incomplete or malformed"
+
+["3.19.9 :RECord:WRECord:FINTerval".Parameter]
+Name = "<interval>"
+Type = "Real"
+Default = "ns"
+Range = "10 ns to 1 s 10"
+
+["3.19.10 :RECord:WRECord:PROMpt".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "1|ON"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.19.11 :RECord:WREPlay:FCURrent".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "recorded"
+Range = "1 to the maximum number of frames recorded The maximum number of frames"
+
+["3.19.12 :RECord:CURRent".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "recorded"
+Range = "1 to the maximum number of frames recorded The maximum number of frames"
+
+["3.19.13 :RECord:WREPlay:FCURrent:TIME?".Parameter]
+Info = "N/A"
+
+["3.19.14 :RECord:WREPlay:FSTart".Parameter]
+Name = "<start>"
+Type = "Integer"
+Default = "-"
+Range = "1 to the maximum number of frames that can be played back currently"
+
+["3.19.15 :RECord:WREPlay:FEND".Parameter]
+Name = "<end>"
+Type = "Integer"
+Default = "-"
+Range = "1 to the maximum number of frames recorded"
+
+["3.19.16 :RECord:WREPlay:FMAX?".Parameter]
+Info = "N/A"
+
+["3.19.17 :RECord:WREPlay:FINTerval".Parameter]
+Name = "<interval>"
+Type = "Real"
+Default = "-"
+Range = "1 ms to 1 s"
+
+["3.19.18 :RECord:WREPlay:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "SINGle"
+Range = "{REPeat|SINGle}"
+
+["3.19.19 :RECord:WREPlay:DIRection".Parameter]
+Name = "<direction>"
+Type = "Discrete"
+Default = "FORWard"
+Range = "{FORWard|BACKward}"
+
+["3.19.20 :RECord:WREPlay:OPERate".Parameter]
+Name = "<operate>"
+Type = "Discrete"
+Default = "STOP"
+Range = "{RUN|STOP}"
+
+["3.19.21 :RECord:PLAY".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.19.22 :RECord:WREPlay:BACK".Parameter]
+Info = "Data incomplete or malformed"
+
+["3.19.23 :RECord:WREPlay:NEXT".Parameter]
+Info = "N/A"
+
+["3.19.24 :RECord:WREPlay:PLAY".Parameter]
+Name = "<val>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{FFIRst|FEND} FFIRst 229 Name Type Range Default <ref> Discrete {1|2|3|4|5|6|7|8|9|10} - <chan> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"

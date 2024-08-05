@@ -1,0 +1,135 @@
+# 3.7 :COUNter Commands
+["3.7.1 :COUNter:CURRent?"]
+Syntax = ":COUNter:CURRent?"
+Description = "Queries the measurement value of the frequency counter."
+Remarks = "N/A"
+Return_Format = "The query returns the current measurement value of the frequency counter in scientific notation."
+Example = "N/A"
+Class = "Counter"
+Function = "CurrentMeasurement"
+Command = ":COUNter:CURRent?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.7.2 :COUNter:ENABle"]
+Syntax = ":COUNter:ENABle <bool> :COUNter:ENABle?"
+Description = "Enables or disables the frequency counter; or queries the on/off status of the frequency counter."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":COUNter:ENABle ON    /*Enables the frequency counter.*/ :COUNter:ENABle?      /*The query returns 1.*/"
+Class = "Counter"
+Function = "Enable"
+Command = ":COUNter:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.7.3 :COUNter:SOURce"]
+Syntax = ":COUNter:SOURce <source> :COUNter:SOURce?"
+Description = "Sets or queries the source of the frequency counter."
+Remarks = "Only DHO900 series supports the digital channels D0-D15. “EXT” is only available for DHO812 and DHO802."
+Return_Format = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or EXT."
+Example = ":COUNter:SOURce CHANnel2 /*Sets the source of the frequency counter to CHANnel2.*/ :COUNter:SOURce? /*The query returns CHAN2.*/"
+Class = "Counter"
+Function = "Source"
+Command = ":COUNter:SOURce"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|CHAN1|CHAN2|CHAN3|CHAN4|EXT}"
+Is_Query = "True"
+
+["3.7.4 :COUNter:MODE"]
+Syntax = ":COUNter:MODE <mode> :COUNter:MODE?"
+Description = "Sets or queries the mode of the frequency counter."
+Remarks = "• FREQuency: indicates the Frequency measurement. • PERiod: indicates the Period measurement. • TOTalize: indicates the Totalize measurement."
+Return_Format = "The query returns FREQ, PER, or TOT."
+Example = ":COUNter:MODE PERiod       /*Sets the mode of the frequency counter to PERiod.*/ :COUNter:MODE?             /*The query returns PER.*/"
+Class = "Counter"
+Function = "Mode"
+Command = ":COUNter:MODE"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{FREQ|PER|TOT}"
+Is_Query = "True"
+
+["3.7.5 :COUNter:NDIGits"]
+Syntax = ":COUNter:NDIGits <val> :COUNter:NDIGits?"
+Description = "Sets or queries the resolution of the frequency counter."
+Remarks = "The resolution setting is only available for 'Period' and 'Frequency', and unavailable for 'Totalize'. You can use :COUNter:MODE to query or set the measurement mode."
+Return_Format = "The query returns an integer ranging from 3 to 6."
+Example = ":COUNter:NDIGits 4 /*Sets the resolution of the frequency counter to 4.*/ :COUNter:NDIGits? /*The query returns 4.*/"
+Class = "Counter"
+Function = "Resolution"
+Command = ":COUNter:NDIGits"
+Input_Min = "3"
+Input_Max = "6"
+Input_Values = "{3|4|5|6}"
+Is_Query = "True"
+
+["3.7.6 :COUNter:TOTalize:ENABle"]
+Syntax = ":COUNter:TOTalize:ENABle <bool> :COUNter:TOTalize:ENABle?"
+Description = "Enables or disables the statistical function of the frequency counter; or queries the on/off status of the statistical function of the frequency counter."
+Remarks = "The statistical function is only available for 'Period' and 'Frequency', but it is unavailable for 'Totalize'. You can use :COUNter:MODE to query or set the measurement mode."
+Return_Format = "The query returns 1 or 0."
+Example = ":COUNter:TOTalize:ENABle ON /*Enables the statistical function of the frequency counter.*/ :COUNter:TOTalize:ENABle? /*The query returns 1.*/"
+Class = "Counter"
+Function = "TotalizeEnable"
+Command = ":COUNter:TOTalize:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.7.7 :COUNter:TOTalize:CLEar"]
+Syntax = ":COUNter:TOTalize:CLEar"
+Description = "Clears the total count."
+Remarks = "Available when 'Totalize', 'Frequency', or 'Period' is selected under 'Measure'."
+Return_Format = "N/A"
+Example = "N/A"
+Class = "Counter"
+Function = "TotalizeClear"
+Command = ":COUNter:TOTalize:CLEar"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+
+["3.7.1 :COUNter:CURRent?".Parameter]
+Info = "N/A"
+
+["3.7.2 :COUNter:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.7.3 :COUNter:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|EXT}"
+
+["3.7.4 :COUNter:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "FREQuency"
+Range = "{FREQuency|PERiod|TOTalize}"
+
+["3.7.5 :COUNter:NDIGits".Parameter]
+Name = "<val>"
+Type = "Integer"
+Default = "4"
+Range = "3 to 6"
+
+["3.7.6 :COUNter:TOTalize:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.7.7 :COUNter:TOTalize:CLEar".Parameter]
+Info = "N/A"

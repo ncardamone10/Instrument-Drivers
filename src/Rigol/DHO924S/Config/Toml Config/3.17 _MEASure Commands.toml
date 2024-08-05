@@ -1,0 +1,528 @@
+# 3.17 :MEASure Commands
+["3.17.1 :MEASure:SOURce"]
+Syntax = ":MEASure:SOURce <source> :MEASure:SOURce? 195"
+Description = "Sets or queries the channel source of the current measurement parameter."
+Remarks = "This command has the same function as the :MEASure:SETup:DSA and :MEASure:SETup:PSA commands. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, or MATH4."
+Example = ":MEASure:SOURce CHANnel2    /*Sets the channel source of the measurement parameter to CHANnel2.*/ :MEASure:SOURce?             /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.2 :MEASure:ITEM"]
+Syntax = ":MEASure:ITEM <item>[,<src>[,<src>]] :MEASure:ITEM? <item>[,<src>[,<src>]]"
+Description = "Measures any waveform parameter of the specified source, or queries the statistical results of any waveform parameter of the specified source."
+Remarks = "• For detailed measurement items of <item>, refer to Measurement Parameters. • The [,<src>[,<src>]] parameter is used to set the source of the measured parameter. - Only DHO900 series supports the digital channels D0-D15. - If the parameter <item> is set to PERiod, FREQuency, PWIDth, NWIDth, PDUTy, NDUTy, RRDelay, RFDelay, FRDelay, FFDelay, RRPHase, RFPHase, FRPHase, or FFPHase, the range of the parameter <src> is any one of the values in {D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3|CHANnel4|MATH1|MATH2|MATH3| MATH4}. Otherwise, the range of <src> is {CHANnel1|CHANnel2|CHANnel3| CHANnel4|MATH1|MATH2|MATH3|MATH4}. - If the measured parameter is a single source, you only need to set one source. If this parameter is omitted, then the source is, by default, the one that you've selected in the last sent command (:MEASure:SOURce, :MEASure:SETup:PSA, or :MEASure:SETup:DSA). - If the measurement parameter is a dual channel source, observe the following rules to determine the source that you've selected. That is, if the parameter <src> is omitted, the first source is, by default, the one that 197 you've selected in the last sent command (:MEASure:SOURce, :MEASure:SETup:PSA, or :MEASure:SETup:DSA); the second source is, by default, the one that you've selected in the last sent command (:MEASure:SETup:PSB or :MEASure:SETup:DSB)."
+"Return Format" = "The query returns the current measurement value in scientific notation."
+Example = ":MEASure:ITEM OVERshoot,CHANnel2   /*Enables the overshoot measurement of CH2.*/ :MEASure:ITEM? OVERshoot,CHANnel2  /*The query returns 8.888889E-3.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.3 :MEASure:CLEar"]
+Syntax = ":MEASure:CLEar"
+Description = "Clears all the enabled measurement items."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.4 :MEASure:AMSource"]
+Syntax = ":MEASure:AMSource <chan> :MEASure:AMSource?"
+Description = "Sets the source and displays all measurement values of the set source; or queries the channel source(s) of the all measurement function. 198"
+Remarks = "N/A"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, CHAN4, or OFF."
+Example = ":MEASure:AMSource CHANnel1    /*Sets the source to CHANnel1.*/ :MEASure:AMSource?             /*The query returns CHAN1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.5 :MEASure:STATistic:COUNt"]
+Syntax = ":MEASure:STATistic:COUNt <val> :MEASure:STATistic:COUNt?"
+Description = "Sets or queries the statistics count."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer ranging from 2 to 100,000."
+Example = ":MEASure:STATistic:COUNt 1000       /*Sets the statistics count to 1,000.*/ :MEASure:STATistic:COUNt?      /*The query returns 1000.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.6 :MEASure:STATistic:DISPlay"]
+Syntax = ":MEASure:STATistic:DISPlay <bool> 199 :MEASure:STATistic:DISPlay?"
+Description = "Enables or disables the statistical function; or queries the status of the statistical function."
+Remarks = "When the statistical function is enabled, the instrument makes statistics of the measurement results for at most 10 measurement items that are turned on last time and displays the statistical results."
+"Return Format" = "The query returns 1 or 0."
+Example = ":MEASure:STATistic:DISPlay ON    /*Enables the statistical function.*/ :MEASure:STATistic:DISPlay?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.7 :MEASure:STATistic:RESet"]
+Syntax = ":MEASure:STATistic:RESet"
+Description = "Clears the history statistics data and makes statistics again."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A 200"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.8 :MEASure:STATistic:ITEM"]
+Syntax = ":MEASure:STATistic:ITEM <item>[,<src>[,<src>]] :MEASure:STATistic:ITEM?<type>,<item>[,<src>[,<src>]]"
+Description = "Enables the statistical function of any waveform parameter of the specified source, or queries the statistical results of any waveform parameter of the specified source."
+Remarks = "• For detailed measurement items of <item>, refer to Measurement Parameters. • The [,<src>[,<src>]] parameter is used to set the source of the measured parameter. - Only DHO900 series supports the digital channels D0-D15. 201 - If the parameter <item> is set to PERiod, FREQuency, PWIDth, NWIDth, PDUTy, NDUTy, RRDelay, RFDelay, FRDelay, FFDelay, RRPHase, RFPHase, FRPHase, or FFPHase, the range of the parameter <src> is any one of the values in {D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3|CHANnel4|MATH1|MATH2|MATH3| MATH4}. Otherwise, the range of <src> is {CHANnel1|CHANnel2|CHANnel3| CHANnel4|MATH1|MATH2|MATH3|MATH4}. - If the measured parameter is a single source, you only need to set one source. If this parameter is omitted, then the source is, by default, the one that you've selected in the last sent command (:MEASure:SOURce, :MEASure:SETup:PSA, or :MEASure:SETup:DSA). - If the measurement parameter is a dual channel source, observe the following rules to determine the source that you've selected. That is, if the parameter <src> is omitted, the first source is, by default, the one that you've selected in the last sent command (:MEASure:SOURce, :MEASure:SETup:PSA, or :MEASure:SETup:DSA); the second source is, by default, the one that you've selected in the last sent command (:MEASure:SETup:PSB or :MEASure:SETup:DSB). • For the results of <type>, refer to Measurement Results."
+"Return Format" = "The query returns the statistical results in scientific notation."
+Example = ":MEASure:STATistic:ITEM VPP,CHANnel2   /*Enables the statistical function of the peak-peak value of CH2.*/ :MEASure:STATistic:ITEM? MAXimum,VPP   /*Queries the maximum value. The query returns 9.120000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.9 :MEASure:SETup:MAX"]
+Syntax = ":MEASure:SETup:MAX <value> :MEASure:SETup:MAX? 202"
+Description = "Sets or queries the threshold level upper limit of the analog channel in auto measurement."
+Remarks = "The range of the threshold level upper limit is related to the current threshold middle value. You can send the :MEASure:SETup:MID command to set or query the threshold middle value of the current analog channel in auto measurement. • When the threshold type is percentage, its range is from (threshold middle value + 1%) to 100%. • When the threshold type is absolute, its range changes with the probe ratio. Its max. range is from -100 MV to 100 MV; and its min. range is from -20 V to 20 V. • When the set upper limit is smaller than the current threshold middle value, a message \"Set at lower limit\" will be displayed, and the threshold middle value will not be modified automatically."
+"Return Format" = "The query returns an integer. When the threshold type is absolute, the default unit of the returned value is V."
+Example = ":MEASure:SETup:MAX 95    /*Sets the upper limit of the threshold level to 95%.*/ :MEASure:SETup:MAX?      /*The query returns 95.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.10 :MEASure:SETup:MID"]
+Syntax = ":MEASure:SETup:MID <value> :MEASure:SETup:MID?"
+Description = "Sets or queries the threshold level middle value of the analog channel in auto measurement. 203"
+Remarks = "The set middle value must be smaller than the currently set upper limit and greater than the currently set lower limit. You can send the :MEASure:SETup:MAX and :MEASure:SETup:MIN commands to set or query the threshold level upper limit and lower limit of the current analog channel in auto measurement."
+"Return Format" = "The query returns an integer. When the threshold type is absolute, the default unit of the returned value is V."
+Example = ":MEASure:SETup:MID 89    /*Sets the middle value of the threshold level to 89%.*/ :MEASure:SETup:MID?      /*The query returns 89.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.11 :MEASure:SETup:MIN"]
+Syntax = ":MEASure:SETup:MIN <value> :MEASure:SETup:MIN?"
+Description = "Sets or queries the threshold level lower limit of the analog channel in auto measurement."
+Remarks = "The range of the threshold level lower limit is related to the current threshold middle value. You can send the :MEASure:SETup:MID command to set or query the threshold middle value of the current analog channel in auto measurement. • When the threshold type is percentage, its range is from 0% to (threshold middle value - 1%). 204 • When the threshold type is absolute, its range changes with the probe ratio. Its max. range is from -100 MV to 100 MV; and its min. range is from -20 V to 20 V. • When the set lower limit is greater than the current threshold middle value, a message \"Set at upper limit\" will be displayed, and the threshold middle value will not be modified automatically."
+"Return Format" = "The query returns an integer. When the threshold type is absolute, the default unit of the returned value is V."
+Example = ":MEASure:SETup:MIN 53    /*Sets the lower limit of the threshold level to 53%.*/ :MEASure:SETup:MIN?      /*The query returns 53.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.12 :MEASure:SETup:PSA"]
+Syntax = ":MEASure:SETup:PSA <source> :MEASure:SETup:PSA?"
+Description = "Sets or queries Source A in the phase or delay measurement."
+Remarks = "This command has the same function as the :MEASure:SOURce and :MEASure:SETup:DSA commands. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, or MATH4. 205"
+Example = ":MEASure:SETup:PSA CHANnel1    /*Sets Source A of the phase measurement to CHANnel1.*/ :MEASure:SETup:PSA?             /*The query returns CHAN1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.13 :MEASure:SETup:PSB"]
+Syntax = ":MEASure:SETup:PSB <source> :MEASure:SETup:PSB?"
+Description = "Sets or queries Source B in the phase or delay measurement."
+Remarks = "This command has the same function as the :MEASure:SETup:DSB command. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, or MATH4."
+Example = ":MEASure:SETup:PSB CHANnel2    /*Sets Source B of the phase measurement to CHANnel2.*/ :MEASure:SETup:PSB?             /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.14 :MEASure:SETup:DSA"]
+Syntax = ":MEASure:SETup:DSA <source> :MEASure:SETup:DSA?"
+Description = "Sets or queries Source A in the phase or delay measurement. 206"
+Remarks = "This command has the same function as the :MEASure:SOURce and :MEASure:SETup:PSA commands. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, or MATH4."
+Example = ":MEASure:SETup:DSA CHANnel1    /*Sets Source A of the delay measurement to CHANnel1.*/ :MEASure:SETup:DSA?             /*The query returns CHAN1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.15 :MEASure:SETup:DSB"]
+Syntax = ":MEASure:SETup:DSB <source> :MEASure:SETup:DSB"
+Description = "Sets or queries Source B in the phase or delay measurement."
+Remarks = "This command has the same function as the :MEASure:SETup:PSB command. D0-D15 are only available for the DHO900 series. 207"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, or MATH4."
+Example = ":MEASure:SETup:DSB CHANnel2    /*Sets Source B of the delay measurement to CHANnel2.*/ :MEASure:SETup:DSB?             /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.16 :MEASure:THReshold:SOURce"]
+Syntax = ":MEASure:THReshold:SOURce <source> :MEASure:THReshold:SOURce?"
+Description = "Sets or queries the threshold source."
+Remarks = "Modifying the threshold will affect the measurement results of time, delay and phase parameters."
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, or MATH4."
+Example = ":MEASure:THReshold:SOURce CHANnel2    /*Sets the threshold source to CHANnel2.*/ :MEASure:THReshold:SOURce?             /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.17 :MEASure:THReshold:TYPE"]
+Syntax = ":MEASure:THReshold:TYPE <type> :MEASure:THReshold:TYPE? 208"
+Description = "Sets or queries the measurement threshold type."
+Remarks = "N/A"
+"Return Format" = "The query returns PERC or ABS."
+Example = ":MEASure:THReshold:TYPE ABSolute    /*Sets the threshold type to ABSolute.*/ :MEASure:THReshold:TYPE?             /*The query returns ABS.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.18 :MEASure:THReshold:DEFault"]
+Syntax = ":MEASure:THReshold:DEFault"
+Description = "Sets the threshold level of the analog channel in auto measurement to a default value."
+Remarks = "For the default threshold level in absolute, its upper limit and lower limit are + (vertical scale x 3) and -(vertical scale x 3), respectively."
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.19 :MEASure:AREA"]
+Syntax = ":MEASure:AREA <area> 209 :MEASure:AREA?"
+Description = "Sets or queries the type of the measurement range."
+Remarks = "• MAIN: indicates that the measurement range is within the main time base region. • ZOOM: indicates that the measurement range is within the zoomed time base region. Note that only when you enable the delayed sweep function first, can \"Zoom\" be enabled."
+"Return Format" = "The query returns MAIN, ZOOM."
+Example = ":MEASure:AREA ZOOM           /*Sets the type of the measurement range to ZOOM.*/ :MEASure:AREA?                 /*The query returns ZOOM.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.20 :MEASure:INDicator"]
+Syntax = ":MEASure:INDicator <bool> :MEASure:INDicator?"
+Description = "Sets or queries the on/off status of the measurement auto cursor."
+Remarks = "N/A 210"
+"Return Format" = "The query returns 1 or 0."
+Example = ":MEASure:INDicator ON   /*Sets the measurement auto cursor to be on.*/ :MEASure:INDicator? /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.21 :MEASure:COUNter:ENABle"]
+Syntax = ":MEASure:COUNter:ENABle <bool> :MEASure:COUNter:ENABle?"
+Description = "Sets or queries the on/off status of the frequency counter."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":MEASure:COUNter:ENABle ON    /*Enables the frequency counter.*/ :MEASure:COUNter:ENABle?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.22 :MEASure:COUNter:SOURce"]
+Syntax = ":MEASure:COUNter:SOURce <source> :MEASure:COUNter:SOURce?"
+Description = "Sets or queries the measurement source for the frequency counter. 211"
+Remarks = "Only DHO900 series supports the digital channels D0-D15. “EXT” is only available for DHO812 and DHO802."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or EXT."
+Example = ":MEASure:COUNter:SOURce CHANnel4 /*Sets the measurement source of the frequency counter to CHANnel4.*/ :MEASure:COUNter:SOURce? /*The query returns CHAN4.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.23 :MEASure:COUNter:VALue?"]
+Syntax = ":MEASure:COUNter:VALue?"
+Description = "Queries the measurement results of the frequency counter."
+Remarks = "N/A"
+"Return Format" = "The query returns the measurement results of the frequency counter in scientific notation."
+Example = ":MEASure:COUNter:VALue?   /*The query returns 9.999996E-04.*/ 212"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.24 :MEASure:AMP:TYPE"]
+Syntax = ":MEASure:AMP:TYPE <val> :MEASure:AMP:TYPE?"
+Description = "Sets or queries the amplitude method."
+Remarks = "• AUTO: indicates the Auto method. • MANual: indicates the Manual method."
+"Return Format" = "The query returns AUTO or MAN."
+Example = ":MEASure:AMP:TYPE MANual  /*Sets the amplitude method to MANual.*/ :MEASure:AMP:TYPE?  /*The query returns MAN.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.25 :MEASure:AMP:MANual:TOP"]
+Syntax = ":MEASure:AMP:MANual:TOP <val> :MEASure:AMP:MANual:TOP?"
+Description = "Sets or queries the amplitude top value type for the manual amplitude method."
+Remarks = "• HISTogram: indicates the histogram type. 213 • MAXMin: indicates the Max-Min type."
+"Return Format" = "The query returns HIST or MAXM."
+Example = ":MEASure:AMP:MANual:TOP MAXMin   /*Sets the amplitude top value type for the manual amplitude method to MAXMin.*/ :MEASure:AMP:MANual:TOP?    /*The query returns MAXM.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.26 :MEASure:AMP:MANual:BASE"]
+Syntax = ":MEASure:AMP:MANual:BASE <val> :MEASure:AMP:MANual:BASE?"
+Description = "Sets or queries the amplitude base value type for the manual amplitude method."
+Remarks = "• HISTogram: indicates the histogram type. • MAXMin: indicates the Max-Min type."
+"Return Format" = "The query returns HIST or MAXM."
+Example = ":MEASure:AMP:MANual:BASE MAXMin   /*Sets the amplitude base value type for the manual amplitude method to MAXMin.*/ :MEASure:AMP:MANual:BASE?    /*The query returns MAXM.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.27 :MEASure:CATegory"]
+Syntax = ":MEASure:CATegory <val> :MEASure:CATegory? 214 :QUICk:OPERation <type> :QUICk:OPERation? :RECord:WRECord:ENABle <bool> :RECord:WRECord:ENABle?"
+Description = "Sets or queries the measurement type. Sets or queries the type of the shortcut keys. Enables or disables the waveform recording function; or queries the on/off status of the waveform recording function."
+Remarks = "0: horizontal; 1: vertical; 2: other. • SIMage: indicates the screen image. • SWAVe: indicates the waveform saving. 215 • SSETup: indicates the setup saving. • AMEasure: indicates all measurement. • SRESet: indicates statistics reset. • RECord: indicates waveform recording. • SSAVe: indicates saving group. N/A"
+"Return Format" = "The query returns an integer ranging from 0 to 2. The query returns SIM, SWAV, SSET, AME, REC, SSAV, or SRES. The query returns 0 or 1. 216"
+Example = ":MEASure:CATegory 1            /*Sets the measurement type to Vertical.*/ :MEASure:CATegory?             /*The query returns 1.*/ 3.18 :QUICK Command The :QUICK command is used to set and query the relevant parameters for quick operation shortcut keys. 3.18.1 :QUICk:OPERation :QUICk:OPERation SWAVe       /*Sets the type of the shortcut key to \"save waveform\".*/ :QUICk:OPERation?             /*The query returns SWAV.*/ 3.19 :RECord Commands The :RECord commands are used to set and query the parameters related to the waveform recording mode and frames. Waveform recording/playing function allows you to record and play the waveforms, enabling you to analyze the waveforms better. 3.19.1 :RECord:WRECord:ENABle"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.17.1 :MEASure:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.17.2 :MEASure:ITEM".Parameter]
+Name = "<item>"
+Type = "Discrete"
+Default = "-"
+Range = "{VMAX|VMIN|VPP|VTOP|VBASe| VAMP|VAVG|VRMS|OVERshoot| PREShoot|MARea|MPARea| PERiod|FREQuency|RTIMe| FTIMe|PWIDth|NWIDth|PDUTy| - 196 Name Type Range Default NDUTy|TVMAX|TVMIN| PSLewrate|NSLewrate|VUPPer| VMID|VLOWer|VARiance|PVRMs| PPULses|NPULses|PEDGes| NEDGes|RRDelay|RFDelay| FRDelay|FFDelay|RRPHase| RFPHase|FRPHase|FFPHase| ACRMs} <src> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.17.3 :MEASure:CLEar".Parameter]
+Info = "N/A"
+
+["3.17.4 :MEASure:AMSource".Parameter]
+Name = "<chan>"
+Type = "Discrete"
+Default = "OFF"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4|OFF}"
+
+["3.17.5 :MEASure:STATistic:COUNt".Parameter]
+Name = "<val>"
+Type = "Integer"
+Default = "1,000"
+Range = "2 to 100,000"
+
+["3.17.6 :MEASure:STATistic:DISPlay".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.17.7 :MEASure:STATistic:RESet".Parameter]
+Info = "N/A"
+
+["3.17.8 :MEASure:STATistic:ITEM".Parameter]
+Name = "<item>"
+Type = "Discrete"
+Default = "-"
+Range = "{VMAX|VMIN|VPP|VTOP|VBASe| VAMP|VAVG|VRMS|OVERshoot| PREShoot|MARea|MPARea| PERiod|FREQuency|RTIMe| FTIMe|PWIDth|NWIDth|PDUTy| NDUTy|TVMAX|TVMIN| PSLewrate|NSLewrate|VUPPer| VMID|VLOWer|VARiance|PVRMs| PPULses|NPULses|PEDGes| NEDGes|RRDelay|RFDelay| FRDelay|FFDelay|RRPHase| RFPHase|FRPHase|FFPHase| ACRMs} - <src> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4} - <type> Discrete {MAXimum|MINimum|CURRent| AVERages|DEViation|CNT}"
+
+["3.17.9 :MEASure:SETup:MAX".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.17.10 :MEASure:SETup:MID".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.17.11 :MEASure:SETup:MIN".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.17.12 :MEASure:SETup:PSA".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.17.13 :MEASure:SETup:PSB".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.17.14 :MEASure:SETup:DSA".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.17.15 :MEASure:SETup:DSB".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.17.16 :MEASure:THReshold:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.17.17 :MEASure:THReshold:TYPE".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "PERCent"
+Range = "{PERCent|ABSolute}"
+
+["3.17.18 :MEASure:THReshold:DEFault".Parameter]
+Info = "N/A"
+
+["3.17.19 :MEASure:AREA".Parameter]
+Name = "<area>"
+Type = "Discrete"
+Default = "MAIN"
+Range = "{MAIN|ZOOM}"
+
+["3.17.20 :MEASure:INDicator".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.17.21 :MEASure:COUNter:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.17.22 :MEASure:COUNter:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|EXT}"
+
+["3.17.23 :MEASure:COUNter:VALue?".Parameter]
+Info = "N/A"
+
+["3.17.24 :MEASure:AMP:TYPE".Parameter]
+Name = "<val>"
+Type = "Discrete"
+Default = "MANual"
+Range = "{AUTO|MANual}"
+
+["3.17.25 :MEASure:AMP:MANual:TOP".Parameter]
+Name = "<val>"
+Type = "Discrete"
+Default = "HISTogram"
+Range = "{HISTogram|MAXMin}"
+
+["3.17.26 :MEASure:AMP:MANual:BASE".Parameter]
+Name = "<val>"
+Type = "Discrete"
+Default = "HISTogram"
+Range = "{HISTogram|MAXMin}"
+
+["3.17.27 :MEASure:CATegory".Parameter]
+Name = "<val>"
+Type = "Integer"
+Default = "0|OFF"
+Range = "0 to 2 0 Name Type Range Default <type> Discrete {SIMage|SWAVe|SSETup| AMEasure|SRESet|RECord| SSAVe} SIMage Name Type Range Default <bool> Bool {{1|ON}|{0|OFF}}"

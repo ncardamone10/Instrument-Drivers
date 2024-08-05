@@ -1,0 +1,197 @@
+# 3.9 :DISPlay Commands
+
+["3.9.1 :DISPlay:CLEar"]
+Syntax = ":DISPlay:CLEar"
+Description = "Clears all the waveforms on the screen."
+Remarks = "• If the oscilloscope is in the \"RUN\" state, new waveforms will continue being displayed after being cleared."
+Return_Format = "N/A"
+Example = "N/A"
+Class = "Display"
+Function = "clearDisplay"
+Command = ":DISPlay:CLEar"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.9.2 :DISPlay:TYPE"]
+Syntax = ":DISPlay:TYPE <type> :DISPlay:TYPE?"
+Description = "Sets or queries the display type of the waveforms on the screen."
+Remarks = "Type 'VECTors' connects sample points by lines."
+Return_Format = "The query returns the display type."
+Example = ":DISPlay:TYPE VECTors /*Sets the display type to VECTors.*/ :DISPlay:TYPE? /*The query returns VECT.*/"
+Class = "Display"
+Function = "setDisplayType"
+Command = ":DISPlay:TYPE"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{VECTors}"
+Is_Query = "True"
+
+["3.9.3 :DISPlay:GRADing:TIME"]
+Syntax = ":DISPlay:GRADing:TIME <time> :DISPlay:GRADing:TIME?"
+Description = "Sets or queries the persistence time of the display."
+Remarks = "Options include MIN, specified times, and INFinite."
+Return_Format = "The query returns the set persistence time."
+Example = ":DISPlay:GRADing:TIME 0.1 /*Sets to 100 ms.*/ :DISPlay:GRADing:TIME? /*Returns 0.1.*/"
+Class = "Display"
+Function = "setPersistenceTime"
+Command = ":DISPlay:GRADing:TIME"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{MIN|0.1|0.2|0.5|1|2|5|10|INFinite}"
+Is_Query = "True"
+
+["3.9.4 :DISPlay:WBRightness"]
+Syntax = ":DISPlay:WBRightness <brightness> :DISPlay:WBRightness?"
+Description = "Sets or queries the waveform brightness on the display."
+Remarks = "Brightness is expressed as a percentage."
+Return_Format = "The query returns a percentage value."
+Example = ":DISPlay:WBRightness 50 /*Sets to 50%.*/ :DISPlay:WBRightness? /*Returns 50.*/"
+Class = "Display"
+Function = "setWaveformBrightness"
+Command = ":DISPlay:WBRightness"
+Input_Min = "1"
+Input_Max = "100"
+Input_Values = "Integer"
+Is_Query = "True"
+
+["3.9.5 :DISPlay:GRID"]
+Syntax = ":DISPlay:GRID <grid> :DISPlay:GRID?"
+Description = "Sets or queries the grid display on the screen."
+Remarks = "Options include FULL, HALF, and NONE."
+Return_Format = "The query returns the grid type."
+Example = ":DISPlay:GRID NONE /*Disables grid.*/ :DISPlay:GRID? /*Returns NONE.*/"
+Class = "Display"
+Function = "setGridDisplay"
+Command = ":DISPlay:GRID"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{FULL|HALF|NONE}"
+Is_Query = "True"
+
+["3.9.6 :DISPlay:GBRightness"]
+Syntax = ":DISPlay:GBRightness <brightness> :DISPlay:GBRightness?"
+Description = "Sets or queries the grid brightness on the display."
+Remarks = "Brightness level from 0 to 100."
+Return_Format = "The query returns a brightness level."
+Example = ":DISPlay:GBRightness 60 /*Sets to 60%.*/ :DISPlay:GBRightness? /*Returns 60.*/"
+Class = "Display"
+Function = "setGridBrightness"
+Command = ":DISPlay:GBRightness"
+Input_Min = "0"
+Input_Max = "100"
+Input_Values = "Integer"
+Is_Query = "True"
+
+["3.9.7 :DISPlay:DATA?"]
+Syntax = ":DISPlay:DATA?[<type>]"
+Description = "Queries the bitmap data stream of the currently displayed image."
+Remarks = "The format includes a TMC header and binary data stream."
+Return_Format = "Returns a binary data stream."
+Example = "N/A"
+Class = "Display"
+Function = "getDisplayData"
+Command = ":DISPlay:DATA?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{BMP|PNG|JPG}"
+Is_Query = "True"
+
+["3.9.8 :DISPlay:RULers"]
+Syntax = ":DISPlay:RULers <bool> :DISPlay:RULers?"
+Description = "Enables or disables the display of scale rulers."
+Remarks = "N/A"
+Return_Format = "The query returns 1 (on) or 0 (off)."
+Example = ":DISPlay:RULers ON /*Enables rulers.*/ :DISPlay:RULers? /*Returns 1.*/"
+Class = "Display"
+Function = "toggleRulers"
+Command = ":DISPlay:RULers"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.9.9 :DISPlay:COLor"]
+Syntax = ":DISPlay:COLor <bool> :DISPlay:COLor?"
+Description = "Enables or disables the color grade display."
+Remarks = "Used to indicate data acquisition frequency."
+Return_Format = "The query returns 1 (on) or 0 (off)."
+Example = ":DISPlay:COLor ON /*Enables color grading.*/ :DISPlay:COLor? /*Returns 1.*/"
+Class = "Display"
+Function = "toggleColorGrade"
+Command = ":DISPlay:COLor"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.9.10 :DISPlay:WHOLd"]
+Syntax = ":DISPlay:WHOLd <bool> :DISPlay:WHOLd?"
+Description = "Toggles the waveform freeze function."
+Remarks = "Queries the on/off status of waveform freeze."
+Return_Format = "The query returns 1 (on) or 0 (off)."
+Example = ":DISPlay:WHOLd ON /*Freezes the waveform.*/ :DISPlay:WHOLd? /*Returns 1.*/"
+Class = "Display"
+Function = "toggleWaveformHold"
+Command = ":DISPlay:WHOLd"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+["3.9.1 :DISPlay:CLEar".Parameter]
+Info = "N/A"
+
+["3.9.2 :DISPlay:TYPE".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "VECTors"
+Range = "{VECTors}"
+
+["3.9.3 :DISPlay:GRADing:TIME".Parameter]
+Name = "<time>"
+Type = "Discrete"
+Default = "MIN"
+Range = "{MIN|0.1|0.2|0.5|1|2|5|10| INFinite}"
+
+["3.9.4 :DISPlay:WBRightness".Parameter]
+Name = "<brightness>"
+Type = "Integer"
+Default = "50"
+Range = "1 to 100"
+
+["3.9.5 :DISPlay:GRID".Parameter]
+Name = "<grid>"
+Type = "Discrete"
+Default = "FULL"
+Range = "{FULL|HALF|NONE}"
+
+["3.9.6 :DISPlay:GBRightness".Parameter]
+Name = "<brightness>"
+Type = "Integer"
+Default = "50"
+Range = "0 to 100"
+
+["3.9.7 :DISPlay:DATA?".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "BMP"
+Range = "{BMP|PNG|JPG}"
+
+["3.9.8 :DISPlay:RULers".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "1|ON"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.9.9 :DISPlay:COLor".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.9.10 :DISPlay:WHOLd".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "116"
+Range = "{{1|ON}|{0|OFF}} 0|OFF N/A"

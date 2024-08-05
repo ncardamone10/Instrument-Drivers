@@ -1,0 +1,139 @@
+# 3.2 :AUToset Commands
+["3.2.1 :AUToset"]
+Syntax = ":AUToset"
+Description = "Enables the waveform auto setting function. The oscilloscope will automatically adjust the vertical scale, horizontal time base, and trigger mode according to the input signal to realize optimal waveform display. This command functions the same as the front-panel key."
+Remarks = "• When the AUTO function is disabled, this command is invalid. For details, refer to :SYSTem:AUToscale. • When the pass/fail test is enabled, the AUTO function runs normally, but the pass/fail test function is forced to be disabled. • When the waveform recording function is enabled, the AUTO function runs normally, but the recording or playing function is forced to be disabled."
+"Return Format" = "N/A"
+Example = "N/A"
+Class = "Autoset"
+Function = "enable_autoset"
+Command = ":AUToset"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "No"
+
+["3.2.2 :AUToset:PEAK"]
+Syntax = ":AUToset:PEAK <bool> :AUToset:PEAK?"
+Description = "Sets or queries whether the peak-peak priority setting is enabled."
+Remarks = "This function is intended for the shifted signal. If there is a large deviation, you can view the signal waveform in priority when you enable the function."
+"Return Format" = "The query returns 0 or 1."
+Example = ":AUToset:PEAK OFF /*Disables the peak-peak priority setting.*/ :AUToset:PEAK? /*The query returns 0.*/"
+Class = "Autoset"
+Function = "set_peak_priority"
+Command = ":AUToset:PEAK"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{0|OFF, 1|ON}"
+Is_Query = "Yes"
+
+["3.2.3 :AUToset:OPENch"]
+Syntax = ":AUToset:OPENch <bool> :AUToset:OPENch?"
+Description = "Sets or queries whether to only test the enabled channel when performing the AUTO operation."
+Remarks = "• If you select \"0|OFF\", the system will test the four analog channels (CH1-CH4) in sequence when performing the AUTO operation. If no signal is found on the channel, then the channel is disabled. If a signal is found on the channel, adjust the channel to an optimal scale to show the signal. • If you select \"1|ON\", the system will only test the enabled channels when performing the AUTO operation."
+"Return Format" = "The query returns 0 or 1."
+Example = ":AUToset:OPENch ON /*Sets to test only the enabled channel(s) for AUTO operation.*/ :AUToset:OPENch? /*The query returns 1.*/"
+Class = "Autoset"
+Function = "set_open_channel"
+Command = ":AUToset:OPENch"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{0|OFF, 1|ON}"
+Is_Query = "Yes"
+
+["3.2.4 :AUToset:OVERlap"]
+Syntax = ":AUToset:OVERlap <bool> :AUToset:OVERlap?"
+Description = "Sets or queries the waveform display mode."
+Remarks = "• 1|ON: enables the waveform overlay display. Waveforms of different channels will be displayed in the same position of the screen. • 0|OFF: disables the waveform overlay display. Waveforms of different channels will be displayed on the screen from top to bottom in sequence."
+"Return Format" = "The query returns 0 or 1."
+Example = ":AUToset:OVERlap OFF /*Disables the waveform overlay display.*/ :AUToset:OVERlap? /*The query returns 0.*/"
+Class = "Autoset"
+Function = "set_overlap"
+Command = ":AUToset:OVERlap"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{0|OFF, 1|ON}"
+Is_Query = "Yes"
+
+["3.2.5 :AUToset:KEEPcoup"]
+Syntax = ":AUToset:KEEPcoup <bool> :AUToset:KEEPcoup?"
+Description = "Sets or queries whether to enable keeping coupling."
+Remarks = "• 1|ON: Enables keeping coupling. When enabled, the system performs auto setting operation. The settings for the channel coupling remain unchanged. • 0|OFF: Disables keeping coupling. When disabled, the channel is, by default, DC coupled."
+"Return Format" = "The query returns 0 or 1."
+Example = ":AUToset:KEEPcoup ON /*Sets to enable keeping coupling.*/ :AUToset:KEEPcoup? /*The query returns 1.*/"
+Class = "Autoset"
+Function = "set_keep_coupling"
+Command = ":AUToset:KEEPcoup"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{0|OFF, 1|ON}"
+Is_Query = "Yes"
+
+["3.2.6 :AUToset:LOCK"]
+Syntax = ":AUToset:LOCK <bool> :AUToset:LOCK?"
+Description = "Sets or queries the on/off status of the AUTO function."
+Remarks = "• 1|ON: locks the AUTO key; disables the AUTO function. • 0|OFF: unlocks the AUTO key; enables the AUTO function. You can also send the :AUToset:ENAble command to enable or disable the AUTO function."
+"Return Format" = "The query returns 0 or 1."
+Example = ":AUToset:LOCK ON  /*Locks the AUTO key; disables the AUTO function.*/ :AUToset:LOCK? /*The query returns 1.*/"
+Class = "Autoset"
+Function = "lock_autoset"
+Command = ":AUToset:LOCK"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{0|OFF, 1|ON}"
+Is_Query = "Yes"
+
+["3.2.7 :AUToset:ENAble"]
+Syntax = ":AUToset:ENAble <bool> :AUToset:ENAble? :ACQuire:AVERages <count> :ACQuire:AVERages?"
+Description = "Sets or queries whether to enable the AUTO function. Sets or queries the number of averages in the average acquisition mode."
+Remarks = "• 1|ON: enables the AUTO function. It functions the same as enabling the front-panel key. • 0|OFF: disables the AUTO function. It functions the same as disabling the front-panel key. You can also send the :AUToset:LOCK command to enable or disable the AUTO function. • You can send the :ACQuire:TYPE command to set the acquisition mode. • In the average acquisition mode, greater number of averages can lower the noise and increase the vertical resolution; but will also slow the response of the displayed waveform to the waveform changes."
+"Return Format" = "The query returns 0 or 1."
+Example = ":AUToset:ENAble OFF /*Disables the AUTO function.*/ :AUToset:ENAble? /*The query returns 0.*/ 3.3 :ACQuire Commands The :ACQuire commands are used to set the memory depth of the oscilloscope, the acquisition mode, the average times, as well as query the current sample rate. 3.3.1 :ACQuire:AVERages"
+Class = "Autoset"
+Function = "enable_auto_function"
+Command = ":AUToset:ENAble"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{0|OFF, 1|ON}"
+Is_Query = "Yes"
+
+# Parameters metadata are already set up correctly in your description. 
+
+["3.2.1 :AUToset".Parameter]
+Info = "N/A"
+
+["3.2.2 :AUToset:PEAK".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "1|ON"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.2.3 :AUToset:OPENch".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.2.4 :AUToset:OVERlap".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "1|ON"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.2.5 :AUToset:KEEPcoup".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.2.6 :AUToset:LOCK".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.2.7 :AUToset:ENAble".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "2"
+Range = "{{1|ON}|{0|OFF}} 1|ON Name Type Range Default <count> Integer 2n(n is an integer, and its range is from 1 to 16)."

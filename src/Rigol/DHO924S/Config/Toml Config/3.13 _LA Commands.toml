@@ -1,0 +1,181 @@
+# 3.13 :LA Commands
+
+["3.13.1 :LA:ENABle"]
+Syntax = ":LA:ENABle <bool> :LA:ENABle?"
+Description = "Enables or disables LA; or queries the LA on/off status."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":LA:ENABle ON /*Enables the LA function.*/ :LA:ENABle? /*The query returns 1.*/"
+Class = "LogicAnalyzer"
+Function = "enableLA"
+Command = ":LA:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.13.2 :LA:ACTive"]
+Syntax = ":LA:ACTive <digital> :LA:ACTive?"
+Description = "Sets or queries the current active digital channel."
+Remarks = "Only the currently enabled digital channel can be selected."
+Return_Format = "The query returns the current active channel (D0-D15 or NONE)."
+Example = ":LA:ACTive D3 /*Sets the current active channel to D3.*/ :LA:ACTive? /*The query returns D3.*/"
+Class = "LogicAnalyzer"
+Function = "setActiveChannel"
+Command = ":LA:ACTive"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|None}"
+Is_Query = "True"
+
+["3.13.3 :LA:AUTosort"]
+Syntax = ":LA:AUTosort <val> :LA:AUTosort?"
+Description = "Sets the auto sorting mode for the waveforms of enabled channels."
+Remarks = "Options are D0D15 (top to bottom) or D15D0 (bottom to top)."
+Return_Format = "The query returns the current sorting mode (D0D15 or D15D0)."
+Example = ":LA:AUTosort D0D15 /*Sets the auto sorting mode to D0D15.*/ :LA:AUTosort? /*The query returns D0D15.*/"
+Class = "LogicAnalyzer"
+Function = "setAutoSort"
+Command = ":LA:AUTosort"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{D0D15|D15D0}"
+Is_Query = "True"
+
+["3.13.4 :LA:DELete"]
+Syntax = ":LA:DELete <group>"
+Description = "Cancels the group settings for channel groups (Group1-Group4)."
+Remarks = "This command only cancels settings for defined groups."
+Return_Format = "N/A"
+Example = "N/A"
+Class = "LogicAnalyzer"
+Function = "deleteGroupSettings"
+Command = ":LA:DELete"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{Group1|Group2|Group3|Group4}"
+Is_Query = "False"
+
+["3.13.5 :LA:DIGital:ENABle"]
+Syntax = ":LA:DIGital:ENABle <digital>,<bool> :LA:DIGital:ENABle? <digital>"
+Description = "Enables or disables a specified digital channel; or queries the on/off status."
+Remarks = "Use :LA:ACTive to select currently enabled channels."
+Return_Format = "The query returns 1 or 0."
+Example = ":LA:DIGital:ENABle D3,ON /*Enables D3.*/ :LA:DIGital:ENABle? D3 /*The query returns 1.*/"
+Class = "LogicAnalyzer"
+Function = "enableDigitalChannel"
+Command = ":LA:DIGital:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}, Boolean"
+Is_Query = "True"
+
+["3.13.6 :LA:DIGital:LABel"]
+Syntax = ":LA:DIGital:LABel <digital>,<label> :LA:DIGital:LABel? <digital>"
+Description = "Sets or queries the label of a specified digital channel."
+Remarks = "N/A"
+Return_Format = "The query returns the label of the specified digital channel."
+Example = ":LA:DIGital:LABel D0,ACK /*Sets the label of D0 to ACK.*/ :LA:DIGital:LABel? D0 /*The query returns ACK.*/"
+Class = "LogicAnalyzer"
+Function = "setLabel"
+Command = ":LA:DIGital:LABel"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}, String"
+Is_Query = "True"
+
+["3.13.7 :LA:POD<n>:DISPlay"]
+Syntax = ":LA:POD<n>:DISPlay <bool> :LA:POD<n>:DISPlay?"
+Description = "Enables or disables a specified default channel group; or queries the status."
+Remarks = "POD1 includes D0 to D7; POD2 includes D8 to D15."
+Return_Format = "The query returns 1 or 0."
+Example = ":LA:POD1:DISPlay ON /*Enables POD1 (D0 to D7).*/ :LA:POD1:DISPlay? /*The query returns 1.*/"
+Class = "LogicAnalyzer"
+Function = "displayPod"
+Command = ":LA:POD<n>:DISPlay"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{POD1|POD2}, Boolean"
+Is_Query = "True"
+
+["3.13.8 :LA:POD<n>:THReshold"]
+Syntax = ":LA:POD<n>:THReshold <thre> :LA:POD<n>:THReshold?"
+Description = "Sets or queries the threshold for a specified default channel group."
+Remarks = "Thresholds apply to POD1 (D0 to D7) and POD2 (D8 to D15)."
+Return_Format = "The query returns the current threshold in scientific notation."
+Example = ":LA:POD1:THReshold 3.3 /*Sets the threshold of POD1 to 3.3 V.*/ :LA:POD1:THReshold? /*The query returns 3.300000E0.*/"
+Class = "LogicAnalyzer"
+Function = "setThreshold"
+Command = ":LA:POD<n>:THReshold"
+Input_Min = "-20.0"
+Input_Max = "20.0"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.13.9 :LA:SIZE"]
+Syntax = ":LA:SIZE <size> :LA:SIZE? :LAN:DHCP <bool> :LAN:DHCP?"
+Description = "Sets or queries the size of the waveform display for enabled channels; manages DHCP settings."
+Remarks = "Size options: SMALL, LARGE, MEDIUM. DHCP settings ensure only one IP configuration type is active."
+Return_Format = "The query returns the current size setting."
+Example = ":LA:SIZE SMALL /*Sets the waveform display size to SMALL.*/ :LA:SIZE? /*The query returns SMALL.*/"
+Class = "LogicAnalyzer"
+Function = "setSizeAndDhcp"
+Command = ":LA:SIZE"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{SMALL|LARGE|MEDIUM}"
+Is_Query = "True"
+
+["3.13.1 :LA:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.13.2 :LA:ACTive".Parameter]
+Name = "<digital>"
+Type = "Discrete"
+Default = "D0"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| NONE}"
+
+["3.13.3 :LA:AUTosort".Parameter]
+Name = "<val>"
+Type = "Discrete"
+Default = "D15D0"
+Range = "{D0D15|D15D0}"
+
+["3.13.4 :LA:DELete".Parameter]
+Name = "<group>"
+Type = "Discrete"
+Default = "-"
+Range = "{GROup1|GROup2|GROup3| GROup4}"
+
+["3.13.5 :LA:DIGital:ENABle".Parameter]
+Name = "<digital>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.13.6 :LA:DIGital:LABel".Parameter]
+Name = "<digital>"
+Type = "Discrete"
+Default = "-"
+Range = "{D0|D1|D2|D3|D4|D5|D6|D7| D8| D9|D10|D11|D12|D13|D14|D15} - 137 Name Type Range Default <label> ASCII String It can contain English letters and numbers, and also some symbols."
+
+["3.13.7 :LA:POD<n>:DISPlay".Parameter]
+Name = "<n>"
+Type = "Integer"
+Default = "0|OFF"
+Range = "1 to 2 - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.13.8 :LA:POD<n>:THReshold".Parameter]
+Name = "<n>"
+Type = "Integer"
+Default = "V"
+Range = "1 to 2 - <thre> Real -20.0 V to +20.0 V 1.40"
+
+["3.13.9 :LA:SIZE".Parameter]
+Name = "<size>"
+Type = "Discrete"
+Default = "1|ON"
+Range = "{SMALl|LARGe|MEDium} MEDium 139 Name Type Range Default <bool> Bool {{1|ON}|{0|OFF}}"

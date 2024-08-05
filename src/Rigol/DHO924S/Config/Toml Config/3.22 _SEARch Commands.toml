@@ -1,0 +1,277 @@
+# 3.22 :SEARch Commands
+["3.22.1 :SEARch:COUNt?"]
+Syntax = ":SEARch:COUNt?"
+Description = "Queries the total number of the search events."
+Remarks = "N/A 244"
+"Return Format" = "The query returns the total number of the search events in integer."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.2 :SEARch:STATe"]
+Syntax = ":SEARch:STATe <bool> :SEARch:STATe?"
+Description = "Enables or disables the search function; or queries the on/off status of the search function."
+Remarks = ""
+"Return Format" = "The query returns 1 or 0."
+Example = ":SEARch:STATe ON    /*Enables the search function.*/ :SEARch:STATe?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.3 :SEARch:MODE"]
+Syntax = ":SEARch:MODE <value> :SEARch:MODE?"
+Description = "Sets the search type."
+Remarks = "• EDGe: selects \"Edge\" as the search type. • PULSe: selects \"Pulse\" as the search type."
+"Return Format" = "The query returns EDGE or PULS."
+Example = ":SEARch:MODE PULSe    /*Selects the search type to \"PULSe\".*/ :SEARch:MODE?         /*The query returns PULS.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.4 :SEARch:EVENt"]
+Syntax = ":SEARch:EVENt <value> :SEARch:EVENt?"
+Description = "Sets to navigate a search event."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer."
+Example = ":SEARch:EVENt 1    /*Sets to navigate to Search Event 1.*/ :SEARch:EVENt?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.5 :SEARch:VALue?"]
+Syntax = ":SEARch:VALue? <x>"
+Description = "Queries the time value for the specified Line No. in the marktable. 246"
+Remarks = "<x> denotes the line number of the marktable."
+"Return Format" = "The query returns a time value."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.6 :SEARch:EDGE:SLOPe"]
+Syntax = ":SEARch:EDGE:SLOPe <slope> :SEARch:EDGE:SLOPe?"
+Description = "Sets or queries the edge for the \"Edge\" search type."
+Remarks = "• POSitive: indicates the rising edge. • NEGative: indicates the falling edge. • EITHer: indicates the rising edge or the falling edge."
+"Return Format" = "The query returns POS, NEG, or EITH."
+Example = ":SEARch:EDGE:SLOPe NEGative    /*Sets the edge type to NEGative.*/ :SEARch:EDGE:SLOPe?            /*The query returns NEG.*/ 247"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.7 :SEARch:EDGE:SOURce"]
+Syntax = ":SEARch:EDGE:SOURce <source> :SEARch:EDGE:SOURce?"
+Description = "Sets or queries the source for the \"Edge\" search type."
+Remarks = "N/A"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":SEARch:EDGE:SOURce CHANnel1    /*Sets the source for the Edge search type to CHANnel1.*/ :SEARch:EDGE:SOURce?            /*The query returns CHAN1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.8 :SEARch:EDGE:THReshold"]
+Syntax = ":SEARch:EDGE:THReshold <thre> :SEARch:EDGE:THReshold?"
+Description = "Sets or queries the threshold for the \"Edge\" search type."
+Remarks = "N/A 248"
+"Return Format" = "The query returns the threshold for the edge search type in scientific notation."
+Example = ":SEARch:EDGE:THReshold 0.01         /*Sets the threshold to 0.01 V.*/ :SEARch:EDGE:THReshold?           /*The query returns 1.000000E-2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.9 :SEARch:PULSe:POLarity"]
+Syntax = ":SEARch:PULSe:POLarity <polarity> :SEARch:PULSe:POLarity?"
+Description = "Sets or queries the polarity for the \"Pulse\" search type."
+Remarks = "N/A"
+"Return Format" = "The query returns POS or NEG."
+Example = ":SEARch:PULSe:POLarity POSitive    /*Sets the polarity for the Pulse search type to POSitive.*/ :SEARch:PULSe:POLarity?           /*The query returns POS.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.10 :SEARch:PULSe:QUALifier"]
+Syntax = ":SEARch:PULSe:QUALifier <qualifier> :SEARch:PULSe:QUALifier?"
+Description = "Sets or queries the search condition for the \"Pulse\" search type. 249"
+Remarks = "• GREater: the positive/negative pulse width of the input signal is greater than the specified pulse width. • LESS: the positive/negative pulse width of the input signal is smaller than the specified pulse width. • GLESs: the positive/negative pulse width of the input signal is greater than the specified lower limit of pulse width and smaller than the specified upper limit of pulse width."
+"Return Format" = "The query returns GRE, LESS, or GLES."
+Example = ":SEARch:PULSe:QUALifier LESS    /*Sets the search condition for the \"Pulse\" search type to LESS.*/ :SEARch:PULSe:QUALifier?           /*The query returns LESS.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.11 :SEARch:PULSe:SOURce"]
+Syntax = ":SEARch:PULSe:SOURce <source> :SEARch:PULSe:SOURce?"
+Description = "Sets or queries the source for the \"Pulse\" search type."
+Remarks = "N/A 250"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":SEARch:PULSe:SOURce CHANnel1    /*Sets the source for the Pulse search type to CHANnel1.*/ :SEARch:PULSe:SOURce?            /*The query returns CHAN1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.12 :SEARch:PULSe:UWIDth"]
+Syntax = ":SEARch:PULSe:UWIDth <width> :SEARch:PULSe:UWIDth?"
+Description = "Sets or queries the upper limit of the pulse width for the \"Pulse\" search type."
+Remarks = "N/A"
+"Return Format" = "The query returns the upper limit of the pulse width in scientific notation."
+Example = ":SEARch:PULSe:UWIDth 1   /*Sets the upper limit of the pulse width for the Pulse search type to 1 s.*/ :SEARch:PULSe:UWIDth?           /*The query returns 1.000000E0.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.13 :SEARch:PULSe:LWIDth"]
+Syntax = ":SEARch:PULSe:LWIDth <width> :SEARch:PULSe:LWIDth?"
+Description = "Sets or queries the lower limit of the pulse width for the \"Pulse\" search type. 251"
+Remarks = "N/A"
+"Return Format" = "The query returns the lower limit of the pulse width in scientific notation."
+Example = ":SEARch:PULSe:LWIDth 0.2   /*Sets the lower limit of the pulse width for the Pulse search type to 200 ms.*/ :SEARch:PULSe:LWIDth?           /*The query returns 2.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.14 :SEARch:PULSe:THReshold"]
+Syntax = ":SEARch:PULSe:THReshold <thre> :SEARch:PULSe:THReshold? :NAVigate:ENABle <bool> :NAVigate:ENABle? :NAVigate:MODE <mode> :NAVigate:MODE?"
+Description = "Sets or queries the threshold for the \"Pulse\" search type. Sets or queries the on/off status of the Navigation function. Sets or queries the navigation mode."
+Remarks = "N/A N/A • TIME: indicates the time navigation. It is available only when in \"YT\" time mode. 253"
+"Return Format" = "The query returns the threshold for the pulse search type in scientific notation. The query returns 1 or 0."
+Example = ":SEARch:PULSe:THReshold 0.01         /*Sets the threshold to 10 mV.*/ :SEARch:PULSe:THReshold?           /*The query returns 1.000000E-2.*/ 252 3.23 :NAVigate Commands 3.23.1 :NAVigate:ENABle :NAVigate:ENABle ON    /*Enables the Navigation function.*/ :NAVigate:ENABle?      /*The query returns 1.*/ 3.23.2 :NAVigate:MODE"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.22.1 :SEARch:COUNt?".Parameter]
+Info = "N/A"
+
+["3.22.2 :SEARch:STATe".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.22.3 :SEARch:MODE".Parameter]
+Name = "<value>"
+Type = "Discrete"
+Default = "245"
+Range = "{EDGE|PULSe} EDGE"
+
+["3.22.4 :SEARch:EVENt".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "0"
+Range = "0 to (the number of searched events – 1)"
+
+["3.22.5 :SEARch:VALue?".Parameter]
+Name = "<x>"
+Type = "Integer"
+Default = "-"
+Range = "-"
+
+["3.22.6 :SEARch:EDGE:SLOPe".Parameter]
+Name = "<slope>"
+Type = "Discrete"
+Default = "POSitive"
+Range = "{POSitive|NEGative|EITHer}"
+
+["3.22.7 :SEARch:EDGE:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.22.8 :SEARch:EDGE:THReshold".Parameter]
+Name = "<thre>"
+Type = "Real"
+Default = "V"
+Range = "(-4.5 x VerticalScale - Offset) to (4.5 x VerticalScale - Offset) 0.000"
+
+["3.22.9 :SEARch:PULSe:POLarity".Parameter]
+Name = "<polarity>"
+Type = "Discrete"
+Default = "POSitive"
+Range = "{POSitive|NEGative}"
+
+["3.22.10 :SEARch:PULSe:QUALifier".Parameter]
+Name = "<qualifier>"
+Type = "Discrete"
+Default = "GREater"
+Range = "{GREater|LESS|GLESs}"
+
+["3.22.11 :SEARch:PULSe:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.22.12 :SEARch:PULSe:UWIDth".Parameter]
+Name = "<width>"
+Type = "Real"
+Default = "us"
+Range = "800 ps to 10 s 2"
+
+["3.22.13 :SEARch:PULSe:LWIDth".Parameter]
+Name = "<width>"
+Type = "Real"
+Default = "us"
+Range = "800 ps to 10 s 1"
+
+["3.22.14 :SEARch:PULSe:THReshold".Parameter]
+Name = "<thre>"
+Type = "Real"
+Default = "TIME"
+Range = "(-5 × VerticalScale - OFFSet) to (5 × VerticalScale - OFFSet) 0.000 V Name Type Range Default <bool> Bool {{1|ON}|{0|OFF}} 0|OFF Name Type Range Default <mode> Discrete {TIME|SEARch|FRAMe}"

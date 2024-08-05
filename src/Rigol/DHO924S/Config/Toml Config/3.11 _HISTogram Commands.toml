@@ -1,0 +1,178 @@
+# 3.11 :HISTogram Commands
+
+["3.11.1 :HISTogram:ENABle"]
+Syntax = ":HISTogram:ENABle <bool> :HISTogram:ENABle?"
+Description = "Enables or disables the histogram function; or queries the on/off status of the histogram."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":HISTogram:ENABle ON    /*Enables the histogram function.*/ :HISTogram:ENABle?    /*The query returns 1.*/"
+Class = "Histogram"
+Function = "enableHistogram"
+Command = ":HISTogram:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.11.2 :HISTogram:TYPE"]
+Syntax = ":HISTogram:TYPE <type> :HISTogram:TYPE?"
+Description = "Sets or queries the type of the histogram."
+Remarks = "Options include horizontal or vertical orientation of the histogram display."
+Return_Format = "The query returns HOR or VERT."
+Example = ":HISTogram:TYPE VERTical    /*Sets the histogram type to Vertical.*/ :HISTogram:TYPE?    /*The query returns VERT.*/"
+Class = "Histogram"
+Function = "setHistogramType"
+Command = ":HISTogram:TYPE"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{HORizontal|VERTical}"
+Is_Query = "True"
+
+["3.11.3 :HISTogram:SOURce"]
+Syntax = ":HISTogram:SOURce <source> :HISTogram:SOURce?"
+Description = "Sets or queries the source channel for histogram analysis."
+Remarks = "N/A"
+Return_Format = "The query returns CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":HISTogram:SOURce CHANnel2    /*Sets the source of the histogram to CHAN2.*/ :HISTogram:SOURce?    /*The query returns CHAN2.*/"
+Class = "Histogram"
+Function = "setHistogramSource"
+Command = ":HISTogram:SOURce"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CHANnel1|CHANnel2|CHANnel3|CHANnel4}"
+Is_Query = "True"
+
+["3.11.4 :HISTogram:HEIGht"]
+Syntax = ":HISTogram:HEIGht <height> :HISTogram:HEIGht?"
+Description = "Sets or queries the vertical height of the histogram bars."
+Remarks = "N/A"
+Return_Format = "The query returns an integer ranging from 1 to 4."
+Example = ":HISTogram:HEIGht 2    /*Sets the histogram height to 2.*/ :HISTogram:HEIGht?    /*The query returns 2.*/"
+Class = "Histogram"
+Function = "setHistogramHeight"
+Command = ":HISTogram:HEIGht"
+Input_Min = "1"
+Input_Max = "4"
+Input_Values = "Integer"
+Is_Query = "True"
+
+["3.11.5 :HISTogram:RANGe:LEFT"]
+Syntax = ":HISTogram:RANGe:LEFT <number> :HISTogram:RANGe:LEFT?"
+Description = "Sets or queries the left boundary for the histogram range."
+Remarks = "Ensure the left boundary is less than the right boundary."
+Return_Format = "The query returns the left limit in scientific notation."
+Example = ":HISTogram:RANGe:LEFT -2    /*Sets the left limit of the histogram to -2 s.*/ :HISTogram:RANGe:LEFT?    /*The query returns -2.000000E0.*/"
+Class = "Histogram"
+Function = "setHistogramLeftRange"
+Command = ":HISTogram:RANGe:LEFT"
+Input_Min = "-10"
+Input_Max = "10"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.11.6 :HISTogram:RANGe:RIGHt"]
+Syntax = ":HISTogram:RANGe:RIGHt <number> :HISTogram:RANGe:RIGHt?"
+Description = "Sets or queries the right boundary for the histogram range."
+Remarks = "Ensure the right boundary is greater than the left boundary."
+Return_Format = "The query returns the right limit in scientific notation."
+Example = ":HISTogram:RANGe:RIGHt 2    /*Sets the right limit of the histogram to 2 s.*/ :HISTogram:RANGe:RIGHt?    /*The query returns 2.000000E0.*/"
+Class = "Histogram"
+Function = "setHistogramRightRange"
+Command = ":HISTogram:RANGe:RIGHt"
+Input_Min = "-10"
+Input_Max = "10"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.11.7 :HISTogram:RANGe:TOP"]
+Syntax = ":HISTogram:RANGe:TOP <number> :HISTogram:RANGe:TOP?"
+Description = "Sets or queries the upper boundary for the histogram range."
+Remarks = "Ensure the top boundary is greater than the bottom boundary."
+Return_Format = "The query returns the top limit in scientific notation."
+Example = ":HISTogram:RANGe:TOP -2    /*Sets the top limit of the histogram to -2 V.*/ :HISTogram:RANGe:TOP?    /*The query returns -2.000000E0.*/"
+Class = "Histogram"
+Function = "setHistogramTopRange"
+Command = ":HISTogram:RANGe:TOP"
+Input_Min = "-10"
+Input_Max = "10"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.11.8 :HISTogram:RANGe:BOTTom"]
+Syntax = ":HISTogram:RANGe:BOTTom <number> :HISTogram:RANGe:BOTTom?"
+Description = "Sets or queries the lower boundary for the histogram range."
+Remarks = "Ensure the bottom boundary is less than the top boundary."
+Return_Format = "The query returns the bottom limit in scientific notation."
+Example = ":HISTogram:RANGe:BOTTom -2    /*Sets the bottom limit of the histogram to -2 V.*/ :HISTogram:RANGe:BOTTom?    /*The query returns -2.000000E0.*/"
+Class = "Histogram"
+Function = "setHistogramBottomRange"
+Command = ":HISTogram:RANGe:BOTTom"
+Input_Min = "-10"
+Input_Max = "10"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.11.9 :HISTogram:STATistics:RESult?"]
+Syntax = ":HISTogram:STATistics:RESult?"
+Description = "Queries the statistical results of the histogram."
+Remarks = "N/A"
+Return_Format = "The query returns a structured string containing multiple statistical measures."
+Example = "N/A"
+Class = "Histogram"
+Function = "getHistogramStatistics"
+Command = ":HISTogram:STATistics:RESult?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.11.1 :HISTogram:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.11.2 :HISTogram:TYPE".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "VERTical"
+Range = "{HORizontal|VERTical}"
+
+["3.11.3 :HISTogram:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.11.4 :HISTogram:HEIGht".Parameter]
+Name = "<height>"
+Type = "Integer"
+Default = "2div"
+Range = "1div to 4div"
+
+["3.11.5 :HISTogram:RANGe:LEFT".Parameter]
+Name = "<number>"
+Type = "Real"
+Default = "-"
+Range = "(-5 x Horizontal Time Base + Horizontal Offset) to (5 x Horizontal Time Base + Horizontal Offset)"
+
+["3.11.6 :HISTogram:RANGe:RIGHt".Parameter]
+Name = "<number>"
+Type = "Real"
+Default = "-"
+Range = "(-5 x Horizontal Time Base + Horizontal Offset) to (5 x Horizontal Time Base + Horizontal Offset)"
+
+["3.11.7 :HISTogram:RANGe:TOP".Parameter]
+Name = "<number>"
+Type = "Real"
+Default = "123"
+Range = "(-4 x VerticalScale - OFFSet) to (4 x VerticalScale - OFFSet) -"
+
+["3.11.8 :HISTogram:RANGe:BOTTom".Parameter]
+Name = "<number>"
+Type = "Real"
+Default = "-"
+Range = "(-4 x VerticalScale - OFFSet) to (4 x VerticalScale - OFFSet)"
+
+["3.11.9 :HISTogram:STATistics:RESult?".Parameter]
+Info = "N/A"

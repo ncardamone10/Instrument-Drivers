@@ -1,0 +1,1101 @@
+# SKIP_ME
+# 3.4 :BUSn Commands
+["3.4.1 :BUS<n>:MODE"]
+Syntax = ":BUS<n>:MODE <mode> :BUS<n>:MODE?"
+Description = "Sets or queries the decoding type of the specified decoding bus."
+Remarks = "Only the DHO900 series supports LIN and CAN decodings."
+"Return Format" = "The query returns PAR, RS232, SPI, IIC, LIN, or CAN."
+Example = ":BUS1:MODE SPI    /*Sets the decoding type to SPI.*/ :BUS1:MODE?       /*The query returns SPI.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.2 :BUS<n>:DISPlay"]
+Syntax = ":BUS<n>:DISPlay <bool> :BUS<n>:DISPlay? 27"
+Description = "Enables or disables the specified decoding bus; or queries the on/off display status of the specified decoding bus."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":BUS1:DISPlay ON    /*Enables the decoding bus.*/ :BUS1:DISPlay?       /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.3 :BUS<n>:FORMat"]
+Syntax = ":BUS<n>:FORMat <format> :BUS<n>:FORMat?"
+Description = "Sets or queries the format of decoding data on the specified decoding bus."
+Remarks = "• Hex: indicates Hexadecimal; • ASCii: indicates ASCII; • DEC: indicates Decimal; • BIN: indicates Binary. 28"
+"Return Format" = "The query returns HEX, ASC, DEC, or BIN."
+Example = ":BUS1:FORMat HEX    /*Sets the display format of the bus to HEX.*/ :BUS1:FORMat?       /*The query returns HEX.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.4 :BUS<n>:EVENt"]
+Syntax = ":BUS<n>:EVENt <bool> :BUS<n>:EVENt?"
+Description = "Enables or disables the event table of the specified decoding bus; or queries the on/off status of the specified decoding bus event table."
+Remarks = "Before using the command, enable the specified decoding bus."
+"Return Format" = "The query returns 1 or 0."
+Example = ":BUS1:EVENt ON    /*Enables the event table of the specified decoding bus.*/ :BUS1:EVENt?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.5 :BUS<n>:LABel"]
+Syntax = ":BUS<n>:LABel <bool> :BUS<n>:LABel?"
+Description = "Enables or disables the label of the specified decoding bus; or queries the on/off display status of the label of the specified decoding bus. 29"
+Remarks = "Before using the command, enable the specified decoding bus."
+"Return Format" = "The query returns 1 or 0."
+Example = ":BUS1:LABel ON  /*Enables the label of the specified decoding bus.*/ :BUS1:LABel?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.6 :BUS<n>:DATA?"]
+Syntax = ":BUS<n>:DATA?"
+Description = "Reads the data from the decoding event table."
+Remarks = "N/A"
+"Return Format" = "The query returns the data in the decoding event table with the following formats. #9000000086PARALLEL Time,Data, -2.47us,0, -2.444us,1, -1.448us,0, -446ns,1, 551.6ns,0, 1.554us,1, Wherein, \"#9000000086\" is the TMC data block header, which is followed by the data in the event table. The 9-digit data following #9 in the data block header indicates the number of bytes of the effective data. \"PARALLEL\" indicates the decoding type. The 30 available decoding type can also be RS232, I2C, SPI, LIN, and etc. The data are separated by a comma, and will automatically switch to the next line according to the data information in the decoding list. The data value is related to the numeral system that you have set. CAUTION You can save all the data (except TMC data block header and decoding type, e.g. #9000000086PARALLEL) as the \"*.csv\" file and view the data in the form of a list."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.7 :BUS<n>:EEXPort"]
+Syntax = ":BUS<n>:EEXPort <path>"
+Description = "Exports the decoding information from the specified decoding bus event table in CSV form."
+Remarks = "• <path> includes the file storage location and the filename with a suffix. If the specified storage location already contains a file with the same filename, the original file will be overwritten. • When the operating status of the instrument is STOP (set it by sending the :STOP command), you can export the time and corresponding decoding data from the current event table. • This command is valid when the display of the event table is enabled. You can enable the display of the event table by sending the :BUS<n>:EVENt command. • The stored \"*.csv\" file can be opened and edited in Excel. 31"
+"Return Format" = "N/A"
+Example = ":BUS1:EEXPort C:/123.csv    /*Exports the decoding information from the bus event table and saves it to the local Disk C, with the filename 123.csv.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.8 :BUS<n>:POSition"]
+Syntax = ":BUS<n>:POSition <pos> :BUS<n>:POSition?"
+Description = "Sets or queries the vertical position of the bus on the screen."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer ranging from -250 to 250."
+Example = ":BUS1:POSition 200    /*Sets the vertical position of the bus to 200.*/ :BUS1:POSition?       /*The query returns 200.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.9 :BUS<n>:THReshold"]
+Syntax = ":BUS<n>:THReshold <value>,<type> :BUS<n>:THReshold? <type>"
+Description = "Sets or queries the threshold of the specified decoding source on the specified decoding bus. 32"
+Remarks = "For VerticalScale, refer to :CHANnel<n>:SCALe. For OFFSet, refer to :CHANnel<n>:OFFSet. • PAL: indicates the bus source of Parallel decoding. • PALCLK: indicates the clock source of Parallel decoding. Only when the source is enabled, can you set the threshold. • TX: indicates the TX channel source of RS232 decoding. • RX: indicates the RX channel source of RS232 decoding. Only when the RX source is enabled, can you set the threshold. • SCL: indicates the clock source of I2C decoding. • SDA: indicates the clock source of I2C decoding. • CS: indicates the source of the CS line of SPI decoding. • CLK: indicates the clock source of SPI decoding. • MISO: indicates the MISO data source of SPI decoding. • MOSI: indicates the MOSI data source of SPI decoding. • LIN: indicates the bus source of LIN decoding. • CAN: indicates the channel source of CAN decoding. • CH1|CH2|CH3|CH4: CH1-CH4, available for all the decoding types. Only DHO900 series supports LIN and CAN decodings. For DHO800 series, only 4-channel models support CS setting for SPI decoding. 33"
+"Return Format" = "The query returns the threshold of the specified decoding source in scientific notation."
+Example = ":BUS1:THReshold 2.4,PAL     /*Sets the threshold of the Parallel decoding source to 2.4 V.*/ :BUS1:THReshold? PAL       /*The query returns 2.400000E0.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10 :BUS<n>:PARallel"]
+Syntax = ":BUS<n>:PARallel:BUS <source> :BUS<n>:PARallel:BUS? :BUS<n>:PARallel:CLK <source> :BUS<n>:PARallel:CLK? :BUS<n>:PARallel:SLOPe <slope> :BUS<n>:PARallel:SLOPe? :BUS<n>:PARallel:WIDTh <wid> :BUS<n>:PARallel:WIDTh? 36 :BUS<n>:PARallel:BITX <bit> :BUS<n>:PARallel:BITX? :BUS<n>:PARallel:SOURce <src> :BUS<n>:PARallel:SOURce? :BUS <n>:PARallel:ENDian <endian> :BUS <n>:PARallel:ENDian? :BUS<n>:PARallel:POLarity <pol> 39 :BUS<n>:PARallel:POLarity? :BUS<n>:RS232:TX <source> :BUS<n>:RS232:TX? :BUS<n>:RS232:RX <source> :BUS<n>:RS232:RX? :BUS<n>:RS232:POLarity <pol> :BUS<n>:RS232:POLarity? 42 :BUS<n>:RS232:PARity <parity> :BUS<n>:RS232:PARity? :BUS<n>:RS232:ENDian <endian> :BUS<n>:RS232:ENDian? :BUS<n>:RS232:BAUD <baud> :BUS<n>:RS232:BAUD? :BUS<n>:RS232:DBITs <bits> :BUS<n>:RS232:DBITs? :BUS<n>:RS232:SBITs <stop bits> :BUS<n>:RS232:SBITs? :BUS<n>:IIC:SCLK:SOURce <source> :BUS<n>:IIC:SCLK:SOURce? :BUS<n>:IIC:SDA:SOURce <source> :BUS<n>:IIC:SDA:SOURce? :BUS<n>:IIC:EXCHange <bool> :BUS<n>:IIC:EXCHange? :BUS<n>:IIC:ADDRess <addr> :BUS<n>:IIC:ADDRess? :BUS<n>:SPI:SCLK:SOURce <source> :BUS<n>:SPI:SCLK:SOURce? :BUS<n>:SPI:SCLK:SLOPe <slope> :BUS<n>:SPI:SCLK:SLOPe? :BUS<n>:SPI:MISO:SOURce <source> :BUS<n>:SPI:MISO:SOURce? :BUS<n>:SPI:MOSI:SOURce <source> :BUS<n>:SPI:MOSI:SOURce? :BUS<n>:SPI:POLarity <polarity> :BUS<n>:SPI:POLarity? :BUS<n>:SPI:MISO:POLarity <polarity> :BUS<n>:SPI:MISO:POLarity? :BUS<n>:SPI:MOSI:POLarity <polarity> :BUS<n>:SPI:MOSI:POLarity? :BUS<n>:SPI:DBITs <width> :BUS<n>:SPI:DBITs? :BUS<n>:SPI:ENDian <endian> :BUS<n>:SPI:ENDian? :BUS<n>:SPI:MODE <mode> :BUS<n>:SPI:MODE? :BUS<n>:SPI:TIMeout:TIME <time> :BUS<n>:SPI:TIMeout:TIME? :BUS<n>:SPI:SS:SOURce <source> :BUS<n>:SPI:SS:SOURce? :BUS<n>:SPI:SS:POLarity <polarity> :BUS<n>:SPI:SS:POLarity? :BUS<n>:CAN:SOURce <source> :BUS<n>:CAN:SOURce? :BUS<n>:CAN:STYPe <stype> :BUS<n>:CAN:STYPe? :BUS<n>:CAN:BAUD <baud> :BUS<n>:CAN:BAUD? :BUS<n>:CAN:SPOint <spoint> :BUS<n>:CAN:SPOint? :BUS<n>:LIN:PARity <bool> :BUS<n>:LIN:PARity? :BUS<n>:LIN:SOURce <source> :BUS<n>:LIN:SOURce? :BUS<n>:LIN:STANdard <value> :BUS<n>:LIN:STANdard?"
+Description = "Sets or queries the current source of the Parallel decoding bus. 34 Sets or queries the clock source of the Parallel decoding. Sets or queries the edge type of the clock channel when being sampled by Parallel decoding on the data channel. Sets or queries the data width of the Parallel decoding, that is, the number of bits per frame. Sets or queries the data bit that the parallel bus requires to set for the channel source. Sets or queries the channel source of the currently selected data bit. Sets or queries the endian of Parallel decoding on the specified decoding bus. Sets or queries the data polarity of Parallel decoding. Sets or queries the Tx source of RS232 decoding on the specific bus. Sets or queries the Rx source of RS232 decoding on the specific bus. Sets or queries the polarity of RS232 decoding on the specified bus. Sets or queries the odd-even check mode of data transmission in RS232 decoding. Sets or queries the endian of data transmission in RS232 decoding. Sets or queries the baud rate of data transmission in RS232 decoding. The default unit is bps. Sets or queries the data width of RS232 decoding. 45 Sets or queries the stop bits of each frame of data in RS232 decoding. Sets or queries the clock source of I2C decoding. Sets or queries the data source of the I2C decoding. Sets to exchange the clock channel source and the data channel source of I2C decoding on the specified bus; queries whether the clock channel source and the data channel source of I2C decoding on the specified bus have been exchanged. 48 Sets or queries the address mode of I2C decoding. Sets or queries the clock source of SPI decoding. Sets or queries the clock edge type of the SPI decoding. Sets or queries the MISO data source of SPI decoding on the specified bus. 51 Sets or queries the MOSI data source of SPI decoding on the specified bus. Sets or queries the polarity of the SPI decoding on the specified decoding bus. Sets or queries the polarity of MISO data line of SPI decoding. Sets or queries the polarity of MOSI data line of SPI decoding. Sets or queries the data width of SPI decoding. Sets or queries the endian of data transmission in SPI decoding. Sets or queries the decode mode of SPI decoding. 56 Sets or queries the timeout value of SPI decoding on the specified bus. The unit is s. Sets or queries the source of the CS line of SPI decoding on the specified bus. Sets or queries the polarity of CS line of SPI decoding on the specified bus. Sets or queries the source of CAN decoding. Sets or queries the signal type of CAN decoding. Sets or queries the signal rate of CAN decoding on the specified decoding bus. The unit is bps. Sets or queries the sample point position of the CAN decoding on the specified bus (expressed in %). 62 Sets or queries whether the LIN decoding on the specified decoding bus includes the parity bit. Sets or queries the source of LIN bus. Sets or queries the version of LIN bus."
+Remarks = "Only DHO900 series supports the digital channels D0-D15. Only DHO900 series supports the digital channels D0-D15. 35 If no clock channel is selected, the instrument will sample when the channel data hopping occurs during the decoding. • Only when the bus source is set to User (BUS<n>:PARallel:BUS USER), can this command be valid. • Send this command to set the data width of the bus first, then send the :BUS<n>:PARallel:BITX and :BUS<n>:PARallel:SOURce command to select the bit and set the channel source for the bit. • Only when the bus source is set to User (BUS<n>:PARallel:BUS USER), can this command be valid. • The data width is set by the :BUS<n>:PARallel:WIDTh command. • After selecting the desired bit, send the :BUS<n>:PARallel:SOURce command to set the channel source for the bit. • Only when the bus source is set to User (BUS<n>:PARallel:BUS USER), can this command be valid. • >Before sending this command, send the :BUS<n>:PARallel:BITX command to select the desired data bit. • D0-D15 are only available for the DHO900 series. 38 • MSB: indicates Most Significant Bit transmission sequence, i.g. the highest bit of the data is transmitted first. • LSB: indicates Least Significant Bit transmission sequence, i.g. the lowest bit of the data is transmitted first. • NEGative: indicates negative polarity. • POSitive: indicates positive polarity. The Tx and Rx sources cannot be set to OFF at the same time. The Rx source can be set by using the :BUS<n>:RS232:RX command. D0-D15 are only available for the DHO900 series. The Tx and Rx sources cannot be set to OFF at the same time. The Tx source can be set by using the :BUS<n>:RS232:TX command. D0-D15 are only available for the DHO900 series. • POSitive: indicates positive polarity. High level is logic \"1\" and low level is logic \"0\". • NEGative: indicates negative polarity. High level is logic \"0\" and low level is logic \"1\". • None: indicates that there is no parity bit in data transmission. 43 • ODD: indicates the odd parity bit. The total count of occurrences of 1 in the data bit and check bit is an odd number. For example, if 0x55 (01010101) is transmitted, 1 shall be added to the check bit. • Even: indicates the even parity bit. The total count of occurrences of 1 in the data bit and check bit is an even number. For example, if 0x55 (01010101) is transmitted, 0 shall be added to the check bit. • LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first. • MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first. If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA. N/A N/A D0-D15 are only available for the DHO900 series. D0-D15 are only available for the DHO900 series. N/A • NORMal: indicates that the address width does not include the R/W bit. • RW: indicates that the address width includes the R/W bit. D0-D15 are only available for the DHO900 series. 50 N/A The source specified in this command and the :BUS<n>:SPI:MOSI:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. The source specified in this command and the :BUS<n>:SPI:MISO:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. • HIGH: indicates positive polarity. The high level is 1, and low level is 0. • LOW: indicates negative polarity. The high level is 0, and low level is 1. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. This command exists for backwards compatibility. Use the command :BUS<n>:SPI:POLarity. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. N/A • MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first. • LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first. • CS: indicates chip select. It contains a chip select line (CS). You can perform frame synchronization according to CS. • TIMeout: indicates timed out. You can perform frame synchronization according to the timeout. For DHO800 series, only 4-channel models support CS setting for SPI decoding. • This setting command is only valid in timeout mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of SPI decoding. 57 • The timeout must be greater than the maximum clock pulse width and less than the idle time between frames. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. Only DHO900 series supports the digital channels D0-D15. For DHO800 series, only 4-channel models support this command. • HIGH: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is high level. • LOW: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is low level. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. For DHO800 series, only 4-channel models support this command. D0-D15 are only available for the DHO900 series. 60 • TX: indicates the Transmit signal from the CAN bus transceiver. • RX: indicates the Receive signal from the CAN bus transceiver. • CANH: indicates the actual CAN_H differential bus signal. • CANL: indicates the actual CAN_L differential bus signal. • DIFFerential: indicates the CAN differential bus signal connected to an analog channel by using a differential probe. Connect the differential probe's positive lead to the CAN_H bus signal and connect the negative lead to the CAN_L bus signal. If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA. For detailed sample position, refer to Sample Position. • 1|ON: includes the parity bit. • 0|OFF: does not include the parity bit. D0-D15 are only available for the DHO900 series. N/A"
+"Return Format" = "The query returns D7D0, D15D8 D15D0, D0D7, D8D15, D0D15, CHAN1, CHAN2, CHAN3, CHAN4, or USER. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns POS, NEG, or BOTH. The query returns an integer ranging from 1 to 4. The query returns the current data bits in integer. Its unit is Hz. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns MSB or LSB. The query returns NEG or POS. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. 41 The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns POS or NEG. The query returns NONE, ODD, or EVEN. The query returns LSB or MSB. 44 The query returns an integer ranging from 1 to 20M. The query returns 5, 6, 7, 8, or 9. The query returns 1, 1.5, or 2. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns 0 or 1. The query returns NORM or RW. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns POS or NEG. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns an integer ranging from 4 to 32. The query returns MSB or LSB. The query returns CS or TIM. The query returns the timeout value in scientific notation. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. 58 The query returns HIGH or LOW. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns TX, RX, CANH, CANL, or DIFF. 61 The query returns an integer ranging from 10k to 5M. The query returns an integer ranging from 10 to 90. The query returns 0 or 1. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns V1X, V2X, or MIX."
+Example = ":BUS1:PARallel:BUS CHANnel1   /*Sets the current source of the Parallel decoding bus to CHANnel1.*/ :BUS1:PARallel:BUS?          /*The query returns CHAN1.*/ 3.4.10.2 :BUS<n>:PARallel:CLK :BUS1:PARallel:CLK CHANnel2    /*Sets the clock source of the Parallel decoding to CHANnel2.*/ :BUS1:PARallel:CLK?           /*The query returns CHAN2.*/ 3.4.10.3 :BUS<n>:PARallel:SLOPe :BUS1:PARallel:SLOPe BOTH    /*Sets the Parallel decoding to sample on any edge of the clock channel.*/ :BUS1:PARallel:SLOPe?         /*The query returns BOTH.*/ 3.4.10.4 :BUS<n>:PARallel:WIDTh :BUS1:PARallel:WIDTh 4    /*Sets the data width of Parallel decoding to 4.*/ :BUS1:PARallel:WIDTh?      /*The query returns 4.*/ 3.4.10.5 :BUS<n>:PARallel:BITX :BUS1:PARallel:BITX 2    /*Sets the current bit to 2.*/ :BUS1:PARallel:BITX?     /*The query returns 2.*/ 3.4.10.6 :BUS<n>:PARallel:SOURce :BUS1:PARallel:SOURce CHANnel2    /*Sets the channel source of the current bit to CHANnel2.*/ :BUS1:PARallel:SOURce?             /*The query returns CHAN2.*/ 3.4.10.7 :BUS<n>:PARallel:ENDian :BUS1:PARallel:ENDian LSB /*Sets the endian of Parallel decoding to LSB.*/ :BUS1:PARallel:ENDian? /*The query returns LSB.*/ 3.4.10.8 :BUS<n>:PARallel:POLarity :BUS1:PARallel:POLarity NEGative    /*Sets the data polarity of Parallel decoding to Negative.*/ :BUS1:PARallel:POLarity?            /*The query returns NEG.*/ 3.4.11 :BUS<n>:RS232 :BUS<n>:RS232 commands are used to set relevant parameters for RS232 decoding. RS232 serial bus consists of the transmitting data line (TX) and the receiving data line (RX). Figure 3.2 Schematic Diagram of RS232 Serial Bus In RS232, baud rate is used to represent the transmission rate (namely bits per second) of the data. You need to set the start bit, data bits, check bit (optional), and stop bits for each frame of data. 40 • Start Bit: indicates when to output data. • Data Bit: indicates the number of data bits actually contained in each frame of data. • Check Bit: used to check whether the data are properly transmitted. • Stop Bit: indicates when to stop outputting data. 3.4.11.1 :BUS<n>:RS232:TX :BUS1:RS232:TX CHANnel2    /*Sets the Tx source of RS232 decoding to CHANnel2.*/ :BUS1:RS232:TX?      /*The query returns CHAN2.*/ 3.4.11.2 :BUS<n>:RS232:RX :BUS1:RS232:RX CHANnel2    /*Sets the Rx source of RS232 decoding to CHANnel2.*/ :BUS1:RS232:RX?      /*The query returns CHAN2.*/ 3.4.11.3 :BUS<n>:RS232:POLarity :BUS1:RS232:POLarity POSitive     /*Sets the polarity of RS232 decoding to POSitive.*/ :BUS1:RS232:POLarity?            /*The query returns POS.*/ 3.4.11.4 :BUS<n>:RS232:PARity :BUS1:RS232:PARity ODD        /*Sets the odd-even check mode of data transmission in RS232 decoding to ODD.*/ :BUS1:RS232:PARity?            /*The query returns ODD.*/ 3.4.11.5 :BUS<n>:RS232:ENDian :BUS1:RS232:ENDian MSB        /*Sets the transmission order of RS232 decoding to MSB.*/ :BUS1:RS232:ENDian?            /*The query returns MSB.*/ 3.4.11.6 :BUS<n>:RS232:BAUD :BUS1:RS232:BAUD 4800        /*Sets the baud rate of data transmission in RS232 decoding to 4800 bps.*/ :BUS1:RS232:BAUD?            /*The query returns 4800.*/ 3.4.11.7 :BUS<n>:RS232:DBITs :BUS1:RS232:DBITs 7   /*Sets the data width of RS232 decoding to 7.*/ :BUS1:RS232:DBITs?      /*The query returns 7.*/ 3.4.11.8 :BUS<n>:RS232:SBITs :BUS1:RS232:SBITs 2   /*Sets the stop bits of RS232 decoding to 2.*/ :BUS1:RS232:SBITs?   /*The query returns 2.*/ 46 3.4.12 :BUS<n>:IIC The :BUS<n>:IIC commands are used to set relevant parameters for I2C decoding. I2C serial bus consists of the clock line (SCL) and the data line (SDA). • SCL: samples SDA on the rising or falling edge of the clock. • SDA: indicates the data channel. SCL SDA Figure 3.3 I2C Serial Bus 3.4.12.1 :BUS<n>:IIC:SCLK:SOURce :BUS1:IIC:SCLK:SOURce CHANnel2    /*Sets the clock source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SCLK:SOURce?      /*The query returns CHAN2.*/ 47 3.4.12.2 :BUS<n>:IIC:SDA:SOURce :BUS1:IIC:SDA:SOURce CHANnel2    /*Sets the data source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SDA:SOURce?      /*The query returns CHAN2.*/ 3.4.12.3 :BUS<n>:IIC:EXCHange :BUS1:IIC:EXCHange ON /*Sets to exchange the clock channel source and the data channel source.*/ :BUS1:IIC:EXCHange? /*The query returns 1.*/ 3.4.12.4 :BUS<n>:IIC:ADDRess :BUS1:IIC:ADDRess RW    /*Sets the address of I2C decoding to include the R/W bit.*/ :BUS1:IIC:ADDRess?       /*The query returns RW.*/ 49 3.4.13 :BUS<n>:SPI :BUS<n>:SPI commands are used to set relevant parameters for SPI decoding. SPI bus is based on the master — slave configuration and usually consists of chip select line (CS), clock line (CLK), and data line (SDA). Wherein, the data lines include the master input/slave output (MISO) data line and master output/slave input (MOSI) data line. The oscilloscope samples the channel data on the rising or falling edge of the clock signal. For analog channels, it also judges each data point (logic \"1\" or logic \"0\") according to the preset threshold level. Master Slave MOSI CLK MISO CS CLK SDA (MISO/MOSI) Figure 3.4 SPI Serial Bus 3.4.13.1 :BUS<n>:SPI:SCLK:SOURce :BUS1:SPI:SCLK:SOURce CHANnel2    /*Sets the clock source of SPI decoding to CHANnel2.*/ :BUS1:SPI:SCLK:SOURce?      /*The query returns CHAN2.*/ 3.4.13.2 :BUS<n>:SPI:SCLK:SLOPe :BUS1:SPI:SCLK:SLOPe NEGative    /*Sets the clock edge type of SPI decoding to Negative.*/ :BUS1:SPI:SCLK:SLOPe?             /*The query returns NEG.*/ 3.4.13.3 :BUS<n>:SPI:MISO:SOURce :BUS1:SPI:MISO:SOURce CHANnel2    /*Sets the MISO data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MISO:SOURce?      /*The query returns CHAN2.*/ 3.4.13.4 :BUS<n>:SPI:MOSI:SOURce :BUS1:SPI:MOSI:SOURce CHANnel2    /*Sets the MOSI data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MOSI:SOURce?      /*The query returns CHAN2.*/ 3.4.13.5 :BUS<n>:SPI:POLarity :BUS1:SPI:POLarity HIGH      /*Sets the polarity of the SPI decoding to Positive.*/ :BUS1:SPI:POLarity?          /*The query returns HIGH.*/ 53 3.4.13.6 :BUS<n>:SPI:MISO:POLarity :BUS1:SPI:MISO:POLarity HIGH      /*Sets the polarity of MISO data line to Positive.*/ :BUS1:SPI:MISO:POLarity?          /*The query returns HIGH.*/ 3.4.13.7 :BUS<n>:SPI:MOSI:POLarity :BUS1:SPI:MOSI:POLarity HIGH      /*Sets the polarity of MOSI data line to Positive.*/ :BUS1:SPI:MOSI:POLarity?          /*The query returns HIGH.*/ 3.4.13.8 :BUS<n>:SPI:DBITs :BUS1:SPI:DBITs 10      /*Sets the data width of SPI decoding to 10.*/ :BUS1:SPI:DBITs?      /*The query returns 10.*/ 55 3.4.13.9 :BUS<n>:SPI:ENDian :BUS1:SPI:ENDian LSB       /*Sets the endian of data transmission in SPI decoding to LSB.*/ :BUS1:SPI:ENDian?          /*The query returns LSB.*/ 3.4.13.10 :BUS<n>:SPI:MODE :BUS1:SPI:MODE CS /*Sets the decode mode of SPI decoding to CS.*/ :BUS1:SPI:MODE? /*The query returns CS.*/ 3.4.13.11 :BUS<n>:SPI:TIMeout:TIME :BUS1:SPI:TIMeout:TIME 0.000005    /*Sets the timeout value to 5 μs.*/ :BUS1:SPI:TIMeout:TIME?            /*The query returns 5.000000E-6.*/ 3.4.13.12 :BUS<n>:SPI:SS:SOURce :BUS1:SPI:SS:SOURce CHANnel2    /*Sets the source of CS line of SPI decoding to CHANnel2.*/ :BUS1:SPI:SS:SOURce?      /*The query returns CHAN2.*/ 3.4.13.13 :BUS<n>:SPI:SS:POLarity :BUS1:SPI:SS:POLarity HIGH /*Sets the polarity of CS line of SPI decoding to HIGH.*/ :BUS1:SPI:SS:POLarity? /*The query returns HIGH.*/ 3.4.14 :BUS<n>:CAN The :BUS<n>:CAN commands are used to set relevant parameters for CAN decoding. 59 The oscilloscope samples the CAN at the specified sample position, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. You need to specify the CAN type and sample position for CAN decoding. Sample Position Sample position is a point within a bit's time. The oscilloscope samples the bit level at this point. The sample point position is expressed as the ratio of \"time from the bit start to the sample point\" to \"bit time\", in %. One Bit 60% 70% 80% Figure 3.5 Sample Position NOTE Only the DHO900 series supports :BUS<n>:CAN commands. 3.4.14.1 :BUS<n>:CAN:SOURce :BUS1:CAN:SOURce CHANnel2    /*Sets the source of CAN decoding to CHANnel2.*/ :BUS1:CAN:SOURce?      /*The query returns CHAN2.*/ 3.4.14.2 :BUS<n>:CAN:STYPe :BUS1:CAN:STYPe TX        /*Sets the signal type of CAN decoding to TX.*/ :BUS1:CAN:STYPe?          /*The query returns TX.*/ 3.4.14.3 :BUS<n>:CAN:BAUD :BUS1:CAN:BAUD 120000    /*Sets the signal rate of CAN decoding to 120000 bps*/ :BUS1:CAN:BAUD?              /*The query returns 120000.*/ 3.4.14.4 :BUS<n>:CAN:SPOint :BUS1:CAN:SPOint 70        /*Sets the sample point position of CAN decoding to 70%.*/ :BUS1:CAN:SPOint?          /*The query returns 70.*/ 3.4.15 :BUS<n>:LIN The :BUS<n>:LIN commands are used to set relevant parameters for LIN decoding. The oscilloscope samples the LIN signal, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. The LIN decoding is required to specify the LIN\u3000signal protocol version. NOTE Only the DHO900 series supports :BUS<n>:LIN commands. 3.4.15.1 :BUS<n>:LIN:PARity :BUS1:LIN:PARity ON            /*Sets the parity bit to be included in LIN decoding.*/ :BUS1:LIN:PARity?                /*The query returns 1.*/ 3.4.15.2 :BUS<n>:LIN:SOURce :BUS1:LIN:SOURce CHANnel2    /*Sets the source of LIN bus to CHANnel2.*/ :BUS1:LIN:SOURce?      /*The query returns CHAN2.*/ 64 3.4.15.3 :BUS<n>:LIN:STANdard :BUS1:LIN:STANdard V2X              /*Sets the LIN bus version to V2X.*/ :BUS1:LIN:STANdard?                 /*The query returns V2X.*/ 3.5 :BODeplot Commands The :BODeplot commands are used to execute the bode-related settings and operations. Bode plot is a way of graphically displaying the frequency response of a system. Through the analysis on the system's gain and phase margins, you can determine the stability of the system. With the built-in signal generator module, the oscilloscope generates the sweep signal of a specified frequency range and outputs to the switch power supply circuit under test. Then, the oscilloscope draws a Bode plot displaying the variation of phase and gain with different frequencies. NOTE The commands are only available for DHO914S and DHO924S. 65"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.1 :BUS<n>:PARallel:BUS"]
+Syntax = ":BUS<n>:PARallel:BUS <source> :BUS<n>:PARallel:BUS?"
+Description = "Sets or queries the current source of the Parallel decoding bus. 34"
+Remarks = "Only DHO900 series supports the digital channels D0-D15."
+"Return Format" = "The query returns D7D0, D15D8 D15D0, D0D7, D8D15, D0D15, CHAN1, CHAN2, CHAN3, CHAN4, or USER."
+Example = ":BUS1:PARallel:BUS CHANnel1   /*Sets the current source of the Parallel decoding bus to CHANnel1.*/ :BUS1:PARallel:BUS?          /*The query returns CHAN1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.2 :BUS<n>:PARallel:CLK"]
+Syntax = ":BUS<n>:PARallel:CLK <source> :BUS<n>:PARallel:CLK?"
+Description = "Sets or queries the clock source of the Parallel decoding."
+Remarks = "Only DHO900 series supports the digital channels D0-D15. 35"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF."
+Example = ":BUS1:PARallel:CLK CHANnel2    /*Sets the clock source of the Parallel decoding to CHANnel2.*/ :BUS1:PARallel:CLK?           /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.3 :BUS<n>:PARallel:SLOPe"]
+Syntax = ":BUS<n>:PARallel:SLOPe <slope> :BUS<n>:PARallel:SLOPe?"
+Description = "Sets or queries the edge type of the clock channel when being sampled by Parallel decoding on the data channel."
+Remarks = "If no clock channel is selected, the instrument will sample when the channel data hopping occurs during the decoding."
+"Return Format" = "The query returns POS, NEG, or BOTH."
+Example = ":BUS1:PARallel:SLOPe BOTH    /*Sets the Parallel decoding to sample on any edge of the clock channel.*/ :BUS1:PARallel:SLOPe?         /*The query returns BOTH.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.4 :BUS<n>:PARallel:WIDTh"]
+Syntax = ":BUS<n>:PARallel:WIDTh <wid> :BUS<n>:PARallel:WIDTh? 36"
+Description = "Sets or queries the data width of the Parallel decoding, that is, the number of bits per frame."
+Remarks = "• Only when the bus source is set to User (BUS<n>:PARallel:BUS USER), can this command be valid. • Send this command to set the data width of the bus first, then send the :BUS<n>:PARallel:BITX and :BUS<n>:PARallel:SOURce command to select the bit and set the channel source for the bit."
+"Return Format" = "The query returns an integer ranging from 1 to 4."
+Example = ":BUS1:PARallel:WIDTh 4    /*Sets the data width of Parallel decoding to 4.*/ :BUS1:PARallel:WIDTh?      /*The query returns 4.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.5 :BUS<n>:PARallel:BITX"]
+Syntax = ":BUS<n>:PARallel:BITX <bit> :BUS<n>:PARallel:BITX?"
+Description = "Sets or queries the data bit that the parallel bus requires to set for the channel source."
+Remarks = "• Only when the bus source is set to User (BUS<n>:PARallel:BUS USER), can this command be valid. • The data width is set by the :BUS<n>:PARallel:WIDTh command. • After selecting the desired bit, send the :BUS<n>:PARallel:SOURce command to set the channel source for the bit."
+"Return Format" = "The query returns the current data bits in integer. Its unit is Hz."
+Example = ":BUS1:PARallel:BITX 2    /*Sets the current bit to 2.*/ :BUS1:PARallel:BITX?     /*The query returns 2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.6 :BUS<n>:PARallel:SOURce"]
+Syntax = ":BUS<n>:PARallel:SOURce <src> :BUS<n>:PARallel:SOURce?"
+Description = "Sets or queries the channel source of the currently selected data bit."
+Remarks = "• Only when the bus source is set to User (BUS<n>:PARallel:BUS USER), can this command be valid. • >Before sending this command, send the :BUS<n>:PARallel:BITX command to select the desired data bit. • D0-D15 are only available for the DHO900 series. 38"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":BUS1:PARallel:SOURce CHANnel2    /*Sets the channel source of the current bit to CHANnel2.*/ :BUS1:PARallel:SOURce?             /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.7 :BUS<n>:PARallel:ENDian"]
+Syntax = ":BUS <n>:PARallel:ENDian <endian> :BUS <n>:PARallel:ENDian?"
+Description = "Sets or queries the endian of Parallel decoding on the specified decoding bus."
+Remarks = "• MSB: indicates Most Significant Bit transmission sequence, i.g. the highest bit of the data is transmitted first. • LSB: indicates Least Significant Bit transmission sequence, i.g. the lowest bit of the data is transmitted first."
+"Return Format" = "The query returns MSB or LSB."
+Example = ":BUS1:PARallel:ENDian LSB /*Sets the endian of Parallel decoding to LSB.*/ :BUS1:PARallel:ENDian? /*The query returns LSB.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.10.8 :BUS<n>:PARallel:POLarity"]
+Syntax = ":BUS<n>:PARallel:POLarity <pol> 39 :BUS<n>:PARallel:POLarity?"
+Description = "Sets or queries the data polarity of Parallel decoding."
+Remarks = "• NEGative: indicates negative polarity. • POSitive: indicates positive polarity."
+"Return Format" = "The query returns NEG or POS."
+Example = ":BUS1:PARallel:POLarity NEGative    /*Sets the data polarity of Parallel decoding to Negative.*/ :BUS1:PARallel:POLarity?            /*The query returns NEG.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11 :BUS<n>:RS232"]
+Syntax = ":BUS<n>:RS232:TX <source> :BUS<n>:RS232:TX? :BUS<n>:RS232:RX <source> :BUS<n>:RS232:RX? :BUS<n>:RS232:POLarity <pol> :BUS<n>:RS232:POLarity? 42 :BUS<n>:RS232:PARity <parity> :BUS<n>:RS232:PARity? :BUS<n>:RS232:ENDian <endian> :BUS<n>:RS232:ENDian? :BUS<n>:RS232:BAUD <baud> :BUS<n>:RS232:BAUD? :BUS<n>:RS232:DBITs <bits> :BUS<n>:RS232:DBITs? :BUS<n>:RS232:SBITs <stop bits> :BUS<n>:RS232:SBITs? :BUS<n>:IIC:SCLK:SOURce <source> :BUS<n>:IIC:SCLK:SOURce? :BUS<n>:IIC:SDA:SOURce <source> :BUS<n>:IIC:SDA:SOURce? :BUS<n>:IIC:EXCHange <bool> :BUS<n>:IIC:EXCHange? :BUS<n>:IIC:ADDRess <addr> :BUS<n>:IIC:ADDRess? :BUS<n>:SPI:SCLK:SOURce <source> :BUS<n>:SPI:SCLK:SOURce? :BUS<n>:SPI:SCLK:SLOPe <slope> :BUS<n>:SPI:SCLK:SLOPe? :BUS<n>:SPI:MISO:SOURce <source> :BUS<n>:SPI:MISO:SOURce? :BUS<n>:SPI:MOSI:SOURce <source> :BUS<n>:SPI:MOSI:SOURce? :BUS<n>:SPI:POLarity <polarity> :BUS<n>:SPI:POLarity? :BUS<n>:SPI:MISO:POLarity <polarity> :BUS<n>:SPI:MISO:POLarity? :BUS<n>:SPI:MOSI:POLarity <polarity> :BUS<n>:SPI:MOSI:POLarity? :BUS<n>:SPI:DBITs <width> :BUS<n>:SPI:DBITs? :BUS<n>:SPI:ENDian <endian> :BUS<n>:SPI:ENDian? :BUS<n>:SPI:MODE <mode> :BUS<n>:SPI:MODE? :BUS<n>:SPI:TIMeout:TIME <time> :BUS<n>:SPI:TIMeout:TIME? :BUS<n>:SPI:SS:SOURce <source> :BUS<n>:SPI:SS:SOURce? :BUS<n>:SPI:SS:POLarity <polarity> :BUS<n>:SPI:SS:POLarity? :BUS<n>:CAN:SOURce <source> :BUS<n>:CAN:SOURce? :BUS<n>:CAN:STYPe <stype> :BUS<n>:CAN:STYPe? :BUS<n>:CAN:BAUD <baud> :BUS<n>:CAN:BAUD? :BUS<n>:CAN:SPOint <spoint> :BUS<n>:CAN:SPOint? :BUS<n>:LIN:PARity <bool> :BUS<n>:LIN:PARity? :BUS<n>:LIN:SOURce <source> :BUS<n>:LIN:SOURce? :BUS<n>:LIN:STANdard <value> :BUS<n>:LIN:STANdard?"
+Description = "Sets or queries the Tx source of RS232 decoding on the specific bus. Sets or queries the Rx source of RS232 decoding on the specific bus. Sets or queries the polarity of RS232 decoding on the specified bus. Sets or queries the odd-even check mode of data transmission in RS232 decoding. Sets or queries the endian of data transmission in RS232 decoding. Sets or queries the baud rate of data transmission in RS232 decoding. The default unit is bps. Sets or queries the data width of RS232 decoding. 45 Sets or queries the stop bits of each frame of data in RS232 decoding. Sets or queries the clock source of I2C decoding. Sets or queries the data source of the I2C decoding. Sets to exchange the clock channel source and the data channel source of I2C decoding on the specified bus; queries whether the clock channel source and the data channel source of I2C decoding on the specified bus have been exchanged. 48 Sets or queries the address mode of I2C decoding. Sets or queries the clock source of SPI decoding. Sets or queries the clock edge type of the SPI decoding. Sets or queries the MISO data source of SPI decoding on the specified bus. 51 Sets or queries the MOSI data source of SPI decoding on the specified bus. Sets or queries the polarity of the SPI decoding on the specified decoding bus. Sets or queries the polarity of MISO data line of SPI decoding. Sets or queries the polarity of MOSI data line of SPI decoding. Sets or queries the data width of SPI decoding. Sets or queries the endian of data transmission in SPI decoding. Sets or queries the decode mode of SPI decoding. 56 Sets or queries the timeout value of SPI decoding on the specified bus. The unit is s. Sets or queries the source of the CS line of SPI decoding on the specified bus. Sets or queries the polarity of CS line of SPI decoding on the specified bus. Sets or queries the source of CAN decoding. Sets or queries the signal type of CAN decoding. Sets or queries the signal rate of CAN decoding on the specified decoding bus. The unit is bps. Sets or queries the sample point position of the CAN decoding on the specified bus (expressed in %). 62 Sets or queries whether the LIN decoding on the specified decoding bus includes the parity bit. Sets or queries the source of LIN bus. Sets or queries the version of LIN bus."
+Remarks = "The Tx and Rx sources cannot be set to OFF at the same time. The Rx source can be set by using the :BUS<n>:RS232:RX command. D0-D15 are only available for the DHO900 series. The Tx and Rx sources cannot be set to OFF at the same time. The Tx source can be set by using the :BUS<n>:RS232:TX command. D0-D15 are only available for the DHO900 series. • POSitive: indicates positive polarity. High level is logic \"1\" and low level is logic \"0\". • NEGative: indicates negative polarity. High level is logic \"0\" and low level is logic \"1\". • None: indicates that there is no parity bit in data transmission. 43 • ODD: indicates the odd parity bit. The total count of occurrences of 1 in the data bit and check bit is an odd number. For example, if 0x55 (01010101) is transmitted, 1 shall be added to the check bit. • Even: indicates the even parity bit. The total count of occurrences of 1 in the data bit and check bit is an even number. For example, if 0x55 (01010101) is transmitted, 0 shall be added to the check bit. • LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first. • MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first. If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA. N/A N/A D0-D15 are only available for the DHO900 series. D0-D15 are only available for the DHO900 series. N/A • NORMal: indicates that the address width does not include the R/W bit. • RW: indicates that the address width includes the R/W bit. D0-D15 are only available for the DHO900 series. 50 N/A The source specified in this command and the :BUS<n>:SPI:MOSI:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. The source specified in this command and the :BUS<n>:SPI:MISO:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. • HIGH: indicates positive polarity. The high level is 1, and low level is 0. • LOW: indicates negative polarity. The high level is 0, and low level is 1. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. This command exists for backwards compatibility. Use the command :BUS<n>:SPI:POLarity. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. N/A • MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first. • LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first. • CS: indicates chip select. It contains a chip select line (CS). You can perform frame synchronization according to CS. • TIMeout: indicates timed out. You can perform frame synchronization according to the timeout. For DHO800 series, only 4-channel models support CS setting for SPI decoding. • This setting command is only valid in timeout mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of SPI decoding. 57 • The timeout must be greater than the maximum clock pulse width and less than the idle time between frames. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. Only DHO900 series supports the digital channels D0-D15. For DHO800 series, only 4-channel models support this command. • HIGH: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is high level. • LOW: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is low level. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. For DHO800 series, only 4-channel models support this command. D0-D15 are only available for the DHO900 series. 60 • TX: indicates the Transmit signal from the CAN bus transceiver. • RX: indicates the Receive signal from the CAN bus transceiver. • CANH: indicates the actual CAN_H differential bus signal. • CANL: indicates the actual CAN_L differential bus signal. • DIFFerential: indicates the CAN differential bus signal connected to an analog channel by using a differential probe. Connect the differential probe's positive lead to the CAN_H bus signal and connect the negative lead to the CAN_L bus signal. If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA. For detailed sample position, refer to Sample Position. • 1|ON: includes the parity bit. • 0|OFF: does not include the parity bit. D0-D15 are only available for the DHO900 series. N/A"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. 41 The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns POS or NEG. The query returns NONE, ODD, or EVEN. The query returns LSB or MSB. 44 The query returns an integer ranging from 1 to 20M. The query returns 5, 6, 7, 8, or 9. The query returns 1, 1.5, or 2. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns 0 or 1. The query returns NORM or RW. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns POS or NEG. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns an integer ranging from 4 to 32. The query returns MSB or LSB. The query returns CS or TIM. The query returns the timeout value in scientific notation. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. 58 The query returns HIGH or LOW. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns TX, RX, CANH, CANL, or DIFF. 61 The query returns an integer ranging from 10k to 5M. The query returns an integer ranging from 10 to 90. The query returns 0 or 1. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns V1X, V2X, or MIX."
+Example = ":BUS1:RS232:TX CHANnel2    /*Sets the Tx source of RS232 decoding to CHANnel2.*/ :BUS1:RS232:TX?      /*The query returns CHAN2.*/ 3.4.11.2 :BUS<n>:RS232:RX :BUS1:RS232:RX CHANnel2    /*Sets the Rx source of RS232 decoding to CHANnel2.*/ :BUS1:RS232:RX?      /*The query returns CHAN2.*/ 3.4.11.3 :BUS<n>:RS232:POLarity :BUS1:RS232:POLarity POSitive     /*Sets the polarity of RS232 decoding to POSitive.*/ :BUS1:RS232:POLarity?            /*The query returns POS.*/ 3.4.11.4 :BUS<n>:RS232:PARity :BUS1:RS232:PARity ODD        /*Sets the odd-even check mode of data transmission in RS232 decoding to ODD.*/ :BUS1:RS232:PARity?            /*The query returns ODD.*/ 3.4.11.5 :BUS<n>:RS232:ENDian :BUS1:RS232:ENDian MSB        /*Sets the transmission order of RS232 decoding to MSB.*/ :BUS1:RS232:ENDian?            /*The query returns MSB.*/ 3.4.11.6 :BUS<n>:RS232:BAUD :BUS1:RS232:BAUD 4800        /*Sets the baud rate of data transmission in RS232 decoding to 4800 bps.*/ :BUS1:RS232:BAUD?            /*The query returns 4800.*/ 3.4.11.7 :BUS<n>:RS232:DBITs :BUS1:RS232:DBITs 7   /*Sets the data width of RS232 decoding to 7.*/ :BUS1:RS232:DBITs?      /*The query returns 7.*/ 3.4.11.8 :BUS<n>:RS232:SBITs :BUS1:RS232:SBITs 2   /*Sets the stop bits of RS232 decoding to 2.*/ :BUS1:RS232:SBITs?   /*The query returns 2.*/ 46 3.4.12 :BUS<n>:IIC The :BUS<n>:IIC commands are used to set relevant parameters for I2C decoding. I2C serial bus consists of the clock line (SCL) and the data line (SDA). • SCL: samples SDA on the rising or falling edge of the clock. • SDA: indicates the data channel. SCL SDA Figure 3.3 I2C Serial Bus 3.4.12.1 :BUS<n>:IIC:SCLK:SOURce :BUS1:IIC:SCLK:SOURce CHANnel2    /*Sets the clock source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SCLK:SOURce?      /*The query returns CHAN2.*/ 47 3.4.12.2 :BUS<n>:IIC:SDA:SOURce :BUS1:IIC:SDA:SOURce CHANnel2    /*Sets the data source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SDA:SOURce?      /*The query returns CHAN2.*/ 3.4.12.3 :BUS<n>:IIC:EXCHange :BUS1:IIC:EXCHange ON /*Sets to exchange the clock channel source and the data channel source.*/ :BUS1:IIC:EXCHange? /*The query returns 1.*/ 3.4.12.4 :BUS<n>:IIC:ADDRess :BUS1:IIC:ADDRess RW    /*Sets the address of I2C decoding to include the R/W bit.*/ :BUS1:IIC:ADDRess?       /*The query returns RW.*/ 49 3.4.13 :BUS<n>:SPI :BUS<n>:SPI commands are used to set relevant parameters for SPI decoding. SPI bus is based on the master — slave configuration and usually consists of chip select line (CS), clock line (CLK), and data line (SDA). Wherein, the data lines include the master input/slave output (MISO) data line and master output/slave input (MOSI) data line. The oscilloscope samples the channel data on the rising or falling edge of the clock signal. For analog channels, it also judges each data point (logic \"1\" or logic \"0\") according to the preset threshold level. Master Slave MOSI CLK MISO CS CLK SDA (MISO/MOSI) Figure 3.4 SPI Serial Bus 3.4.13.1 :BUS<n>:SPI:SCLK:SOURce :BUS1:SPI:SCLK:SOURce CHANnel2    /*Sets the clock source of SPI decoding to CHANnel2.*/ :BUS1:SPI:SCLK:SOURce?      /*The query returns CHAN2.*/ 3.4.13.2 :BUS<n>:SPI:SCLK:SLOPe :BUS1:SPI:SCLK:SLOPe NEGative    /*Sets the clock edge type of SPI decoding to Negative.*/ :BUS1:SPI:SCLK:SLOPe?             /*The query returns NEG.*/ 3.4.13.3 :BUS<n>:SPI:MISO:SOURce :BUS1:SPI:MISO:SOURce CHANnel2    /*Sets the MISO data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MISO:SOURce?      /*The query returns CHAN2.*/ 3.4.13.4 :BUS<n>:SPI:MOSI:SOURce :BUS1:SPI:MOSI:SOURce CHANnel2    /*Sets the MOSI data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MOSI:SOURce?      /*The query returns CHAN2.*/ 3.4.13.5 :BUS<n>:SPI:POLarity :BUS1:SPI:POLarity HIGH      /*Sets the polarity of the SPI decoding to Positive.*/ :BUS1:SPI:POLarity?          /*The query returns HIGH.*/ 53 3.4.13.6 :BUS<n>:SPI:MISO:POLarity :BUS1:SPI:MISO:POLarity HIGH      /*Sets the polarity of MISO data line to Positive.*/ :BUS1:SPI:MISO:POLarity?          /*The query returns HIGH.*/ 3.4.13.7 :BUS<n>:SPI:MOSI:POLarity :BUS1:SPI:MOSI:POLarity HIGH      /*Sets the polarity of MOSI data line to Positive.*/ :BUS1:SPI:MOSI:POLarity?          /*The query returns HIGH.*/ 3.4.13.8 :BUS<n>:SPI:DBITs :BUS1:SPI:DBITs 10      /*Sets the data width of SPI decoding to 10.*/ :BUS1:SPI:DBITs?      /*The query returns 10.*/ 55 3.4.13.9 :BUS<n>:SPI:ENDian :BUS1:SPI:ENDian LSB       /*Sets the endian of data transmission in SPI decoding to LSB.*/ :BUS1:SPI:ENDian?          /*The query returns LSB.*/ 3.4.13.10 :BUS<n>:SPI:MODE :BUS1:SPI:MODE CS /*Sets the decode mode of SPI decoding to CS.*/ :BUS1:SPI:MODE? /*The query returns CS.*/ 3.4.13.11 :BUS<n>:SPI:TIMeout:TIME :BUS1:SPI:TIMeout:TIME 0.000005    /*Sets the timeout value to 5 μs.*/ :BUS1:SPI:TIMeout:TIME?            /*The query returns 5.000000E-6.*/ 3.4.13.12 :BUS<n>:SPI:SS:SOURce :BUS1:SPI:SS:SOURce CHANnel2    /*Sets the source of CS line of SPI decoding to CHANnel2.*/ :BUS1:SPI:SS:SOURce?      /*The query returns CHAN2.*/ 3.4.13.13 :BUS<n>:SPI:SS:POLarity :BUS1:SPI:SS:POLarity HIGH /*Sets the polarity of CS line of SPI decoding to HIGH.*/ :BUS1:SPI:SS:POLarity? /*The query returns HIGH.*/ 3.4.14 :BUS<n>:CAN The :BUS<n>:CAN commands are used to set relevant parameters for CAN decoding. 59 The oscilloscope samples the CAN at the specified sample position, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. You need to specify the CAN type and sample position for CAN decoding. Sample Position Sample position is a point within a bit's time. The oscilloscope samples the bit level at this point. The sample point position is expressed as the ratio of \"time from the bit start to the sample point\" to \"bit time\", in %. One Bit 60% 70% 80% Figure 3.5 Sample Position NOTE Only the DHO900 series supports :BUS<n>:CAN commands. 3.4.14.1 :BUS<n>:CAN:SOURce :BUS1:CAN:SOURce CHANnel2    /*Sets the source of CAN decoding to CHANnel2.*/ :BUS1:CAN:SOURce?      /*The query returns CHAN2.*/ 3.4.14.2 :BUS<n>:CAN:STYPe :BUS1:CAN:STYPe TX        /*Sets the signal type of CAN decoding to TX.*/ :BUS1:CAN:STYPe?          /*The query returns TX.*/ 3.4.14.3 :BUS<n>:CAN:BAUD :BUS1:CAN:BAUD 120000    /*Sets the signal rate of CAN decoding to 120000 bps*/ :BUS1:CAN:BAUD?              /*The query returns 120000.*/ 3.4.14.4 :BUS<n>:CAN:SPOint :BUS1:CAN:SPOint 70        /*Sets the sample point position of CAN decoding to 70%.*/ :BUS1:CAN:SPOint?          /*The query returns 70.*/ 3.4.15 :BUS<n>:LIN The :BUS<n>:LIN commands are used to set relevant parameters for LIN decoding. The oscilloscope samples the LIN signal, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. The LIN decoding is required to specify the LIN\u3000signal protocol version. NOTE Only the DHO900 series supports :BUS<n>:LIN commands. 3.4.15.1 :BUS<n>:LIN:PARity :BUS1:LIN:PARity ON            /*Sets the parity bit to be included in LIN decoding.*/ :BUS1:LIN:PARity?                /*The query returns 1.*/ 3.4.15.2 :BUS<n>:LIN:SOURce :BUS1:LIN:SOURce CHANnel2    /*Sets the source of LIN bus to CHANnel2.*/ :BUS1:LIN:SOURce?      /*The query returns CHAN2.*/ 64 3.4.15.3 :BUS<n>:LIN:STANdard :BUS1:LIN:STANdard V2X              /*Sets the LIN bus version to V2X.*/ :BUS1:LIN:STANdard?                 /*The query returns V2X.*/ 3.5 :BODeplot Commands The :BODeplot commands are used to execute the bode-related settings and operations. Bode plot is a way of graphically displaying the frequency response of a system. Through the analysis on the system's gain and phase margins, you can determine the stability of the system. With the built-in signal generator module, the oscilloscope generates the sweep signal of a specified frequency range and outputs to the switch power supply circuit under test. Then, the oscilloscope draws a Bode plot displaying the variation of phase and gain with different frequencies. NOTE The commands are only available for DHO914S and DHO924S. 65"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.1 :BUS<n>:RS232:TX"]
+Syntax = ":BUS<n>:RS232:TX <source> :BUS<n>:RS232:TX?"
+Description = "Sets or queries the Tx source of RS232 decoding on the specific bus."
+Remarks = "The Tx and Rx sources cannot be set to OFF at the same time. The Rx source can be set by using the :BUS<n>:RS232:RX command. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. 41"
+Example = ":BUS1:RS232:TX CHANnel2    /*Sets the Tx source of RS232 decoding to CHANnel2.*/ :BUS1:RS232:TX?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.2 :BUS<n>:RS232:RX"]
+Syntax = ":BUS<n>:RS232:RX <source> :BUS<n>:RS232:RX?"
+Description = "Sets or queries the Rx source of RS232 decoding on the specific bus."
+Remarks = "The Tx and Rx sources cannot be set to OFF at the same time. The Tx source can be set by using the :BUS<n>:RS232:TX command. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF."
+Example = ":BUS1:RS232:RX CHANnel2    /*Sets the Rx source of RS232 decoding to CHANnel2.*/ :BUS1:RS232:RX?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.3 :BUS<n>:RS232:POLarity"]
+Syntax = ":BUS<n>:RS232:POLarity <pol> :BUS<n>:RS232:POLarity? 42"
+Description = "Sets or queries the polarity of RS232 decoding on the specified bus."
+Remarks = "• POSitive: indicates positive polarity. High level is logic \"1\" and low level is logic \"0\". • NEGative: indicates negative polarity. High level is logic \"0\" and low level is logic \"1\"."
+"Return Format" = "The query returns POS or NEG."
+Example = ":BUS1:RS232:POLarity POSitive     /*Sets the polarity of RS232 decoding to POSitive.*/ :BUS1:RS232:POLarity?            /*The query returns POS.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.4 :BUS<n>:RS232:PARity"]
+Syntax = ":BUS<n>:RS232:PARity <parity> :BUS<n>:RS232:PARity?"
+Description = "Sets or queries the odd-even check mode of data transmission in RS232 decoding."
+Remarks = "• None: indicates that there is no parity bit in data transmission. 43 • ODD: indicates the odd parity bit. The total count of occurrences of 1 in the data bit and check bit is an odd number. For example, if 0x55 (01010101) is transmitted, 1 shall be added to the check bit. • Even: indicates the even parity bit. The total count of occurrences of 1 in the data bit and check bit is an even number. For example, if 0x55 (01010101) is transmitted, 0 shall be added to the check bit."
+"Return Format" = "The query returns NONE, ODD, or EVEN."
+Example = ":BUS1:RS232:PARity ODD        /*Sets the odd-even check mode of data transmission in RS232 decoding to ODD.*/ :BUS1:RS232:PARity?            /*The query returns ODD.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.5 :BUS<n>:RS232:ENDian"]
+Syntax = ":BUS<n>:RS232:ENDian <endian> :BUS<n>:RS232:ENDian?"
+Description = "Sets or queries the endian of data transmission in RS232 decoding."
+Remarks = "• LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first. • MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first."
+"Return Format" = "The query returns LSB or MSB. 44"
+Example = ":BUS1:RS232:ENDian MSB        /*Sets the transmission order of RS232 decoding to MSB.*/ :BUS1:RS232:ENDian?            /*The query returns MSB.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.6 :BUS<n>:RS232:BAUD"]
+Syntax = ":BUS<n>:RS232:BAUD <baud> :BUS<n>:RS232:BAUD?"
+Description = "Sets or queries the baud rate of data transmission in RS232 decoding. The default unit is bps."
+Remarks = "If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA."
+"Return Format" = "The query returns an integer ranging from 1 to 20M."
+Example = ":BUS1:RS232:BAUD 4800        /*Sets the baud rate of data transmission in RS232 decoding to 4800 bps.*/ :BUS1:RS232:BAUD?            /*The query returns 4800.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.7 :BUS<n>:RS232:DBITs"]
+Syntax = ":BUS<n>:RS232:DBITs <bits> :BUS<n>:RS232:DBITs?"
+Description = "Sets or queries the data width of RS232 decoding. 45"
+Remarks = "N/A"
+"Return Format" = "The query returns 5, 6, 7, 8, or 9."
+Example = ":BUS1:RS232:DBITs 7   /*Sets the data width of RS232 decoding to 7.*/ :BUS1:RS232:DBITs?      /*The query returns 7.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.11.8 :BUS<n>:RS232:SBITs"]
+Syntax = ":BUS<n>:RS232:SBITs <stop bits> :BUS<n>:RS232:SBITs?"
+Description = "Sets or queries the stop bits of each frame of data in RS232 decoding."
+Remarks = "N/A"
+"Return Format" = "The query returns 1, 1.5, or 2."
+Example = ":BUS1:RS232:SBITs 2   /*Sets the stop bits of RS232 decoding to 2.*/ :BUS1:RS232:SBITs?   /*The query returns 2.*/ 46"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.12 :BUS<n>:IIC"]
+Syntax = ":BUS<n>:IIC:SCLK:SOURce <source> :BUS<n>:IIC:SCLK:SOURce? :BUS<n>:IIC:SDA:SOURce <source> :BUS<n>:IIC:SDA:SOURce? :BUS<n>:IIC:EXCHange <bool> :BUS<n>:IIC:EXCHange? :BUS<n>:IIC:ADDRess <addr> :BUS<n>:IIC:ADDRess? :BUS<n>:SPI:SCLK:SOURce <source> :BUS<n>:SPI:SCLK:SOURce? :BUS<n>:SPI:SCLK:SLOPe <slope> :BUS<n>:SPI:SCLK:SLOPe? :BUS<n>:SPI:MISO:SOURce <source> :BUS<n>:SPI:MISO:SOURce? :BUS<n>:SPI:MOSI:SOURce <source> :BUS<n>:SPI:MOSI:SOURce? :BUS<n>:SPI:POLarity <polarity> :BUS<n>:SPI:POLarity? :BUS<n>:SPI:MISO:POLarity <polarity> :BUS<n>:SPI:MISO:POLarity? :BUS<n>:SPI:MOSI:POLarity <polarity> :BUS<n>:SPI:MOSI:POLarity? :BUS<n>:SPI:DBITs <width> :BUS<n>:SPI:DBITs? :BUS<n>:SPI:ENDian <endian> :BUS<n>:SPI:ENDian? :BUS<n>:SPI:MODE <mode> :BUS<n>:SPI:MODE? :BUS<n>:SPI:TIMeout:TIME <time> :BUS<n>:SPI:TIMeout:TIME? :BUS<n>:SPI:SS:SOURce <source> :BUS<n>:SPI:SS:SOURce? :BUS<n>:SPI:SS:POLarity <polarity> :BUS<n>:SPI:SS:POLarity? :BUS<n>:CAN:SOURce <source> :BUS<n>:CAN:SOURce? :BUS<n>:CAN:STYPe <stype> :BUS<n>:CAN:STYPe? :BUS<n>:CAN:BAUD <baud> :BUS<n>:CAN:BAUD? :BUS<n>:CAN:SPOint <spoint> :BUS<n>:CAN:SPOint? :BUS<n>:LIN:PARity <bool> :BUS<n>:LIN:PARity? :BUS<n>:LIN:SOURce <source> :BUS<n>:LIN:SOURce? :BUS<n>:LIN:STANdard <value> :BUS<n>:LIN:STANdard?"
+Description = "Sets or queries the clock source of I2C decoding. Sets or queries the data source of the I2C decoding. Sets to exchange the clock channel source and the data channel source of I2C decoding on the specified bus; queries whether the clock channel source and the data channel source of I2C decoding on the specified bus have been exchanged. 48 Sets or queries the address mode of I2C decoding. Sets or queries the clock source of SPI decoding. Sets or queries the clock edge type of the SPI decoding. Sets or queries the MISO data source of SPI decoding on the specified bus. 51 Sets or queries the MOSI data source of SPI decoding on the specified bus. Sets or queries the polarity of the SPI decoding on the specified decoding bus. Sets or queries the polarity of MISO data line of SPI decoding. Sets or queries the polarity of MOSI data line of SPI decoding. Sets or queries the data width of SPI decoding. Sets or queries the endian of data transmission in SPI decoding. Sets or queries the decode mode of SPI decoding. 56 Sets or queries the timeout value of SPI decoding on the specified bus. The unit is s. Sets or queries the source of the CS line of SPI decoding on the specified bus. Sets or queries the polarity of CS line of SPI decoding on the specified bus. Sets or queries the source of CAN decoding. Sets or queries the signal type of CAN decoding. Sets or queries the signal rate of CAN decoding on the specified decoding bus. The unit is bps. Sets or queries the sample point position of the CAN decoding on the specified bus (expressed in %). 62 Sets or queries whether the LIN decoding on the specified decoding bus includes the parity bit. Sets or queries the source of LIN bus. Sets or queries the version of LIN bus."
+Remarks = "D0-D15 are only available for the DHO900 series. D0-D15 are only available for the DHO900 series. N/A • NORMal: indicates that the address width does not include the R/W bit. • RW: indicates that the address width includes the R/W bit. D0-D15 are only available for the DHO900 series. 50 N/A The source specified in this command and the :BUS<n>:SPI:MOSI:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. The source specified in this command and the :BUS<n>:SPI:MISO:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. • HIGH: indicates positive polarity. The high level is 1, and low level is 0. • LOW: indicates negative polarity. The high level is 0, and low level is 1. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. This command exists for backwards compatibility. Use the command :BUS<n>:SPI:POLarity. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. N/A • MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first. • LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first. • CS: indicates chip select. It contains a chip select line (CS). You can perform frame synchronization according to CS. • TIMeout: indicates timed out. You can perform frame synchronization according to the timeout. For DHO800 series, only 4-channel models support CS setting for SPI decoding. • This setting command is only valid in timeout mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of SPI decoding. 57 • The timeout must be greater than the maximum clock pulse width and less than the idle time between frames. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. Only DHO900 series supports the digital channels D0-D15. For DHO800 series, only 4-channel models support this command. • HIGH: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is high level. • LOW: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is low level. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. For DHO800 series, only 4-channel models support this command. D0-D15 are only available for the DHO900 series. 60 • TX: indicates the Transmit signal from the CAN bus transceiver. • RX: indicates the Receive signal from the CAN bus transceiver. • CANH: indicates the actual CAN_H differential bus signal. • CANL: indicates the actual CAN_L differential bus signal. • DIFFerential: indicates the CAN differential bus signal connected to an analog channel by using a differential probe. Connect the differential probe's positive lead to the CAN_H bus signal and connect the negative lead to the CAN_L bus signal. If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA. For detailed sample position, refer to Sample Position. • 1|ON: includes the parity bit. • 0|OFF: does not include the parity bit. D0-D15 are only available for the DHO900 series. N/A"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns 0 or 1. The query returns NORM or RW. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns POS or NEG. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns an integer ranging from 4 to 32. The query returns MSB or LSB. The query returns CS or TIM. The query returns the timeout value in scientific notation. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. 58 The query returns HIGH or LOW. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns TX, RX, CANH, CANL, or DIFF. 61 The query returns an integer ranging from 10k to 5M. The query returns an integer ranging from 10 to 90. The query returns 0 or 1. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns V1X, V2X, or MIX."
+Example = ":BUS1:IIC:SCLK:SOURce CHANnel2    /*Sets the clock source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SCLK:SOURce?      /*The query returns CHAN2.*/ 47 3.4.12.2 :BUS<n>:IIC:SDA:SOURce :BUS1:IIC:SDA:SOURce CHANnel2    /*Sets the data source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SDA:SOURce?      /*The query returns CHAN2.*/ 3.4.12.3 :BUS<n>:IIC:EXCHange :BUS1:IIC:EXCHange ON /*Sets to exchange the clock channel source and the data channel source.*/ :BUS1:IIC:EXCHange? /*The query returns 1.*/ 3.4.12.4 :BUS<n>:IIC:ADDRess :BUS1:IIC:ADDRess RW    /*Sets the address of I2C decoding to include the R/W bit.*/ :BUS1:IIC:ADDRess?       /*The query returns RW.*/ 49 3.4.13 :BUS<n>:SPI :BUS<n>:SPI commands are used to set relevant parameters for SPI decoding. SPI bus is based on the master — slave configuration and usually consists of chip select line (CS), clock line (CLK), and data line (SDA). Wherein, the data lines include the master input/slave output (MISO) data line and master output/slave input (MOSI) data line. The oscilloscope samples the channel data on the rising or falling edge of the clock signal. For analog channels, it also judges each data point (logic \"1\" or logic \"0\") according to the preset threshold level. Master Slave MOSI CLK MISO CS CLK SDA (MISO/MOSI) Figure 3.4 SPI Serial Bus 3.4.13.1 :BUS<n>:SPI:SCLK:SOURce :BUS1:SPI:SCLK:SOURce CHANnel2    /*Sets the clock source of SPI decoding to CHANnel2.*/ :BUS1:SPI:SCLK:SOURce?      /*The query returns CHAN2.*/ 3.4.13.2 :BUS<n>:SPI:SCLK:SLOPe :BUS1:SPI:SCLK:SLOPe NEGative    /*Sets the clock edge type of SPI decoding to Negative.*/ :BUS1:SPI:SCLK:SLOPe?             /*The query returns NEG.*/ 3.4.13.3 :BUS<n>:SPI:MISO:SOURce :BUS1:SPI:MISO:SOURce CHANnel2    /*Sets the MISO data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MISO:SOURce?      /*The query returns CHAN2.*/ 3.4.13.4 :BUS<n>:SPI:MOSI:SOURce :BUS1:SPI:MOSI:SOURce CHANnel2    /*Sets the MOSI data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MOSI:SOURce?      /*The query returns CHAN2.*/ 3.4.13.5 :BUS<n>:SPI:POLarity :BUS1:SPI:POLarity HIGH      /*Sets the polarity of the SPI decoding to Positive.*/ :BUS1:SPI:POLarity?          /*The query returns HIGH.*/ 53 3.4.13.6 :BUS<n>:SPI:MISO:POLarity :BUS1:SPI:MISO:POLarity HIGH      /*Sets the polarity of MISO data line to Positive.*/ :BUS1:SPI:MISO:POLarity?          /*The query returns HIGH.*/ 3.4.13.7 :BUS<n>:SPI:MOSI:POLarity :BUS1:SPI:MOSI:POLarity HIGH      /*Sets the polarity of MOSI data line to Positive.*/ :BUS1:SPI:MOSI:POLarity?          /*The query returns HIGH.*/ 3.4.13.8 :BUS<n>:SPI:DBITs :BUS1:SPI:DBITs 10      /*Sets the data width of SPI decoding to 10.*/ :BUS1:SPI:DBITs?      /*The query returns 10.*/ 55 3.4.13.9 :BUS<n>:SPI:ENDian :BUS1:SPI:ENDian LSB       /*Sets the endian of data transmission in SPI decoding to LSB.*/ :BUS1:SPI:ENDian?          /*The query returns LSB.*/ 3.4.13.10 :BUS<n>:SPI:MODE :BUS1:SPI:MODE CS /*Sets the decode mode of SPI decoding to CS.*/ :BUS1:SPI:MODE? /*The query returns CS.*/ 3.4.13.11 :BUS<n>:SPI:TIMeout:TIME :BUS1:SPI:TIMeout:TIME 0.000005    /*Sets the timeout value to 5 μs.*/ :BUS1:SPI:TIMeout:TIME?            /*The query returns 5.000000E-6.*/ 3.4.13.12 :BUS<n>:SPI:SS:SOURce :BUS1:SPI:SS:SOURce CHANnel2    /*Sets the source of CS line of SPI decoding to CHANnel2.*/ :BUS1:SPI:SS:SOURce?      /*The query returns CHAN2.*/ 3.4.13.13 :BUS<n>:SPI:SS:POLarity :BUS1:SPI:SS:POLarity HIGH /*Sets the polarity of CS line of SPI decoding to HIGH.*/ :BUS1:SPI:SS:POLarity? /*The query returns HIGH.*/ 3.4.14 :BUS<n>:CAN The :BUS<n>:CAN commands are used to set relevant parameters for CAN decoding. 59 The oscilloscope samples the CAN at the specified sample position, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. You need to specify the CAN type and sample position for CAN decoding. Sample Position Sample position is a point within a bit's time. The oscilloscope samples the bit level at this point. The sample point position is expressed as the ratio of \"time from the bit start to the sample point\" to \"bit time\", in %. One Bit 60% 70% 80% Figure 3.5 Sample Position NOTE Only the DHO900 series supports :BUS<n>:CAN commands. 3.4.14.1 :BUS<n>:CAN:SOURce :BUS1:CAN:SOURce CHANnel2    /*Sets the source of CAN decoding to CHANnel2.*/ :BUS1:CAN:SOURce?      /*The query returns CHAN2.*/ 3.4.14.2 :BUS<n>:CAN:STYPe :BUS1:CAN:STYPe TX        /*Sets the signal type of CAN decoding to TX.*/ :BUS1:CAN:STYPe?          /*The query returns TX.*/ 3.4.14.3 :BUS<n>:CAN:BAUD :BUS1:CAN:BAUD 120000    /*Sets the signal rate of CAN decoding to 120000 bps*/ :BUS1:CAN:BAUD?              /*The query returns 120000.*/ 3.4.14.4 :BUS<n>:CAN:SPOint :BUS1:CAN:SPOint 70        /*Sets the sample point position of CAN decoding to 70%.*/ :BUS1:CAN:SPOint?          /*The query returns 70.*/ 3.4.15 :BUS<n>:LIN The :BUS<n>:LIN commands are used to set relevant parameters for LIN decoding. The oscilloscope samples the LIN signal, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. The LIN decoding is required to specify the LIN\u3000signal protocol version. NOTE Only the DHO900 series supports :BUS<n>:LIN commands. 3.4.15.1 :BUS<n>:LIN:PARity :BUS1:LIN:PARity ON            /*Sets the parity bit to be included in LIN decoding.*/ :BUS1:LIN:PARity?                /*The query returns 1.*/ 3.4.15.2 :BUS<n>:LIN:SOURce :BUS1:LIN:SOURce CHANnel2    /*Sets the source of LIN bus to CHANnel2.*/ :BUS1:LIN:SOURce?      /*The query returns CHAN2.*/ 64 3.4.15.3 :BUS<n>:LIN:STANdard :BUS1:LIN:STANdard V2X              /*Sets the LIN bus version to V2X.*/ :BUS1:LIN:STANdard?                 /*The query returns V2X.*/ 3.5 :BODeplot Commands The :BODeplot commands are used to execute the bode-related settings and operations. Bode plot is a way of graphically displaying the frequency response of a system. Through the analysis on the system's gain and phase margins, you can determine the stability of the system. With the built-in signal generator module, the oscilloscope generates the sweep signal of a specified frequency range and outputs to the switch power supply circuit under test. Then, the oscilloscope draws a Bode plot displaying the variation of phase and gain with different frequencies. NOTE The commands are only available for DHO914S and DHO924S. 65"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.12.1 :BUS<n>:IIC:SCLK:SOURce"]
+Syntax = ":BUS<n>:IIC:SCLK:SOURce <source> :BUS<n>:IIC:SCLK:SOURce?"
+Description = "Sets or queries the clock source of I2C decoding."
+Remarks = "D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":BUS1:IIC:SCLK:SOURce CHANnel2    /*Sets the clock source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SCLK:SOURce?      /*The query returns CHAN2.*/ 47"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.12.2 :BUS<n>:IIC:SDA:SOURce"]
+Syntax = ":BUS<n>:IIC:SDA:SOURce <source> :BUS<n>:IIC:SDA:SOURce?"
+Description = "Sets or queries the data source of the I2C decoding."
+Remarks = "D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":BUS1:IIC:SDA:SOURce CHANnel2    /*Sets the data source of I2C decoding to CHANnel2.*/ :BUS1:IIC:SDA:SOURce?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.12.3 :BUS<n>:IIC:EXCHange"]
+Syntax = ":BUS<n>:IIC:EXCHange <bool> :BUS<n>:IIC:EXCHange?"
+Description = "Sets to exchange the clock channel source and the data channel source of I2C decoding on the specified bus; queries whether the clock channel source and the data channel source of I2C decoding on the specified bus have been exchanged. 48"
+Remarks = "N/A"
+"Return Format" = "The query returns 0 or 1."
+Example = ":BUS1:IIC:EXCHange ON /*Sets to exchange the clock channel source and the data channel source.*/ :BUS1:IIC:EXCHange? /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.12.4 :BUS<n>:IIC:ADDRess"]
+Syntax = ":BUS<n>:IIC:ADDRess <addr> :BUS<n>:IIC:ADDRess?"
+Description = "Sets or queries the address mode of I2C decoding."
+Remarks = "• NORMal: indicates that the address width does not include the R/W bit. • RW: indicates that the address width includes the R/W bit."
+"Return Format" = "The query returns NORM or RW."
+Example = ":BUS1:IIC:ADDRess RW    /*Sets the address of I2C decoding to include the R/W bit.*/ :BUS1:IIC:ADDRess?       /*The query returns RW.*/ 49"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13 :BUS<n>:SPI"]
+Syntax = ":BUS<n>:SPI:SCLK:SOURce <source> :BUS<n>:SPI:SCLK:SOURce? :BUS<n>:SPI:SCLK:SLOPe <slope> :BUS<n>:SPI:SCLK:SLOPe? :BUS<n>:SPI:MISO:SOURce <source> :BUS<n>:SPI:MISO:SOURce? :BUS<n>:SPI:MOSI:SOURce <source> :BUS<n>:SPI:MOSI:SOURce? :BUS<n>:SPI:POLarity <polarity> :BUS<n>:SPI:POLarity? :BUS<n>:SPI:MISO:POLarity <polarity> :BUS<n>:SPI:MISO:POLarity? :BUS<n>:SPI:MOSI:POLarity <polarity> :BUS<n>:SPI:MOSI:POLarity? :BUS<n>:SPI:DBITs <width> :BUS<n>:SPI:DBITs? :BUS<n>:SPI:ENDian <endian> :BUS<n>:SPI:ENDian? :BUS<n>:SPI:MODE <mode> :BUS<n>:SPI:MODE? :BUS<n>:SPI:TIMeout:TIME <time> :BUS<n>:SPI:TIMeout:TIME? :BUS<n>:SPI:SS:SOURce <source> :BUS<n>:SPI:SS:SOURce? :BUS<n>:SPI:SS:POLarity <polarity> :BUS<n>:SPI:SS:POLarity? :BUS<n>:CAN:SOURce <source> :BUS<n>:CAN:SOURce? :BUS<n>:CAN:STYPe <stype> :BUS<n>:CAN:STYPe? :BUS<n>:CAN:BAUD <baud> :BUS<n>:CAN:BAUD? :BUS<n>:CAN:SPOint <spoint> :BUS<n>:CAN:SPOint? :BUS<n>:LIN:PARity <bool> :BUS<n>:LIN:PARity? :BUS<n>:LIN:SOURce <source> :BUS<n>:LIN:SOURce? :BUS<n>:LIN:STANdard <value> :BUS<n>:LIN:STANdard?"
+Description = "Sets or queries the clock source of SPI decoding. Sets or queries the clock edge type of the SPI decoding. Sets or queries the MISO data source of SPI decoding on the specified bus. 51 Sets or queries the MOSI data source of SPI decoding on the specified bus. Sets or queries the polarity of the SPI decoding on the specified decoding bus. Sets or queries the polarity of MISO data line of SPI decoding. Sets or queries the polarity of MOSI data line of SPI decoding. Sets or queries the data width of SPI decoding. Sets or queries the endian of data transmission in SPI decoding. Sets or queries the decode mode of SPI decoding. 56 Sets or queries the timeout value of SPI decoding on the specified bus. The unit is s. Sets or queries the source of the CS line of SPI decoding on the specified bus. Sets or queries the polarity of CS line of SPI decoding on the specified bus. Sets or queries the source of CAN decoding. Sets or queries the signal type of CAN decoding. Sets or queries the signal rate of CAN decoding on the specified decoding bus. The unit is bps. Sets or queries the sample point position of the CAN decoding on the specified bus (expressed in %). 62 Sets or queries whether the LIN decoding on the specified decoding bus includes the parity bit. Sets or queries the source of LIN bus. Sets or queries the version of LIN bus."
+Remarks = "D0-D15 are only available for the DHO900 series. 50 N/A The source specified in this command and the :BUS<n>:SPI:MOSI:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. The source specified in this command and the :BUS<n>:SPI:MISO:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series. • HIGH: indicates positive polarity. The high level is 1, and low level is 0. • LOW: indicates negative polarity. The high level is 0, and low level is 1. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. This command exists for backwards compatibility. Use the command :BUS<n>:SPI:POLarity. • HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. N/A • MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first. • LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first. • CS: indicates chip select. It contains a chip select line (CS). You can perform frame synchronization according to CS. • TIMeout: indicates timed out. You can perform frame synchronization according to the timeout. For DHO800 series, only 4-channel models support CS setting for SPI decoding. • This setting command is only valid in timeout mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of SPI decoding. 57 • The timeout must be greater than the maximum clock pulse width and less than the idle time between frames. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. Only DHO900 series supports the digital channels D0-D15. For DHO800 series, only 4-channel models support this command. • HIGH: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is high level. • LOW: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is low level. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. For DHO800 series, only 4-channel models support this command. D0-D15 are only available for the DHO900 series. 60 • TX: indicates the Transmit signal from the CAN bus transceiver. • RX: indicates the Receive signal from the CAN bus transceiver. • CANH: indicates the actual CAN_H differential bus signal. • CANL: indicates the actual CAN_L differential bus signal. • DIFFerential: indicates the CAN differential bus signal connected to an analog channel by using a differential probe. Connect the differential probe's positive lead to the CAN_H bus signal and connect the negative lead to the CAN_L bus signal. If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA. For detailed sample position, refer to Sample Position. • 1|ON: includes the parity bit. • 0|OFF: does not include the parity bit. D0-D15 are only available for the DHO900 series. N/A"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns POS or NEG. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns HIGH or LOW. The query returns an integer ranging from 4 to 32. The query returns MSB or LSB. The query returns CS or TIM. The query returns the timeout value in scientific notation. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. 58 The query returns HIGH or LOW. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns TX, RX, CANH, CANL, or DIFF. 61 The query returns an integer ranging from 10k to 5M. The query returns an integer ranging from 10 to 90. The query returns 0 or 1. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns V1X, V2X, or MIX."
+Example = ":BUS1:SPI:SCLK:SOURce CHANnel2    /*Sets the clock source of SPI decoding to CHANnel2.*/ :BUS1:SPI:SCLK:SOURce?      /*The query returns CHAN2.*/ 3.4.13.2 :BUS<n>:SPI:SCLK:SLOPe :BUS1:SPI:SCLK:SLOPe NEGative    /*Sets the clock edge type of SPI decoding to Negative.*/ :BUS1:SPI:SCLK:SLOPe?             /*The query returns NEG.*/ 3.4.13.3 :BUS<n>:SPI:MISO:SOURce :BUS1:SPI:MISO:SOURce CHANnel2    /*Sets the MISO data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MISO:SOURce?      /*The query returns CHAN2.*/ 3.4.13.4 :BUS<n>:SPI:MOSI:SOURce :BUS1:SPI:MOSI:SOURce CHANnel2    /*Sets the MOSI data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MOSI:SOURce?      /*The query returns CHAN2.*/ 3.4.13.5 :BUS<n>:SPI:POLarity :BUS1:SPI:POLarity HIGH      /*Sets the polarity of the SPI decoding to Positive.*/ :BUS1:SPI:POLarity?          /*The query returns HIGH.*/ 53 3.4.13.6 :BUS<n>:SPI:MISO:POLarity :BUS1:SPI:MISO:POLarity HIGH      /*Sets the polarity of MISO data line to Positive.*/ :BUS1:SPI:MISO:POLarity?          /*The query returns HIGH.*/ 3.4.13.7 :BUS<n>:SPI:MOSI:POLarity :BUS1:SPI:MOSI:POLarity HIGH      /*Sets the polarity of MOSI data line to Positive.*/ :BUS1:SPI:MOSI:POLarity?          /*The query returns HIGH.*/ 3.4.13.8 :BUS<n>:SPI:DBITs :BUS1:SPI:DBITs 10      /*Sets the data width of SPI decoding to 10.*/ :BUS1:SPI:DBITs?      /*The query returns 10.*/ 55 3.4.13.9 :BUS<n>:SPI:ENDian :BUS1:SPI:ENDian LSB       /*Sets the endian of data transmission in SPI decoding to LSB.*/ :BUS1:SPI:ENDian?          /*The query returns LSB.*/ 3.4.13.10 :BUS<n>:SPI:MODE :BUS1:SPI:MODE CS /*Sets the decode mode of SPI decoding to CS.*/ :BUS1:SPI:MODE? /*The query returns CS.*/ 3.4.13.11 :BUS<n>:SPI:TIMeout:TIME :BUS1:SPI:TIMeout:TIME 0.000005    /*Sets the timeout value to 5 μs.*/ :BUS1:SPI:TIMeout:TIME?            /*The query returns 5.000000E-6.*/ 3.4.13.12 :BUS<n>:SPI:SS:SOURce :BUS1:SPI:SS:SOURce CHANnel2    /*Sets the source of CS line of SPI decoding to CHANnel2.*/ :BUS1:SPI:SS:SOURce?      /*The query returns CHAN2.*/ 3.4.13.13 :BUS<n>:SPI:SS:POLarity :BUS1:SPI:SS:POLarity HIGH /*Sets the polarity of CS line of SPI decoding to HIGH.*/ :BUS1:SPI:SS:POLarity? /*The query returns HIGH.*/ 3.4.14 :BUS<n>:CAN The :BUS<n>:CAN commands are used to set relevant parameters for CAN decoding. 59 The oscilloscope samples the CAN at the specified sample position, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. You need to specify the CAN type and sample position for CAN decoding. Sample Position Sample position is a point within a bit's time. The oscilloscope samples the bit level at this point. The sample point position is expressed as the ratio of \"time from the bit start to the sample point\" to \"bit time\", in %. One Bit 60% 70% 80% Figure 3.5 Sample Position NOTE Only the DHO900 series supports :BUS<n>:CAN commands. 3.4.14.1 :BUS<n>:CAN:SOURce :BUS1:CAN:SOURce CHANnel2    /*Sets the source of CAN decoding to CHANnel2.*/ :BUS1:CAN:SOURce?      /*The query returns CHAN2.*/ 3.4.14.2 :BUS<n>:CAN:STYPe :BUS1:CAN:STYPe TX        /*Sets the signal type of CAN decoding to TX.*/ :BUS1:CAN:STYPe?          /*The query returns TX.*/ 3.4.14.3 :BUS<n>:CAN:BAUD :BUS1:CAN:BAUD 120000    /*Sets the signal rate of CAN decoding to 120000 bps*/ :BUS1:CAN:BAUD?              /*The query returns 120000.*/ 3.4.14.4 :BUS<n>:CAN:SPOint :BUS1:CAN:SPOint 70        /*Sets the sample point position of CAN decoding to 70%.*/ :BUS1:CAN:SPOint?          /*The query returns 70.*/ 3.4.15 :BUS<n>:LIN The :BUS<n>:LIN commands are used to set relevant parameters for LIN decoding. The oscilloscope samples the LIN signal, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. The LIN decoding is required to specify the LIN\u3000signal protocol version. NOTE Only the DHO900 series supports :BUS<n>:LIN commands. 3.4.15.1 :BUS<n>:LIN:PARity :BUS1:LIN:PARity ON            /*Sets the parity bit to be included in LIN decoding.*/ :BUS1:LIN:PARity?                /*The query returns 1.*/ 3.4.15.2 :BUS<n>:LIN:SOURce :BUS1:LIN:SOURce CHANnel2    /*Sets the source of LIN bus to CHANnel2.*/ :BUS1:LIN:SOURce?      /*The query returns CHAN2.*/ 64 3.4.15.3 :BUS<n>:LIN:STANdard :BUS1:LIN:STANdard V2X              /*Sets the LIN bus version to V2X.*/ :BUS1:LIN:STANdard?                 /*The query returns V2X.*/ 3.5 :BODeplot Commands The :BODeplot commands are used to execute the bode-related settings and operations. Bode plot is a way of graphically displaying the frequency response of a system. Through the analysis on the system's gain and phase margins, you can determine the stability of the system. With the built-in signal generator module, the oscilloscope generates the sweep signal of a specified frequency range and outputs to the switch power supply circuit under test. Then, the oscilloscope draws a Bode plot displaying the variation of phase and gain with different frequencies. NOTE The commands are only available for DHO914S and DHO924S. 65"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.1 :BUS<n>:SPI:SCLK:SOURce"]
+Syntax = ":BUS<n>:SPI:SCLK:SOURce <source> :BUS<n>:SPI:SCLK:SOURce?"
+Description = "Sets or queries the clock source of SPI decoding."
+Remarks = "D0-D15 are only available for the DHO900 series. 50"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":BUS1:SPI:SCLK:SOURce CHANnel2    /*Sets the clock source of SPI decoding to CHANnel2.*/ :BUS1:SPI:SCLK:SOURce?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.2 :BUS<n>:SPI:SCLK:SLOPe"]
+Syntax = ":BUS<n>:SPI:SCLK:SLOPe <slope> :BUS<n>:SPI:SCLK:SLOPe?"
+Description = "Sets or queries the clock edge type of the SPI decoding."
+Remarks = "N/A"
+"Return Format" = "The query returns POS or NEG."
+Example = ":BUS1:SPI:SCLK:SLOPe NEGative    /*Sets the clock edge type of SPI decoding to Negative.*/ :BUS1:SPI:SCLK:SLOPe?             /*The query returns NEG.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.3 :BUS<n>:SPI:MISO:SOURce"]
+Syntax = ":BUS<n>:SPI:MISO:SOURce <source> :BUS<n>:SPI:MISO:SOURce?"
+Description = "Sets or queries the MISO data source of SPI decoding on the specified bus. 51"
+Remarks = "The source specified in this command and the :BUS<n>:SPI:MOSI:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF."
+Example = ":BUS1:SPI:MISO:SOURce CHANnel2    /*Sets the MISO data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MISO:SOURce?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.4 :BUS<n>:SPI:MOSI:SOURce"]
+Syntax = ":BUS<n>:SPI:MOSI:SOURce <source> :BUS<n>:SPI:MOSI:SOURce?"
+Description = "Sets or queries the MOSI data source of SPI decoding on the specified bus."
+Remarks = "The source specified in this command and the :BUS<n>:SPI:MISO:SOURce command cannot be set to OFF at the same time. D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, or OFF."
+Example = ":BUS1:SPI:MOSI:SOURce CHANnel2    /*Sets the MOSI data source of SPI decoding to CHANnel2.*/ :BUS1:SPI:MOSI:SOURce?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.5 :BUS<n>:SPI:POLarity"]
+Syntax = ":BUS<n>:SPI:POLarity <polarity> :BUS<n>:SPI:POLarity?"
+Description = "Sets or queries the polarity of the SPI decoding on the specified decoding bus."
+Remarks = "• HIGH: indicates positive polarity. The high level is 1, and low level is 0. • LOW: indicates negative polarity. The high level is 0, and low level is 1."
+"Return Format" = "The query returns HIGH or LOW."
+Example = ":BUS1:SPI:POLarity HIGH      /*Sets the polarity of the SPI decoding to Positive.*/ :BUS1:SPI:POLarity?          /*The query returns HIGH.*/ 53"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.6 :BUS<n>:SPI:MISO:POLarity"]
+Syntax = ":BUS<n>:SPI:MISO:POLarity <polarity> :BUS<n>:SPI:MISO:POLarity?"
+Description = "Sets or queries the polarity of MISO data line of SPI decoding."
+Remarks = "• HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0. This command exists for backwards compatibility. Use the command :BUS<n>:SPI:POLarity."
+"Return Format" = "The query returns HIGH or LOW."
+Example = ":BUS1:SPI:MISO:POLarity HIGH      /*Sets the polarity of MISO data line to Positive.*/ :BUS1:SPI:MISO:POLarity?          /*The query returns HIGH.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.7 :BUS<n>:SPI:MOSI:POLarity"]
+Syntax = ":BUS<n>:SPI:MOSI:POLarity <polarity> :BUS<n>:SPI:MOSI:POLarity?"
+Description = "Sets or queries the polarity of MOSI data line of SPI decoding."
+Remarks = "• HIGH: positive polarity. It indicates that high level is 1, and low level is 0. • LOW: negative polarity. It indicates that low level is 1, and high level is 0."
+"Return Format" = "The query returns HIGH or LOW."
+Example = ":BUS1:SPI:MOSI:POLarity HIGH      /*Sets the polarity of MOSI data line to Positive.*/ :BUS1:SPI:MOSI:POLarity?          /*The query returns HIGH.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.8 :BUS<n>:SPI:DBITs"]
+Syntax = ":BUS<n>:SPI:DBITs <width> :BUS<n>:SPI:DBITs?"
+Description = "Sets or queries the data width of SPI decoding."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer ranging from 4 to 32."
+Example = ":BUS1:SPI:DBITs 10      /*Sets the data width of SPI decoding to 10.*/ :BUS1:SPI:DBITs?      /*The query returns 10.*/ 55"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.9 :BUS<n>:SPI:ENDian"]
+Syntax = ":BUS<n>:SPI:ENDian <endian> :BUS<n>:SPI:ENDian?"
+Description = "Sets or queries the endian of data transmission in SPI decoding."
+Remarks = "• MSB: indicates Most Significant Bit transmission sequence, that is, the highest bit of the data is transmitted first. • LSB: indicates Least Significant Bit transmission sequence, that is, the lowest bit of the data is transmitted first."
+"Return Format" = "The query returns MSB or LSB."
+Example = ":BUS1:SPI:ENDian LSB       /*Sets the endian of data transmission in SPI decoding to LSB.*/ :BUS1:SPI:ENDian?          /*The query returns LSB.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.10 :BUS<n>:SPI:MODE"]
+Syntax = ":BUS<n>:SPI:MODE <mode> :BUS<n>:SPI:MODE?"
+Description = "Sets or queries the decode mode of SPI decoding. 56"
+Remarks = "• CS: indicates chip select. It contains a chip select line (CS). You can perform frame synchronization according to CS. • TIMeout: indicates timed out. You can perform frame synchronization according to the timeout. For DHO800 series, only 4-channel models support CS setting for SPI decoding."
+"Return Format" = "The query returns CS or TIM."
+Example = ":BUS1:SPI:MODE CS /*Sets the decode mode of SPI decoding to CS.*/ :BUS1:SPI:MODE? /*The query returns CS.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.11 :BUS<n>:SPI:TIMeout:TIME"]
+Syntax = ":BUS<n>:SPI:TIMeout:TIME <time> :BUS<n>:SPI:TIMeout:TIME?"
+Description = "Sets or queries the timeout value of SPI decoding on the specified bus. The unit is s."
+Remarks = "• This setting command is only valid in timeout mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of SPI decoding. 57 • The timeout must be greater than the maximum clock pulse width and less than the idle time between frames."
+"Return Format" = "The query returns the timeout value in scientific notation."
+Example = ":BUS1:SPI:TIMeout:TIME 0.000005    /*Sets the timeout value to 5 μs.*/ :BUS1:SPI:TIMeout:TIME?            /*The query returns 5.000000E-6.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.12 :BUS<n>:SPI:SS:SOURce"]
+Syntax = ":BUS<n>:SPI:SS:SOURce <source> :BUS<n>:SPI:SS:SOURce?"
+Description = "Sets or queries the source of the CS line of SPI decoding on the specified bus."
+Remarks = "This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. Only DHO900 series supports the digital channels D0-D15. For DHO800 series, only 4-channel models support this command."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. 58"
+Example = ":BUS1:SPI:SS:SOURce CHANnel2    /*Sets the source of CS line of SPI decoding to CHANnel2.*/ :BUS1:SPI:SS:SOURce?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.13.13 :BUS<n>:SPI:SS:POLarity"]
+Syntax = ":BUS<n>:SPI:SS:POLarity <polarity> :BUS<n>:SPI:SS:POLarity?"
+Description = "Sets or queries the polarity of CS line of SPI decoding on the specified bus."
+Remarks = "• HIGH: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is high level. • LOW: indicates that the oscilloscope samples data of the source channel of data line on the specified edge of the clock signal when the CS signal is low level. This setting command is only valid in CS mode. You can send :BUS<n>:SPI:MODE to set or query the decode mode of the SPI decoding. For DHO800 series, only 4-channel models support this command."
+"Return Format" = "The query returns HIGH or LOW."
+Example = ":BUS1:SPI:SS:POLarity HIGH /*Sets the polarity of CS line of SPI decoding to HIGH.*/ :BUS1:SPI:SS:POLarity? /*The query returns HIGH.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.14 :BUS<n>:CAN"]
+Syntax = ":BUS<n>:CAN:SOURce <source> :BUS<n>:CAN:SOURce? :BUS<n>:CAN:STYPe <stype> :BUS<n>:CAN:STYPe? :BUS<n>:CAN:BAUD <baud> :BUS<n>:CAN:BAUD? :BUS<n>:CAN:SPOint <spoint> :BUS<n>:CAN:SPOint? :BUS<n>:LIN:PARity <bool> :BUS<n>:LIN:PARity? :BUS<n>:LIN:SOURce <source> :BUS<n>:LIN:SOURce? :BUS<n>:LIN:STANdard <value> :BUS<n>:LIN:STANdard?"
+Description = "Sets or queries the source of CAN decoding. Sets or queries the signal type of CAN decoding. Sets or queries the signal rate of CAN decoding on the specified decoding bus. The unit is bps. Sets or queries the sample point position of the CAN decoding on the specified bus (expressed in %). 62 Sets or queries whether the LIN decoding on the specified decoding bus includes the parity bit. Sets or queries the source of LIN bus. Sets or queries the version of LIN bus."
+Remarks = "D0-D15 are only available for the DHO900 series. 60 • TX: indicates the Transmit signal from the CAN bus transceiver. • RX: indicates the Receive signal from the CAN bus transceiver. • CANH: indicates the actual CAN_H differential bus signal. • CANL: indicates the actual CAN_L differential bus signal. • DIFFerential: indicates the CAN differential bus signal connected to an analog channel by using a differential probe. Connect the differential probe's positive lead to the CAN_H bus signal and connect the negative lead to the CAN_L bus signal. If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA. For detailed sample position, refer to Sample Position. • 1|ON: includes the parity bit. • 0|OFF: does not include the parity bit. D0-D15 are only available for the DHO900 series. N/A"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns TX, RX, CANH, CANL, or DIFF. 61 The query returns an integer ranging from 10k to 5M. The query returns an integer ranging from 10 to 90. The query returns 0 or 1. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns V1X, V2X, or MIX."
+Example = ":BUS1:CAN:SOURce CHANnel2    /*Sets the source of CAN decoding to CHANnel2.*/ :BUS1:CAN:SOURce?      /*The query returns CHAN2.*/ 3.4.14.2 :BUS<n>:CAN:STYPe :BUS1:CAN:STYPe TX        /*Sets the signal type of CAN decoding to TX.*/ :BUS1:CAN:STYPe?          /*The query returns TX.*/ 3.4.14.3 :BUS<n>:CAN:BAUD :BUS1:CAN:BAUD 120000    /*Sets the signal rate of CAN decoding to 120000 bps*/ :BUS1:CAN:BAUD?              /*The query returns 120000.*/ 3.4.14.4 :BUS<n>:CAN:SPOint :BUS1:CAN:SPOint 70        /*Sets the sample point position of CAN decoding to 70%.*/ :BUS1:CAN:SPOint?          /*The query returns 70.*/ 3.4.15 :BUS<n>:LIN The :BUS<n>:LIN commands are used to set relevant parameters for LIN decoding. The oscilloscope samples the LIN signal, and judges each data point to be logic \"1\" or logic \"0\" according to the preset threshold level. The LIN decoding is required to specify the LIN\u3000signal protocol version. NOTE Only the DHO900 series supports :BUS<n>:LIN commands. 3.4.15.1 :BUS<n>:LIN:PARity :BUS1:LIN:PARity ON            /*Sets the parity bit to be included in LIN decoding.*/ :BUS1:LIN:PARity?                /*The query returns 1.*/ 3.4.15.2 :BUS<n>:LIN:SOURce :BUS1:LIN:SOURce CHANnel2    /*Sets the source of LIN bus to CHANnel2.*/ :BUS1:LIN:SOURce?      /*The query returns CHAN2.*/ 64 3.4.15.3 :BUS<n>:LIN:STANdard :BUS1:LIN:STANdard V2X              /*Sets the LIN bus version to V2X.*/ :BUS1:LIN:STANdard?                 /*The query returns V2X.*/ 3.5 :BODeplot Commands The :BODeplot commands are used to execute the bode-related settings and operations. Bode plot is a way of graphically displaying the frequency response of a system. Through the analysis on the system's gain and phase margins, you can determine the stability of the system. With the built-in signal generator module, the oscilloscope generates the sweep signal of a specified frequency range and outputs to the switch power supply circuit under test. Then, the oscilloscope draws a Bode plot displaying the variation of phase and gain with different frequencies. NOTE The commands are only available for DHO914S and DHO924S. 65"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.14.1 :BUS<n>:CAN:SOURce"]
+Syntax = ":BUS<n>:CAN:SOURce <source> :BUS<n>:CAN:SOURce?"
+Description = "Sets or queries the source of CAN decoding."
+Remarks = "D0-D15 are only available for the DHO900 series. 60"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":BUS1:CAN:SOURce CHANnel2    /*Sets the source of CAN decoding to CHANnel2.*/ :BUS1:CAN:SOURce?      /*The query returns CHAN2.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.14.2 :BUS<n>:CAN:STYPe"]
+Syntax = ":BUS<n>:CAN:STYPe <stype> :BUS<n>:CAN:STYPe?"
+Description = "Sets or queries the signal type of CAN decoding."
+Remarks = "• TX: indicates the Transmit signal from the CAN bus transceiver. • RX: indicates the Receive signal from the CAN bus transceiver. • CANH: indicates the actual CAN_H differential bus signal. • CANL: indicates the actual CAN_L differential bus signal. • DIFFerential: indicates the CAN differential bus signal connected to an analog channel by using a differential probe. Connect the differential probe's positive lead to the CAN_H bus signal and connect the negative lead to the CAN_L bus signal."
+"Return Format" = "The query returns TX, RX, CANH, CANL, or DIFF. 61"
+Example = ":BUS1:CAN:STYPe TX        /*Sets the signal type of CAN decoding to TX.*/ :BUS1:CAN:STYPe?          /*The query returns TX.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.14.3 :BUS<n>:CAN:BAUD"]
+Syntax = ":BUS<n>:CAN:BAUD <baud> :BUS<n>:CAN:BAUD?"
+Description = "Sets or queries the signal rate of CAN decoding on the specified decoding bus. The unit is bps."
+Remarks = "If the baud rate is set to a value with \"M\", then \"A\" should be added at the end of the value. For example, if you send 5M, you need to send 5MA."
+"Return Format" = "The query returns an integer ranging from 10k to 5M."
+Example = ":BUS1:CAN:BAUD 120000    /*Sets the signal rate of CAN decoding to 120000 bps*/ :BUS1:CAN:BAUD?              /*The query returns 120000.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.14.4 :BUS<n>:CAN:SPOint"]
+Syntax = ":BUS<n>:CAN:SPOint <spoint> :BUS<n>:CAN:SPOint?"
+Description = "Sets or queries the sample point position of the CAN decoding on the specified bus (expressed in %). 62"
+Remarks = "For detailed sample position, refer to Sample Position."
+"Return Format" = "The query returns an integer ranging from 10 to 90."
+Example = ":BUS1:CAN:SPOint 70        /*Sets the sample point position of CAN decoding to 70%.*/ :BUS1:CAN:SPOint?          /*The query returns 70.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.15 :BUS<n>:LIN"]
+Syntax = ":BUS<n>:LIN:PARity <bool> :BUS<n>:LIN:PARity? :BUS<n>:LIN:SOURce <source> :BUS<n>:LIN:SOURce? :BUS<n>:LIN:STANdard <value> :BUS<n>:LIN:STANdard?"
+Description = "Sets or queries whether the LIN decoding on the specified decoding bus includes the parity bit. Sets or queries the source of LIN bus. Sets or queries the version of LIN bus."
+Remarks = "• 1|ON: includes the parity bit. • 0|OFF: does not include the parity bit. D0-D15 are only available for the DHO900 series. N/A"
+"Return Format" = "The query returns 0 or 1. The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4. The query returns V1X, V2X, or MIX."
+Example = ":BUS1:LIN:PARity ON            /*Sets the parity bit to be included in LIN decoding.*/ :BUS1:LIN:PARity?                /*The query returns 1.*/ 3.4.15.2 :BUS<n>:LIN:SOURce :BUS1:LIN:SOURce CHANnel2    /*Sets the source of LIN bus to CHANnel2.*/ :BUS1:LIN:SOURce?      /*The query returns CHAN2.*/ 64 3.4.15.3 :BUS<n>:LIN:STANdard :BUS1:LIN:STANdard V2X              /*Sets the LIN bus version to V2X.*/ :BUS1:LIN:STANdard?                 /*The query returns V2X.*/ 3.5 :BODeplot Commands The :BODeplot commands are used to execute the bode-related settings and operations. Bode plot is a way of graphically displaying the frequency response of a system. Through the analysis on the system's gain and phase margins, you can determine the stability of the system. With the built-in signal generator module, the oscilloscope generates the sweep signal of a specified frequency range and outputs to the switch power supply circuit under test. Then, the oscilloscope draws a Bode plot displaying the variation of phase and gain with different frequencies. NOTE The commands are only available for DHO914S and DHO924S. 65"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.15.1 :BUS<n>:LIN:PARity"]
+Syntax = ":BUS<n>:LIN:PARity <bool> :BUS<n>:LIN:PARity?"
+Description = "Sets or queries whether the LIN decoding on the specified decoding bus includes the parity bit."
+Remarks = "• 1|ON: includes the parity bit. • 0|OFF: does not include the parity bit."
+"Return Format" = "The query returns 0 or 1."
+Example = ":BUS1:LIN:PARity ON            /*Sets the parity bit to be included in LIN decoding.*/ :BUS1:LIN:PARity?                /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.15.2 :BUS<n>:LIN:SOURce"]
+Syntax = ":BUS<n>:LIN:SOURce <source> :BUS<n>:LIN:SOURce?"
+Description = "Sets or queries the source of LIN bus."
+Remarks = "D0-D15 are only available for the DHO900 series."
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":BUS1:LIN:SOURce CHANnel2    /*Sets the source of LIN bus to CHANnel2.*/ :BUS1:LIN:SOURce?      /*The query returns CHAN2.*/ 64"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.15.3 :BUS<n>:LIN:STANdard"]
+Syntax = ":BUS<n>:LIN:STANdard <value> :BUS<n>:LIN:STANdard?"
+Description = "Sets or queries the version of LIN bus."
+Remarks = "N/A"
+"Return Format" = "The query returns V1X, V2X, or MIX."
+Example = ":BUS1:LIN:STANdard V2X              /*Sets the LIN bus version to V2X.*/ :BUS1:LIN:STANdard?                 /*The query returns V2X.*/ 3.5 :BODeplot Commands The :BODeplot commands are used to execute the bode-related settings and operations. Bode plot is a way of graphically displaying the frequency response of a system. Through the analysis on the system's gain and phase margins, you can determine the stability of the system. With the built-in signal generator module, the oscilloscope generates the sweep signal of a specified frequency range and outputs to the switch power supply circuit under test. Then, the oscilloscope draws a Bode plot displaying the variation of phase and gain with different frequencies. NOTE The commands are only available for DHO914S and DHO924S. 65"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.4.1 :BUS<n>:MODE".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "PARallel"
+Range = "{1|2|3|4} - <mode> Discrete {PARallel|RS232|SPI|IIC|LIN|CAN}"
+
+["3.4.2 :BUS<n>:DISPlay".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.4.3 :BUS<n>:FORMat".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "HEX"
+Range = "{1|2|3|4} - <format> Discrete {HEX|ASCii|DEC|BIN}"
+
+["3.4.4 :BUS<n>:EVENt".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.4.5 :BUS<n>:LABel".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "1|ON"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.4.6 :BUS<n>:DATA?".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4}"
+
+["3.4.7 :BUS<n>:EEXPort".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4} - <path> ASCII String Refer to Remarks"
+
+["3.4.8 :BUS<n>:POSition".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0"
+Range = "{1|2|3|4} - <pos> Integer -250 to 250"
+
+["3.4.9 :BUS<n>:THReshold".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4} - <value> Real (-5 x VerticalScale - OFFSet) to (5 x VerticalScale - OFFSet) 0 <type> Discrete {PAL|TX|RX|SCL|SDA|CS|CLK| MISO|MOSI|LIN|CAN|PALCLK| CH1|CH2|CH3|CH4}"
+
+["3.4.10 :BUS<n>:PARallel".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MIXed"
+Range = "{1|2|3|4} - <source> Discrete {D7D0|D15D8|D15D0|D0D7| D8D15|D0D15|CHANnel1| CHANnel2|CHANnel3|CHANnel4| USER} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF Name Type Range Default <n> Discrete {1|2|3|4} - <slope> Discrete {POSitive|NEGative|BOTH} POSitive Name Type Range Default <n> Discrete {1|2|3|4} - <wid> Integer 1 to 4 1 Name Type Range Default <n> Discrete {1|2|3|4} - <bit> Integer 0 to (data width - 1) 0 37 Name Type Range Default <n> Discrete {1|2|3|4} - <src> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} Related to the selected bit Name Type Range Default <n> Discrete {1|2|3|4} - <endian> Discrete {MSB|LSB} MSB Name Type Range Default <n> Discrete {1|2|3|4} - <pol> Discrete {NEGative|POSitive} POSitive Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF Name Type Range Default <n> Discrete {1|2|3|4} - <pol> Discrete {POSitive|NEGative} NEGative Name Type Range Default <n> Discrete {1|2|3|4} - <parity> Discrete {NONE|ODD|EVEN} NONE Name Type Range Default <n> Discrete {1|2|3|4} - <endian> Discrete {MSB|LSB} LSB Name Type Range Default <n> Discrete {1|2|3|4} - <baud> Integer 1bps to 20Mbps 9600 bps Name Type Range Default <n> Discrete {1|2|3|4} - <bits> Discrete {5|6|7|8|9} 8 Name Type Range Default <n> Discrete {1|2|3|4} - <stop bits> Discrete {1|1.5|2} 1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF Name Type Range Default <n> Discrete {1|2|3|4} - <addr> Discrete {NORMal|RW} NORMal Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <slope> Discrete {POSitive|NEGative} POSitive Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} CHANnel2 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF 52 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - 54 Name Type Range Default <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <width> Integer 4 to 32 8 Name Type Range Default <n> Discrete {1|2|3|4} - <endian> Discrete {MSB|LSB} MSB Name Type Range Default <n> Discrete {1|2|3|4} - <mode> Discrete {CS|TIMeout} TIMeout Name Type Range Default <n> Discrete {1|2|3|4} - <time> Real 8 ns to 10 s 1μs Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel3 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} LOW Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <stype> Discrete {TX|RX|CANH|CANL|DIFFerential} CANL Name Type Range Default <n> Discrete {1|2|3|4} - <baud> Integer 10 kbps to 5 Mbps 1 Mbps Name Type Range Default <n> Discrete {1|2|3|4} - <spoint> Integer 10 to 90 50 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF 63 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <value> Discrete {V1X|V2X|MIXed}"
+
+["3.4.10.1 :BUS<n>:PARallel:BUS".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {D7D0|D15D8|D15D0|D0D7| D8D15|D0D15|CHANnel1| CHANnel2|CHANnel3|CHANnel4| USER}"
+
+["3.4.10.2 :BUS<n>:PARallel:CLK".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "OFF"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF}"
+
+["3.4.10.3 :BUS<n>:PARallel:SLOPe".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "POSitive"
+Range = "{1|2|3|4} - <slope> Discrete {POSitive|NEGative|BOTH}"
+
+["3.4.10.4 :BUS<n>:PARallel:WIDTh".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "1"
+Range = "{1|2|3|4} - <wid> Integer 1 to 4"
+
+["3.4.10.5 :BUS<n>:PARallel:BITX".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "37"
+Range = "{1|2|3|4} - <bit> Integer 0 to (data width - 1) 0"
+
+["3.4.10.6 :BUS<n>:PARallel:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "bit"
+Range = "{1|2|3|4} - <src> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} Related to the selected"
+
+["3.4.10.7 :BUS<n>:PARallel:ENDian".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MSB"
+Range = "{1|2|3|4} - <endian> Discrete {MSB|LSB}"
+
+["3.4.10.8 :BUS<n>:PARallel:POLarity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "POSitive"
+Range = "{1|2|3|4} - <pol> Discrete {NEGative|POSitive}"
+
+["3.4.11 :BUS<n>:RS232".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MIXed"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF Name Type Range Default <n> Discrete {1|2|3|4} - <pol> Discrete {POSitive|NEGative} NEGative Name Type Range Default <n> Discrete {1|2|3|4} - <parity> Discrete {NONE|ODD|EVEN} NONE Name Type Range Default <n> Discrete {1|2|3|4} - <endian> Discrete {MSB|LSB} LSB Name Type Range Default <n> Discrete {1|2|3|4} - <baud> Integer 1bps to 20Mbps 9600 bps Name Type Range Default <n> Discrete {1|2|3|4} - <bits> Discrete {5|6|7|8|9} 8 Name Type Range Default <n> Discrete {1|2|3|4} - <stop bits> Discrete {1|1.5|2} 1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF Name Type Range Default <n> Discrete {1|2|3|4} - <addr> Discrete {NORMal|RW} NORMal Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <slope> Discrete {POSitive|NEGative} POSitive Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} CHANnel2 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF 52 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - 54 Name Type Range Default <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <width> Integer 4 to 32 8 Name Type Range Default <n> Discrete {1|2|3|4} - <endian> Discrete {MSB|LSB} MSB Name Type Range Default <n> Discrete {1|2|3|4} - <mode> Discrete {CS|TIMeout} TIMeout Name Type Range Default <n> Discrete {1|2|3|4} - <time> Real 8 ns to 10 s 1μs Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel3 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} LOW Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <stype> Discrete {TX|RX|CANH|CANL|DIFFerential} CANL Name Type Range Default <n> Discrete {1|2|3|4} - <baud> Integer 10 kbps to 5 Mbps 1 Mbps Name Type Range Default <n> Discrete {1|2|3|4} - <spoint> Integer 10 to 90 50 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF 63 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <value> Discrete {V1X|V2X|MIXed}"
+
+["3.4.11.1 :BUS<n>:RS232:TX".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF}"
+
+["3.4.11.2 :BUS<n>:RS232:RX".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "OFF"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF}"
+
+["3.4.11.3 :BUS<n>:RS232:POLarity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "NEGative"
+Range = "{1|2|3|4} - <pol> Discrete {POSitive|NEGative}"
+
+["3.4.11.4 :BUS<n>:RS232:PARity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "NONE"
+Range = "{1|2|3|4} - <parity> Discrete {NONE|ODD|EVEN}"
+
+["3.4.11.5 :BUS<n>:RS232:ENDian".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "LSB"
+Range = "{1|2|3|4} - <endian> Discrete {MSB|LSB}"
+
+["3.4.11.6 :BUS<n>:RS232:BAUD".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "bps"
+Range = "{1|2|3|4} - <baud> Integer 1bps to 20Mbps 9600"
+
+["3.4.11.7 :BUS<n>:RS232:DBITs".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "8"
+Range = "{1|2|3|4} - <bits> Discrete {5|6|7|8|9}"
+
+["3.4.11.8 :BUS<n>:RS232:SBITs".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "1"
+Range = "{1|2|3|4} - <stop bits> Discrete {1|1.5|2}"
+
+["3.4.12 :BUS<n>:IIC".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MIXed"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF Name Type Range Default <n> Discrete {1|2|3|4} - <addr> Discrete {NORMal|RW} NORMal Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <slope> Discrete {POSitive|NEGative} POSitive Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} CHANnel2 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF 52 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - 54 Name Type Range Default <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <width> Integer 4 to 32 8 Name Type Range Default <n> Discrete {1|2|3|4} - <endian> Discrete {MSB|LSB} MSB Name Type Range Default <n> Discrete {1|2|3|4} - <mode> Discrete {CS|TIMeout} TIMeout Name Type Range Default <n> Discrete {1|2|3|4} - <time> Real 8 ns to 10 s 1μs Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel3 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} LOW Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <stype> Discrete {TX|RX|CANH|CANL|DIFFerential} CANL Name Type Range Default <n> Discrete {1|2|3|4} - <baud> Integer 10 kbps to 5 Mbps 1 Mbps Name Type Range Default <n> Discrete {1|2|3|4} - <spoint> Integer 10 to 90 50 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF 63 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <value> Discrete {V1X|V2X|MIXed}"
+
+["3.4.12.1 :BUS<n>:IIC:SCLK:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4}"
+
+["3.4.12.2 :BUS<n>:IIC:SDA:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4}"
+
+["3.4.12.3 :BUS<n>:IIC:EXCHange".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.4.12.4 :BUS<n>:IIC:ADDRess".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "NORMal"
+Range = "{1|2|3|4} - <addr> Discrete {NORMal|RW}"
+
+["3.4.13 :BUS<n>:SPI".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MIXed"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <slope> Discrete {POSitive|NEGative} POSitive Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} CHANnel2 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF 52 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - 54 Name Type Range Default <polarity> Discrete {HIGH|LOW} HIGH Name Type Range Default <n> Discrete {1|2|3|4} - <width> Integer 4 to 32 8 Name Type Range Default <n> Discrete {1|2|3|4} - <endian> Discrete {MSB|LSB} MSB Name Type Range Default <n> Discrete {1|2|3|4} - <mode> Discrete {CS|TIMeout} TIMeout Name Type Range Default <n> Discrete {1|2|3|4} - <time> Real 8 ns to 10 s 1μs Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel3 Name Type Range Default <n> Discrete {1|2|3|4} - <polarity> Discrete {HIGH|LOW} LOW Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <stype> Discrete {TX|RX|CANH|CANL|DIFFerential} CANL Name Type Range Default <n> Discrete {1|2|3|4} - <baud> Integer 10 kbps to 5 Mbps 1 Mbps Name Type Range Default <n> Discrete {1|2|3|4} - <spoint> Integer 10 to 90 50 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF 63 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <value> Discrete {V1X|V2X|MIXed}"
+
+["3.4.13.1 :BUS<n>:SPI:SCLK:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4}"
+
+["3.4.13.2 :BUS<n>:SPI:SCLK:SLOPe".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "POSitive"
+Range = "{1|2|3|4} - <slope> Discrete {POSitive|NEGative}"
+
+["3.4.13.3 :BUS<n>:SPI:MISO:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel2"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF}"
+
+["3.4.13.4 :BUS<n>:SPI:MOSI:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "52"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4|OFF} OFF"
+
+["3.4.13.5 :BUS<n>:SPI:POLarity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "HIGH"
+Range = "{1|2|3|4} - <polarity> Discrete {HIGH|LOW}"
+
+["3.4.13.6 :BUS<n>:SPI:MISO:POLarity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "HIGH"
+Range = "{1|2|3|4} - <polarity> Discrete {HIGH|LOW}"
+
+["3.4.13.7 :BUS<n>:SPI:MOSI:POLarity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "HIGH"
+Range = "{1|2|3|4} - 54 Name Type Range Default <polarity> Discrete {HIGH|LOW}"
+
+["3.4.13.8 :BUS<n>:SPI:DBITs".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "8"
+Range = "{1|2|3|4} - <width> Integer 4 to 32"
+
+["3.4.13.9 :BUS<n>:SPI:ENDian".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MSB"
+Range = "{1|2|3|4} - <endian> Discrete {MSB|LSB}"
+
+["3.4.13.10 :BUS<n>:SPI:MODE".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "TIMeout"
+Range = "{1|2|3|4} - <mode> Discrete {CS|TIMeout}"
+
+["3.4.13.11 :BUS<n>:SPI:TIMeout:TIME".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "1μs"
+Range = "{1|2|3|4} - <time> Real 8 ns to 10 s"
+
+["3.4.13.12 :BUS<n>:SPI:SS:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel3"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4}"
+
+["3.4.13.13 :BUS<n>:SPI:SS:POLarity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "LOW"
+Range = "{1|2|3|4} - <polarity> Discrete {HIGH|LOW}"
+
+["3.4.14 :BUS<n>:CAN".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MIXed"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <stype> Discrete {TX|RX|CANH|CANL|DIFFerential} CANL Name Type Range Default <n> Discrete {1|2|3|4} - <baud> Integer 10 kbps to 5 Mbps 1 Mbps Name Type Range Default <n> Discrete {1|2|3|4} - <spoint> Integer 10 to 90 50 Name Type Range Default <n> Discrete {1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF 63 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <value> Discrete {V1X|V2X|MIXed}"
+
+["3.4.14.1 :BUS<n>:CAN:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4}"
+
+["3.4.14.2 :BUS<n>:CAN:STYPe".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CANL"
+Range = "{1|2|3|4} - <stype> Discrete {TX|RX|CANH|CANL|DIFFerential}"
+
+["3.4.14.3 :BUS<n>:CAN:BAUD".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "Mbps"
+Range = "{1|2|3|4} - <baud> Integer 10 kbps to 5 Mbps 1"
+
+["3.4.14.4 :BUS<n>:CAN:SPOint".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "50"
+Range = "{1|2|3|4} - <spoint> Integer 10 to 90"
+
+["3.4.15 :BUS<n>:LIN".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MIXed"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF 63 Name Type Range Default <n> Discrete {1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4} CHANnel1 Name Type Range Default <n> Discrete {1|2|3|4} - <value> Discrete {V1X|V2X|MIXed}"
+
+["3.4.15.1 :BUS<n>:LIN:PARity".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "63"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}} 0|OFF"
+
+["3.4.15.2 :BUS<n>:LIN:SOURce".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4} - <source> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2|CHANnel3| CHANnel4}"
+
+["3.4.15.3 :BUS<n>:LIN:STANdard".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "MIXed"
+Range = "{1|2|3|4} - <value> Discrete {V1X|V2X|MIXed}"

@@ -1,0 +1,246 @@
+# 3.15 :MASK Commands
+
+["3.15.1 :MASK:ENABle"]
+Syntax = ":MASK:ENABle <bool> :MASK:ENABle?"
+Description = "Enables or disables the pass/fail test function; or queries the status."
+Remarks = "The pass/fail test is disabled in specific conditions like ROLL mode or during waveform recording."
+Return_Format = "The query returns 1 or 0."
+Example = ":MASK:ENABle ON /*Enables the pass/fail test function.*/ :MASK:ENABle? /*The query returns 1.*/"
+Class = "Mask"
+Function = "setMask"
+Command = ":MASK:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.15.2 :MASK:SOURce"]
+Syntax = ":MASK:SOURce <source> :MASK:SOURce?"
+Description = "Sets or queries the source of the pass/fail test."
+Remarks = "Disabled channels are automatically enabled when set as a source."
+Return_Format = "The query returns the channel source."
+Example = ":MASK:SOURce CHANnel2 /*Sets the source to CHANnel2.*/ :MASK:SOURce? /*Returns CHAN2.*/"
+Class = "Mask"
+Function = "setSource"
+Command = ":MASK:SOURce"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{Channel1|Channel2|Channel3|Channel4}"
+Is_Query = "True"
+
+["3.15.3 :MASK:OPERate"]
+Syntax = ":MASK:OPERate <oper> :MASK:OPERate?"
+Description = "Starts or stops the pass/fail test; or queries the status."
+Remarks = "Ensure pass/fail test is enabled before running."
+Return_Format = "The query returns RUN or STOP."
+Example = ":MASK:OPERate RUN /*Starts the test.*/ :MASK:OPERate? /*Returns RUN.*/"
+Class = "Mask"
+Function = "operateMask"
+Command = ":MASK:OPERate"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{RUN|STOP}"
+Is_Query = "True"
+
+["3.15.4 :MASK:X"]
+Syntax = ":MASK:X <x> :MASK:X?"
+Description = "Sets or queries the horizontal adjustment parameter."
+Remarks = "Unit is division (div)."
+Return_Format = "Returns the current setting in scientific notation."
+Example = ":MASK:X 0.28 /*Sets to 0.28 div.*/ :MASK:X? /*Returns 2.800000E-1.*/"
+Class = "Mask"
+Function = "setMaskX"
+Command = ":MASK:X"
+Input_Min = "0"
+Input_Max = "10"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.15.5 :MASK:Y"]
+Syntax = ":MASK:Y <y> :MASK:Y?"
+Description = "Sets or queries the vertical adjustment parameter."
+Remarks = "Unit is division (div)."
+Return_Format = "Returns the current setting in scientific notation."
+Example = ":MASK:Y 0.36 /*Sets to 0.36 div.*/ :MASK:Y? /*Returns 3.600000E-1.*/"
+Class = "Mask"
+Function = "setMaskY"
+Command = ":MASK:Y"
+Input_Min = "0"
+Input_Max = "10"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.15.6 :MASK:CREate"]
+Syntax = ":MASK:CREate"
+Description = "Creates the pass/fail test mask with current settings."
+Remarks = "Valid only when the test function is enabled and not running."
+Return_Format = "N/A"
+Example = "N/A"
+Class = "Mask"
+Function = "createMask"
+Command = ":MASK:CREate"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.15.7 :MASK:RESet"]
+Syntax = ":MASK:RESet"
+Description = "Resets the pass/fail test counters."
+Remarks = "N/A"
+Return_Format = "N/A"
+Example = "N/A"
+Class = "Mask"
+Function = "resetMask"
+Command = ":MASK:RESet"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.15.8 :MASK:FAILed?"]
+Syntax = ":MASK:FAILed?"
+Description = "Queries the total number of failed frames."
+Remarks = "N/A"
+Return_Format = "Returns the number of failed frames."
+Example = "N/A"
+Class = "Mask"
+Function = "queryFailed"
+Command = ":MASK:FAILed?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.15.9 :MASK:PASSed?"]
+Syntax = ":MASK:PASSed?"
+Description = "Queries the total number of passed frames."
+Remarks = "N/A"
+Return_Format = "Returns the number of passed frames."
+Example = "N/A"
+Class = "Mask"
+Function = "queryPassed"
+Command = ":MASK:PASSed?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.15.10 :MASK:TOTal?"]
+Syntax = ":MASK:TOTal?"
+Description = "Queries the total number of frames tested."
+Remarks = "N/A"
+Return_Format = "Returns the total number of frames."
+Example = "N/A"
+Class = "Mask"
+Function = "queryTotal"
+Command = ":MASK:TOTal?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.15.11 :MASK:OUTPut:ENABle"]
+Syntax = ":MASK:OUTPut:ENABle <bool> :MASK:OUTPut:ENABle?"
+Description = "Sets or queries the output status of the AUX OUT connector."
+Remarks = "Setting affects what triggers the AUX OUT pulses."
+Return_Format = "The query returns 0 or 1."
+Example = ":MASK:OUTPut:ENABle ON /*Enables the output.*/ :MASK:OUTPut:ENABle? /*Returns 1.*/"
+Class = "Mask"
+Function = "toggleOutput"
+Command = ":MASK:OUTPut:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.15.12 :MASK:OUTPut:EVENt"]
+Syntax = ":MASK:OUTPut:EVENt <item> :MASK:OUTPut:EVENt?"
+Description = "Sets or queries the output event (Pass or Fail)."
+Remarks = "Determines the event that triggers an output pulse."
+Return_Format = "The query returns FAIL or PASS."
+Example = ":MASK:OUTPut:EVENt PASS /*Sets to PASS.*/ :MASK:OUTPut:EVENt? /*Returns PASS.*/"
+Class = "Mask"
+Function = "setOutputEvent"
+Command = ":MASK:OUTPut:EVENt"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{PASS|FAIL}"
+Is_Query = "True"
+
+["3.15.13 :MASK:OUTPut:TIME"]
+Syntax = ":MASK:OUTPut:TIME <time> :MASK:OUTPut:TIME?"
+Description = "Sets or queries the pulse time for the output."
+Remarks = "Time is set in microseconds."
+Return_Format = "The query returns the pulse time in scientific notation."
+Example = ":MASK:OUTPut:TIME 0.000003 /*Sets to 3 μs.*/ :MASK:OUTPut:TIME? /*Returns 3.000000E-6.*/"
+Class = "Mask"
+Function = "setOutputTime"
+Command = ":MASK:OUTPut:TIME"
+Input_Min = "0"
+Input_Max = "1"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.15.1 :MASK:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.15.2 :MASK:SOURce".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.15.3 :MASK:OPERate".Parameter]
+Name = "<oper>"
+Type = "Discrete"
+Default = "STOP"
+Range = "{RUN|STOP}"
+
+["3.15.4 :MASK:X".Parameter]
+Name = "<x>"
+Type = "Real"
+Default = "div"
+Range = "0.01 div to 2 div 0.24"
+
+["3.15.5 :MASK:Y".Parameter]
+Name = "<y>"
+Type = "Real"
+Default = "div"
+Range = "0.04 div to 2 div 0.48"
+
+["3.15.6 :MASK:CREate".Parameter]
+Info = "N/A"
+
+["3.15.7 :MASK:RESet".Parameter]
+Info = "N/A"
+
+["3.15.8 :MASK:FAILed?".Parameter]
+Info = "N/A"
+
+["3.15.9 :MASK:PASSed?".Parameter]
+Info = "N/A"
+
+["3.15.10 :MASK:TOTal?".Parameter]
+Info = "N/A"
+
+["3.15.11 :MASK:OUTPut:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.15.12 :MASK:OUTPut:EVENt".Parameter]
+Name = "<item>"
+Type = "Discrete"
+Default = "FAIL"
+Range = "{FAIL|PASS}"
+
+["3.15.13 :MASK:OUTPut:TIME".Parameter]
+Name = "<time>"
+Type = "Real"
+Default = "μs"
+Range = "100 ns to 10 ms 1"

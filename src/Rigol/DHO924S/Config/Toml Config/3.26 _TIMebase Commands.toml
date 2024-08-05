@@ -1,0 +1,320 @@
+# 3.26 :TIMebase Commands
+["3.26.1 :TIMebase:DELay:ENABle"]
+Syntax = ":TIMebase:DELay:ENABle <bool> :TIMebase:DELay:ENABle?"
+Description = "Turns on or off the delayed sweep; or queries the on/off status of the delayed sweep."
+Remarks = "Delayed sweep can be used to enlarge a length of waveform horizontally to view waveform details."
+"Return Format" = "The query returns 1 or 0."
+Example = ":TIMebase:DELay:ENABle ON    /*Enables the delayed sweep.*/ :TIMebase:DELay:ENABle?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.2 :TIMebase:DELay:OFFSet"]
+Syntax = ":TIMebase:DELay:OFFSet <offset> :TIMebase:DELay:OFFSet?"
+Description = "Sets or queries the offset of the delayed time base."
+Remarks = "LeftTime = 5 × MainScale - MainOffset RightTime = 5 × MainScale + MainOffset 290 DelayRange = 10 × DelayScale Wherein, MainScale indicates the current main time base scale, MainOffset indicates the current main time base offset, and DelayScale indicates the current delay time base scale."
+"Return Format" = "The query returns the offset of the delayed time base in scientific notation."
+Example = ":TIMebase:DELay:OFFSet 0.000002   /*Sets the offset of the delayed time base to 2 μs.*/ :TIMebase:DELay:OFFSet?           /*The query returns 2.000000E-6.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.3 :TIMebase:DELay:SCALe"]
+Syntax = ":TIMebase:DELay:SCALe <scale> :TIMebase:DELay:SCALe?"
+Description = "Sets or queries the scale of the delayed time base. The default unit is s/div."
+Remarks = "• The maximum value of the parameter <scale> is the current scale of the main time base. • The delayed time base scale can only be the maximum value or the values acquired by reducing the maximum value at 1-2-5 step. If the minimum value calculated according to the above formula is not one of the settable values, take the minimum settable value that is greater than the minimum value calculated. • The default value of the delayed time base scale is determined by the scale in Main mode and its value is the next scale value in Main mode."
+"Return Format" = "The query returns the scale of the delayed time base in scientific notation."
+Example = ":TIMebase:DELay:SCALe 0.00000005   /*Sets the scale of the delayed time base to 50 ns/div.*/ :TIMebase:DELay:SCALe?           /*The query returns 5.000000E-8.*/ 291"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.4 :TIMebase[:MAIN][:OFFSet]"]
+Syntax = ":TIMebase[:MAIN][:OFFSet] <offset> :TIMebase[:MAIN][:OFFSet]?"
+Description = "Sets or queries the offset of the main time base. The default unit is s."
+Remarks = "• In RUN state, the offset range of the main time base is as follows: MainLeftTime = -5 x MainScale When MainScale ≤ 10 ms, MainRightTime = 1 s When 10 ms < MainScale < 10 s, MainRightTime = 100 x MainScale When MainScale < 200 s and MainScale ≥ 10 s, MainRightTime = 1 ks When MainScale ≥ 200s, MainRightTime = 5 x MainScale MainRightTime indicates the maximum offset value of the main time base; MainLeftTime indicates the minimum offset value of the main time base; MainScale is the current scale of the main time base. • In Stop state, the offset range of the main time base is the same as that of the memory sampling."
+"Return Format" = "The query returns the offset of the main time base in scientific notation."
+Example = ":TIMebase:MAIN:OFFSet 0.0002   /*Sets the offset of the main time base to 200 μs.*/ :TIMebase:MAIN:OFFSet?         /*The query returns 2.000000E-4.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.5 :TIMebase[:MAIN]:SCALe"]
+Syntax = ":TIMebase[:MAIN]:SCALe <scale> :TIMebase[:MAIN]:SCALe? 292"
+Description = "Sets or queries the main time base scale."
+Remarks = "The range of <scale> is related to the bandwidth of the oscilloscope and the horizontal time base mode."
+"Return Format" = "The query returns the main time base scale in scientific notation."
+Example = ":TIMebase:MAIN:SCALe 0.0002   /*Sets the main time base scale to 200 μs/div.*/ :TIMebase:MAIN:SCALe?           /*The query returns 2.000000E-4.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.6 :TIMebase:MODE"]
+Syntax = ":TIMebase:MODE <mode> :TIMebase:MODE?"
+Description = "Sets or queries the horizontal time base mode."
+Remarks = "• MAIN: the current time base mode. When you send the :TIMebase:MODE MAIN command, the time base is set to YT mode. • XY: indicates the XY mode. Run :TIMebase:MODE XY to configure the XY mode, and then run :TIMebase:MODE? to query the time base mode. The query returns MAIN. • ROLL: indicates the Roll mode. 293 For details about different time base modes, refer to Horizontal Time Base Mode."
+"Return Format" = "The query returns MAIN or ROLL."
+Example = ":TIMebase:MODE ROLL    /*Sets the horizontal time base mode to ROLL.*/ :TIMebase:MODE?      /*The query returns ROLL.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.7 :TIMebase:HREFerence:MODE"]
+Syntax = ":TIMebase:HREFerence:MODE <href> :TIMebase:HREFerence:MODE?"
+Description = "Sets or queries the horizontal reference mode."
+Remarks = "• CENTer: when the horizontal time base is modified, the waveform displayed will be expanded or compressed horizontally relative to the screen center. • LB: when the horizontal time base is modified, the waveform displayed will be expanded or compressed relative to the left border of the screen. • RB: when the horizontal time base is modified, the waveform displayed will be expanded or compressed relative to the right border of the screen. • TRIG: when the horizontal time base is modified, the waveform displayed will be expanded or compressed horizontally relative to the trigger position. • USER: when the horizontal time base is modified, the waveform displayed will be expanded or compressed horizontally relative to the user-defined reference position."
+"Return Format" = "The query returns CENT, LB, RB, TRIG, or USER. 294"
+Example = ":TIMebase:HREFerence:MODE TRIG        /*Sets the horizontal reference mode to trigger position.*/ :TIMebase:HREFerence:MODE?            /*The query returns TRIG.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.8 :TIMebase:HREFerence:POSition"]
+Syntax = ":TIMebase:HREFerence:POSition <pos> :TIMebase:HREFerence:POSition?"
+Description = "Sets or queries the user-defined reference position when the waveforms are expanded or compressed horizontally."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer ranging from -500 to 500."
+Example = ":TIMebase:HREFerence:POSition 60     /*Sets the user-defined reference position to 60.*/ :TIMebase:HREFerence:POSition?               /*The query returns 60.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.9 :TIMebase:VERNier"]
+Syntax = ":TIMebase:VERNier <bool> :TIMebase:VERNier?"
+Description = "Enables or disables the fine adjustment function of the horizontal scale; or queries the on/off status of the fine adjustment function of the horizontal scale. 295"
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":TIMebase:VERNier ON            /*Sets the fine adjustment function of the horizontal scale to ON.*/ :TIMebase:VERNier?               /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.10 :TIMebase:HOTKeys"]
+Syntax = ":TIMebase:HOTKeys <action>"
+Description = "Sets the running status."
+Remarks = "• STOP: stops the measurement. • RUN: runs the measurement. • SINGle: indicates the single trigger measurement."
+"Return Format" = "N/A"
+Example = ":TIMebase:HOTKeys RUN  /*Sets the operating status to RUN.*/ 296"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.11 :TIMebase:ROLL"]
+Syntax = ":TIMebase:ROLL <value> :TIMebase:ROLL?"
+Description = "Sets or queries the status of the ROLL mode."
+Remarks = "• 0: disables the Auto ROLL mode. • 1: enables the Auto ROLL mode. The system enters the ROLL mode automatically when the time base is greater than or equal to 50 ms."
+"Return Format" = "The query returns 0 or 1."
+Example = ":TIMebase:ROLL 0    /*Disables the ROLL mode.*/ :TIMebase:ROLL?      /*The query returns 0.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.12 :TIMebase:XY:ENABle"]
+Syntax = ":TIMebase:XY:ENABle <bool> :TIMebase:XY:ENABle?"
+Description = "Enables or disables the XY mode; or queries the on/off status of the XY mode."
+Remarks = "N/A 297"
+"Return Format" = "The query returns 0 or 1."
+Example = ":TIMebase:XY:ENABle OFF    /*Disables the XY mode.*/ :TIMebase:XY:ENABle?      /*The query returns 0.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.13 :TIMebase:XY:X"]
+Syntax = ":TIMebase:XY:X <s> :TIMebase:XY:X?"
+Description = "Sets or queries the source channel of X coordinate when the horizontal time base mode is XY."
+Remarks = "N/A"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":TIMebase:XY:X CHANnel3         /*Sets the source channel of X coordinate to CHANnel3.*/ :TIMebase:XY:X?                /*The query returns CHAN3.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.14 :TIMebase:XY:Y"]
+Syntax = ":TIMebase:XY:Y <s> :TIMebase:XY:Y?"
+Description = "Sets or queries the channel source of the Y coordinate when the horizontal time base mode is XY. 298"
+Remarks = "N/A"
+"Return Format" = "The query returns CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":TIMebase:XY:Y CHANnel3         /*Sets the channel source of the Y coordinate to CHANnel3.*/ :TIMebase:XY:Y?                /*The query returns CHAN3.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.15 :TIMebase:XY:Z"]
+Syntax = ":TIMebase:XY:Z <s> :TIMebase:XY:Z?"
+Description = "Sets or queries Source Z in XY mode."
+Remarks = "N/A"
+"Return Format" = "The query returns NONE, CHAN1, CHAN2, CHAN3, or CHAN4."
+Example = ":TIMebase:XY:Z CHANnel3         /*Sets Source Z in XY mode to CHANnel3.*/ :TIMebase:XY:Z?        /*The query returns CHAN3.*/ 299"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.16 :TIMebase:XY:GRID"]
+Syntax = ":TIMebase:XY:GRID <grid> :TIMebase:XY:GRID? :TRIGger:MODE <mode> :TRIGger:MODE?"
+Description = "Sets or queries the grid type of the XY display. Sets or queries the trigger type. 300"
+Remarks = "• FULL: turns the background grid and coordinates on. • HALF: turns the background grid off and turns the coordinate on. • NONE: turns the background grid and coordinate off."
+"Return Format" = "The query returns FULL, HALF, or NONE."
+Example = ":TIMebase:XY: GRID NONE /*Sets the grid type of the XY display.*/ :TIMebase:XY: GRID? /*The query returns NONE.*/ 3.27 :TRIGger Commands The :TRIGger commands are used to set the trigger source type, trigger input edge type and trigger delay as well as generating a trigger event. 3.27.1 :TRIGger:MODE"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.26.1 :TIMebase:DELay:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.26.2 :TIMebase:DELay:OFFSet".Parameter]
+Name = "<offset>"
+Type = "Real"
+Default = "0"
+Range = "-(LeftTime - DelayRange/2) to (RightTime - DelayRange/2)"
+
+["3.26.3 :TIMebase:DELay:SCALe".Parameter]
+Name = "<scale>"
+Type = "Real"
+Default = "-"
+Range = "Refer to Remarks"
+
+["3.26.4 :TIMebase[:MAIN][:OFFSet]".Parameter]
+Name = "<offset>"
+Type = "Real"
+Default = "0"
+Range = "Refer to Remarks"
+
+["3.26.5 :TIMebase[:MAIN]:SCALe".Parameter]
+Name = "<scale>"
+Type = "Real"
+Default = "5ns/div"
+Range = "Refer to Remarks"
+
+["3.26.6 :TIMebase:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "MAIN"
+Range = "{MAIN|XY|ROLL}"
+
+["3.26.7 :TIMebase:HREFerence:MODE".Parameter]
+Name = "<href>"
+Type = "Discrete"
+Default = "CENTer"
+Range = "{CENTer|LB|RB|TRIG|USER}"
+
+["3.26.8 :TIMebase:HREFerence:POSition".Parameter]
+Name = "<pos>"
+Type = "Integer"
+Default = "0"
+Range = "-500 to 500"
+
+["3.26.9 :TIMebase:VERNier".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.26.10 :TIMebase:HOTKeys".Parameter]
+Name = "<action>"
+Type = "Discrete"
+Default = "-"
+Range = "{STOP|RUN|SINGle}"
+
+["3.26.11 :TIMebase:ROLL".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "1"
+Range = "{0|1}"
+
+["3.26.12 :TIMebase:XY:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.26.13 :TIMebase:XY:X".Parameter]
+Name = "<s>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.26.14 :TIMebase:XY:Y".Parameter]
+Name = "<s>"
+Type = "Discrete"
+Default = "CHANnel2"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.26.15 :TIMebase:XY:Z".Parameter]
+Name = "<s>"
+Type = "Discrete"
+Default = "-"
+Range = "{NONE|CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.26.16 :TIMebase:XY:GRID".Parameter]
+Name = "<grid>"
+Type = "Discrete"
+Default = "FULL"
+Range = "{FULL|HALF|NONE}"

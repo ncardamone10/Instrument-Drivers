@@ -1,0 +1,261 @@
+# 3.6 :CHANnel<n> Commands
+["3.6.1 :CHANnel<n>:BWLimit"]
+Syntax = ":CHANnel<n>:BWLimit <val> :CHANnel<n>:BWLimit?"
+Description = "Sets or queries the bandwidth limit of the specified channel."
+Remarks = "This series supports 20 MHz bandwidth limit. When set to OFF, the bandwidth limit is disabled."
+Return_Format = "The query returns 20M or OFF."
+Example = ":CHANnel1:BWLimit 20M    /*Enables the 20MHz bandwidth limit.*/ :CHANnel1:BWLimit?       /*The query returns 20M.*/"
+Class = "Channel"
+Function = "BandwidthLimit"
+Command = ":CHANnel<n>:BWLimit"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{20M|OFF}"
+Is_Query = "True"
+
+["3.6.2 :CHANnel<n>:COUPling"]
+Syntax = ":CHANnel<n>:COUPling <coupling> :CHANnel<n>:COUPling?"
+Description = "Sets or queries the coupling mode of the specified channel."
+Remarks = ""
+Return_Format = "The query returns AC, DC, or GND."
+Example = ":CHANnel1:COUPling AC    /*Selects the AC coupling mode.*/ :CHANnel1:COUPling?      /*The query returns AC.*/"
+Class = "Channel"
+Function = "Coupling"
+Command = ":CHANnel<n>:COUPling"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{AC|DC|GND}"
+Is_Query = "True"
+
+["3.6.3 :CHANnel<n>:DISPlay"]
+Syntax = ":CHANnel<n>:DISPlay <bool> :CHANnel<n>:DISPlay?"
+Description = "Enables or disables the specified channel; or queries the on/off status of the specified channel."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":CHANnel1:DISPlay ON    /*Enables CH1.*/ :CHANnel1:DISPlay?      /*The query returns 1.*/"
+Class = "Channel"
+Function = "Display"
+Command = ":CHANnel<n>:DISPlay"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.6.4 :CHANnel<n>:INVert"]
+Syntax = ":CHANnel<n>:INVert <bool> :CHANnel<n>:INVert?"
+Description = "Turns on or off the waveform invert for the specified channel; or queries the on/off status of the waveform invert for the specified channel."
+Remarks = "When the waveform invert is turned off, the waveform is displayed normally; when the waveform invert is turned on, the voltage values of the displayed waveform are inverted."
+Return_Format = "The query returns 1 or 0."
+Example = ":CHANnel1:INVert ON    /*Enables the waveform invert for CH1.*/ :CHANnel1:INVert?      /*The query returns 1.*/"
+Class = "Channel"
+Function = "Invert"
+Command = ":CHANnel<n>:INVert"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.6.5 :CHANnel<n>:OFFSet"]
+Syntax = ":CHANnel<n>:OFFSet <offset> :CHANnel<n>:OFFSet?"
+Description = "Sets or queries the vertical offset of the specified channel. The default unit is V."
+Remarks = "The range of the channel vertical offset is related to the current vertical scale."
+Return_Format = "The query returns the vertical offset in scientific notation."
+Example = ":CHANnel1:OFFSet 0.01 /*Sets the vertical offset of CH1 to 10 mV.*/ :CHANnel1:OFFSet? /*The query returns 1.000000E-02.*/"
+Class = "Channel"
+Function = "Offset"
+Command = ":CHANnel<n>:OFFSet"
+Input_Min = "-100"
+Input_Max = "100"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.6.6 :CHANnel<n>:TCALibrate"]
+Syntax = ":CHANnel<n>:TCALibrate <val> :CHANnel<n>:TCALibrate?"
+Description = "Sets or queries the delay calibration time (used to calibrate the zero offset of the corresponding channel) of the specified channel. The unit is s."
+Remarks = "When the horizontal time base is greater than 10 μs, the parameter <val> cannot be set."
+Return_Format = "The query returns the delay calibration time in scientific notation."
+Example = ":CHANnel1:TCALibrate 0.00000002  /*Sets the delay calibration time to 20 ns.*/ :CHANnel1:TCALibrate?  /*The query returns 2.000000E-8.*/"
+Class = "Channel"
+Function = "TimeCalibration"
+Command = ":CHANnel<n>:TCALibrate"
+Input_Min = "-100"
+Input_Max = "100"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.6.7 :CHANnel<n>:SCALe"]
+Syntax = ":CHANnel<n>:SCALe <scale> :CHANnel<n>:SCALe?"
+Description = "Sets or queries the vertical scale of the specified channel. The default unit is V/div."
+Remarks = "The range of the channel vertical scale is related to the probe ratio."
+Return_Format = "The query returns the vertical scale in scientific notation. The unit is V/div."
+Example = ":CHANnel1:SCALe 0.1 /*Sets the vertical scale of CH1 to 0.1 V/div.*/ :CHANnel1:SCALe? /*The query returns 1.000000E-01.*/"
+Class = "Channel"
+Function = "Scale"
+Command = ":CHANnel<n>:SCALe"
+Input_Min = "0"
+Input_Max = "1000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.6.8 :CHANnel<n>:PROBe"]
+Syntax = ":CHANnel<n>:PROBe <atten> :CHANnel<n>:PROBe?"
+Description = "Sets or queries the probe ratio of the specified channel."
+Remarks = "The command sets the probe ratio, that is, multiplies the acquired signal by a specified number (not affect the actual amplitude of the signal). The set probe ratio affects the settable range of the current vertical scale."
+Return_Format = "The query returns 0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, or 50000."
+Example = ":CHANnel1:PROBe 10 /*Sets the probe ratio of CH1 to 10X*/ :CHANnel1:PROBe? /*The query returns 10.*/"
+Class = "Channel"
+Function = "ProbeSetting"
+Command = ":CHANnel<n>:PROBe"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{0.001|0.002|0.005|0.01|0.02|0.05|0.1|0.2|0.5|1|2|5|10|20|50|100|200|500|1000|2000|5000|10000|20000|50000}"
+Is_Query = "True"
+
+["3.6.9 :CHANnel<n>:LABel:SHOW"]
+Syntax = ":CHANnel<n>:LABel:SHOW <bool> :CHANnel<n>:LABel:SHOW?"
+Description = "Sets or queries whether to display the label of the specified channel."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":CHANnel1:LABel:SHOW ON          /*Displays the label of the specified channel.*/ :CHANnel1:LABel:SHOW?            /*The query returns 1.*/"
+Class = "Channel"
+Function = "LabelDisplay"
+Command = ":CHANnel<n>:LABel:SHOW"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.6.10 :CHANnel<n>:LABel:CONTent"]
+Syntax = ":CHANnel<n>:LABel:CONTent <str> :CHANnel<n>:LABel:CONTent?"
+Description = "Sets or queries the label of the specified channel."
+Remarks = "N/A"
+Return_Format = "The query returns the label of the specified channel in strings."
+Example = ":CHANnel1:LABel:CONTent ch1        /*Sets the label of Channel 1 to ch1.*/ :CHANnel1:LABel:CONTent? /*The query returns ch1.*/"
+Class = "Channel"
+Function = "LabelContent"
+Command = ":CHANnel<n>:LABel:CONTent"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "String"
+Is_Query = "True"
+
+["3.6.11 :CHANnel<n>:UNITs"]
+Syntax = ":CHANnel<n>:UNITs <units> :CHANnel<n>:UNITs?"
+Description = "Sets or queries the amplitude display unit of the specified analog channel."
+Remarks = "N/A"
+Return_Format = "The query returns VOLT, WATT, AMP, or UNKN."
+Example = ":CHANnel1:UNITs VOLTage    /*Sets the amplitude display unit of CH1 to VOLTage.*/ :CHANnel1:UNITs?           /*The query returns VOLT.*/"
+Class = "Channel"
+Function = "Units"
+Command = ":CHANnel<n>:UNITs"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "VOLT, WATT, AMP, UNKN"
+Is_Query = "True"
+
+["3.6.12 :CHANnel<n>:VERNier"]
+Syntax = ":CHANnel<n>:VERNier <bool> :CHANnel<n>:VERNier?"
+Description = "Enables or disables the fine adjustment of the vertical scale of the specified channel; or queries the on/off status of the fine adjustment of the vertical scale of the specified channel."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":CHANnel1:VERNier ON    /*Enables the fine adjustment of the vertical scale of CH1.*/ :CHANnel1:VERNier?       /*The query returns 1.*/"
+Class = "Channel"
+Function = "Vernier"
+Command = ":CHANnel<n>:VERNier"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Bool"
+Is_Query = "True"
+
+["3.6.13 :CHANnel<n>:POSition"]
+Syntax = ":CHANnel<n>:POSition <offset> :CHANnel<n>:POSition?"
+Description = "Sets or queries the bias voltage of the specified channel. The default unit is V."
+Remarks = "The range of the bias voltage of the specified channel is related to the vertical scale."
+Return_Format = "The query returns the bias voltage of the specified channel in scientific notation."
+Example = ":CHANnel1:POSition 10 /*Sets the bias voltage of CH1 to 10 V.*/ :CHANnel1:POSition? /*The query returns 1.000000E+01.*/"
+Class = "Channel"
+Function = "Position"
+Command = ":CHANnel<n>:POSition"
+Input_Min = "-100"
+Input_Max = "100"
+Input_Values = "float"
+Is_Query = "True"
+
+
+["3.6.1 :CHANnel<n>:BWLimit".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "OFF"
+Range = "{1|2|3|4} - <val> Discrete Refer to Remarks"
+
+["3.6.2 :CHANnel<n>:COUPling".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "DC"
+Range = "{1|2|3|4} - <coupling> Discrete {AC|DC|GND}"
+
+["3.6.3 :CHANnel<n>:DISPlay".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "1|ON"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.6.4 :CHANnel<n>:INVert".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.6.5 :CHANnel<n>:OFFSet".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "V"
+Range = "{1|2|3|4} - <offset> Real Refer to Remarks 0"
+
+["3.6.6 :CHANnel<n>:TCALibrate".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "s"
+Range = "{1|2|3|4} - <val> Real -100 ns to 100 ns 0"
+
+["3.6.7 :CHANnel<n>:SCALe".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "mV"
+Range = "{1|2|3|4} - <scale> Real Refer to Remarks 50"
+
+["3.6.8 :CHANnel<n>:PROBe".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "1"
+Range = "{1|2|3|4} - <atten> Discrete {0.001|0.002|0.005|0.01|0.02| 0.05|0.1|0.2|0.5|1|2|5|10|20|50| 100|200|500|1000|2000|5000| 10000|20000|50000}"
+
+["3.6.9 :CHANnel<n>:LABel:SHOW".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.6.10 :CHANnel<n>:LABel:CONTent".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "78"
+Range = "{1|2|3|4} - <str> ASCII String The label can contain English letters and numbers, as well as some symbols. -"
+
+["3.6.11 :CHANnel<n>:UNITs".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "VOLTage"
+Range = "{1|2|3|4} - <units> Discrete {WATT|AMPere|VOLTage| UNKNown}"
+
+["3.6.12 :CHANnel<n>:VERNier".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "0|OFF"
+Range = "{1|2|3|4} - <bool> Bool {{1|ON}|{0|OFF}}"
+
+["3.6.13 :CHANnel<n>:POSition".Parameter]
+Name = "<n>"
+Type = "Discrete"
+Default = "N/A"
+Range = "{1|2|3|4} - <offset> Real Refer to Remarks 0"

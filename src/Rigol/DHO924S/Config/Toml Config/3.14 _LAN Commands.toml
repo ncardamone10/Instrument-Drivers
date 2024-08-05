@@ -1,0 +1,292 @@
+# 3.14 :LAN Commands
+
+["3.14.1 :LAN:DHCP"]
+Syntax = ":LAN:DHCP <bool> :LAN:DHCP?"
+Description = "Turns on or off the DHCP configuration mode; or queries the on/off status of the current DHCP configuration mode."
+Remarks = "When DHCP is valid, the DHCP server in the current network assigns network parameters."
+Return_Format = "The query returns 1 or 0."
+Example = ":LAN:DHCP OFF /*Disables DHCP configuration mode.*/ :LAN:DHCP? /*The query returns 0.*/"
+Class = "DHO924S"
+Function = "toggleDHCP"
+Command = ":LAN:DHCP"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.14.2 :LAN:AUToip"]
+Syntax = ":LAN:AUToip <bool> :LAN:AUToip?"
+Description = "Turns on or off the Auto IP configuration mode; or queries the on/off status."
+Remarks = "Auto IP mode allows self-defined gateway and DNS addresses."
+Return_Format = "The query returns 1 or 0."
+Example = ":LAN:AUToip OFF /*Disables the Auto IP configuration mode.*/ :LAN:AUToip? /*The query returns 0.*/"
+Class = "DHO924S"
+Function = "toggleAutoIP"
+Command = ":LAN:AUToip"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.14.3 :LAN:GATeway"]
+Syntax = ":LAN:GATeway <string> :LAN:GATeway?"
+Description = "Sets or queries the default gateway."
+Remarks = "The IP configuration mode should be Auto IP or Static IP."
+Return_Format = "The query returns the current gateway in strings."
+Example = ":LAN:GATeway 192.168.1.1 /*Sets the default gateway.*/ :LAN:GATeway? /*The query returns 192.168.1.1.*/"
+Class = "DHO924S"
+Function = "setGateway"
+Command = ":LAN:GATeway"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "IPv4 Address"
+Is_Query = "True"
+
+["3.14.4 :LAN:DNS"]
+Syntax = ":LAN:DNS <string> :LAN:DNS?"
+Description = "Sets or queries the DNS address."
+Remarks = "The IP configuration mode should be Auto IP or Static IP."
+Return_Format = "The query returns the current DNS address in strings."
+Example = ":LAN:DNS 192.168.1.1 /*Sets the DNS address.*/ :LAN:DNS? /*The query returns 192.168.1.1.*/"
+Class = "DHO924S"
+Function = "setDNS"
+Command = ":LAN:DNS"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "IPv4 Address"
+Is_Query = "True"
+
+["3.14.5 :LAN:MAC?"]
+Syntax = ":LAN:MAC?"
+Description = "Queries the MAC address of the instrument."
+Remarks = "N/A"
+Return_Format = "The query returns the MAC address in strings."
+Example = "N/A"
+Class = "DHO924S"
+Function = "queryMAC"
+Command = ":LAN:MAC?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.14.6 :LAN:DSERver?"]
+Syntax = ":LAN:DSERver?"
+Description = "Queries the address of the DHCP server."
+Remarks = "N/A"
+Return_Format = "The query returns the address of the DHCP server in strings."
+Example = "N/A"
+Class = "DHO924S"
+Function = "queryDHCPServer"
+Command = ":LAN:DSERver?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.14.7 :LAN:MANual"]
+Syntax = ":LAN:MANual <bool> :LAN:MANual?"
+Description = "Turns on or off the static IP configuration mode; or queries the status."
+Remarks = "Static IP mode allows self-defined network parameters."
+Return_Format = "The query returns 1 or 0."
+Example = ":LAN:MANual ON /*Enables static IP mode.*/ :LAN:MANual? /*The query returns 1.*/"
+Class = "DHO924S"
+Function = "toggleStaticIP"
+Command = ":LAN:MANual"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.14.8 :LAN:IPADdress"]
+Syntax = ":LAN:IPADdress <string> :LAN:IPADdress?"
+Description = "Sets or queries the IP address of the instrument."
+Remarks = "Use when Static IP is enabled."
+Return_Format = "The query returns the current IP address in strings."
+Example = ":LAN:IPADdress 192.168.1.10 /*Sets the IP address.*/ :LAN:IPADdress? /*The query returns 192.168.1.10.*/"
+Class = "DHO924S"
+Function = "setIPAddress"
+Command = ":LAN:IPADdress"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "IPv4 Address"
+Is_Query = "True"
+
+["3.14.9 :LAN:SMASk"]
+Syntax = ":LAN:SMASk <string> :LAN:SMASk?"
+Description = "Sets or queries the subnet mask."
+Remarks = "Use when Static IP is enabled."
+Return_Format = "The query returns the current subnet mask in strings."
+Example = ":LAN:SMASk 255.255.255.0 /*Sets the subnet mask.*/ :LAN:SMASk? /*The query returns 255.255.255.0.*/"
+Class = "DHO924S"
+Function = "setSubnetMask"
+Command = ":LAN:SMASk"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "IPv4 Address"
+Is_Query = "True"
+
+["3.14.10 :LAN:STATus?"]
+Syntax = ":LAN:STATus?"
+Description = "Queries the current network configuration status."
+Remarks = "Provides detailed network connection statuses."
+Return_Format = "The query returns the network status (e.g., CONNECTED, DHCPFAILED)."
+Example = "N/A"
+Class = "DHO924S"
+Function = "queryNetworkStatus"
+Command = ":LAN:STATus?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.14.11 :LAN:VISA?"]
+Syntax = ":LAN:VISA? [<type>]"
+Description = "Queries the VISA address of the instrument."
+Remarks = "Optional parameter 'type' specifies the address type."
+Return_Format = "The query returns the VISA address in strings."
+Example = "N/A"
+Class = "DHO924S"
+Function = "queryVISAAddress"
+Command = ":LAN:VISA?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{USB|LXI|SOCKET}"
+Is_Query = "True"
+
+["3.14.12 :LAN:MDNS"]
+Syntax = ":LAN:MDNS <bool> :LAN:MDNS?"
+Description = "Enables or disables mDNS; or queries the mDNS status."
+Remarks = "N/A"
+Return_Format = "The query returns 1 or 0."
+Example = ":LAN:MDNS ON /*Enables mDNS.*/ :LAN:MDNS? /*The query returns 1.*/"
+Class = "DHO924S"
+Function = "toggleMDNS"
+Command = ":LAN:MDNS"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "Boolean"
+Is_Query = "True"
+
+["3.14.13 :LAN:HOST:NAME"]
+Syntax = ":LAN:HOST:NAME <name> :LAN:HOST:NAME?"
+Description = "Sets or queries the host name."
+Remarks = "N/A"
+Return_Format = "The query returns the host name in ASCII strings."
+Example = "N/A"
+Class = "DHO924S"
+Function = "setHostname"
+Command = ":LAN:HOST:NAME"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "String"
+Is_Query = "True"
+
+["3.14.14 :LAN:DESCription"]
+Syntax = ":LAN:DESCription <name> :LAN:DESCription?"
+Description = "Sets or queries the description."
+Remarks = "N/A"
+Return_Format = "The query returns the description in ASCII strings."
+Example = "N/A"
+Class = "DHO924S"
+Function = "setDescription"
+Command = ":LAN:DESCription"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "String"
+Is_Query = "True"
+
+["3.14.15 :LAN:APPLy"]
+Syntax = ":LAN:APPLy"
+Description = "Applies the network configuration."
+Remarks = "Ensures all LAN configurations take effect."
+Return_Format = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "applyLANConfig"
+Command = ":LAN:APPLy"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.14.1 :LAN:DHCP".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "1|ON"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.14.2 :LAN:AUToip".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "1|ON"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.14.3 :LAN:GATeway".Parameter]
+Name = "<string>"
+Type = "ASCII"
+Default = "-"
+Range = "String Refer to Remarks"
+
+["3.14.4 :LAN:DNS".Parameter]
+Name = "<string>"
+Type = "ASCII"
+Default = "142"
+Range = "String Refer to Remarks -"
+
+["3.14.5 :LAN:MAC?".Parameter]
+Info = "N/A"
+
+["3.14.6 :LAN:DSERver?".Parameter]
+Info = "N/A"
+
+["3.14.7 :LAN:MANual".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.14.8 :LAN:IPADdress".Parameter]
+Name = "<string>"
+Type = "ASCII"
+Default = "-"
+Range = "String Refer to Remarks"
+
+["3.14.9 :LAN:SMASk".Parameter]
+Name = "<string>"
+Type = "ASCII"
+Default = "-"
+Range = "String Refer to Remarks"
+
+["3.14.10 :LAN:STATus?".Parameter]
+Info = "N/A"
+
+["3.14.11 :LAN:VISA?".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "-"
+Range = "{USB|LXI|SOCKet}"
+
+["3.14.12 :LAN:MDNS".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.14.13 :LAN:HOST:NAME".Parameter]
+Name = "<name>"
+Type = "ASCII"
+Default = "-"
+Range = "String The label can contain English letters and numbers, as well as some symbols."
+
+["3.14.14 :LAN:DESCription".Parameter]
+Name = "<name>"
+Type = "ASCII"
+Default = "-"
+Range = "String The label can contain English letters and numbers, as well as some symbols."
+
+["3.14.15 :LAN:APPLy".Parameter]
+Name = "Default"
+Type = "<bool>"
+Default = "0|OFF"
+Range = "Bool {{1|ON}|{0|OFF}}"

@@ -101,8 +101,8 @@ def split_pdf_by_headers(pdf_path, header_to_page, output_dir):
 
 
 def main():
-    pdf_path = ".\\src\\Rigol\\DHO924S\\SCPI Config\\SCPI Commands from Programming Guide.pdf"
-    output_dir = ".\\src\\Rigol\\DHO924S\\SCPI Config\\"
+    pdf_path = ".\\src\\Rigol\\DHO924S\\Config\\SCPI Commands from Programming Guide.pdf"
+    output_dir = ".\\src\\Rigol\\DHO924S\\Config\\"
     headers = extract_headers_from_pdf(pdf_path)  # Extract headers using your existing function
     filtered_headers = filter_headers(headers)  # Filter headers using your existing function
     header_to_page = map_headers_to_pages(pdf_path, filtered_headers)  # Map headers to pages

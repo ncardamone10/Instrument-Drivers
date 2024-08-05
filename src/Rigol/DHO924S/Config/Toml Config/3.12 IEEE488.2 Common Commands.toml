@@ -1,0 +1,217 @@
+# 3.12 IEEE488.2 Common Commands
+
+["3.12.1 *IDN?"]
+Syntax = "*IDN?"
+Description = "Queries the ID string of the instrument."
+Remarks = "N/A"
+Return_Format = "The query returns RIGOL TECHNOLOGIES,<model>,<serial number>,<software version>."
+Example = "N/A"
+Class = "DHO924S"
+Function = "queryInstrumentID"
+Command = "*IDN?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.12.2 *RST"]
+Syntax = "*RST"
+Description = "Restores the instrument to its factory default settings."
+Remarks = "N/A"
+Return_Format = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "resetInstrument"
+Command = "*RST"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.12.3 *CLS"]
+Syntax = "*CLS"
+Description = "Clears all the event registers, and also clears the error queue."
+Remarks = "N/A"
+Return_Format = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "clearStatus"
+Command = "*CLS"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.12.4 *ESE"]
+Syntax = "*ESE <maskargument> *ESE?"
+Description = "Sets or queries the enable register of the standard event register set."
+Remarks = "Refer to the Standard Event Status Register table for bit definitions."
+Return_Format = "The query returns an integer representing the enabled bits."
+Example = "*ESE 16 /*Enables Bit 4*/ *ESE? /*Query enabled bits*/"
+Class = "DHO924S"
+Function = "setGetStandardEventStatus"
+Command = "*ESE"
+Input_Min = "0"
+Input_Max = "255"
+Input_Values = "Integer"
+Is_Query = "True"
+
+["3.12.5 *ESR?"]
+Syntax = "*ESR?"
+Description = "Queries and clears the event register of the standard event status register."
+Remarks = "N/A"
+Return_Format = "The query returns an integer representing the status."
+Example = "N/A"
+Class = "DHO924S"
+Function = "queryEventStatus"
+Command = "*ESR?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.12.6 *OPC"]
+Syntax = "*OPC *OPC?"
+Description = "Sets or queries the operation complete status."
+Remarks = "Refer to the Operation Complete definition in the IEEE standard."
+Return_Format = "The query returns 1 if the operation is complete, otherwise 0."
+Example = "N/A"
+Class = "DHO924S"
+Function = "setGetOperationComplete"
+Command = "*OPC"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.12.7 *RCL"]
+Syntax = "*RCL"
+Description = "Recalls instrument settings from specified non-volatile memory."
+Remarks = "N/A"
+Return_Format = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "recallSettings"
+Command = "*RCL"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.12.8 *SAV"]
+Syntax = "*SAV <value>"
+Description = "Saves the current instrument state to the specified register."
+Remarks = "N/A"
+Return_Format = "N/A"
+Example = "*SAV 1 /*Saves state to Register 1*/"
+Class = "DHO924S"
+Function = "saveState"
+Command = "*SAV"
+Input_Min = "0"
+Input_Max = "49"
+Input_Values = "Integer"
+Is_Query = "False"
+
+["3.12.9 *SRE"]
+Syntax = "*SRE <maskargument> *SRE?"
+Description = "Sets or queries the status byte register set."
+Remarks = "For bit definitions, refer to the Status Byte Register definition."
+Return_Format = "The query returns the enabled value of the register."
+Example = "*SRE 16 /*Enables Bit 4*/ *SRE? /*Query enabled bits*/"
+Class = "DHO924S"
+Function = "setGetStatusByte"
+Command = "*SRE"
+Input_Min = "0"
+Input_Max = "255"
+Input_Values = "Integer"
+Is_Query = "True"
+
+["3.12.10 *STB?"]
+Syntax = "*STB?"
+Description = "Queries the status byte register and clears it after the query."
+Remarks = "N/A"
+Return_Format = "The query returns an integer representing the status."
+Example = "N/A"
+Class = "DHO924S"
+Function = "queryStatusByte"
+Command = "*STB?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.12.11 *WAI"]
+Syntax = "*WAI"
+Description = "Waits for all pending operations to complete."
+Remarks = "N/A"
+Return_Format = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "waitForOperations"
+Command = "*WAI"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "False"
+
+["3.12.12 *TST?"]
+Syntax = "*TST? :LA:ENABle <bool> :LA:ENABle?"
+Description = "Performs a self-test and optionally enables or queries the LA function."
+Remarks = "Self-test result or LA status is returned."
+Return_Format = "The query returns 0 for pass, 1 for fail."
+Example = "N/A"
+Class = "DHO924S"
+Function = "selfTest"
+Command = "*TST?"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "True"
+
+["3.12.1 *IDN?".Parameter]
+Info = "N/A"
+
+["3.12.2 *RST".Parameter]
+Info = "N/A"
+
+["3.12.3 *CLS".Parameter]
+Info = "N/A"
+
+["3.12.4 *ESE".Parameter]
+Name = "<maskargument>"
+Type = "Integer"
+Default = "0"
+Range = "0 to 255"
+
+["3.12.5 *ESR?".Parameter]
+Info = "N/A"
+
+["3.12.6 *OPC".Parameter]
+Info = "N/A"
+
+["3.12.7 *RCL".Parameter]
+Info = "N/A"
+
+["3.12.8 *SAV".Parameter]
+Name = "<value>"
+Type = "Integer"
+Default = "0"
+Range = "0 to 49"
+
+["3.12.9 *SRE".Parameter]
+Name = "<maskargument>"
+Type = "Integer"
+Default = "0"
+Range = "0 to 255"
+
+["3.12.10 *STB?".Parameter]
+Info = "N/A"
+
+["3.12.11 *WAI".Parameter]
+Info = "N/A"
+
+["3.12.12 *TST?".Parameter]
+Name = "Default"
+Type = "<bool>"
+Default = "0|OFF"
+Range = "Bool {{1|ON}|{0|OFF}}"

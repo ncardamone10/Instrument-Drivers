@@ -1,0 +1,254 @@
+# 3.21 :SAVE Commands
+["3.21.1 :SAVE:IMAGe:INVert"]
+Syntax = ":SAVE:IMAGe:INVert <bool> :SAVE:IMAGe:INVert?"
+Description = "Enables or disables the invert function when saving the image; or queries whether the invert function is enabled when saving the image."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":SAVE:IMAGe:INVert ON          /*Enables the invert function when saving the image.*/ :SAVE:IMAGe:INVert?            /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.2 :SAVE:IMAGe:COLor"]
+Syntax = ":SAVE:IMAGe:COLor <color> :SAVE:IMAGe:COLor?"
+Description = "Sets the image color for image saving to Color or Gray; or queries image color for image saving."
+Remarks = "N/A 236"
+"Return Format" = "The query returns COL or GRAY."
+Example = ":SAVE:IMAGe:COLor GRAY            /*Sets the image color for image saving to GRAY.*/ :SAVE:IMAGe:COLor?                 /*The query returns GRAY.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.3 :SAVE:IMAGe:FORMat"]
+Syntax = ":SAVE:IMAGe:FORMat <format> :SAVE:IMAGe:FORMat?"
+Description = "Sets or queries in what format is the image saved."
+Remarks = "N/A"
+"Return Format" = "The query returns PNG, BMP, or JPG."
+Example = ":SAVE:IMAGe:FORMat PNG      /*Sets the storage format to PNG.*/ :SAVE:IMAGe:FORMat?             /*The query returns PNG.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.4 :SAVE:IMAGe:HEADer"]
+Syntax = ":SAVE:IMAGe:HEADer <bool> :SAVE:IMAGe:HEADer?"
+Description = "Sets or queries whether to display the image header. 237"
+Remarks = "• 1|ON: enables to display the image header. If you select \"ON\", the instrument model and the image creation date will be displayed in the header of the image when you save the image file. • 0|OFF: disables to display the image header."
+"Return Format" = "The query returns 1 or 0."
+Example = ":SAVE:IMAGe:HEADer ON /*Enables the display of the image header.*/ :SAVE:IMAGe:HEADer? /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.5 :SAVE:IMAGe:DATA?"]
+Syntax = ":SAVE:IMAGe:DATA?"
+Description = "Queries the bitmap data stream of the currently displayed image."
+Remarks = "The read data format is TMC header + binary data stream of the screenshot + terminator. The TMC header is in #NXXXXXX format; wherein, # is the TMC header identifier; N following # represents the number of digits (in the decimal integer) that follow; the length of the binary data stream of the screenshot is expressed in ASCII strings, and the terminator represents the ending of communication. For example, the data read for one time is #9000387356. 9 indicates the number of digits (in the decimal integer) that follow, and \"000387356\" indicates the length of the binary data stream, that is, 387356 bytes."
+"Return Format" = "The query returns the binary data stream. 238"
+Example = ":SAVE:IMAGe:DATA? /*The query returns the binary data stream.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.6 :SAVE:IMAGe"]
+Syntax = ":SAVE:IMAGe <path>"
+Description = "Stores the contents displayed on the screen into the internal or external memory in image format. The supported image format is PNG, Windows Bitmap, and JPEG."
+Remarks = "<path> includes the file storage location and the filename with a suffix. • The path of the local disk is C:/, and the path of the external storage device can be D:/ or E:/. • The suffix of the filename can be .bmp, .png, or .jpg. • Refer to :SAVE:OVERlap . When you send the command :SAVE:OVERlap ON, if the specified storage location already contains a file with the same filename, the original file will be overwritten. • The filename can contain letters, numbers, and other non-Chinese characters. The length of the filename shall not exceed 16 characters."
+"Return Format" = "N/A"
+Example = ":SAVE:IMAGe D:/123.png /*Stores the contents displayed on the screen into the external storage device Disk D, with the filename 123.png.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.7 :SAVE:SETup"]
+Syntax = ":SAVE:SETup <path> 239"
+Description = "Saves the current setup parameters of the oscilloscope to the internal or external memory as a file."
+Remarks = "<path> includes the file storage location and the filename with a suffix. • The path of the local disk is C:/, and the path of the external storage device can be D:/ or E:/. • The suffix of the filename is \"*.stp\". • Refer to :SAVE:OVERlap . When you send the command :SAVE:OVERlap ON, if the specified storage location already contains a file with the same filename, the original file will be overwritten. • The filename can contain letters, numbers, and other non-Chinese characters. The length of the filename shall not exceed 16 characters."
+"Return Format" = "N/A"
+Example = ":SAVE:SETup D:/123.stp  /*Stores the current setup parameters of the oscilloscope into the external storage device Disk D, with the filename 123.stp.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.8 :SAVE:WAVeform"]
+Syntax = ":SAVE:WAVeform <path>"
+Description = "Saves the waveform data to the internal or external memory as a file."
+Remarks = "<path> includes the file storage location and the filename with a suffix. • The path of the local disk is C:/, and the path of the external storage device can be D:/ or E:/. • The suffix of the filename is \"*.bin\" or \"*.csv\". • Refer to :SAVE:OVERlap . When you send the command :SAVE:OVERlap ON, if the specified storage location already contains a file with the same filename, the original file will be overwritten. • The filename can contain letters, numbers, and other non-Chinese characters. The length of the filename shall not exceed 16 characters."
+"Return Format" = "N/A"
+Example = ":SAVE:WAVeform D:/123.csv /*Saves the waveform file to the external storage device Disk D, with the filename 123.csv.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.9 :SAVE:MEMory:WAVeform"]
+Syntax = ":SAVE:MEMory:WAVeform <path>"
+Description = "Saves the memory waveform data of the oscilloscope to the specified path as a file."
+Remarks = "<path> includes the file storage location and the filename with a suffix. • The path of the local disk is C:/, and the path of the external storage device can be D:/ or E:/. • The suffix of the filename is \"*.bin\", \"*.csv\", or \"*.wfm\". 241 • Refer to :SAVE:OVERlap . When you send the command :SAVE:OVERlap ON, if the specified storage location already contains a file with the same filename, the original file will be overwritten. • The filename can contain letters, numbers, and other non-Chinese characters. The length of the filename shall not exceed 16 characters."
+"Return Format" = "N/A"
+Example = ":SAVE:MEMory:WAVeform D:/123.bin    /*Saves the memory waveform data of the oscilloscope to Disk D, with the filename 123.bin.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.10 :SAVE:STATus?"]
+Syntax = ":SAVE:STATus?"
+Description = "Queries the status of the memory."
+Remarks = "N/A"
+"Return Format" = "The query returns 0 or 1 (when the saving operation is completed)."
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.11 :SAVE:OVERlap"]
+Syntax = ":SAVE:OVERlap <bool> :SAVE:OVERlap?"
+Description = "Sets or queries whether to overwrite the existing file when saving a file. 242"
+Remarks = "• 1|ON: enables to overwrite the existing file. The existing file with the same name as the file to be saved will be overwritten. • 0|OFF: disables to overwrite the existing file."
+"Return Format" = "The query returns 1 or 0."
+Example = ":SAVE:OVERlap ON /*Enables to overwrite the existing file.*/ :SAVE:OVERlap? /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.12 :SAVE:PREFix"]
+Syntax = ":SAVE:PREFix <name> :SAVE:PREFix?"
+Description = "Sets or queries the saved prefix of the filename."
+Remarks = "The filename mentioned in this command shall not contain the suffix. Its prefix can contain letters, numbers, and other non-Chinese characters. The length of the prefix shall not exceed 16 characters."
+"Return Format" = "The query returns the saved prefix of the filename in strings."
+Example = ":SAVE:PREFix Rigol /*Sets the saved prefix of the filename to Rigol.*/ :SAVE:PREFix? /*The query returns Rigol.*/ 243"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.13 :LOAD:SETup"]
+Syntax = ":LOAD:SETup <path> :SEARch:COUNt?"
+Description = "Loads the setup file of the oscilloscope from the specified path. Queries the total number of the search events."
+Remarks = "<path> includes the file storage location and the filename with a suffix. • The path of the local disk is C:/; and the path of the external storage device can be D:/, E:/... • The suffix of the filename to be loaded is \"*.stp\". N/A 244"
+"Return Format" = "N/A"
+Example = ":LOAD:SETup D:/123.stp      /*Loads the setup file \"123.stp\" from the external storage device Disk D.*/ 3.22 :SEARch Commands 3.22.1 :SEARch:COUNt?"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.21.1 :SAVE:IMAGe:INVert".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.21.2 :SAVE:IMAGe:COLor".Parameter]
+Name = "<color>"
+Type = "Discrete"
+Default = "COLor"
+Range = "{COLor|GRAY}"
+
+["3.21.3 :SAVE:IMAGe:FORMat".Parameter]
+Name = "<format>"
+Type = "Discrete"
+Default = "-"
+Range = "{PNG|BMP|JPG}"
+
+["3.21.4 :SAVE:IMAGe:HEADer".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "-"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.21.5 :SAVE:IMAGe:DATA?".Parameter]
+Info = "N/A"
+
+["3.21.6 :SAVE:IMAGe".Parameter]
+Name = "<path>"
+Type = "ASCII"
+Default = "-"
+Range = "String Refer to Remarks"
+
+["3.21.7 :SAVE:SETup".Parameter]
+Name = "<path>"
+Type = "ASCII"
+Default = "-"
+Range = "String Refer to Remarks"
+
+["3.21.8 :SAVE:WAVeform".Parameter]
+Name = "<path>"
+Type = "ASCII"
+Default = "240"
+Range = "String Refer to Remarks -"
+
+["3.21.9 :SAVE:MEMory:WAVeform".Parameter]
+Name = "<path>"
+Type = "ASCII"
+Default = "-"
+Range = "String Refer to Remarks"
+
+["3.21.10 :SAVE:STATus?".Parameter]
+Info = "N/A"
+
+["3.21.11 :SAVE:OVERlap".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "-"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.21.12 :SAVE:PREFix".Parameter]
+Name = "<name>"
+Type = "ASCII"
+Default = "-"
+Range = "String Refer to Remarks"
+
+["3.21.13 :LOAD:SETup".Parameter]
+Name = "<path>"
+Type = "ASCII"
+Default = "N/A"
+Range = "String Refer to Remarks -"

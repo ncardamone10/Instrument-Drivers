@@ -1,0 +1,180 @@
+# 3.20 :REFerence Commands
+["3.20.1 :REFerence:SOURce"]
+Syntax = ":REFerence:SOURce <ref>,<chan> :REFerence:SOURce? <ref>"
+Description = "Sets or queries the source of the specified reference channel."
+Remarks = "Only the currently enabled channel can be selected as the source of the specified reference channel. D0-D15 are only available for the DHO900 series. 230"
+"Return Format" = "The query returns D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, CHAN1, CHAN2, CHAN3, CHAN4, MATH1, MATH2, MATH3, or MATH4."
+Example = ":REFerence:SOURce 1,CHANnel1    /*Sets the source of the reference channel 1 to CHANnel1.*/ :REFerence:SOURce? 1            /*The query returns CHAN1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.2 :REFerence:VSCale"]
+Syntax = ":REFerence:VSCale <ref>,<scale> :REFerence:VSCale? <ref>"
+Description = "Sets or queries the vertical scale of the specified reference channel."
+Remarks = "The range of the parameter <scale> is related to the probe ratio setting. When the probe ratio is 1X, the value of <scale> ranges from 100 μV to 10 V. When the probe ratio is 10X, the value of <scale> ranges from 1 mV to 100 V. This command is only available when the reference waveform of the specified reference channel has been saved."
+"Return Format" = "The query returns the vertical scale in scientific notation."
+Example = ":REFerence:VSCale 1,2    /*Sets the vertical scale of reference channel 1 to 2 V.*/ :REFerence:VSCale? 1   /*The query returns 2.000000E0.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.3 :REFerence:VOFFset"]
+Syntax = ":REFerence:VOFFset <ref>,<offset> 231 :REFerence:VOFFset? <ref>"
+Description = "Sets or queries the vertical position of the specified reference channel."
+Remarks = "RefVerticalScale indicates the vertical scale of the currently set reference channel."
+"Return Format" = "The query returns the vertical position in scientific notation."
+Example = ":REFerence:VOFFset 1,0.5    /*Sets the vertical offset of reference channel 1 to 500 mV.*/ :REFerence:VOFFset? 1   /*The query returns 5.000000E-1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.4 :REFerence:RESet"]
+Syntax = ":REFerence:RESet <ref>"
+Description = "Resets the vertical scale and vertical offset of the specified reference channel to the defaults."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A 232"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.5 :REFerence:CURRent"]
+Syntax = ":REFerence:CURRent <ref>"
+Description = "Sets the current reference channel."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.6 :REFerence:SAVE"]
+Syntax = ":REFerence:SAVE <ref>"
+Description = "Saves the waveform of the specified reference channel to the internal memory as the reference waveform."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A 233"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.7 :REFerence:COLor"]
+Syntax = ":REFerence:COLor <ref>, <color> :REFerence:COLor? <ref>"
+Description = "Sets or queries the color of the specified reference channel."
+Remarks = "N/A"
+"Return Format" = "The query returns GRAY, GRE, BLUE, RED, or ORAN."
+Example = ":REFerence:COLor 1,GREen   /*Sets the display color of the reference channel 1 to GREen.*/ :REFerence:COLor? 1      /*The query returns GRE.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.8 :REFerence:LABel:ENABle"]
+Syntax = ":REFerence:LABel:ENABle <bool> :REFerence:LABel:ENABle?"
+Description = "Enables or disables the label display of all the reference channels; or queries the on/off label display status of all the reference channels."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":REFerence:LABel:ENABle ON          /*Enables the label display of all the reference channels.*/ :REFerence:LABel:ENABle?            /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.9 :REFerence:LABel:CONTent"]
+Syntax = ":REFerence:LABel:CONTent <ref>,<str> :REFerence:LABel:CONTent? <ref>"
+Description = "Sets or queries the label of the specified reference channel."
+Remarks = "N/A"
+"Return Format" = "The query returns the label of the specified reference channel in strings."
+Example = ":REFerence:LABel:CONTent 1,REF1        /*Sets the label of reference channel 1 to REF1.*/ :REFerence:LABel:CONTent? 1            /*The query returns REF1.*/ 3.21 :SAVE Commands You can save the current setups, waveforms, screen image, and parameters of the oscilloscope to the internal memory or external USB storage device (such as USB storage device) in various formats and recall the stored setups when necessary. 235"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.20.1 :REFerence:SOURce".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{1|2|3|4|5|6|7|8|9|10} - <chan> Discrete {D0|D1|D2|D3|D4|D5|D6|D7|D8| D9|D10|D11|D12|D13|D14|D15| CHANnel1|CHANnel2| CHANnel3|CHANnel4|MATH1| MATH2|MATH3|MATH4}"
+
+["3.20.2 :REFerence:VSCale".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "50mV"
+Range = "{1|2|3|4|5|6|7|8|9|10} - <scale> Real Refer to Remarks"
+
+["3.20.3 :REFerence:VOFFset".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "V"
+Range = "{1|2|3|4|5|6|7|8|9|10} - <offset> Real (-10 × RefVerticalScale) to (10 × RefVerticalScale) 0"
+
+["3.20.4 :REFerence:RESet".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4|5|6|7|8|9|10}"
+
+["3.20.5 :REFerence:CURRent".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "1"
+Range = "{1|2|3|4|5|6|7|8|9|10}"
+
+["3.20.6 :REFerence:SAVE".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4|5|6|7|8|9|10}"
+
+["3.20.7 :REFerence:COLor".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4|5|6|7|8|9|10} - <color> Discrete {GRAY|GREen|BLUE|RED| ORANge}"
+
+["3.20.8 :REFerence:LABel:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "234"
+Range = "{{1|ON}|{0|OFF}} 0|OFF"
+
+["3.20.9 :REFerence:LABel:CONTent".Parameter]
+Name = "<ref>"
+Type = "Discrete"
+Default = "-"
+Range = "{1|2|3|4|5|6|7|8|9|10} - <str> ASCII String The label can contain English letters and numbers, as well as some symbols."

@@ -1,0 +1,181 @@
+# 3.5 :BODeplot Commands
+["3.5.1 :BODeplot:ENABle"]
+Syntax = ":BODeplot:ENABle <bool> :BODeplot:ENABle?"
+Description = "Sets or queries the on/off status of the bode plot."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0. Examples :BODeplot:ENABle ON /*Enables the bode plot.*/ :BODeplot:ENABle? /*The query returns 1.*/"
+Example = ":BODeplot:ENABle ON"
+Class = "Bodeplot"
+Function = "enable_bodeplot"
+Command = ":BODeplot:ENABle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{1|ON}, {0|OFF}"
+Is_Query = "True"
+
+["3.5.2 :BODeplot:RUNStop"]
+Syntax = ":BODeplot:RUNStop <bool> :BODeplot:RUNStop?"
+Description = "Sets or queries the run/stops status of the bode plot."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":BODeplot:RUNStop ON"
+Class = "Bodeplot"
+Function = "run_stop_bodeplot"
+Command = ":BODeplot:RUNStop"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{1|ON}, {0|OFF}"
+Is_Query = "True"
+
+["3.5.3 :BODeplot:SWEeptype"]
+Syntax = ":BODeplot:SWEeptype <type> :BODeplot:SWEeptype?"
+Description = "Sets or queries the sweep type of the bode plot."
+Remarks = "• LOG: logarithmic sweep, indicating that the frequency of the swept sine wave varies logarithmically with the time. • LINE: linear sweep, indicating that the frequency of the swept sine wave varies linearly with the time."
+"Return Format" = "The query returns LOG or LINE."
+Example = ":BODeplot:SWEeptype LINE"
+Class = "Bodeplot"
+Function = "set_sweep_type"
+Command = ":BODeplot:SWEeptype"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{LOG|LINE}"
+Is_Query = "True"
+
+["3.5.4 :BODeplot:REF:IN"]
+Syntax = ":BODeplot:REF:IN <source> :BODeplot:REF:IN?"
+Description = "Sets or queries the input source of the bode plot."
+Remarks = "N/A"
+"Return Format" = "The query returns CHANnel1, CHANnel2, CHANnel3, or CHANnel4."
+Example = ":BODeplot:REF:IN CHANnel1"
+Class = "Bodeplot"
+Function = "set_reference_input"
+Command = ":BODeplot:REF:IN"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CHANnel1|CHANnel2|CHANnel3|CHANnel4}"
+Is_Query = "True"
+
+["3.5.5 :BODeplot:REF:OUT"]
+Syntax = ":BODeplot:REF:OUT <source> :BODeplot:REF:OUT?"
+Description = "Sets or queries the output source of the bode plot."
+Remarks = "N/A"
+"Return Format" = "The query returns CHANnel1, CHANnel2, CHANnel3, or CHANnel4."
+Example = ":BODeplot:REF:OUT CHANnel1"
+Class = "Bodeplot"
+Function = "set_reference_output"
+Command = ":BODeplot:REF:OUT"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{CHANnel1|CHANnel2|CHANnel3|CHANnel4}"
+Is_Query = "True"
+
+["3.5.6 :BODeplot:STARt"]
+Syntax = ":BODeplot:STARt <freq> :BODeplot:STARt?"
+Description = "Sets or queries the start frequency of the sweep signal for the Bode plot function. The default unit is Hz."
+Remarks = "The 'Start Frequency' must be smaller than the 'Stop Frequency'. You can use :BODeplot:STOP to set or query the stop frequency of the sweep signal."
+"Return Format" = "The query returns the start frequency in scientific notation. The unit is Hz."
+Example = ":BODeplot:STARt 100"
+Class = "Bodeplot"
+Function = "set_start_frequency"
+Command = ":BODeplot:STARt"
+Input_Min = "10"
+Input_Max = "24990"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.5.7 :BODeplot:STOP"]
+Syntax = ":BODeplot:STOP <freq> :BODeplot:STOP?"
+Description = "Sets or queries the stop frequency of the sweep signal for the Bode plot function. The default unit is Hz."
+Remarks = "The 'Stop Frequency' should be greater than the 'Start Frequency'. You can use :BODeplot:STARt to set or query the start frequency of the sweep signal."
+"Return Format" = "The query returns the stop frequency in scientific notation. The unit is Hz."
+Example = ":BODeplot:STOP 500"
+Class = "Bodeplot"
+Function = "set_stop_frequency"
+Command = ":BODeplot:STOP"
+Input_Min = "100"
+Input_Max = "25000"
+Input_Values = "float"
+Is_Query = "True"
+
+["3.5.8 :BODeplot:POINts"]
+Syntax = ":BODeplot:POINts <num> :BODeplot:POINts?"
+Description = "Sets or queries the number of points per decade."
+Remarks = "N/A"
+"Return Format" = "The query returns an integer."
+Example = ":WAVeform:POINts 20"
+Class = "Bodeplot"
+Function = "set_points_per_decade"
+Command = ":BODeplot:POINts"
+Input_Min = "10"
+Input_Max = "300"
+Input_Values = "int"
+Is_Query = "True"
+
+["3.5.9 :BODeplot:VOLTage"]
+Syntax = ":BODeplot:VOLTage <range>,<amp> :BODeplot:VOLTage? <range>"
+Description = "Sets or queries the voltage amplitude of the sweep signal within the specified frequency range for the Bode plot function. The default unit is V for voltage and Hz for frequency."
+Remarks = "• When <range> is set to ALL, it sets a uniform voltage amplitude for the sweep signals in all frequency ranges. • When <range> is set to other parameter, the voltage amplitude of the sweep signal can be modified."
+"Return Format" = "The query returns the voltage amplitude of the sweep signal within the specified frequency range in scientific notation. The unit is V."
+Example = ":BODeplot:VOLTage 100,0.2"
+Class = "Bodeplot"
+Function = "set_voltage_amplitude"
+Command = ":BODeplot:VOLTage"
+Input_Min = "20"
+Input_Max = "5000"
+Input_Values = "float - range"
+Is_Query = "True"
+
+
+["3.5.1 :BODeplot:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.5.2 :BODeplot:RUNStop".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.5.3 :BODeplot:SWEeptype".Parameter]
+Name = "<type>"
+Type = "Discrete"
+Default = "LOG"
+Range = "{LOG|LINE}"
+
+["3.5.4 :BODeplot:REF:IN".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.5.5 :BODeplot:REF:OUT".Parameter]
+Name = "<source>"
+Type = "Discrete"
+Default = "CHANnel1"
+Range = "{CHANnel1|CHANnel2| CHANnel3|CHANnel4}"
+
+["3.5.6 :BODeplot:STARt".Parameter]
+Name = "<freq>"
+Type = "Real"
+Default = "Hz"
+Range = "10 Hz to 24.99 MHz 10"
+
+["3.5.7 :BODeplot:STOP".Parameter]
+Name = "<freq>"
+Type = "Real"
+Default = "Hz"
+Range = "100 Hz to 25 MHz 100"
+
+["3.5.8 :BODeplot:POINts".Parameter]
+Name = "<num>"
+Type = "Integer"
+Default = "10"
+Range = "10 to 300"
+
+["3.5.9 :BODeplot:VOLTage".Parameter]
+Name = "<amp>"
+Type = "Real"
+Default = "-"
+Range = "20 mV to 5 V - <range> Discrete {ALL|10|100|1K|10K|100K|1M| 10M|25M|1000|10000|100000| 1000000|10000000|25000000| 1e1|1e2|1e3|1e4|1e5|1e6|1e7| 2.5e7}"

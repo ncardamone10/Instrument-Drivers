@@ -1,0 +1,364 @@
+# 3.23 :NAVigate Commands
+["3.23.1 :NAVigate:ENABle"]
+Syntax = ":NAVigate:ENABle <bool> :NAVigate:ENABle?"
+Description = "Sets or queries the on/off status of the Navigation function."
+Remarks = "N/A"
+"Return Format" = "The query returns 1 or 0."
+Example = ":NAVigate:ENABle ON    /*Enables the Navigation function.*/ :NAVigate:ENABle?      /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.2 :NAVigate:MODE"]
+Syntax = ":NAVigate:MODE <mode> :NAVigate:MODE?"
+Description = "Sets or queries the navigation mode."
+Remarks = "• TIME: indicates the time navigation. It is available only when in \"YT\" time mode. 253 • SEARch: indicates event search navigation. After searching events using the Search function, you can select the \"Search Event\" mode in Navigation menu to navigate to specific events in the marktable. • FRAMe: indicates frame segment navigation. This mode is available only in UltraAcquire acquisition mode. When UltraAcquire is enabled, the Mode is automatically set to \"Frame Segment\" which cannot be modified. The navigation function is available only when the oscilloscope is in \"STOP\" state (acquisition stopped). You can send the :STOP command to set the oscilloscope to STOP status."
+"Return Format" = "The query returns TIME, SEARch, or FRAMe."
+Example = ":NAVigate:MODE TIME /*Sets the navigation mode to TIME.*/ :NAVigate:MODE? /*The query returns TIME.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.3 :NAVigate:TIME:SPEed"]
+Syntax = ":NAVigate:TIME:SPEed <speed> :NAVigate:TIME:SPEed?"
+Description = "Sets the speed of playing the waveforms in time navigation mode."
+Remarks = "• HIGH: indicates playing the waveforms at a high speed. • NORMal: indicates playing the waveforms at a normal speed. • LOW: indicates playing the waveforms at a low speed."
+"Return Format" = "The query returns HIGH, NORMal, or LOW. 254"
+Example = ":NAVigate:TIME:SPEed LOW /*Sets to play the waveforms in time navigation mode at a low speed.*/ :NAVigate:TIME:SPEed? /*The query returns LOW.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.4 :NAVigate:TIME:PLAY"]
+Syntax = ":NAVigate:TIME:PLAY <bool> :NAVigate:TIME:PLAY?"
+Description = "Sets or queries whether to play the waveforms in time navigation mode."
+Remarks = "• 1|ON: starts playing the waveforms. • 0|OFF: stops playing the waveforms."
+"Return Format" = "The query returns 0 or 1."
+Example = ":NAVigate:TIME:PLAY ON /*Sets to play the waveforms in time navigation.*/ :NAVigate:TIME:PLAY? /*The query returns 1.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.5 :NAVigate:TIME:END"]
+Syntax = ":NAVigate:TIME:END"
+Description = "Sets to navigate to the end waveforms (waveforms ending at the rightmost end of screen) in time navigation mode."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.6 :NAVigate:TIME:STARt"]
+Syntax = ":NAVigate:TIME:STARt"
+Description = "Sets to navigate to the start waveform (waveform starting at the leftmost end of screen) in time navigation mode."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.7 :NAVigate:TIME:NEXT"]
+Syntax = ":NAVigate:TIME:NEXT"
+Description = "Sets to play forward the waveform in time navigation mode."
+Remarks = "N/A 256"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.8 :NAVigate:TIME:BACK"]
+Syntax = ":NAVigate:TIME:BACK"
+Description = "Sets to play backward the waveform in time navigation mode."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.9 :NAVigate:SEARch:END"]
+Syntax = ":NAVigate:SEARch:END"
+Description = "Sets to navigate to the last event."
+Remarks = "N/A"
+"Return Format" = "N/A 257"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.10 :NAVigate:SEARch:STARt"]
+Syntax = ":NAVigate:SEARch:STARt"
+Description = "Sets to navigate to the first event."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.11 :NAVigate:SEARch:NEXT"]
+Syntax = ":NAVigate:SEARch:NEXT"
+Description = "Sets to navigate to the next event."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A 258"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.12 :NAVigate:SEARch:BACK"]
+Syntax = ":NAVigate:SEARch:BACK"
+Description = "Sets to navigate to the previous event."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.13 :NAVigate:FRAMe:DISPlay:MODE"]
+Syntax = ":NAVigate:FRAMe:DISPlay:MODE <mode> :NAVigate:FRAMe:DISPlay:MODE?"
+Description = "Sets or queries the display mode in Frame Segment navigation."
+Remarks = "• ADJacent: indicates the adjacent display. Waveform segments are shown in adjacent display, with each segment shown next to the previous segment. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. 259 • OVERlay: indicates the overlay display. All the captured waveform segments are overwritten to display as one single segment of the waveform. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. • WATerfall: indicates the waterfall display. It displays the captured waveform segments in a cascaded display order. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. • PERSpective: indicates the perspective display. The waveform segments are displayed in the ladder-like form, with each segment being arranged above another with a certain perspective (angle), moving up like a rising slope. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. • MOSaic: indicates the mosaic display. The whole waveform view is divided into several blocks, and each waveform segment is displayed in each block in sequence. In this mode, a maximum of 80 frames of waveforms can be displayed on the screen at a time."
+"Return Format" = "The query returns ADJ, OVER, WAT, PERS, or MOS."
+Example = ":NAVigate:FRAMe:DISPlay:MODE ADJacent /*Sets the display mode to ADJacent in Frame Segment navigation.*/ :NAVigate:FRAMe:DISPlay:MODE? /*The query returns ADJ.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.14 :NAVigate:FRAMe:END:FRAMe"]
+Syntax = ":NAVigate:FRAMe:END:FRAMe <frame> :NAVigate:FRAMe:END:FRAMe?"
+Description = "Sets or queries the end frame in Frame Segment navigation mode."
+Remarks = "The range of the end frame is from Start Frame to the maximum number of the frames acquired in UltraAcquire acquisition mode. You can send the :ACQuire:ULTRa:MAXFrame command to query the maximum number of frames that can be set for UltraAcquire acquisition mode. When you click or tap the Play key, it plays from the \"Start Frame\". The number of frames that can be displayed on the current screen page is (End Frame - Start Frame + 1). For example, if you set Start Frame to 3 and End Frame to 9, it will play from the 3rd frame and displays 7 frames on one screen page."
+"Return Format" = "The query returns an integer."
+Example = ":NAVigate:FRAMe:END:FRAMe 8 /*Sets the end frame in Frame Segment navigation to 8.*/ :NAVigate:FRAMe:END:FRAMe? /*The query returns 8.*/"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.15 :NAVigate:FRAMe:STARt:FRAMe"]
+Syntax = ":NAVigate:FRAMe:STARt:FRAMe <frame> :NAVigate:FRAMe:STARt:FRAMe?"
+Description = "Sets or queries the start frame in Frame Segment navigation."
+Remarks = "When you click or tap the Play key, it plays from the \"Start Frame\". The number of frames that can be displayed on the current screen page is (End Frame - Start Frame + 1). For example, if you set Start Frame to 3 and End Frame to 9, it will play from the 3rd frame and displays 7 frames on one screen page."
+"Return Format" = "The query returns an integer."
+Example = ":NAVigate:FRAMe:STARt:FRAMe 3 /*Sets the start frame in Frame Segment navigation to 3.*/ :NAVigate:FRAMe:STARt:FRAMe? /*The query returns 3.*/ 261"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.16 :NAVigate:FRAMe:END"]
+Syntax = ":NAVigate:FRAMe:END"
+Description = "Sets to play the final page in Frame Segment navigation mode."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.17 :NAVigate:FRAMe:STARt"]
+Syntax = ":NAVigate:FRAMe:STARt"
+Description = "Sets to play the first page in Frame Segment navigation mode."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.18 :NAVigate:FRAMe:NEXT"]
+Syntax = ":NAVigate:FRAMe:NEXT 262"
+Description = "Sets to play the next page in Frame Segment navigation mode."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.19 :NAVigate:FRAMe:BACK"]
+Syntax = ":NAVigate:FRAMe:BACK"
+Description = "Sets to play the previous page in Frame Segment navigation mode."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.20 :NAVigate:FRAMe:PLAY"]
+Syntax = ":NAVigate:FRAMe:PLAY <bool> :NAVigate:FRAMe:PLAY? :SYSTem:AOUTput <auxoutput> :SYSTem:AOUTput?"
+Description = "Sets or queries whether to play the waveforms in Frame Segment navigation mode. 263 Sets or queries the type of the signal output from the rear-panel [AUX OUT] connector."
+Remarks = "• 1|ON: starts playing the waveforms. • 0|OFF: stops playing the waveforms. During playing in Frame Segment navigation mode, you are not allowed to set the Start Frame and the End Frame. • TOUT: after you select this type, the oscilloscope initiates a trigger and then a signal which reflects the current capture rate of the oscilloscope can be output from the connector. 264"
+"Return Format" = "The query returns 1 or 0."
+Example = ":NAVigate:FRAMe:PLAY ON /*Sets to play the waveforms in Frame Segment navigatio mode.*/ :NAVigate:FRAMe:PLAY? /*The query returns 1.*/ 3.24 :SYSTem Commands The :SYSTem commands are used to set the system-related parameters. 3.24.1 :SYSTem:AOUTput"
+Class = ""
+Function = ""
+Command = ""
+Input_Min = ""
+Input_Max = ""
+Input_Values = ""
+Is_Query = ""
+
+["3.23.1 :NAVigate:ENABle".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.23.2 :NAVigate:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "TIME"
+Range = "{TIME|SEARch|FRAMe}"
+
+["3.23.3 :NAVigate:TIME:SPEed".Parameter]
+Name = "<speed>"
+Type = "Discrete"
+Default = "NORMal"
+Range = "{HIGH|NORMal|LOW}"
+
+["3.23.4 :NAVigate:TIME:PLAY".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "0|OFF"
+Range = "{{1|ON}|{0|OFF}}"
+
+["3.23.5 :NAVigate:TIME:END".Parameter]
+Info = "Data incomplete or malformed"
+
+["3.23.6 :NAVigate:TIME:STARt".Parameter]
+Info = "N/A"
+
+["3.23.7 :NAVigate:TIME:NEXT".Parameter]
+Info = "N/A"
+
+["3.23.8 :NAVigate:TIME:BACK".Parameter]
+Info = "N/A"
+
+["3.23.9 :NAVigate:SEARch:END".Parameter]
+Info = "N/A"
+
+["3.23.10 :NAVigate:SEARch:STARt".Parameter]
+Info = "N/A"
+
+["3.23.11 :NAVigate:SEARch:NEXT".Parameter]
+Info = "N/A"
+
+["3.23.12 :NAVigate:SEARch:BACK".Parameter]
+Info = "N/A"
+
+["3.23.13 :NAVigate:FRAMe:DISPlay:MODE".Parameter]
+Name = "<mode>"
+Type = "Discrete"
+Default = "-"
+Range = "{ADJacent|OVERlay|WATerfall| PERSpective|MOSaic}"
+
+["3.23.14 :NAVigate:FRAMe:END:FRAMe".Parameter]
+Name = "<frame>"
+Type = "Integer"
+Default = "260"
+Range = "- -"
+
+["3.23.15 :NAVigate:FRAMe:STARt:FRAMe".Parameter]
+Name = "<frame>"
+Type = "Integer"
+Default = "-"
+Range = "-"
+
+["3.23.16 :NAVigate:FRAMe:END".Parameter]
+Info = "N/A"
+
+["3.23.17 :NAVigate:FRAMe:STARt".Parameter]
+Info = "N/A"
+
+["3.23.18 :NAVigate:FRAMe:NEXT".Parameter]
+Info = "N/A"
+
+["3.23.19 :NAVigate:FRAMe:BACK".Parameter]
+Info = "N/A"
+
+["3.23.20 :NAVigate:FRAMe:PLAY".Parameter]
+Name = "<bool>"
+Type = "Bool"
+Default = "TOUT"
+Range = "{{1|ON}|{0|OFF}} 0|OFF Name Type Range Default <auxoutput> Discrete {TOUT|PFAil}"

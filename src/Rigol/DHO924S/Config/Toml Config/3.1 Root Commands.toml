@@ -1,0 +1,85 @@
+# 3.1 Root Commands
+["3.1.1 :CLEar"]
+Syntax = ":CLEar"
+Description = "Clears all the waveforms on the screen. This command functions the same as the front-panel key."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "clear_display"
+Command = ":CLEar"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "No"
+
+["3.1.2 :RUN"]
+Syntax = ":RUN"
+Description = "The :RUN command starts running the oscilloscope This command functions the same as clicking or tapping the icon in the quick operation bar at the upper-right part of the screen; or press on the front panel."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "start_acquisition"
+Command = ":RUN"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "No"
+
+["3.1.3 :STOP"]
+Syntax = ":STOP"
+Description = "The :STOP command stops running the oscilloscope. This command functions the same as clicking or tapping the icon in the quick operation bar at the upper-right part of the screen; or press on the front panel."
+Remarks = "N/A"
+"Return Format" = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "stop_acquisition"
+Command = ":STOP"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "No"
+
+["3.1.4 :SINGle"]
+Syntax = ":SINGle"
+Description = "Performs a single trigger. Sets the trigger mode of the oscilloscope to \"Single\". This command functions the same as sending the :TRIGger:SWEep SINGle command. This command functions the same as the front-panel key."
+Remarks = "• In the single trigger mode, the oscilloscope performs a single trigger when the trigger conditions are met and then it stops. • When the waveform recording function is enabled or the recorded waveforms are played back, this command is invalid. • For the single trigger, you can use the :TFORce command to generate one trigger by force."
+"Return Format" = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "single_trigger"
+Command = ":SINGle"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "No"
+
+["3.1.5 :TFORce"]
+Syntax = ":TFORce :AUToset"
+Description = "Generates a trigger signal forcefully. This command is only applicable to the normal and single trigger modes. Refer to the :TRIGger:SWEep command. This command functions the same as the key in the trigger control area of the front panel. Enables the waveform auto setting function. The oscilloscope will automatically adjust the vertical scale, horizontal time base, and trigger mode according to the input signal to realize optimal waveform display. This command functions the same as the front-panel key."
+Remarks = "• When the AUTO function is disabled, this command is invalid. For details, refer to :SYSTem:AUToscale. • When the pass/fail test is enabled, the AUTO function runs normally, but the pass/fail test function is forced to be disabled. • When the waveform recording function is enabled, the AUTO function runs normally, but the recording or playing function is forced to be disabled."
+"Return Format" = "N/A"
+Example = "N/A"
+Class = "DHO924S"
+Function = "force_trigger"
+Command = ":TFORce"
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "No"
+
+["3.1.1 :CLEar".Parameter]
+Info = "N/A"
+
+["3.1.2 :RUN".Parameter]
+Info = "N/A"
+
+["3.1.3 :STOP".Parameter]
+Info = "N/A"
+
+["3.1.4 :SINGle".Parameter]
+Info = "N/A"
+
+["3.1.5 :TFORce".Parameter]
+Info = "N/A"
