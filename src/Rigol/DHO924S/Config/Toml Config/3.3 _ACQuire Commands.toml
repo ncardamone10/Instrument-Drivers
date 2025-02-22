@@ -93,7 +93,7 @@ Class = "Acquire.Ultra"
 Function = "timeout"
 Command = ":ACQuire:ULTRa:TIMeout"
 Input_Min = "1e-6"
-Input_Max = "1"
+Input_Max = "10"
 Input_Values = "float"
 Is_Query = "Yes"
 
