@@ -139,6 +139,7 @@ Input_Min = "N/A"
 Input_Max = "N/A"
 Input_Values = "Bool"
 Is_Query = "True"
+
 ["3.9.1 :DISPlay:CLEar".Parameter]
 Info = "N/A"
 
