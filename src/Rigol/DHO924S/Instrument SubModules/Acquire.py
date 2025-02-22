@@ -19,7 +19,7 @@ import math
 class Acquire:
     instrument: Instrument = field(repr=False)
 
-    def average_count(self, value=None):
+    def average_count(self, value: int = None):
         """
 Syntax: :ACQuire:AVERages <count> :ACQuire:AVERages?
 
@@ -28,6 +28,8 @@ Description: Sets or queries the number of averages in the average acquisition m
 Remarks: • You can send the :ACQuire:TYPE command to set the acquisition mode. 
         • In the average acquisition mode, greater number of averages can lower the noise and increase the vertical resolution; but will also slow the response of the displayed waveform to the waveform changes. 
         • The number of averages must be in the Nth power of 2. When the value is not in the Nth power of 2, a value that is smaller than the one you input and the closest to the N power-of-2 increments will be input automatically. For example, if you input 9 with the numeric keypad, the average count will be input 8 automatically.
+
+Return Format: The query returns an integer ranging from 2 to 65536.
 
 Example: :ACQuire:AVERages 128    /*Sets the average times to 128.*/ 
         :ACQuire:AVERages?       /*The query returns 128.*/
@@ -39,7 +41,7 @@ Is_Query = "Yes"
         """
         if value is None: 
             cmd = ":ACQuire:AVERages?"
-            return self.instrument.query(cmd)
+            return int(self.instrument.query(cmd))
         else:
             if not math.log2(value).is_integer():
                 return "ERROR: Value must be a power of 2"
@@ -47,10 +49,9 @@ Is_Query = "Yes"
                 return "ERROR: Value must be between 2 and 65536"
             cmd = f":ACQuire:AVERages {value}"
             response = self.instrument.write(cmd)
-            return response
+            return int(response)
         
-
-    def memory_depth(self, value=None):
+    def memory_depth(self, value: str = None):
         """
 Syntax: :ACQuire:MDEPth <mdep> :ACQuire:MDEPth?
 
@@ -60,6 +61,8 @@ Remarks: When you select the "Auto" mode, the oscilloscope selects the memory de
         • When only one of the four channels is enabled: - For DHO800 series, the available memory depths are AUTO, 1k, 10k, 100k, 1M, 10M, and 25M. - For DHO900 series, the available memory depths are AUTO, 1k, 10k, 100k, 1M, 10M, 25M, and 50M. 
         • When any two of the four channels are enabled: 21 - For DHO800 series, the available memory depths are AUTO, 1k, 10k, 100k, 1M, and 10M. - For DHO900 series, the available memory depths are AUTO, 1k, 10k, 100k, 1M, 10M, and 25M. 
         • When three channels or four channels are enabled (only applicable to four- channel models): - For DHO800 series, the available memory depths are AUTO, 1k, 10k, 100k, and 1M. - For DHO900 series, the available memory depths are AUTO, 1k, 10k, 100k, 1M, and 10M. Modifying the memory depth will affect the sample rate. To query the current sample rate, run the :ACQuire:SRATe? command.
+
+Return Format: The query returns the memory depth in scientific notation.
 
 Example: :ACQuire:MDEPth 1M           /*Sets the memory depth to 1M.*/ 
         :ACQuire:MDEPth?            /*The query returns 1.000E+6.*/
@@ -72,13 +75,13 @@ Is_Query = "Yes"
         
         if value is None:  
             cmd = ":ACQuire:MDEPth?"
-            return self.instrument.query(cmd)
+            return float(self.instrument.query(cmd))
         else:
-            if value not in ["AUTO", "1k", "10k", "100k", "1M", "10M", "25M", "50M"]:
+            if value.upper() not in ["AUTO", "1k", "10k", "100k", "1M", "10M", "25M", "50M"]:
                 return "ERROR: Value must be in {AUTO, 1k, 10k, 100k, 1M, 10M, 25M, 50M}"
             cmd = f":ACQuire:MDEPth {value}"
             response = self.instrument.write(cmd)
-            return response
+            return int(response)
 
     def get_memory_depth_legacy(self):
         """
@@ -87,6 +90,8 @@ Syntax: :ACQuire:MEMDepth?
 Description: Queries the memory depth of the oscilloscope.
 
 Remarks: This command exists for backwards compatibility. Use the command :ACQuire:MDEPth.
+
+Return Format: The query returns the memory depth in strings."
 
 Example: :ACQuire:MDEPth?   /*The query returns 1.000E+6.*/
 
@@ -97,57 +102,95 @@ Is_Query = "Yes"
         """
         cmd = ":ACQuire:MEMDepth?"
         return self.instrument.query(cmd)
-##---------------------------------------------------------------------
-# keep going below
 
-
-##---------------------------------------------------------------------
-    def set_memory_depth_legacy(self, value):
-        """
-Syntax: :ACQuire:MEMDepth <depth>
-    def get_acquisition_type(self):
-        
+    def acq_type(self, value: str = None):
+        """     
 Syntax: :ACQuire:TYPE <type> :ACQuire:TYPE?
 
 Description: Sets or queries the acquisition mode of the oscilloscope.
 
-Remarks: • NORMal: In this mode, the oscilloscope samples the signal at a specified fixed time interval to rebuild the waveform. This mode produces the best display for most waveforms. • AVERages: In this mode, the oscilloscope averages the waveforms from multiple samples to reduce the random noise of the input signal and improve the vertical resolution. A greater number of averages lowers the noise and increases the vertical resolution. • PEAK: indicates the peak detection. In this mode, the oscilloscope samples the maximum and minimum value of the signal at the fixed sampling interval to acquire the signal envelope or the narrow pulses that might be lost. This mode prevents signal aliasing at the expense of exaggerating the noise. • ULTRa (UltraAcquire): divides the oscilloscope's memory into segments and fills a memory segment for each individual trigger event. In this mode, it provides a high waveform capture rate and minimizes the dead time between trigger events.
+Remarks: • NORMal: In this mode, the oscilloscope samples the signal at a specified fixed time interval to rebuild the waveform. This mode produces the best display for most waveforms. 
+        • AVERages: In this mode, the oscilloscope averages the waveforms from multiple samples to reduce the random noise of the input signal and improve the vertical resolution. A greater number of averages lowers the noise and increases the vertical resolution. 
+        • PEAK: indicates the peak detection. In this mode, the oscilloscope samples the maximum and minimum value of the signal at the fixed sampling interval to acquire the signal envelope or the narrow pulses that might be lost. This mode prevents signal aliasing at the expense of exaggerating the noise. 
+        • ULTRa (UltraAcquire): divides the oscilloscope's memory into segments and fills a memory segment for each individual trigger event. In this mode, it provides a high waveform capture rate and minimizes the dead time between trigger events.
 
-Example: :ACQuire:TYPE AVERages     /*Sets the acquisition mode to Average.*/ :ACQuire:TYPE?             /*The query returns AVER.*/
+Return Format: The query returns NORM, PEAK, AVER, or ULTR.
+
+Example: :ACQuire:TYPE AVERages     /*Sets the acquisition mode to Average.*/ 
+        :ACQuire:TYPE?             /*The query returns AVER.*/
+
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{NORMal, PEAK, AVERages, ULTRa}"
+Is_Query = "Yes"
         """
-        cmd = ":ACQuire:TYPE <type> :ACQuire:TYPE?"
-        resp = self.instrument.query(cmd)
-        return resp
+        if value is None:  
+            cmd = ":ACQuire:TYPE?"
+            return self.instrument.query(cmd)
+        else:
+            if value.upper() not in ["NORMAL", "PEAK", "AVERAGES", "ULTRA"]:
+                return "ERROR: Value must be in {NORMal, PEAK, AVERages, ULTRa}"
+            cmd = f":ACQuire:TYPE {value}"
+            response = self.instrument.write(cmd)
+            return int(response)
 
-    def get_query_sample_rate(self):
+    def get_sample_rate(self):
         """
 Syntax: :ACQuire:SRATe?
 
 Description: Queries the current sample rate. The default unit is Sa/s.
 
-Remarks: • Sample rate indicates the frequency of the signal sampling, i.e., the number of waveform points sampled per second. • The sample rate and memory depth will change accordingly in accordance with the horizontal time base. To set the memory depth, send the :ACQuire:MDEPth command. To set the horizontal time base, send the :TIMebase[:MAIN]:SCALe command.
+Remarks: • Sample rate indicates the frequency of the signal sampling, i.e., the number of waveform points sampled per second. 
+        • The sample rate and memory depth will change accordingly in accordance with the horizontal time base. To set the memory depth, send the :ACQuire:MDEPth command. To set the horizontal time base, send the :TIMebase[:MAIN]:SCALe command.
+
+Return Format: The query returns the sample rate in scientific notation.
 
 Example: :ACQuire:SRATe?   /*The query returns 1.00000E+6.*/
+
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "N/A"
+Is_Query = "Yes"
         """
         cmd = ":ACQuire:SRATe?"
         resp = self.instrument.query(cmd)
-        return resp
+        return float(resp)
 
-    def get_ultra_acquire_mode(self):
+@dataclass
+class Ultra:
+    def mode(self, value: str = None):
         """
 Syntax: :ACQuire:ULTRa:MODE <mode> :ACQuire:ULTRa:MODE?
 
 Description: Sets or queries the display mode of Ultra Acquire.
 
-Remarks: • ADJacent: indicates the adjacent display. Waveform segments are shown in adjacent display, with each segment shown next to the previous segment. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. • OVERlay: indicates the overlay display. All the captured waveform segments are overwritten to display as one single segment of the waveform. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. • WATerfall: indicates the waterfall display. It displays the captured waveform segments in a cascaded display order. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. • PERSpective: indicates the perspective display. The waveform segments are displayed in the ladder-like form, with each segment being arranged above another with a certain perspective (angle), moving up like a rising slope. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. • MOSaic: indicates the mosaic display. The whole waveform view is divided into several blocks, and each waveform segment is displayed in each block in sequence. In this mode, a maximum of 80 frames of waveforms can be displayed on the screen at a time.
+Remarks: • ADJacent: indicates the adjacent display. Waveform segments are shown in adjacent display, with each segment shown next to the previous segment. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. 
+        • OVERlay: indicates the overlay display. All the captured waveform segments are overwritten to display as one single segment of the waveform. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. 
+        • WATerfall: indicates the waterfall display. It displays the captured waveform segments in a cascaded display order. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. 
+        • PERSpective: indicates the perspective display. The waveform segments are displayed in the ladder-like form, with each segment being arranged above another with a certain perspective (angle), moving up like a rising slope. In this mode, a maximum of 100 frames of waveforms can be displayed on the screen at a time. 
+        • MOSaic: indicates the mosaic display. The whole waveform view is divided into several blocks, and each waveform segment is displayed in each block in sequence. In this mode, a maximum of 80 frames of waveforms can be displayed on the screen at a time.
 
-Example: :ACQuire:ULTRa:MODE ADJacent    /*Sets the Ultra Acquire display mode to ADJacent.*/ :ACQuire:ULTRa:MODE?            /*The query returns ADJ.*/
-        """
-        cmd = ":ACQuire:ULTRa:MODE <mode> :ACQuire:ULTRa:MODE?"
-        resp = self.instrument.query(cmd)
-        return resp
+Return Format: The query returns ADJ, OVER, WAT, PERS, or MOS.
 
-    def get_ultra_acquire_timeout(self):
+Example: :ACQuire:ULTRa:MODE ADJacent    /*Sets the Ultra Acquire display mode to ADJacent.*/ 
+        :ACQuire:ULTRa:MODE?            /*The query returns ADJ.*/
+
+Input_Min = "N/A"
+Input_Max = "N/A"
+Input_Values = "{ADJacent, OVERlay, WATerfall, PERSpective, MOSaic}"
+Is_Query = "Yes"
+               """
+        if value is None:  
+            cmd = ":ACQuire:ULTRa:MODE?"
+            return self.instrument.query(cmd)
+        else:
+            if value.upper() not in ["ADJACENT", "OVERLAY", "WATERFALL", "PERSPECTIVE", "MOSAIC"]:
+                return "ERROR: Value must be in {ADJacent, OVERlay, WATerfall, PERSpective, MOSaic}"
+            cmd = f":ACQuire:ULTRa:MODE {value}"
+            response = self.instrument.write(cmd)
+            return int(response)
+
+    def timeout(self, value: float = None):
         """
 Syntax: :ACQuire:ULTRa:TIMeout <tmo> :ACQuire:ULTRa:TIMeout?
 
@@ -155,37 +198,53 @@ Description: Sets or queries the timeout value of Ultra Acquire.
 
 Remarks: N/A
 
-Example: :ACQuire:ULTRa:TIMeout 0.1    /*Sets the Ultra Acquire timeout value to 0.1 s.*/ :ACQuire:ULTRa:TIMeout?            /*The query returns 1E-1.*/
+Return Format: The query returns a real number in scientific notation.
+
+Example: :ACQuire:ULTRa:TIMeout 0.1    /*Sets the Ultra Acquire timeout value to 0.1 s.*/ 
+        :ACQuire:ULTRa:TIMeout?            /*The query returns 1E-1.*/
+
+Input_Min = "1e-6"
+Input_Max = "1"
+Input_Values = "float"
+Is_Query = "Yes"
         """
-        cmd = ":ACQuire:ULTRa:TIMeout <tmo> :ACQuire:ULTRa:TIMeout?"
-        resp = self.instrument.query(cmd)
-        return resp
+        if value is None:  
+            cmd = ":ACQuire:ULTRa:TIMeout?"
+            return float(self.instrument.query(cmd))
+        else:
+            if value < 1e-6 or value > 1:
+                 return "ERROR: Value must be between 1e-6 and 1"
+            cmd = f":ACQuire:ULTRa:TIMeout {value}"
+            response = self.instrument.write(cmd)
+            return int(response)
 
-    def set_ultra_acquire_max_frames(self, value):
+    def max_frames(self, value: int = None):
         """
-Syntax: :ACQuire:ULTRa:MAXFrame <frame> :ACQuire:ULTRa:MAXFrame? :BUS<n>:MODE <mode> :BUS<n>:MODE? :BUS<n>:DISPlay <bool> :BUS<n>:DISPlay? 27
+Syntax: :ACQuire:ULTRa:MAXFrame <frame> :ACQuire:ULTRa:MAXFrame?
 
-Description: Sets or queries the maximum number of frames that can be set for Ultra Acquire sampling mode. Sets or queries the decoding type of the specified decoding bus.
+Description: Sets or queries the maximum number of frames that can be set for Ultra Acquire sampling mode. 
 
-Remarks: N/A 26 Only the DHO900 series supports LIN and CAN decodings.
+Remarks: N/A.
 
-Example: :ACQuire:ULTRa:MAXFrame 100    /*Sets the maximum number of frames to 100.*/ :ACQuire:ULTRa:MAXFrame?            /*The query returns 100.*/ 3.4 :BUS<n> Commands The :BUS<n> commands are used to execute the decoding-related settings and operations. 3.4.1 :BUS<n>:MODE :BUS1:MODE SPI    /*Sets the decoding type to SPI.*/ :BUS1:MODE?       /*The query returns SPI.*/ 3.4.2 :BUS<n>:DISPlay
+Return Format: The query returns the maximum number of frames in integer.
+
+Example: :ACQuire:ULTRa:MAXFrame 100    /*Sets the maximum number of frames to 100.*/ 
+        :ACQuire:ULTRa:MAXFrame?            /*The query returns 100.*/ 
+
+Input_Min = "1"
+Input_Max = "100"
+Input_Values = "integer"
+Is_Query = "Yes"
         """
-        cmd = f":ACQuire:ULTRa:MAXFrame <frame> :ACQuire:ULTRa:MAXFrame? :BUS<n>:MODE <mode> :BUS<n>:MODE? :BUS<n>:DISPlay <bool> :BUS<n>:DISPlay? 27 {value}"
-        self.instrument.write(cmd)
+        if value is None:  
+            cmd = ":ACQuire:ULTRa:MAXFrame?"
+            return int(self.instrument.query(cmd))
+        else:
+            if value < 1 or value > 100:
+                 return "ERROR: Value must be between 1 and 100"
+            cmd = f":ACQuire:ULTRa:MAXFrame {value}"
+            response = self.instrument.write(cmd)
+            return int(response)
 
-    def get_ultra_acquire_max_frames(self):
-        """
-Syntax: :ACQuire:ULTRa:MAXFrame <frame> :ACQuire:ULTRa:MAXFrame? :BUS<n>:MODE <mode> :BUS<n>:MODE? :BUS<n>:DISPlay <bool> :BUS<n>:DISPlay? 27
-
-Description: Sets or queries the maximum number of frames that can be set for Ultra Acquire sampling mode. Sets or queries the decoding type of the specified decoding bus.
-
-Remarks: N/A 26 Only the DHO900 series supports LIN and CAN decodings.
-
-Example: :ACQuire:ULTRa:MAXFrame 100    /*Sets the maximum number of frames to 100.*/ :ACQuire:ULTRa:MAXFrame?            /*The query returns 100.*/ 3.4 :BUS<n> Commands The :BUS<n> commands are used to execute the decoding-related settings and operations. 3.4.1 :BUS<n>:MODE :BUS1:MODE SPI    /*Sets the decoding type to SPI.*/ :BUS1:MODE?       /*The query returns SPI.*/ 3.4.2 :BUS<n>:DISPlay
-        """
-        cmd = ":ACQuire:ULTRa:MAXFrame?"
-        resp = self.instrument.query(cmd)
-        return resp
 
 
