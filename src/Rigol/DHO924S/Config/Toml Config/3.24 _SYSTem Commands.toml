@@ -1,3 +1,4 @@
+# SKIP_ME
 # 3.24 :SYSTem Commands
 ["3.24.1 :SYSTem:AOUTput"]
 Syntax = ":SYSTem:AOUTput <auxoutput> :SYSTem:AOUTput?"

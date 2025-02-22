@@ -27,12 +27,14 @@ class Instrument:
     def __init__(self, resource_address):
         self.resource_address = resource_address
         self.rm = pyvisa.ResourceManager()
+        self.rm.list_resources_info
         self.instrument = None
 
     def connect(self):
         """Establish a connection to the instrument."""
         try:
             self.instrument = self.rm.open_resource(self.resource_address)
+            
             self.instrument.timeout = 50  # Set timeout to 5000 ms
             print(f"Connected to {self.resource_address}")
         except pyvisa.VisaIOError as e:
@@ -52,6 +54,7 @@ class Instrument:
             return None
         try:
             response = self.instrument.query(command)
+            
             print(f"Command: {command} - Response: {response}")
             return response
         except pyvisa.VisaIOError as e:
