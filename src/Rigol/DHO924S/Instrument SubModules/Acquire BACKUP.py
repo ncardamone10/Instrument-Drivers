@@ -4,20 +4,15 @@
 # -------------------------------------------------
 
 from dataclasses import dataclass, field
-from ....\InstrumentTemplate\instrument import Instrument
-
 import math
 
-
-
-# Example data classes for SCPI modules.
-
-# You may integrate these with your own classes.
-
-
+# 3.3 :ACQuire Commands
 @dataclass
 class Acquire:
-    instrument: Instrument = field(repr=False)
+    def __init__(self, query_func, write_func):
+        self._query = query_func
+        self._write = write_func
+        self.ultra = Ultra(query_func, write_func)
 
     def average_count(self, value: int = None):
         """
@@ -41,14 +36,14 @@ Is_Query = "Yes"
         """
         if value is None: 
             cmd = ":ACQuire:AVERages?"
-            return int(self.instrument.query(cmd))
+            return int(self._query(cmd))
         else:
             if not math.log2(value).is_integer():
                 return "ERROR: Value must be a power of 2"
             if value < 2 or value > 65536:
                 return "ERROR: Value must be between 2 and 65536"
             cmd = f":ACQuire:AVERages {value}"
-            response = self.instrument.write(cmd)
+            response = self._write(cmd)
             return int(response)
         
     def memory_depth(self, value: str = None):
@@ -75,12 +70,12 @@ Is_Query = "Yes"
         
         if value is None:  
             cmd = ":ACQuire:MDEPth?"
-            return float(self.instrument.query(cmd))
+            return float(self._query(cmd))
         else:
             if value.upper() not in ["AUTO", "1k", "10k", "100k", "1M", "10M", "25M", "50M"]:
                 return "ERROR: Value must be in {AUTO, 1k, 10k, 100k, 1M, 10M, 25M, 50M}"
             cmd = f":ACQuire:MDEPth {value}"
-            response = self.instrument.write(cmd)
+            response = self._write(cmd)
             return int(response)
 
     def get_memory_depth_legacy(self):
@@ -101,7 +96,7 @@ Input_Values = "N/A"
 Is_Query = "Yes"
         """
         cmd = ":ACQuire:MEMDepth?"
-        return self.instrument.query(cmd)
+        return self._query(cmd)
 
     def acq_type(self, value: str = None):
         """     
@@ -126,12 +121,12 @@ Is_Query = "Yes"
         """
         if value is None:  
             cmd = ":ACQuire:TYPE?"
-            return self.instrument.query(cmd)
+            return self._query(cmd)
         else:
             if value.upper() not in ["NORMAL", "PEAK", "AVERAGES", "ULTRA"]:
                 return "ERROR: Value must be in {NORMal, PEAK, AVERages, ULTRa}"
             cmd = f":ACQuire:TYPE {value}"
-            response = self.instrument.write(cmd)
+            response = self._write(cmd)
             return int(response)
 
     def get_sample_rate(self):
@@ -153,11 +148,15 @@ Input_Values = "N/A"
 Is_Query = "Yes"
         """
         cmd = ":ACQuire:SRATe?"
-        resp = self.instrument.query(cmd)
+        resp = self._query(cmd)
         return float(resp)
 
 @dataclass
 class Ultra:
+    def __init__(self, query_func, write_func):
+        self._query = query_func
+        self._write = write_func
+        
     def mode(self, value: str = None):
         """
 Syntax: :ACQuire:ULTRa:MODE <mode> :ACQuire:ULTRa:MODE?
@@ -182,12 +181,12 @@ Is_Query = "Yes"
                """
         if value is None:  
             cmd = ":ACQuire:ULTRa:MODE?"
-            return self.instrument.query(cmd)
+            return self._query(cmd)
         else:
             if value.upper() not in ["ADJACENT", "OVERLAY", "WATERFALL", "PERSPECTIVE", "MOSAIC"]:
                 return "ERROR: Value must be in {ADJacent, OVERlay, WATerfall, PERSpective, MOSaic}"
             cmd = f":ACQuire:ULTRa:MODE {value}"
-            response = self.instrument.write(cmd)
+            response = self._write(cmd)
             return int(response)
 
     def timeout(self, value: float = None):
@@ -210,12 +209,12 @@ Is_Query = "Yes"
         """
         if value is None:  
             cmd = ":ACQuire:ULTRa:TIMeout?"
-            return float(self.instrument.query(cmd))
+            return float(self._query(cmd))
         else:
             if value < 1e-6 or value > 1:
                  return "ERROR: Value must be between 1e-6 and 1"
             cmd = f":ACQuire:ULTRa:TIMeout {value}"
-            response = self.instrument.write(cmd)
+            response = self._write(cmd)
             return int(response)
 
     def max_frames(self, value: int = None):
@@ -238,12 +237,12 @@ Is_Query = "Yes"
         """
         if value is None:  
             cmd = ":ACQuire:ULTRa:MAXFrame?"
-            return int(self.instrument.query(cmd))
+            return int(self._query(cmd))
         else:
             if value < 1 or value > 100:
                  return "ERROR: Value must be between 1 and 100"
             cmd = f":ACQuire:ULTRa:MAXFrame {value}"
-            response = self.instrument.write(cmd)
+            response = self._write(cmd)
             return int(response)
 
 
