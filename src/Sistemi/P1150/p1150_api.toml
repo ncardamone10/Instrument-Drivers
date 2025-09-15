@@ -1,0 +1,78 @@
+# P1150 API constants and configuration
+
+[acquire_modes]
+list = [
+  "ACQUIRE_MODE_RUN",
+  "ACQUIRE_MODE_SINGLE",
+  "ACQUIRE_MODE_LOGGER",
+]
+
+[trigger_sources]
+list = [
+  "TRIG_SRC_NONE",
+  "TRIG_SRC_CUR",
+  "TRIG_SRC_D0",
+  "TRIG_SRC_D1",
+  "TRIG_SRC_A0A",
+]
+
+[trigger_positions]
+list = [
+  "TRIG_POS_CENTER",
+  "TRIG_POS_LEFT",
+  "TRIG_POS_RIGHT",
+]
+
+[trigger_slopes]
+list = [
+  "TRIG_SLOPE_RISE",
+  "TRIG_SLOPE_FALL",
+  "TRIG_SLOPE_EITHER",
+]
+
+[timebases]
+TBASE_SPAN_10MS  = 0.010
+TBASE_SPAN_20MS  = 0.020
+TBASE_SPAN_50MS  = 0.050
+TBASE_SPAN_100MS = 0.100
+TBASE_SPAN_200MS = 0.200
+TBASE_SPAN_500MS = 0.500
+TBASE_SPAN_1S    = 1.0
+TBASE_SPAN_2S    = 2.0
+TBASE_SPAN_5S    = 5.0
+TBASE_SPAN_10S   = 10.0
+
+[errors]
+ERROR_NONE          = 0
+ERROR_I2C           = 1
+ERROR_HAL           = 2
+ERROR_INIT          = 4
+ERROR_INIT_TMP      = 8
+ERROR_INIT_VMAIN    = 16
+ERROR_INIT_ADC      = 32
+ERROR_INIT_USBPD    = 64
+ERROR_TEMPERATURE   = 256
+ERROR_VOUT_FAILURE  = 512
+ERROR_CAL           = 1024
+ERROR_PROBE_CON     = 2048
+ERROR_SRC_CURRENT   = 4096
+ERROR_SNK_CURRENT   = 8192
+
+[commands]
+# Application/bootloader commands
+ping         = "cmd_ping"
+status       = "cmd_status"
+vout_metrics = "cmd_vout_metrics"
+vout         = "cmd_vout"
+probe        = "cmd_probe"
+error_clear  = "cmd_error_clear"
+adc          = "cmd_adc"
+
+# Calibration
+cal_start    = "cmd_cal"
+cal_status   = "cmd_cal_status"
+
+# Bootloader
+bl_init      = "bl_init"
+bl_block     = "bl_block"
+bl_done      = "bl_done"

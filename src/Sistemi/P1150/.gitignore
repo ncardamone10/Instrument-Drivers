@@ -1,0 +1,11 @@
+
+.idea/
+
+__pycache__/
+
+*.pyd
+
+cobs/build/
+cobs/cobs.egg-info/
+
+p1150_out.csv
